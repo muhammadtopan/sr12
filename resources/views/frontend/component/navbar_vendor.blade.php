@@ -13,8 +13,8 @@
                     </div>
                 </div>
                 <div class="ht-right">
-                    <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
-                        <a href="{{ route('vendor') }}" class="login-panel"  style="margin-right: 13px"><i class="fa fa-user"></i>Mitra</a>
+                    <a href="{{ route('vendor.logout') }}" class="login-panel"><i class="fa fa-user"></i>Logout</a>
+                    <a href="{{ route('vendor') }}" class="login-panel"  style="margin-right: 13px"><i class="fa fa-user"></i>Mitra</a>
                     <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>

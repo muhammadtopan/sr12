@@ -14,8 +14,15 @@ class CreateUserModelsTable extends Migration
     public function up()
     {
         Schema::create('tb_user', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('user_id');
+            $table->string('username');
+            $table->string('user_email');
+            $table->string('user_phone');
+            $table->enum('user_level',['Distributor', 'Agen', 'Sub-Agen', 'Freelance']);
+            $table->string('user_password');
+            $table->enum('user_status',['on','off']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
