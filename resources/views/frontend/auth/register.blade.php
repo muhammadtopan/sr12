@@ -1,180 +1,88 @@
-<!DOCTYPE html>
-<html>
+@extends ('frontend/layout.app')
+@section ('title', 'Register')
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin-UMKM-Regristrasi</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section ('content')
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('lte/plugins/fontawesome-free/css/all.min.css')}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{asset('lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('lte/dist/css/adminlte.min.css')}}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-    <!-- Poppins -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-    
-    <style>
-        body{
-            font-family: 'Poppins', sans-serif;
-        }
-        .register-page{
-            background-color: #ACE3F2;
-        }
-        .card{
-            background-color: #D4E5EA;
-        }
-    </style>
-</head>
-
-<body class="hold-transition register-page">
-    <!-- jQuery Plugins -->
-    <script src="{{asset('frontend/js/jquery.min.js')}}"></script>
-    <script src="{{asset('lte/build/js/axios.min.js')}}"></script>
-
-    <div class="register-box">
-        <div class="register-logo">
-            <img src="{{asset('frontend/img/logo.png')}}" alt="">
-            <div>
-                <b>REGISTER</b>
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <span>Register</span>
+                    </div>
+                </div>
             </div>
-            <p style="color: #29499C; font-size: 15px">Silahkan daftar untuk membuat akun kamu</p>
         </div>
-
-        <div class="card" style="border-radius: 10px;">
-            <div class="card-body register-card-body" style="border-radius: 10px;">
-
-                <form action="{{route('aksiregister-umkm')}}" method="post">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nama Pemilik" name="pemilik" value="{{ old('pemilik') ?? $umkm->pemilik ?? '' }}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nama Toko" name="umkm_nama" value="{{ old('umkm_nama') ?? $umkm->umkm_nama ?? '' }}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="WhatAspp UMKM" name="umkm_nohp" value="{{ old('umkm_nohp') ?? $umkm->umkm_nohp ?? '' }}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
-                        @error('umkm_nohp')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="input-group  mb-3">
-                        <select name="kategori_id" id="kategori_id" class="form-control @error('kategori_id') {{ 'is-invalid' }} @enderror">
-                            <option value="">-Kategori UMKM-</option>
-                            @foreach($kategori as $no => $kategori)
-                            <option value="{{ $kategori->kategori_id }}">
-                                {{ $kategori->kategori_nama}}</option>
-                            @endforeach
-                        </select>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>  
-                        @error('kategori_id')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="input-group  mb-3">
-                        <select name="prov_id" id="prov_id" class="form-control @error('prov_id') {{ 'is-invalid' }} @enderror">
-                            <option value="">-Pilih Provinsi-</option>
-                            @foreach($prov as $no => $prov)
-                            <option value="{{ $prov->prov_id }}">
-                                {{ $prov->prov_nama}}</option>
-                            @endforeach
-                        </select>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>  
-                        @if(isset($umkm))
-                        <script>
-                            document.getElementById('prov_id').value =
-                                '<?php echo $umkm->prov_id ?>'
-                        </script>
-                        @endif
-                        @error('prov_id')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="input-group  mb-3">
-                        <select name="kota_id" id="kota_id" class="form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
-                            <option value="">-Kota-</option>
-                        </select>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>  
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Alamat" name="umkm_alamat" value="{{ old('umkm_alamat') ?? $umkm->umkm_alamat ?? '' }}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="umkm_email" value="{{ old('umkm_email') ?? $umkm->umkm_email ?? '' }}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
-                        @error('umkm_email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password min 8 digit" name="umkm_password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                            </div>
-                        </div>
-                        @error('umkm_password')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <p style="font-size: 12px">Sudah punya akun ? <a href="{{route('login')}}" style="color: #29499C"><b>Login</b></a></p>
-                    <div class="row">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block" style="background-color: #29499C; color: #fff">Daftar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- /.form-box -->
-        </div><!-- /.card -->
     </div>
-    <!-- /.register-box -->
+    <!-- Breadcrumb Form Section Begin -->
 
-    <!-- jQuery -->
-    <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{asset('lte/dist/js/adminlte.min.js')}}"></script>
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="register-form">
+                        <h2>Register</h2>
+                        <form action="{{route('aksiregister_vendor')}}" method="post">
+                        @csrf
+                            @if(session('errors'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Something it's wrong:
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <div class="group-input">
+                                <label for="username">Username *</label>
+                                <input type="text" placeholder="Username" id="username" name="username" value="{{ old('username') ?? $umkm->username ?? '' }}" required>
+                            </div>
+                            <div class="group-input">
+                                <label for="user_email">Email *</label>
+                                <input type="text" placeholder="Email" id="user_email" name="user_email" value="{{ old('user_email') ?? $umkm->user_email ?? '' }}" required>
+                            </div>
+                            <div class="group-input">
+                                <label for="user_phone">Phone *</label>
+                                <input type="text" placeholder="082386464060" id="user_phone" name="user_phone" value="{{ old('user_phone') ?? $umkm->user_phone ?? '' }}" required>
+                            </div>
+                            <div class="group-input">
+                                <label for="user_level">Jenis Mitra *</label>
+                                <select name="user_level" id="user_level" class="form-control @error('user_level') {{ 'is-invalid' }} @enderror">
+                                    <option value="Distributor">Distributor</option>
+                                    <option value="Agen">Agen</option>
+                                    <option value="Sub-Agen">Sub Agen</option>
+                                    <option value="Freelance" selected>Freelance</option>
+                                </select>
+                            </div>
+                            <div class="group-input">
+                                <label for="user_password">Password *</label>
+                                <input type="password" placeholder="Password" id="user_password" name="user_password" value="{{ old('user_password') ?? $umkm->user_password ?? '' }}">
+                            </div>
+                            <div class="group-input">
+                                <label for="password_confirmation">Confirm Password *</label>
+                                <input type="password" placeholder="Password" id="password_confirmation" name="password_confirmation">
+                            </div>
+                            <button type="submit" class="site-btn register-btn">REGISTER</button>
+                        </form>
+                        <div class="switch-login">
+                            <a href="{{ route('vendor') }}" class="or-login">Or Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Form Section End -->
 
-    <script>
-        // Cara Mengambil Kota Berdasarkan Provinsi
+    <!-- // Cara Mengambil Kota Berdasarkan Provinsi -->
+    <!-- <script>
         $('#prov_id').change(function(e) {
             e.preventDefault();
             var kota_id = '';
@@ -192,7 +100,6 @@
                 console.log(err);
             })
         });
-    </script>
-</body>
+    </script> -->
 
-</html>
+@endsection

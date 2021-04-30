@@ -342,6 +342,8 @@ ol {
 
 .header-top .ht-left {
 	float: left;
+	/* margin-top: -13px;
+    margin-bottom: -11px; */
 }
 
 .header-top .ht-left .mail-service {
@@ -3776,6 +3778,7 @@ ol {
 }
 
 .register-form form .group-input label,
+.register-form form .group-input select,
 .login-form form .group-input label {
 	display: block;
 	font-size: 18px;
@@ -3784,6 +3787,7 @@ ol {
 }
 
 .register-form form .group-input input,
+.register-form form .group-input select,
 .login-form form .group-input input {
 	border: 1px solid #ebebeb;
 	height: 50px;

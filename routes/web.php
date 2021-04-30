@@ -14,8 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::middleware(['vendor'])->group(function () {
+    Route::get('vendor', 'Frontend\DashboardController@index')->name('vendor');
+    Route::get('register_vendor', 'Frontend\DashboardController@register')->name('register_vendor');
+    Route::post('aksiregister_vendor', 'Frontend\DashboardController@registerAdmin')->name('aksiregister_vendor');
+    Route::post('aksilogin_vendor', 'Frontend\DashboardController@loginAdmin')->name('aksilogin_vendor');
+});
+Route::middleware(['vendor.dashboard'])->group(function () {
+    Route::get('vendor.dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
+    Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
+});
+
 Route::middleware(['admin'])->group(function () {
-    Route::get('/', 'Backend\DashboardController@index');
     Route::get('login', 'Backend\DashboardController@index')->name('login');
     Route::get('register', 'Backend\DashboardController@register')->name('register');
     Route::post('aksiregister', 'Backend\DashboardController@registerAdmin')->name('aksiregister');
