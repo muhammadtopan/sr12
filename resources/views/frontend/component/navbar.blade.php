@@ -14,7 +14,7 @@
                 </div>
                 <div class="ht-right">
                     <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
-                        <a href="{{ route('vendor') }}" class="login-panel"  style="margin-right: 13px"><i class="fa fa-user"></i>Mitra</a>
+                        <a href="{{ route('vendor') }}" class="login-panel"  style="margin-right: 13px"><i class="fa fa-user"></i>Vendor</a>
                     <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>
@@ -104,37 +104,23 @@
             </div>
         </div>
         <div class="nav-item">
-            <div class="container">
-                <div class="nav-depart">
-                    <div class="depart-btn">
-                        <i class="ti-menu"></i>
-                        <span>All departments</span>
-                        <ul class="depart-hover">
-                            <li class="active"><a href="#">Women’s Clothing</a></li>
-                            <li><a href="#">Men’s Clothing</a></li>
-                            <li><a href="#">Underwear</a></li>
-                            <li><a href="#">Kid's Clothing</a></li>
-                            <li><a href="#">Brand Fashion</a></li>
-                            <li><a href="#">Accessories/Shoes</a></li>
-                            <li><a href="#">Luxury Brands</a></li>
-                            <li><a href="#">Brand Outdoor Apparel</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="container text-right">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
-                        <li><a href="#">Collection</a>
+                        <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{ route('about') }}">About Us</a></li>
+                        <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Produck</a></li>
+                        <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">Partnership</a></li>
+                        <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Contact</a></li>
+                        <!-- <li><a href="#">Collection</a>
                             <ul class="dropdown">
                                 <li><a href="#">Men's</a></li>
                                 <li><a href="#">Women's</a></li>
                                 <li><a href="#">Kid's</a></li>
                             </ul>
-                        </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-                        <li><a href="#">Pages</a>
+                        </li> -->
+                        <!-- <li><a href="./blog.html">Blog</a></li> -->
+                        <!-- <li><a href="#">Pages</a>
                             <ul class="dropdown">
                                 <li><a href="./blog-details.html">Blog Details</a></li>
                                 <li><a href="./shopping-cart.html">Shopping Cart</a></li>
@@ -143,7 +129,7 @@
                                 <li><a href="./register.html">Register</a></li>
                                 <li><a href="./login.html">Login</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
                 <div id="mobile-menu-wrap">

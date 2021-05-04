@@ -32,7 +32,7 @@
     </div>
     
     <div class="wrapper">
-        @include('frontend/component/navbar')
+        @include('frontend/component/navbar_vendor')
         
         <div class="content-wrapper">
             @yield('content')

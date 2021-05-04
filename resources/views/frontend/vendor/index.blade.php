@@ -1,5 +1,5 @@
-@extends ('frontend/layout.app')
-@section ('title', 'Herbal Skincare')
+@extends ('backend/layouts.app')
+@section ('title', 'Dashboard Vendor')
 
 @section ('content')
 

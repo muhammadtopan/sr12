@@ -19,7 +19,7 @@ class CreateProductModelsTable extends Migration
             $table->string('product_name');
             $table->string('product_bpom');
             $table->string('product_image');
-            $table->integer('product_price');
+            $table->double('product_price');
             $table->integer('product_netto');
             $table->integer('product_weight');
             $table->enum('product_unit',['mg','g','ml','l']);

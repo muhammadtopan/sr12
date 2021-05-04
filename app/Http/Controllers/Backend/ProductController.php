@@ -16,12 +16,16 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $product = ProductModel::all();
+        $product = ProductModel::all()
+                    ->where('product_status', '=', 'on');
+        $productoff = ProductModel::all()
+                    ->where('product_status', '=', 'off');
         $category = CategoryModel::all();
         return view(
             'backend/page/product/index',
             [
                 'product' => $product,
+                'productoff' => $productoff,
                 'category' => $category
             ]
         );
@@ -60,7 +64,7 @@ class ProductController extends Controller
                 $product->product_unit = $request->input('product_unit');
                 $product->product_desk = $request->input('product_desk');
                 $product->product_price = $request->input('product_price');
-                $product->product_status = 'off'; 
+                $product->product_status = 'on'; 
                 $product->product_slug = $request->input('product_name');
                 $product->product_image = $filename;
                 $product->save();

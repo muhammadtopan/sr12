@@ -62,11 +62,11 @@ class DashboardController extends Controller
         {
             $token = JwtHelper::BuatToken($data_admin);
 
-            if($data_admin->level=='admin'){
+            if($data_admin->admin_level=='admin'){
                 // masukan data login ke session
                 $request->session()->put('admin_id', $data_admin->admin_id);
                 $request->session()->put('admin_name', $data_admin->admin_name);
-                $request->session()->put('level', $data_admin->level);
+                $request->session()->put('admin_level', $data_admin->admin_level);
                 $request->session()->put('token', $token);
                 // redirect ke halaman home
                 return redirect('admin.dashboard')->with("pesan", "Selamat datang " . session('admin_name'));
