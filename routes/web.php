@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('shop.product', 'HomeController@product')->name('shop.product');
+Route::get('about', 'HomeController@about')->name('about');
+Route::get('partnership', 'HomeController@partnership')->name('partnership');
+Route::get('contact', 'HomeController@contact')->name('contact');
 
 Route::middleware(['vendor'])->group(function () {
     Route::get('vendor', 'Frontend\DashboardController@index')->name('vendor');
@@ -49,8 +53,22 @@ Route::middleware(['dashboard'])->group(function () {
     Route::post('product', 'Backend\ProductController@store')->name('product.store');
     Route::post('cari_data_product', 'Backend\ProductController@cari_data_product')->name('cari_data_product');
     Route::delete('product/{product}', 'Backend\ProductController@destroy')->name('product.delete');
-
-    //aktivasi
+    //aktivasi product
     Route::post('product/active', 'Backend\ProductController@active')->name('product.active');
     Route::post('product/no_active', 'Backend\ProductController@non_active')->name('product.non_active');
+
+    // Paket Category
+    Route::get('package_category', 'Backend\PackageCategoryController@index')->name('package_category');
+    Route::post('package_category', 'Backend\PackageCategoryController@store')->name('package_category.store');
+    Route::post('cari_kategori_paket', 'Backend\PackageCategoryController@cari_kategori_paket')->name('cari_kategori_paket');
+    Route::delete('package_category/{package_category}', 'Backend\PackageCategoryController@destroy')->name('package_category.delete');
+
+    // Vendor
+    Route::get('data_vendor', 'Backend\VendorController@index')->name('data_vendor');
+    Route::post('data_vendor', 'Backend\VendorController@store')->name('data_vendor.store');
+    Route::post('cari_data_data_vendor', 'Backend\VendorController@cari_data_data_vendor')->name('cari_data_data_vendor');
+    Route::delete('data_vendor/{data_vendor}', 'Backend\VendorController@destroy')->name('data_vendor.delete');
+    //aktivasi data_vendor
+    Route::post('data_vendor/active', 'Backend\VendorController@active')->name('data_vendor.active');
+    Route::post('data_vendor/no_active', 'Backend\VendorController@non_active')->name('data_vendor.non_active');
 });

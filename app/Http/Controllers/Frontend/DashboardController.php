@@ -76,21 +76,16 @@ class DashboardController extends Controller
         {
             $token = JwtHelper::BuatToken($data_user);
 
-            if($data_user->user_level=='Distributor'){
-                // masukan data login ke session
-                $request->session()->put('user_id', $data_user->user_id);
-                $request->session()->put('username', $data_user->username);
-                $request->session()->put('user_level', $data_user->user_level);
-                $request->session()->put('token_vendor', $token);
-                // redirect ke halaman home
-                return redirect()
-                        ->route('vendor.dashboard')
-                        ->with("pesan", "Selamat datang " . session('username'));
-            }
-            else{
-                return back()->with("pesan", "Email atau Password Salah");
-            }
-        } 
+            // masukan data login ke session
+            $request->session()->put('user_id', $data_user->user_id);
+            $request->session()->put('username', $data_user->username);
+            $request->session()->put('user_level', $data_user->user_level);
+            $request->session()->put('token_vendor', $token);
+            // redirect ke halaman home
+            return redirect()
+                    ->route('vendor.dashboard')
+                    ->with("pesan", "Selamat datang " . session('username'));
+        }
         else 
         {
             return back()->with("pesan", "Email atau Password Salah");

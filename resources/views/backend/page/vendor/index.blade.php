@@ -1,5 +1,5 @@
 @extends ('backend/layouts.app')
-@section ('title', 'Product List')
+@section ('title', 'Vendor List')
 
 @section ('content')
 <!-- Content Header (Page header) -->
@@ -7,12 +7,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Produk</h1>
+                <h1>Vendor</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Product</li>
+                    <li class="breadcrumb-item active">Vendor</li>
                 </ol>
             </div>
         </div>
@@ -23,114 +23,58 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card card-tabs">
+                <div class="card">
                     @if(session()->has('message'))
                     <div class="alert alert-success">
                         <strong>{{ session()->get('message') }}</strong>
                         <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
                     </div>
                     @endif
-                    <!-- <div class="card-header">
-                        <h3 class="card-title">List Product</h3>
-                    </div> -->
-                    <div class="card-header bg-dark p-0 pt-1">
-                        <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="verifikasi-tab" data-toggle="pill" href="#verifikasi" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Sudah Verifikasi</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="belum-verifikasi-tab" data-toggle="pill" href="#belum-verifikasi" role="tab" aria-controls="belum-verifikasi" aria-selected="false">Belum Verifikasi</a>
-                            </li>
-                        </ul>
+                    <div class="card-header">
+                        <h3 class="card-title">List Vendor</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="tab-content" id="custom-tabs-two-tabContent">
-                            <button onclick="modal_tambah('{{route("product.store")}}', 'tambah')" class="btn btn-lg btn-dark my-4">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                            <button class="btn btn-lg btn-success my-4" onclick="location.reload(true);" style="margin-left: 20px;">
-                                <i class="fas fa-redo-alt"></i>
-                            </button>
-                            <div class="tab-pane fade show active" id="verifikasi" role="tabpanel" aria-labelledby="verifikasi-tab">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Product</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($product as $no => $products)
-                                        <tr>
-                                            <td>{{ $no + 1 }}</td>
-                                            <td class="text-center">
-                                                <img src="{{ asset('lte/dist/img/product/' . $products->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br>
-                                                {{ $products->product_name }}
-                                            </td>
-                                            <td>
-                                                <label class="switch">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        class="cek_status" 
-                                                        id="cek_status" 
-                                                        value="{{ $products->product_status }}" 
-                                                        onchange="cekStatus(<?= $products->product_id ?>, this)" 
-                                                        <?php echo ($products->product_status == 'on') ? "checked" : "" ?> >
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $products->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
-                                                <button type="button" class="btn btn-danger btn-sm" onclick="modal_hapus('{{ route("product.delete", $products->product_id) }}')"><i class="fa fa-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="tab-pane fade" id="belum-verifikasi" role="tabpanel" aria-labelledby="belum-verifikasi-tab">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Product</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($productoff as $no => $productoffs)
-                                        <tr>
-                                            <td>{{ $no + 1 }}</td>
-                                            <td class="text-center">
-                                                <img src="{{ asset('lte/dist/img/product/' . $productoffs->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br>
-                                                {{ $productoffs->product_name }}
-                                            </td>
-                                            <td>
-                                                <label class="switch">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        class="cek_status" 
-                                                        id="cek_status"
-                                                        value="{{ $productoffs->product_status }}" 
-                                                        onchange="cekStatus(<?= $productoffs->product_id ?>, this)" 
-                                                        <?php echo ($productoffs->product_status == 'on') ? "checked" : "" ?> >
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $productoffs->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
-                                                <button type="button" class="btn btn-danger btn-sm" onclick="modal_hapus('{{ route("product.delete", $productoffs->product_id) }}')"><i class="fa fa-trash"></i></button>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <!-- <button onclick="modal_tambah('{{route("vendor.store")}}', 'tambah')" class="btn btn-lg btn-dark my-4">
+                            <i class="fa fa-plus"></i>
+                        </button> -->
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Vendor</th>
+                                    <th>Tipe</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($vendor as $no => $vendors)
+                                <tr>
+                                    <td>{{ $no + 1 }}</td>
+                                    <td class="text-center">
+                                        {{ $vendors->vendor_name }}
+                                    </td>
+                                    <td>
+                                        <label class="switch">
+                                            <input 
+                                                type="checkbox" 
+                                                class="cek_status" 
+                                                id="cek_status" 
+                                                value="{{ $products->product_status }}" 
+                                                onchange="cekStatus(<?= $products->product_id ?>, this)" 
+                                                <?php echo ($products->product_status == 'on') ? "checked" : "" ?> >
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $products->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
+                                        <button type="button" class="btn btn-danger btn-sm" onclick="modal_hapus('{{ route("product.delete", $products->product_id) }}')"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.card-body -->
                 </div>

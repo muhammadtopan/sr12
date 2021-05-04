@@ -1,4 +1,4 @@
-@extends ('frontend/layout.app')
+@extends ('frontend/layout.app2')
 @section ('title', 'Register')
 
 @section ('content')
