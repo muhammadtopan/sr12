@@ -65,6 +65,7 @@ class ProductController extends Controller
                 $product->product_desk = $request->input('product_desk');
                 $product->product_price = $request->input('product_price');
                 $product->product_status = 'on'; 
+                $product->product_type = 'usual'; 
                 $product->product_slug = $request->input('product_name');
                 $product->product_image = $filename;
                 $product->save();
@@ -172,6 +173,7 @@ class ProductController extends Controller
             'message' => 'PRODUK TELAH AKTIF',
         ], 200);
     }
+    
     public function non_active(Request $request)
     {
         DB::table('tb_product')
@@ -179,6 +181,36 @@ class ProductController extends Controller
             ->update(['product_status' => 'off']);
         return response()->json([
             'message' => 'PRODUK TELAH DI NONAKTIFKAN',
+        ], 200);
+    }
+
+    public function usual(Request $request)
+    {
+        DB::table('tb_product')
+            ->where('product_id', $request->id)
+            ->update(['product_type' => 'usual']);
+        return response()->json([
+            'message' => 'PRODUK BIASA',
+        ], 200);
+    }
+
+    public function best(Request $request)
+    {
+        DB::table('tb_product')
+            ->where('product_id', $request->id)
+            ->update(['product_type' => 'best']);
+        return response()->json([
+            'message' => 'BEST PRODUCT SELLER',
+        ], 200);
+    }
+
+    public function new(Request $request)
+    {
+        DB::table('tb_product')
+            ->where('product_id', $request->id)
+            ->update(['product_type' => 'new']);
+        return response()->json([
+            'message' => 'NEW PRODUCT',
         ], 200);
     }
 }

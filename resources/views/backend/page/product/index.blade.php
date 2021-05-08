@@ -25,10 +25,10 @@
             <div class="col-12">
                 <div class="card card-tabs">
                     @if(session()->has('message'))
-                    <div class="alert alert-success">
-                        <strong>{{ session()->get('message') }}</strong>
-                        <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
-                    </div>
+                        <div class="alert alert-success">
+                            <strong>{{ session()->get('message') }}</strong>
+                            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+                        </div>
                     @endif
                     <!-- <div class="card-header">
                         <h3 class="card-title">List Product</h3>
@@ -59,6 +59,7 @@
                                             <th>No</th>
                                             <th>Product</th>
                                             <th>Status</th>
+                                            <th>Tipe</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -75,12 +76,17 @@
                                                     <input 
                                                         type="checkbox" 
                                                         class="cek_status" 
-                                                        id="cek_status" 
+                                                        id="cek_status"
                                                         value="{{ $products->product_status }}" 
                                                         onchange="cekStatus(<?= $products->product_id ?>, this)" 
                                                         <?php echo ($products->product_status == 'on') ? "checked" : "" ?> >
                                                     <span class="slider round"></span>
                                                 </label>
+                                            </td>
+                                            <td>
+                                            <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="usual" onclick="cekUsual(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'usual') ? "checked" : "" ?>>Default<br>
+                                            <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="best" onclick="cekBest(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'best') ? "checked" : "" ?>>Product Best Seller<br>
+                                            <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="new" onclick="cekNew(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'new') ? "checked" : "" ?>>New Product
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $products->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
@@ -103,29 +109,29 @@
                                     </thead>
                                     <tbody>
                                         @foreach($productoff as $no => $productoffs)
-                                        <tr>
-                                            <td>{{ $no + 1 }}</td>
-                                            <td class="text-center">
-                                                <img src="{{ asset('lte/dist/img/product/' . $productoffs->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br>
-                                                {{ $productoffs->product_name }}
-                                            </td>
-                                            <td>
-                                                <label class="switch">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        class="cek_status" 
-                                                        id="cek_status"
-                                                        value="{{ $productoffs->product_status }}" 
-                                                        onchange="cekStatus(<?= $productoffs->product_id ?>, this)" 
-                                                        <?php echo ($productoffs->product_status == 'on') ? "checked" : "" ?> >
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $productoffs->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
-                                                <button type="button" class="btn btn-danger btn-sm" onclick="modal_hapus('{{ route("product.delete", $productoffs->product_id) }}')"><i class="fa fa-trash"></i></button>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $no + 1 }}</td>
+                                                <td class="text-center">
+                                                    <img src="{{ asset('lte/dist/img/product/' . $productoffs->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br>
+                                                    {{ $productoffs->product_name }}
+                                                </td>
+                                                <td>
+                                                    <label class="switch">
+                                                        <input 
+                                                            type="checkbox" 
+                                                            class="cek_status" 
+                                                            id="cek_status"
+                                                            value="{{ $productoffs->product_status }}" 
+                                                            onchange="cekStatus(<?= $productoffs->product_id ?>, this)" 
+                                                            <?php echo ($productoffs->product_status == 'on') ? "checked" : "" ?> >
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $productoffs->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-sm" onclick="modal_hapus('{{ route("product.delete", $productoffs->product_id) }}')"><i class="fa fa-trash"></i></button>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -276,12 +282,56 @@
             axios.post("{{route('product.non_active')}}", {
                 'id': product_id,
             }).then(function(res) {
-                // console.log(res.data.message)
+                console.log(res.data.message)
                 toastr.warning(res.data.message)
             }).catch(function(err) {
                 console.log(err);
             })
         }
+    }
+
+    function cekUsual(product_id, ceklis) {
+        if (ceklis.checked) {
+            // alert("ceklis Dihidupkan")
+            axios.post("{{route('product.usual')}}", {
+                'id': product_id,
+            }).then(function(res) {
+                // console.log(res.data.message)
+                toastr.success(res.data.message)
+            }).catch(function(err) {
+                console.log(err);
+            })
+        } else {
+
+        }
+    }
+
+    function cekBest(product_id, ceklis) {
+        if (ceklis.checked) {
+            // alert("ceklis Dihidupkan")
+            axios.post("{{route('product.best')}}", {
+                'id': product_id,
+            }).then(function(res) {
+                // console.log(res.data.message)
+                toastr.success(res.data.message)
+            }).catch(function(err) {
+                console.log(err);
+            })
+        } 
+    }
+
+    function cekNew(product_id, ceklis) {
+        if (ceklis.checked) {
+            // alert("ceklis Dihidupkan")
+            axios.post("{{route('product.new')}}", {
+                'id': product_id,
+            }).then(function(res) {
+                // console.log(res.data.message)
+                toastr.success(res.data.message)
+            }).catch(function(err) {
+                console.log(err);
+            })
+        } 
     }
 
     function modal_tambah(url, aksi) {

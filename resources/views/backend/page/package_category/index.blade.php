@@ -6,15 +6,15 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Kategori Paket</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active">Kategori Paket</li>
-                </ol>
-            </div>
+                <div class="col-sm-6">
+                    <h1>Kategori Paket</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Kategori Paket</li>
+                    </ol>
+                </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -160,14 +160,42 @@
         function modal_tambah(url, aksi){
             if(aksi != 'tambah'){
                 // ambil data dari axios
-                axios.post("{{ route('cari_data_kategori') }}", {
+                axios.post("{{ route('cari_kategori_paket') }}", {
                     'package_category_id': aksi,
                 }).then(function(res) {
-                    var package_category = res.data;
-                    console.log(package_category)
+                    var package_category = res.data.produk;
+                    var package_category_detail = res.data.detail;
+                    
                     $('#package_category_id').val(package_category.package_category_id);
                     $('#package_category_name').val(package_category.package_category_name);
+                    $('#summernote').val(package_category.package_category_step);
                     $('#package_category_image').attr('required', false);
+                    $('#summernote').val(package_category_detail.package_category_step);
+                    
+                    // ceklis barnag
+
+                    var a = [];
+                    for(var i in package_category_detail){
+                        if(package_category_detail.hasOwnProperty(i)){
+                            a.push(i);
+                        }
+                    }
+
+                    // var b = a.toString()
+                    // var cek = b.split(",");
+                    // var list_gender = document.getElementsByName("id_gender2");
+                    // // reset centang gender
+                    // for (var x = 0; x < list_gender.length; x++) {
+                    //     list_gender[x].checked = false;
+                    // }
+                    // for (var x = 0; x < list_gender.length; x++) {
+                    //     for (var i = 0; i < cek.length; i++) {
+                    //         if (list_gender[x].value == cek[i]) {
+                    //             list_gender[x].checked = true;
+                    //         }
+                    //     }
+                    // }
+                    
                     // $('#kategori_id').val(package_category.kategori_id).change();
                 }).catch(function(err) {
                     // console.log(err)

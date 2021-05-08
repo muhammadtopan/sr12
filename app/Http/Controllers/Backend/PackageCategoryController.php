@@ -33,6 +33,7 @@ class PackageCategoryController extends Controller
         // dd($request->all());
         $p = $request->input('product');
         $id = array_keys($p);
+        // dd($p);
 
         $price = DB::table('tb_product')
                     ->whereIn('product_id', $id)
@@ -134,14 +135,13 @@ class PackageCategoryController extends Controller
 
     }
 
-    public function destroy(PackageCategoryModel $category)
+    public function destroy(PackageCategoryModel $package_category)
     {
-
-        $category_file = $category->package_category_image;
+        $category_file = $package_category->package_category_image;
         if ($category_file != null) {
             unlink('lte/dist/img/package_category/' . $category_file);
         }
-        $category->forceDelete();
+        $package_category->forceDelete();
 
         return redirect()
             ->back()
@@ -150,11 +150,18 @@ class PackageCategoryController extends Controller
 
     public function cari_kategori_paket(Request $request)
     {
-
-        $data = DB::table('tb_package_category')
-                ->where('category_id','=',$request->package_category_id)
+        $produk = DB::table('tb_package_category')
+                ->where('package_category_id','=',$request->package_category_id)
                 ->first();
 
-        return json_encode($data);
+        $detail = DB::table('tb_product_package')
+                ->select('product_id')
+                ->where('package_category_id', '=', $request->package_category_id)
+                ->get();
+
+        return json_encode([
+            'produk' => $produk,
+            'detail' => $detail
+        ]);
     }
 }
