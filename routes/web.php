@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/ 
 
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('shop.product', 'HomeController@product')->name('shop.product');
+Route::get('detail_product/{product_id}', 'HomeController@detail_product')->name('detail_product');
 Route::get('about', 'HomeController@about')->name('about');
 Route::get('partnership', 'HomeController@partnership')->name('partnership');
 Route::get('contact', 'HomeController@contact')->name('contact');
@@ -56,6 +57,9 @@ Route::middleware(['dashboard'])->group(function () {
     //aktivasi product
     Route::post('product/active', 'Backend\ProductController@active')->name('product.active');
     Route::post('product/no_active', 'Backend\ProductController@non_active')->name('product.non_active');
+    Route::post('product/usual', 'Backend\ProductController@usual')->name('product.usual');
+    Route::post('product/best', 'Backend\ProductController@best')->name('product.best');
+    Route::post('product/new', 'Backend\ProductController@new')->name('product.new');
 
     // Paket Category
     Route::get('package_category', 'Backend\PackageCategoryController@index')->name('package_category');
@@ -65,9 +69,6 @@ Route::middleware(['dashboard'])->group(function () {
 
     // Vendor
     Route::get('data_vendor', 'Backend\VendorController@index')->name('data_vendor');
-    Route::post('data_vendor', 'Backend\VendorController@store')->name('data_vendor.store');
-    Route::post('cari_data_data_vendor', 'Backend\VendorController@cari_data_data_vendor')->name('cari_data_data_vendor');
-    Route::delete('data_vendor/{data_vendor}', 'Backend\VendorController@destroy')->name('data_vendor.delete');
     //aktivasi data_vendor
     Route::post('data_vendor/active', 'Backend\VendorController@active')->name('data_vendor.active');
     Route::post('data_vendor/no_active', 'Backend\VendorController@non_active')->name('data_vendor.non_active');

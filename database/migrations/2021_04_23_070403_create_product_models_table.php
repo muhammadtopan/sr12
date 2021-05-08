@@ -25,6 +25,7 @@ class CreateProductModelsTable extends Migration
             $table->enum('product_unit',['mg','g','ml','l']);
             $table->text('product_desk');
             $table->enum('product_status',['on','off']);
+            $table->enum('product_tipe',['usual','best','new']);
             $table->string('product_slug');
             $table->timestamps();
             $table->softDeletes();

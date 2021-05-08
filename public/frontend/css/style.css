@@ -1078,6 +1078,9 @@ ol {
 	padding-top: 32px;
 }
 
+.filter-control ul li a{
+	color: #b2b2b2;
+}
 .filter-control ul li {
 	list-style: none;
 	display: inline-block;

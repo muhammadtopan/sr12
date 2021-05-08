@@ -25,43 +25,24 @@
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
                     <div class="filter-widget">
                         <h4 class="fw-title">Paket Product</h4>
-                        <ul class="filter-catagories">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Kids</a></li>
-                        </ul>
+                            <ul class="filter-catagories">
+                                @foreach($package as $no => $packagelist)
+                                    <li><a href="#">{{ $packagelist->package_category_name }}</a></li>
+                                @endforeach
+                            </ul>
                     </div>
                     <div class="filter-widget">
                         <h4 class="fw-title">Kategori Produk</h4>
                         <div class="fw-brand-check">
-                            <div class="bc-item">
-                                <label for="bc-calvin">
-                                    Calvin Klein
-                                    <input type="checkbox" id="bc-calvin">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-diesel">
-                                    Diesel
-                                    <input type="checkbox" id="bc-diesel">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-polo">
-                                    Polo
-                                    <input type="checkbox" id="bc-polo">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-tommy">
-                                    Tommy Hilfiger
-                                    <input type="checkbox" id="bc-tommy">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+                            @foreach($category as $no => $ctglist)
+                                <div class="bc-item">
+                                    <label for="ctglist{{ $ctglist->category_id }}">
+                                        {{ $ctglist->category_name }}
+                                        <input type="checkbox" id="ctglist{{ $ctglist->category_id }}">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -85,233 +66,31 @@
                     </div>
                     <div class="product-list">
                         <div class="row">
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-1.jpg')}}" alt="">
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Towel</div>
-                                        <a href="#">
-                                            <h5>Pure Pineapple</h5>
+                            @foreach($product as $no => $pdklist)
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="product-item">
+                                        <a href="{{ route('detail_product',$pdklist->product_id)}}">
+                                            <div class="pi-pic">
+                                                <img src="{{ asset('lte/dist/img/product/' . $pdklist->product_image )}}" alt="">
+                                                <ul>
+                                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="pi-text">
+                                                <div class="catagory-name">{{ $pdklist->category_name }}</div>
+                                                <a href="#">
+                                                    <h5>{{ $pdklist->category_name }}</h5>
+                                                </a>
+                                                <div class="product-price">
+                                                    {{ $pdklist->product_price }}
+                                                </div>
+                                            </div>
                                         </a>
-                                        <div class="product-price">
-                                            $14.00
-                                            <span>$35.00</span>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-2.jpg')}}" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Coat</div>
-                                        <a href="#">
-                                            <h5>Guangzhou sweater</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $13.00
-                                            <span>$35.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-3.jpg')}}" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Shoes</div>
-                                        <a href="#">
-                                            <h5>Guangzhou sweater</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $34.00
-                                            <span>$35.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-4.jpg')}}" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Coat</div>
-                                        <a href="#">
-                                            <h5>Microfiber Wool Scarf</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $64.00
-                                            <span>$35.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-5.jpg')}}" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Shoes</div>
-                                        <a href="#">
-                                            <h5>Men's Painted Hat</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $44.00
-                                            <span>$35.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-6.jpg')}}" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Shoes</div>
-                                        <a href="#">
-                                            <h5>Converse Shoes</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $34.00
-                                            <span>$35.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-7.jpg')}}" alt="">
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Towel</div>
-                                        <a href="#">
-                                            <h5>Pure Pineapple</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $64.00
-                                            <span>$35.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-8.jpg')}}" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Coat</div>
-                                        <a href="#">
-                                            <h5>2 Layer Windbreaker</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $44.00
-                                            <span>$35.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{ asset('frontend/img/products/product-9.jpg')}}" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Shoes</div>
-                                        <a href="#">
-                                            <h5>Converse Shoes</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $34.00
-                                            <span>$35.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

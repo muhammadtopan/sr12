@@ -64,7 +64,7 @@
             </li> -->
             @if( Session::get('admin_level') == 'admin')
                 <li class="nav-item has-treeview menu-open">
-                    <a href="{{url('backend/dashboard')}}" class="nav-link">
+                    <a href="{{ route('admin.dashboard')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -119,14 +119,39 @@
                     </ul>
                 </li>
 
-                <li class="nav-header">VENDOR</li>
                 <li class="nav-item">
-                    <a href="{{url('backend/vendor')}}" class="nav-link">
-                        <i class="nav-icon fas fa-coins"></i>
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
                         <p>
-                            Data Vendor
+                            Vendor
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('data_vendor') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Vendor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Paket Produk
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('package_category') }}" class="nav-link">
+                                        <i class="far fa-dot-circle nav-icon"></i>
+                                        <p>Kategori Paket</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
             @else
                 <li class="nav-item has-treeview menu-open">

@@ -32,7 +32,7 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                        <h3 class="card-title">Data Kategori Produk</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -137,7 +137,7 @@
     </div>
 
     <script>
-        function modal_tambah(url, aksi){
+        function modal_tambah(url, aksi){ 
             if(aksi != 'tambah'){
                 // ambil data dari axios
                 axios.post("{{ route('cari_data_kategori') }}", {
