@@ -4317,3 +4317,8 @@ ol {
 		padding-right: 15px;
 	}
 }
+
+
+.blog-more .row a h5:hover{
+	color: #e7ab3c;
+}

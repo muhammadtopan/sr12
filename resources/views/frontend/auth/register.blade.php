@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <div class="register-form">
+                    <div class="register-form login-form">
                         <h2>Register</h2>
                         <form action="{{route('aksiregister_vendor')}}" method="post">
                         @csrf
@@ -69,10 +69,22 @@
                                 <label for="password_confirmation">Confirm Password *</label>
                                 <input type="password" placeholder="Password" id="password_confirmation" name="password_confirmation">
                             </div>
+                            <div class="group-input gi-check">
+                                <div class="gi-more">
+                                    <a href="#" class="forget-pass">* Syarat dan Ketentuan</a>
+                                </div>
+                                <div class="gi-more">
+                                    <label for="save-pass">
+                                        Saya Sudah Baca Syarat dan Ketentuan Gabung Jadi Mitra
+                                        <input type="checkbox" id="save-pass">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>  
                             <button type="submit" class="site-btn register-btn">REGISTER</button>
                         </form>
                         <div class="switch-login">
-                            <a href="{{ route('vendor') }}" class="or-login">Or Login</a>
+                        Silahkan <a href="{{ route('vendor') }}" class="or-login">Login</a> Jika Sudah Punya Akun
                         </div>
                     </div>
                 </div>

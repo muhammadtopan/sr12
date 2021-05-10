@@ -116,7 +116,7 @@
                             @endforeach
                         </div>
                         <div class="form-group">
-                            <label for="summernote">Keterangan Produk</label>
+                            <label for="summernote">Cara Pakai</label>
                             <textarea id="summernote" class="form-control" name="package_category_step" value="{{ old('package_category_step') ?? $category->package_category_step ?? '' }}"></textarea>
                         </div>
                         <div class="form-group">

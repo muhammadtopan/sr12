@@ -97,9 +97,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($vendoroff as $no => $vendorso)
+                                        @foreach($vendoroff as $nomor => $vendorso)
                                         <tr>
-                                            <td>{{ $no + 1 }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td class="text-center">
                                                 {{ $vendorso->username }}
                                             </td>

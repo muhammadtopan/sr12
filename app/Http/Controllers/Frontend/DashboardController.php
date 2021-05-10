@@ -107,6 +107,10 @@ class DashboardController extends Controller
 
     public function dashboard()
     {
-        return view('frontend/vendor/index');
+        $name = session()->get('username');
+        return view('frontend/vendor/index',
+        [
+            'name' => $name
+        ]);
     }
 }

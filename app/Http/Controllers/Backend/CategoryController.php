@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
-use App\Model\CategoryModel;
+    use App\Http\Controllers\Controller;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Validator;
+    use Illuminate\Support\Facades\Hash;
+    use Illuminate\Validation\Rule;
+    use App\Model\CategoryModel;
 
 
 class CategoryController extends Controller

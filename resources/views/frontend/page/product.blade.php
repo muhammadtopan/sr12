@@ -69,25 +69,25 @@
                             @foreach($product as $no => $pdklist)
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="product-item">
-                                        <a href="{{ route('detail_product',$pdklist->product_id)}}">
-                                            <div class="pi-pic">
+                                        <div class="pi-pic">
+                                            <a href="{{ route('detail_product',$pdklist->product_id)}}">
                                                 <img src="{{ asset('lte/dist/img/product/' . $pdklist->product_image )}}" alt="">
-                                                <ul>
-                                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                                </ul>
+                                            </a>
+                                            <ul>
+                                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="pi-text">
+                                            <div class="catagory-name">{{ $pdklist->category_name }}</div>
+                                            <a href="#">
+                                                <h5>{{ $pdklist->category_name }}</h5>
+                                            </a>
+                                            <div class="product-price">
+                                                Rp {{ number_format($pdklist->product_price) }}
                                             </div>
-                                            <div class="pi-text">
-                                                <div class="catagory-name">{{ $pdklist->category_name }}</div>
-                                                <a href="#">
-                                                    <h5>{{ $pdklist->category_name }}</h5>
-                                                </a>
-                                                <div class="product-price">
-                                                    {{ $pdklist->product_price }}
-                                                </div>
-                                            </div>
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

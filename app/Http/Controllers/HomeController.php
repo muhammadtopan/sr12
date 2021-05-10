@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Model\CategoryModel;
 use App\Model\ProductModel;
 use App\Model\PackageCategoryModel;
+use App\Model\ArticelModel;
 
 class HomeController extends Controller
 {
@@ -46,6 +47,21 @@ class HomeController extends Controller
             'frontend/page/about',
             [
                 'active' => $active
+            ]
+        );
+    }
+
+    public function articel($art)
+    {
+        $articel = ArticelModel::first();
+        $articelss = ArticelModel::all();
+        $active = "articel";
+        return view(
+            'frontend/page/articel',
+            [
+                'active' => $active,
+                'articel' => $articel,
+                'articelss' => $articelss
             ]
         );
     }

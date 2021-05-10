@@ -51,3 +51,23 @@
         });
     })
 </script>
+<script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
+    //***********************************//
+    // For select 2
+    //***********************************//
+    $(".select2").select2();
+    /*datwpicker*/
+    jQuery('.mydatepicker').datepicker();
+    jQuery('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+    // quill editor
+    // var quill = new Quill('#editor', {
+    //     theme: 'snow'
+    // });
+</script>

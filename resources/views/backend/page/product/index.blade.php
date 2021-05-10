@@ -36,10 +36,10 @@
                     <div class="card-header bg-dark p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="verifikasi-tab" data-toggle="pill" href="#verifikasi" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Sudah Verifikasi</a>
+                                <a class="nav-link active" id="verifikasi-tab" data-toggle="pill" href="#verifikasi" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Active Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="belum-verifikasi-tab" data-toggle="pill" href="#belum-verifikasi" role="tab" aria-controls="belum-verifikasi" aria-selected="false">Belum Verifikasi</a>
+                                <a class="nav-link" id="belum-verifikasi-tab" data-toggle="pill" href="#belum-verifikasi" role="tab" aria-controls="belum-verifikasi" aria-selected="false">Non-Active Product</a>
                             </li>
                         </ul>
                     </div>
@@ -110,7 +110,7 @@
                                     <tbody>
                                         @foreach($productoff as $no => $productoffs)
                                             <tr>
-                                                <td>{{ $no + 1 }}</td>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td class="text-center">
                                                     <img src="{{ asset('lte/dist/img/product/' . $productoffs->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br>
                                                     {{ $productoffs->product_name }}

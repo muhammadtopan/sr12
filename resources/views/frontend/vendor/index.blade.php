@@ -3,6 +3,6 @@
 
 @section ('content')
 
-vendor dashboard
+Selamat Datang {{$name}}
 
 @endsection
