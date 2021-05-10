@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt="">
+                                <img class="" src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt="">
                                 <div class="zoom-icon">
                                     <i class="fa fa-search-plus"></i>
                                 </div>
@@ -60,12 +60,6 @@
                             <div class="product-thumbs">
                                 <div class="product-thumbs-track ps-slider owl-carousel">
                                     <div class="pt active" data-imgbigurl="{{ asset('lte/dist/img/product/'.$product->product_image)}}"><img
-                                            src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt=""></div>
-                                    <div class="pt" data-imgbigurl="{{ asset('frontend/img/product-single/product-2.jpg')}}"><img
-                                            src="{{ asset('frontend/img/product-single/product-2.jpg')}}" alt=""></div>
-                                    <div class="pt" data-imgbigurl="{{ asset('lte/dist/img/product/'.$product->product_image)}}"><img
-                                            src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt=""></div>
-                                    <div class="pt" data-imgbigurl="{{ asset('lte/dist/img/product/'.$product->product_image)}}"><img
                                             src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt=""></div>
                                 </div>
                             </div>

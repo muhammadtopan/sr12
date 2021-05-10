@@ -107,11 +107,15 @@
             <div class="container text-right">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{ route('about') }}">About Us</a></li>
-                        <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Produck</a></li>
-                        <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">Partnership</a></li>
-                        <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Contact</a></li>
+                        <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Beranda</a></li>
+                        <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{ route('about') }}">Tentang Kami</a></li>
+                        <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Toko</a></li>
+                        @php
+                            $articel = DB::table('tb_articel')->first();
+                        @endphp
+                        <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog', $articel->articel_id) }}">Artikel</a></li>
+                        <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">Yok gabung</a></li>
+                        <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Bantuan</a></li>
                         <!-- <li><a href="#">Collection</a>
                             <ul class="dropdown">
                                 <li><a href="#">Men's</a></li>

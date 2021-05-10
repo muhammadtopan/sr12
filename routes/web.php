@@ -20,6 +20,7 @@ Route::get('detail_product/{product_id}', 'HomeController@detail_product')->name
 Route::get('about', 'HomeController@about')->name('about');
 Route::get('partnership', 'HomeController@partnership')->name('partnership');
 Route::get('contact', 'HomeController@contact')->name('contact');
+Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 
 Route::middleware(['vendor'])->group(function () {
     Route::get('vendor', 'Frontend\DashboardController@index')->name('vendor');
@@ -30,8 +31,13 @@ Route::middleware(['vendor'])->group(function () {
 Route::middleware(['vendor.dashboard'])->group(function () {
     Route::get('vendor.dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
     Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
+
+    // Stock Product Vendor 
+    Route::get('stock', 'Frontend\StockController@index')->name('stock');
+    Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
 });
 
+// BACKEND
 Route::middleware(['admin'])->group(function () {
     Route::get('login', 'Backend\DashboardController@index')->name('login');
     Route::get('register', 'Backend\DashboardController@register')->name('register');
@@ -72,4 +78,15 @@ Route::middleware(['dashboard'])->group(function () {
     //aktivasi data_vendor
     Route::post('data_vendor/active', 'Backend\VendorController@active')->name('data_vendor.active');
     Route::post('data_vendor/no_active', 'Backend\VendorController@non_active')->name('data_vendor.non_active');
+
+    //Data Articel
+    Route::get('articel', 'Backend\ArtikelController@index')->name('articel');
+    Route::get('articel.create', 'Backend\ArtikelController@create')->name('articel.create');
+    Route::post('articel', 'Backend\ArtikelController@store')->name('articel.store');
+    Route::get('articel/{articel}', 'Backend\ArtikelController@edit')->name('articel.edit');
+    Route::put('articel/{articel}', 'Backend\ArtikelController@update')->name('articel.update');
+    Route::delete('articel/{articel}', 'Backend\ArtikelController@destroy')->name('articel.delete');
+    Route::post('cari_data_articel', 'Backend\ArtikelController@cari_data_articel')->name('cari_data_articel');
+
+    
 });

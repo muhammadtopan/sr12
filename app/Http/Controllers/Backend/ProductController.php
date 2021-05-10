@@ -66,7 +66,7 @@ class ProductController extends Controller
                 $product->product_price = $request->input('product_price');
                 $product->product_status = 'on'; 
                 $product->product_type = 'usual'; 
-                $product->product_slug = $request->input('product_name');
+                $product->product_slug = Str::slug($request->input('product_name'));
                 $product->product_image = $filename;
                 $product->save();
 
@@ -113,7 +113,7 @@ class ProductController extends Controller
                             'product_unit' => $request->input('product_unit'),
                             'product_desk' => $request->input('product_desk'),
                             'product_price' => $request->input('product_price'),
-                            'product_slug' => $request->input('product_name'),
+                            'product_slug' => Str::slug($request->input('product_name')),
                             'product_image' => $filename,
                         ]);
 
@@ -129,7 +129,7 @@ class ProductController extends Controller
                             'product_unit' => $request->input('product_unit'),
                             'product_desk' => $request->input('product_desk'),
                             'product_price' => $request->input('product_price'),
-                            'product_slug' => $request->input('product_name'),
+                            'product_slug' => Str::slug($request->input('product_name')),
                         ]);
                 }
                 return redirect()

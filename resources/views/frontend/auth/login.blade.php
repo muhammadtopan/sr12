@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <a href="#"><i class="fa fa-home"></i> Home</a>
+                        <a href="#"><i class="fa fa-home"></i> Beranda</a>
                         <span>Login</span>
                     </div>
                 </div>
@@ -42,14 +42,14 @@
                             <div class="group-input gi-check">
                                 <div class="gi-more">
                                     <label for="save-pass">
-                                        Save Password
+                                        Simpan Password
                                         <input type="checkbox" id="save-pass">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <a href="#" class="forget-pass">Forget your Password</a>
+                                    <a href="#" class="forget-pass">Lupa Password?</a>
                                 </div>
                             </div>
-                            <button type="submit" class="site-btn login-btn">Sign In</button>
+                            <button type="submit" class="site-btn login-btn">Masuk</button>
                         </form>
                         <div class="switch-login">
                             <a href="{{ route('register_vendor') }}" class="or-login">Or Join With Us</a>

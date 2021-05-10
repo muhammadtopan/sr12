@@ -74,7 +74,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-circle"></i>
+                        <i class="nav-icon fas fa-coins"></i>
                         <p>
                             Produk
                             <i class="right fas fa-angle-left"></i>
@@ -121,9 +121,9 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-circle"></i>
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Vendor
+                            Mitra
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -135,6 +135,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Freelance</p>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
@@ -150,24 +156,32 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
+                </li>
+
+                <li class="nav-item has-treeview menu-open">
+                    <a href="{{ route('articel')}}" class="nav-link">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Articel
+                        </p>
+                    </a>
                 </li>
             @else
                 <li class="nav-item has-treeview menu-open">
-                    <a href="{{url('backend/dashboard')}}" class="nav-link">
+                    <a href="{{ route('vendor.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">VENDOR</li>
                 <li class="nav-item">
-                    <a href="{{url('backend/umkm')}}" class="nav-link">
+                    <a href="{{ route('stock')}}" class="nav-link">
                         <i class="nav-icon fas fa-coins"></i>
                         <p>
-                            Data Vendor
+                            Product
                         </p>
                     </a>
                 </li>
