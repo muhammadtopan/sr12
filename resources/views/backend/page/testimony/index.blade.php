@@ -62,8 +62,8 @@
                                         <input type="radio" id="id{{ $testimoni->testimony_id }}" name="name{{ $testimoni->testimony_id }}" value="consument" onclick="cekConsument(<?= $testimoni->testimony_id ?>, this)" <?php echo ($testimoni->testimony_category == 'consument') ? "checked" : "" ?>>Konsumen<br>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-warning btn-sm" 
-                                        onclick="modal_tambah('{{ route("testimony.store") }}', '{{ $testimoni->testimony_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
+                                        <!-- <button type="button" class="btn btn-warning btn-sm" 
+                                        onclick="modal_tambah('{{ route("testimony.store") }}', '{{ $testimoni->testimony_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button> -->
                                         <button type="button" class="btn btn-danger btn-sm" 
                                         onclick="modal_hapus('{{ route('testimony.delete', $testimoni->testimony_id) }}')"><i class="fa fa-trash"></i></button>
                                     </td>

@@ -67,7 +67,7 @@
                     <div class="product-list">
                         <div class="row">
                             @foreach($product as $no => $pdklist)
-                                <div class="col-lg-4 col-sm-6">
+                                <div class="col-lg-3 col-sm-4">
                                     <div class="product-item">
                                         <div class="pi-pic">
                                             <a href="{{ route('detail_product',$pdklist->product_id)}}">
@@ -75,8 +75,8 @@
                                             </a>
                                             <ul>
                                                 <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                                <!-- <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                             </ul>
                                         </div>
                                         <div class="pi-text">

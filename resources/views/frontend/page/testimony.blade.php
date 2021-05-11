@@ -32,14 +32,14 @@
                                                 </div>
                                             </div>
                                             @foreach($testimonyss as $no => $testimonies)
-                                            <div class="col-sm-4">
-                                                <a href="{{ route('testimon', $testimonies->testimony_id) }}">
-                                                    <img src="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}" alt="">
-                                                    <h5>{{ Str::limit($testimonies->testimony_judul,50) }}</h5>
-                                                </a>
-                                            </div>
+                                                <div class="col-sm-4">
+                                                    <a href="{{ route('testimon', $testimonies->testimony_id) }}">
+                                                        <img src="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}" alt="">
+                                                        <h5>{{ Str::limit($testimonies->testimony_judul,50) }}</h5>
+                                                    </a>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        @endforeach
                                     </div>
                                 </div>
                             </div>

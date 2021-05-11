@@ -86,13 +86,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="col-6">
-                        <p>Produk</p>
-                    </div>
-                    <div class="filter-control">
-                        <ul class="section-tab-nav tab-nav">
-                            <li id="allproduct" class="active">Lihat Semua <a href="#allproduct"></a></li>
-                        </ul>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Produk</h4>
+                        </div>
+                        <div class="col-6">
+                            <div class="filter-control text-right">
+                                <ul class="section-tab-nav tab-nav">
+                                    <li id="allproduct"><a href="{{('shop.product')}}">Lihat Semua </a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="allproduct-slider owl-carousel">
                         @foreach($allproduct as $no => $product10)
@@ -105,7 +109,7 @@
                                     <ul>
                                         <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
                                         <!-- <li class="quick-view"><a href="{{ route('detail_product',$product10->product_id)}}">+ Quick View</a></li> -->
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                        <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                     </ul>
                                 </div>
                                 <div class="pi-text">
@@ -133,14 +137,14 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="product-large set-bg" data-setbg="{{ asset('frontend/img/products/women-large.jpg')}}">
-                        <h4>Best Product Seller</h4>
+                        <h4>Best Seller</h4>
                         <a href="#">Discover More</a>
                     </div>
                 </div>
                 <div class="col-lg-9 offset-lg-1">
                     <div class="filter-control text-right">
                         <ul class="section-tab-nav tab-nav">
-                            <li id="allproduct" >Lihat emua <a data-toggle="tab" href="#allproduct"></a></li>
+                            <li id="allproduct" >Lihat Semua <a data-toggle="tab" href="#allproduct"></a></li>
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
@@ -153,7 +157,7 @@
                                     <ul>
                                         <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
                                         <!-- <li class="quick-view"><a href="{{ route('detail_product',$product1->product_id)}}">+ Quick View</a></li> -->
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                        <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                     </ul>
                                 </div>
                                 <div class="pi-text">
@@ -174,42 +178,6 @@
     </section>
     <!-- Women Banner Section End -->
 
-    <!-- Deal Of The Week Section Begin-->
-    <!-- <section class="deal-of-week set-bg spad" data-setbg="{{ asset('frontend/img/time-bg.jpg') }}">
-        <div class="container">
-            <div class="col-lg-6 text-center">
-                <div class="section-title">
-                    <h2>Deal Of The Week</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed<br /> do ipsum dolor sit amet,
-                        consectetur adipisicing elit </p>
-                    <div class="product-price">
-                        $35.00
-                        <span>/ HanBag</span>
-                    </div>
-                </div>
-                <div class="countdown-timer" id="countdown">
-                    <div class="cd-item">
-                        <span>56</span>
-                        <p>Days</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>12</span>
-                        <p>Hrs</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>40</span>
-                        <p>Mins</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>52</span>
-                        <p>Secs</p>
-                    </div>
-                </div>
-                <a href="#" class="primary-btn">Shop Now</a>
-            </div>
-        </div>
-    </section> -->
-    <!-- Deal Of The Week Section End -->
 
     <!-- Women Banner Section Begin -->
     <section class="women-banner spad">
@@ -237,7 +205,7 @@
                                     <ul>
                                         <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
                                         <!-- <li class="quick-view"><a href="{{ route('detail_product',$product2->product_id)}}">+ Quick View</a></li> -->
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                        <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                     </ul>
                                 </div>
                                 <div class="pi-text">

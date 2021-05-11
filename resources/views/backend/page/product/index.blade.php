@@ -220,8 +220,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="summernote">Keterangan Produk</label>
-                        <textarea id="summernote" class="form-control" name="product_desk" value="{{ old('product_desk') ?? $product->product_desk ?? '' }}"></textarea>
+                        <label for="product_desk">Keterangan Produk</label>
+                        <textarea id="product_desk" class="form-control" name="product_desk" value="{!!$product->product_desk !!}"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="product_image">Foto Produk</label>
@@ -265,6 +265,8 @@
 </div>
 
 <script>
+
+    document.getElementById("summernote").value;
 
     function cekStatus(product_id, ceklis) {
         if (ceklis.checked) {
@@ -349,7 +351,7 @@
                 $('#product_netto').val(product.product_netto);
                 $('#product_weight').val(product.product_weight);
                 $('#product_unit').val(product.product_unit);
-                $('#summernote').val(product.product_desk);
+                $('#product_desk').val(product.product_desk);
                 $('#product_price').val(product.product_price);
                 $('#product_image').attr('required', false);
                 // $('#kategori_id').val(product.kategori_id).change();
