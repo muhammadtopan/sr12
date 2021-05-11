@@ -8,8 +8,8 @@
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                
-                
+
+
             <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-circle"></i>
@@ -62,7 +62,7 @@
                     </li>
                 </ul>
             </li> -->
-            @if( Session::get('admin_level') == 'admin')
+            @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
                 <li class="nav-item">
                     <a href="{{ route('admin.dashboard')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
