@@ -103,10 +103,10 @@
                 items: 6,
             },
             992: {
-                items: 6,
+                items: 8,
             },
             1200: {
-                items: 6,
+                items: 8,
             }
         }
     });
