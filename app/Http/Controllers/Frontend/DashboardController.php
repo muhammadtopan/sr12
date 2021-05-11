@@ -35,7 +35,7 @@ class DashboardController extends Controller
             'user_password.required'     => 'Password wajib diisi',
             'user_password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
         ];
-        
+
         $validator = Validator::make($request->all(), [
             'username'          => 'required',
             'user_email'         => 'required|email|unique:users,email',
@@ -51,15 +51,12 @@ class DashboardController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-
-            $user->username = ucwords(strtolower($request->input('username')));
-            $user->user_email = strtolower($request->input('user_email'));
-            $user->user_phone = $request->input('user_phone');
-            $user->user_level = $request->input('user_level');
-            $user->user_password = Hash::make($request->input('user_password'));
-            $user->user_status = 'off';
-            $user->save();
-
+            $data = $request->all();
+            $data['user_password'] = Hash::make($request->input("user_password"));
+            $data['username'] = ucwords(strtolower($request->input('username')));
+            $data['user_email'] = strtolower($request->input('user_email'));
+            $data['user_status'] = "off";
+            $user = UserModel::create($data);
             return redirect()
                 ->route('vendor')
                 ->with('message', 'Data berhasil ditambahkan');
@@ -72,7 +69,7 @@ class DashboardController extends Controller
         // $admin = new UserModel();
         $data_user = $user->CheckLoginUser($request->input("user_email"), $request->input("user_password"));
         // dd($data_user);
-        if ($data_user) 
+        if ($data_user)
         {
             $token = JwtHelper::BuatToken($data_user);
 
@@ -86,7 +83,7 @@ class DashboardController extends Controller
                     ->route('vendor.dashboard')
                     ->with("pesan", "Selamat datang " . session('username'));
         }
-        else 
+        else
         {
             return back()->with("pesan", "Email atau Password Salah");
         }
@@ -96,11 +93,12 @@ class DashboardController extends Controller
 
     function logout(Request $request)
     {
-        $request->session()->forget('user_id');
-        $request->session()->forget('username');
-        $request->session()->forget('user_email');
-        $request->session()->forget('user_level');
-        $request->session()->forget('token_vendor');
+        $request->session()->flush();
+        // $request->session()->forget('user_id');
+        // $request->session()->forget('username');
+        // $request->session()->forget('user_email');
+        // $request->session()->forget('user_level');
+        // $request->session()->forget('token_vendor');
         // redirect ke halaman home
         return redirect('vendor')->with("pesan", "Anda Sudah Logout");
     }

@@ -21,36 +21,36 @@
 <script src="{{asset('lte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script>
     $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-        $(".exampledt").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
+        // $("#example1").DataTable({
+        //     "responsive": true,
+        //     "autoWidth": false,
+        // });
+        // $('#example2').DataTable({
+        //     "paging": true,
+        //     "lengthChange": false,
+        //     "searching": false,
+        //     "ordering": true,
+        //     "info": true,
+        //     "autoWidth": false,
+        //     "responsive": true,
+        // });
+        // $(".exampledt").DataTable({
+        //     "responsive": true,
+        //     "autoWidth": false,
+        // });
     });
 </script>
 <script>
-    $(function() {
-        // Summernote
-        $('#summernote').summernote()
+    // $(function() {
+    //     // Summernote
+    //     $('#summernote').summernote()
 
-        // CodeMirror
-        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-            mode: "htmlmixed",
-            theme: "monokai"
-        });
-    })
+    //     // CodeMirror
+    //     CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+    //         mode: "htmlmixed",
+    //         theme: "monokai"
+    //     });
+    // })
 </script>
 <script>
     /****************************************
@@ -60,13 +60,13 @@
     //***********************************//
     // For select 2
     //***********************************//
-    $(".select2").select2();
+    // $(".select2").select2();
     /*datwpicker*/
-    jQuery('.mydatepicker').datepicker();
-    jQuery('#datepicker-autoclose').datepicker({
-        autoclose: true,
-        todayHighlight: true
-    });
+    // jQuery('.mydatepicker').datepicker();
+    // jQuery('#datepicker-autoclose').datepicker({
+    //     autoclose: true,
+    //     todayHighlight: true
+    // });
     // quill editor
     // var quill = new Quill('#editor', {
     //     theme: 'snow'
