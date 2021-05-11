@@ -51,15 +51,12 @@ class DashboardController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-
-            $user->username = ucwords(strtolower($request->input('username')));
-            $user->user_email = strtolower($request->input('user_email'));
-            $user->user_phone = $request->input('user_phone');
-            $user->user_level = $request->input('user_level');
-            $user->user_password = Hash::make($request->input('user_password'));
-            $user->user_status = 'off';
-            $user->save();
-
+            $data = $request->all();
+            $data['user_password'] = Hash::make($request->input("user_password"));
+            $data['username'] = ucwords(strtolower($request->input('username')));
+            $data['user_email'] = strtolower($request->input('user_email'));
+            $data['user_status'] = "off";
+            $user = UserModel::create($data);
             return redirect()
                 ->route('vendor')
                 ->with('message', 'Data berhasil ditambahkan');
