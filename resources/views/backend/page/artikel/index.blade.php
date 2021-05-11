@@ -164,7 +164,7 @@
                     $('#articel_tanggal').val(artikel.articel_tanggal);
                     $('#articel_penulis').val(artikel.articel_penulis);
                     $('#articel_isi').val(artikel.articel_isi);
-                    $('#articel_image').attr('required', false);
+                    $('#articel_gambar').attr('required', false);
                     // $('#kategori_id').val(artikel.kategori_id).change();
                 }).catch(function(err) {
                     // console.log(err)
@@ -174,8 +174,8 @@
                 $('#articel_tanggal').val('');
                 $('#articel_penulis').val('');
                 $('#articel_isi').val('');
-                $('#articel_image').val('');
-                $('#articel_image').attr('required', true);
+                $('#articel_gambar').val('');
+                $('#articel_gambar').attr('required', true);
             }
             $('#formarticel').attr('action', url);
             $('#ModalTambah').modal('show');

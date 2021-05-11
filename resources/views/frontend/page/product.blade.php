@@ -82,7 +82,7 @@
                                         <div class="pi-text">
                                             <div class="catagory-name">{{ $pdklist->category_name }}</div>
                                             <a href="#">
-                                                <h5>{{ $pdklist->category_name }}</h5>
+                                                <h5>{{ $pdklist->product_name }}</h5>
                                             </a>
                                             <div class="product-price">
                                                 Rp {{ number_format($pdklist->product_price) }}

@@ -21,6 +21,7 @@ Route::get('about', 'HomeController@about')->name('about');
 Route::get('partnership', 'HomeController@partnership')->name('partnership');
 Route::get('contact', 'HomeController@contact')->name('contact');
 Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
+Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');
 
 Route::middleware(['vendor'])->group(function () {
     Route::get('vendor', 'Frontend\DashboardController@index')->name('vendor');
@@ -87,6 +88,18 @@ Route::middleware(['dashboard'])->group(function () {
     Route::put('articel/{articel}', 'Backend\ArtikelController@update')->name('articel.update');
     Route::delete('articel/{articel}', 'Backend\ArtikelController@destroy')->name('articel.delete');
     Route::post('cari_data_articel', 'Backend\ArtikelController@cari_data_articel')->name('cari_data_articel');
+
+    //Data Articel
+    Route::get('testimony', 'Backend\TestimonyController@index')->name('testimony');
+    Route::get('testimony.create', 'Backend\TestimonyController@create')->name('testimony.create');
+    Route::post('testimony', 'Backend\TestimonyController@store')->name('testimony.store');
+    Route::get('testimony/{testimony}', 'Backend\TestimonyController@edit')->name('testimony.edit');
+    Route::put('testimony/{testimony}', 'Backend\TestimonyController@update')->name('testimony.update');
+    Route::delete('testimony/{testimony}', 'Backend\TestimonyController@destroy')->name('testimony.delete');
+    Route::post('cari_data_testimony', 'Backend\TestimonyController@cari_data_testimony')->name('cari_data_testimony');
+    Route::post('testimony.product', 'Backend\TestimonyController@product')->name('testimony.product');
+    Route::post('testimony.consument', 'Backend\TestimonyController@consument')->name('testimony.consument');
+
 
     
 });
