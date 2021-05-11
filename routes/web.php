@@ -36,7 +36,8 @@ Route::middleware(['vendor.dashboard'])->group(function () {
         Route::get('stock', 'Frontend\StockController@index')->name('stock');
         Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
     });
-
+    // cari kota
+    Route::post('carikota', 'Frontend\DashboardController@carikota');
     Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
     // Stock Product Vendor
 });

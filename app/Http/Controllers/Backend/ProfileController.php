@@ -10,7 +10,15 @@ class ProfileController extends Controller
 {
     public function GetUpdateProfile(?Request $request) {
         $data = DB::table("tb_vendor")->where("user_id",$request->session()->get("user_id"))->first();
-        return view("frontend.vendor.profile",compact("data"));
+        $prov = DB::table("tb_provinsi")->get();
+        $kota = DB::table("tb_kota")->get();
+        return view("frontend.vendor.profile",
+        [
+            'data' => $data,
+            'prov' => $prov,
+            'kota' => $kota
+        ]);
+        // compact("data"));
     }
 
     public function PutUpdateProfile(Request $request) {
@@ -21,6 +29,8 @@ class ProfileController extends Controller
                 "nama_lengkap" => $request->nama_lengkap,
                 "nik" => $request->nik,
                 "tgl_lahir" =>  $request->tgl_lahir,
+                "prov_id" =>  $request->prov_id,
+                "kota_id" =>  $request->kota_id,
                 "foto_mitra" => $request->file("foto_mitra") !== null ? $request->file("foto_mitra")->store("foto_mitra") : $data->foto_mitra,
                 "alamat_lengkap" => $request->alamat,
                 "bank" => $request->bank,
@@ -34,6 +44,8 @@ class ProfileController extends Controller
                 "nama_lengkap" => $request->nama_lengkap,
                 "nik" => $request->nik,
                 "tgl_lahir" => $request->tgl_lahir,
+                "prov_id" =>  $request->prov_id,
+                "kota_id" =>  $request->kota_id,
                 "foto_mitra" => $request->file("foto_mitra")->store("foto_mitra"),
                 "alamat_lengkap" => $request->alamat,
                 "bank" => $request->bank,

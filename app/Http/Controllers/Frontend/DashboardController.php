@@ -111,4 +111,15 @@ class DashboardController extends Controller
             'name' => $name
         ]);
     }
+    
+    public function carikota(Request $request)
+    {
+        $kota = DB::table('tb_kota')
+            ->where('prov_id', '=', $request->prov_id)
+            ->get();
+        dd($kota);
+        return response()->json([
+            'kota' => $kota,
+        ], 200);
+    }
 }

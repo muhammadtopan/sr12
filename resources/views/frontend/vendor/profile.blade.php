@@ -35,6 +35,29 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label>Provinsi</label>
+                            <select name="prov_id" id="prov_id" class="form-control @error('prov_id') {{ 'is-invalid' }} @enderror">
+                                <option value="">-Pilih Provinsi-</option>
+                                @foreach($prov as $no => $prov)
+                                <option value="{{ $prov->prov_id }}">
+                                    {{ $prov->prov_nama}}</option>
+                                @endforeach
+                            </select>
+                            @error('prov_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Kota</label>
+                            <select name="kota_id" id="kota_id" class="form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
+                                <option value="">-Pilih Kota-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="" class="form-label">Alamat Lengkap</label>
                             <input
                             value="{{$data !== null ? $data->alamat_lengkap : ""}}"
@@ -89,5 +112,24 @@
         </div>
     </div>
 </div>
-
+<script>
+    // Cara Mengambil Kota Berdasarkan Provinsi
+    $('#prov_id').change(function(e) {
+        e.preventDefault();
+        var kota_id = '';
+        var prov_id = $('#prov_id').val();
+        axios.post("{{url('carikota')}}", {
+            'prov_id': prov_id,
+        }).then(function(res) {
+            console.log(res)
+            var kota = res.data.kota
+            for (var i = 0; i < kota.length; i++) {
+                kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
+            }
+            $('#kota_id').html(kota_id)
+        }).catch(function(err) {
+            console.log(err);
+        })
+    });
+</script>
 @endsection
