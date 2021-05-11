@@ -84,9 +84,9 @@
                                                 </label>
                                             </td>
                                             <td>
-                                            <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="usual" onclick="cekUsual(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'usual') ? "checked" : "" ?>>Default<br>
-                                            <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="best" onclick="cekBest(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'best') ? "checked" : "" ?>>Product Best Seller<br>
-                                            <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="new" onclick="cekNew(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'new') ? "checked" : "" ?>>New Product
+                                                <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="usual" onclick="cekUsual(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'usual') ? "checked" : "" ?>>Default<br>
+                                                <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="best" onclick="cekBest(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'best') ? "checked" : "" ?>>Product Best Seller<br>
+                                                <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="new" onclick="cekNew(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'new') ? "checked" : "" ?>>New Product
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $products->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>

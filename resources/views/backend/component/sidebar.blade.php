@@ -1,5 +1,5 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="{{url('backend/dashboard')}}" class="brand-link" style="text-align: center;">
+    <a href="{{ route('admin.dashboard')}}" class="brand-link" style="text-align: center; height: 48px;">
         <!-- <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
         <span class="brand-text font-weight-light">
             <h3>SR12</h3>
@@ -63,7 +63,7 @@
                 </ul>
             </li> -->
             @if( Session::get('admin_level') == 'admin')
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item">
                     <a href="{{ route('admin.dashboard')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -72,7 +72,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-coins"></i>
                         <p>
@@ -82,62 +82,57 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{ route('product') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Produk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('category') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kategori Produk</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('product') }}" class="nav-link">
+                            <a href="{{ route('package_category') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List Produk</p>
+                                <p>Paket Produk</p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Paket Produk
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('package_category') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Kategori Paket</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Rincian Paket</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item menu-open">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Mitra
+                            Spotlight
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gudang</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Mitra</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('data_vendor') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>List Vendor</p>
+                                <p>Vendor</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Freelance</p>
+                                <p>Freelancer</p>
                             </a>
                         </li>
                         <!-- <li class="nav-item">
@@ -164,7 +159,16 @@
                     <a href="{{ route('articel')}}" class="nav-link">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
-                            Articel
+                            Artikel
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item has-treeview menu-open">
+                    <a href="{{ route('testimony')}}" class="nav-link">
+                        <i class="nav-icon fas fa-comment-dots"></i>
+                        <p>
+                            Testimoni
                         </p>
                     </a>
                 </li>

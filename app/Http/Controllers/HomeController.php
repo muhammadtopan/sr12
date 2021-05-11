@@ -9,11 +9,13 @@ use App\Model\CategoryModel;
 use App\Model\ProductModel;
 use App\Model\PackageCategoryModel;
 use App\Model\ArticelModel;
+use App\Model\TestimonyModel;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $allproduct = ProductModel::all();
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->select('tb_product.*', 'tb_category.category_name')
@@ -34,6 +36,7 @@ class HomeController extends Controller
             [
                 'active' => $active,
                 'category' => $category,
+                'allproduct' => $allproduct,
                 'product' => $product,
                 'productnew' => $productnew
             ]
@@ -54,14 +57,31 @@ class HomeController extends Controller
     public function articel($art)
     {
         $articel = ArticelModel::first();
-        $articelss = ArticelModel::all();
+        $articles = ArticelModel::all();
+        $articelss = TestimonyModel::all();
         $active = "articel";
         return view(
             'frontend/page/articel',
             [
                 'active' => $active,
                 'articel' => $articel,
+                'articles' => $articles,
                 'articelss' => $articelss
+            ]
+        );
+    }
+
+    public function testimony($art)
+    {
+        $testimony = TestimonyModel::first();
+        $testimonyss = TestimonyModel::all();
+        $active = "testimony";
+        return view(
+            'frontend/page/testimony',
+            [
+                'active' => $active,
+                'testimony' => $testimony,
+                'testimonyss' => $testimonyss
             ]
         );
     }

@@ -12,8 +12,7 @@
                         <div class="col-lg-5">
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
+                            <p>SIAPAPUN BISA MEMILIKI TOKO ONLINE PRIBADI MPSTORE</p>
                             <a href="#" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
@@ -28,8 +27,7 @@
                         <div class="col-lg-5">
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
+                            <p>SIAPAPUN BISA MEMILIKI TOKO ONLINE PRIBADI MPSTORE</p>
                             <a href="#" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
@@ -83,27 +81,66 @@
     </div>
     <!-- Banner Section End -->
 
+    <!-- Semua Produk -->
+    <section class="women-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-6">
+                        <p>Produk</p>
+                    </div>
+                    <div class="filter-control">
+                        <ul class="section-tab-nav tab-nav">
+                            <li id="allproduct" class="active">Lihat Semua <a href="#allproduct"></a></li>
+                        </ul>
+                    </div>
+                    <div class="allproduct-slider owl-carousel">
+                        @foreach($allproduct as $no => $product10)
+                        <!-- <div class="col-lg-3 col-sm-6"> -->
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <a href="{{ route('detail_product',$product10->product_id)}}">
+                                        <img src="{{ asset('lte/dist/img/product/' . $product10->product_image )}}" alt="">
+                                    </a>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <!-- <li class="quick-view"><a href="{{ route('detail_product',$product10->product_id)}}">+ Quick View</a></li> -->
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">{{ $product10->category_name }}</div>
+                                    <a href="#">
+                                        <h5>{{ $product10->product_name }}</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        Rp {{ number_format($product10->product_price) }}
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Semua Produk -->
+
     <!-- Women Banner Section Begin -->
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="product-large set-bg" data-setbg="{{ asset('frontend/img/products/women-large.jpg')}}">
-                        <h2>Best Product Seller</h2>
+                        <h4>Best Product Seller</h4>
                         <a href="#">Discover More</a>
                     </div>
                 </div>
-                <div class="col-lg-8 offset-lg-1">
-                    <div class="filter-control">
+                <div class="col-lg-9 offset-lg-1">
+                    <div class="filter-control text-right">
                         <ul class="section-tab-nav tab-nav">
-                            <li id="allproduct" class="active">All <a data-toggle="tab" href="#allproduct"></a></li>
-                            @foreach($category as $no => $categories)
-                                <li id="li{{ $categories->category_id }}">
-                                    <a data-toggle="tab" href="#{{ $categories->category_id }}">
-                                    {{ $categories->category_name }}
-                                    </a>
-                                </li>
-                            @endforeach
+                            <li id="allproduct" >Lihat emua <a data-toggle="tab" href="#allproduct"></a></li>
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
@@ -115,17 +152,17 @@
                                     </a>
                                     <ul>
                                         <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                        <li class="quick-view"><a href="{{ route('detail_product',$product1->product_id)}}">+ Quick View</a></li>
+                                        <!-- <li class="quick-view"><a href="{{ route('detail_product',$product1->product_id)}}">+ Quick View</a></li> -->
                                         <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="pi-text">
                                     <div class="catagory-name">{{ $product1->category_name }}</div>
                                     <a href="#">
-                                        <h5>{{ $product1->category_name }}</h5>
+                                        <h5>{{ $product1->product_name }}</h5>
                                     </a>
                                     <div class="product-price">
-                                        {{ $product1->product_price }}
+                                        Rp {{ number_format($product1->product_price) }}
                                     </div>
                                 </div>
                             </div>
@@ -174,8 +211,55 @@
     </section> -->
     <!-- Deal Of The Week Section End -->
 
+    <!-- Women Banner Section Begin -->
+    <section class="women-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="product-large set-bg" data-setbg="{{ asset('frontend/img/products/man-large.jpg')}}">
+                        <h2>New Product</h2>
+                        <a href="#">Discover More</a>
+                    </div>
+                </div>
+                <div class="col-lg-9 offset-lg-1">
+                    <div class="filter-control text-right">
+                        <ul class="section-tab-nav tab-nav">
+                            <li id="allproduct" >Lihat emua <a data-toggle="tab" href="#allproduct"></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-slider owl-carousel">
+                        @foreach($productnew as $no => $product2)
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <a href="{{ route('detail_product',$product2->product_id)}}">
+                                        <img src="{{ asset('lte/dist/img/product/' . $product2->product_image )}}" alt="">
+                                    </a>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <!-- <li class="quick-view"><a href="{{ route('detail_product',$product2->product_id)}}">+ Quick View</a></li> -->
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">{{ $product2->category_name }}</div>
+                                    <a href="#">
+                                        <h5>{{ $product2->product_name }}</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        Rp {{ number_format($product2->product_price) }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Women Banner Section End -->
+
     <!-- Man Banner Section Begin -->
-    <section class="man-banner spad">
+    <!-- <section class="man-banner spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8">
@@ -225,7 +309,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Man Banner Section End -->
 
     <!-- Latest Blog Section Begin -->

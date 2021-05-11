@@ -67,19 +67,69 @@
         autoplay: true,
         responsive: {
             0: {
-                items: 1,
+                items: 3,
             },
             576: {
-                items: 2,
+                items: 5,
             },
             992: {
-                items: 2,
+                items: 5,
             },
             1200: {
-                items: 3,
+                items: 5,
             }
         }
     });
+
+    /*------------------
+        Product Slider
+    --------------------*/
+   $(".allproduct-slider").owlCarousel({
+        loop: true,
+        margin: 15,
+        center:true,
+        nav: true,
+        // items: 4,
+        dots: true,
+        navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+        smartSpeed: 1200,
+        // autoHeight: false,
+        autoplay: true,
+        responsive: {
+            0: {
+                items: 3,
+            },
+            576: {
+                items: 6,
+            },
+            992: {
+                items: 6,
+            },
+            1200: {
+                items: 6,
+            }
+        }
+    });
+
+    /*------------------
+       logo Carousel
+    --------------------*/
+    $('.asd-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+        }
+    })
 
     /*------------------
        logo Carousel

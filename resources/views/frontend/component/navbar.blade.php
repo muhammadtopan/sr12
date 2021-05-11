@@ -1,6 +1,6 @@
     <!-- Header Section Begin -->
     <header class="header-section">
-        <div class="header-top">
+        <!-- <div class="header-top">
             <div class="container">
                 <div class="ht-left">
                     <div class="mail-service">
@@ -23,13 +23,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="container">
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="{{('home')}}">
                                 <img src="{{ asset('frontend/img/logo.png') }}" alt="">
                             </a>
                         </div>
@@ -112,8 +112,10 @@
                         <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Toko</a></li>
                         @php
                             $articel = DB::table('tb_articel')->first();
+                            $testimony = DB::table('tb_testimony')->first();
                         @endphp
                         <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog', $articel->articel_id) }}">Artikel</a></li>
+                        <li class="{{ $active == 'testimony' ? 'active' : '' }}"><a href="{{ route('testimon', $testimony->testimony_id) }}">Testimoni</a></li>
                         <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">Yok gabung</a></li>
                         <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Bantuan</a></li>
                         <!-- <li><a href="#">Collection</a>
