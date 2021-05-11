@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/ 
+*/
 
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -29,14 +29,23 @@ Route::middleware(['vendor'])->group(function () {
     Route::post('aksiregister_vendor', 'Frontend\DashboardController@registerAdmin')->name('aksiregister_vendor');
     Route::post('aksilogin_vendor', 'Frontend\DashboardController@loginAdmin')->name('aksilogin_vendor');
 });
-Route::middleware(['vendor.dashboard'])->group(function () {
-    Route::get('vendor.dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
-    Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
 
-    // Stock Product Vendor 
-    Route::get('stock', 'Frontend\StockController@index')->name('stock');
-    Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
+Route::middleware(['vendor.dashboard'])->group(function () {
+    Route::group(["middleware" => "cek_profile"],function() {
+        Route::get('vendor/dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
+        Route::get('stock', 'Frontend\StockController@index')->name('stock');
+        Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
+    });
+
+    Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
+    // Stock Product Vendor
 });
+
+Route::group(["prefix" => "profile"],function() {
+    Route::get("", "Backend\ProfileController@GetUpdateProfile")->name("vendor.update.profile");
+    Route::put("", "Backend\ProfileController@PutUpdateProfile");
+});
+
 
 // BACKEND
 Route::middleware(['admin'])->group(function () {
@@ -101,5 +110,5 @@ Route::middleware(['dashboard'])->group(function () {
     Route::post('testimony.consument', 'Backend\TestimonyController@consument')->name('testimony.consument');
 
 
-    
+
 });
