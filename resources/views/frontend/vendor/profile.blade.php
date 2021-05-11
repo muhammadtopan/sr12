@@ -12,37 +12,45 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="form-label">Nama Lengkap</label>
-                            <input name="nama_lengkap" type="text" class="form-control" required>
+                            <input
+                            value="{{$data !== null ? $data->nama_lengkap : ""}}"
+                            name="nama_lengkap" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="form-label">NIK</label>
-                            <input name="nik" type="number" class="form-control" required>
+                            <input
+                            value="{{$data !== null ? $data->nik : ""}}"
+                            name="nik" type="number" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="form-label">Tanggal Lahir</label>
-                            <input name="tgl_lahir" type="date" class="form-control" required>
+                            <input
+                            value="{{$data !== null ? $data->tgl_lahir : ""}}"
+                            name="tgl_lahir" type="date" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="form-label">Alamat Lengkap</label>
-                            <input name="alamat" type="text" class="form-control" required>
+                            <input
+                            value="{{$data !== null ? $data->alamat_lengkap : ""}}"
+                            name="alamat" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="form-label">Foto Mitra</label>
-                            <input name="foto_mitra" type="file" class="form-control" required>
+                            <input name="foto_mitra" type="file" class="form-control" {{$data === null ? "required" : ""}}>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="" class="form-label">Selfie Dengan KTP</label>
-                            <input name="selfie_ktp" type="file" class="form-control" required>
+                            <input name="selfie_ktp" type="file" class="form-control" {{$data === null ? "required" : ""}}>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -50,23 +58,27 @@
                             <label for="" class="form-label">Bank Yang Digunakan</label>
                             <select name="bank" class="form-control" required>
                                 <option value="{{null}}" selected>Pilih Bank</option>
-                                <option value="BRI">BRI</option>
-                                <option value="BNI">BNI</option>
-                                <option value="BCA">BCA</option>
-                                <option value="MANDIRI">MANDIRI</option>
+                                <option {{$data !== null && $data->bank === "BRI" ? "selected" : ""}} value="BRI">BRI</option>
+                                <option {{$data !== null && $data->bank === "BNI" ? "selected" : ""}} value="BNI">BNI</option>
+                                <option {{$data !== null && $data->bank === "BCA" ? "selected" : ""}} value="BCA">BCA</option>
+                                <option {{$data !== null && $data->bank === "MANDIRI" ? "selected" : ""}} value="MANDIRI">MANDIRI</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="form-label">No.Rekening</label>
-                            <input name="no_rekening" type="text" class="form-control" required>
+                            <input
+                            value="{{$data !== null ? $data->no_rekening : ""}}"
+                            name="no_rekening" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="" class="form-label">Nama Pemilik Rekening</label>
-                            <input name="pemilik_rekening" type="text" class="form-control" required>
+                            <input
+                            value="{{$data !== null ? $data->nama_pemilik_rekening : ""}}"
+                            name="pemilik_rekening" type="text" class="form-control" required>
                         </div>
                     </div>
                 </div>
