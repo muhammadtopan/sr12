@@ -44,6 +44,8 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content" id="custom-tabs-two-tabContent">
+
+                            {{-- Stock > 0 --}}
                             <div class="tab-pane fade show active" id="verifikasi" role="tabpanel" aria-labelledby="verifikasi-tab">
                                 <table id="zero_config" class="table table-bordered table-hover">
                                     <thead class="thead-dark">
@@ -52,7 +54,7 @@
                                             <th>Product</th>
                                             <th>Stock</th>
                                             <th>Action</th>
-                                        </tr> 
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($product as $no => $stocks)
@@ -79,6 +81,8 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            {{-- Stock = 0 --}}
                             <div class="tab-pane fade" id="belum-verifikasi" role="tabpanel" aria-labelledby="belum-verifikasi-tab">
                                 <table id="zero_config" class="table table-bordered table-hover">
                                     <thead class="thead-dark">
@@ -91,6 +95,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($stok0 as $nomor => $stoksnull)
+                                        {{-- {{dd($stoksnull)}} --}}
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td class="text-center">
@@ -100,12 +105,12 @@
                                             <td class="text-center">
                                             <div class="col-3">
                                                     <div class="form-group">
-                                                        <input type="number" min="0" class="form-control" name="stock_input{{ $stoksnull->product_id }}" id="stock_input{{ $stoksnull->product_id }}" value="{{ $stoksnull->product_stok }}">
+                                                        <input type="number" min="0" class="form-control" name="stock_input{{ $stoksnull->product_id }}" id="stock_input{{ $stoksnull->stok_id }}" value="{{ $stoksnull->product_stok }}">
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <button class="btn btn-sm btn-dark my-4" onclick="update_stok(this,'{{$stocks->stok_id}}')">
+                                                <button data-input="{{$stoksnull->stok_id}}" class="btn btn-sm btn-dark my-4" onclick="update_stok(this, '{{$stoksnull->stok_id}}','{{ route("stock.update") }}', '{{$stoksnull->product_id}}')">
                                                     <i class="fa fa-edit .text-white" style="color: #fff !important"></i>
                                                 </button>
                                             </td>
@@ -114,6 +119,7 @@
                                     </tbody>
                                 </table>
                             </div>
+
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -128,25 +134,12 @@
 <!-- /.content -->
 
 <script>
-    async function update_stok(e,stok_id,route) { 
+    async function update_stok(e,stok_id,route) {
+        // console.log(stok_id);
         var stock_value = document.getElementById(`stock_input${e.dataset.input}`).value;
         console.log(stock_value);
         let data = await axios.post("{{ route('stock.update') }}",{stock_id: stok_id, product_stok: stock_value})
-        toastr.success(dataz.data.message)
-
-        // console.log(stock_id);
-        // console.log(route);
-        // console.log(
-        //     $(`#stock_input${e.dataset.input}`).val('');
-        // );
-        // axios.post("{{ route('cari_data_product') }}", {
-        //     'stock_id' : stok_id,
-        // }).then(function(res) {
-        //         $('#stock_id').val(stock_value);
-        //         toastr.success(res.data.message
-        //     }).catch(function(err) {
-        //         console.log(err);
-        //     })
+        toastr.success(data.data.message)
 }
 </script>
 @endsection

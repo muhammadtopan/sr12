@@ -13,7 +13,7 @@ use DB;
 
 class DashboardController extends Controller
 {
-    public function index() 
+    public function index()
     {
         return view('backend/auth/login');
     }
@@ -57,11 +57,9 @@ class DashboardController extends Controller
         // cek data login
         $admin = new AdminModel();
         $data_admin = $admin->CheckLoginAdmin($request->input("admin_email"), $request->input("admin_password"));
-        // dd($data_admin);
-        if ($data_admin) 
+        if ($data_admin)
         {
             $token = JwtHelper::BuatToken($data_admin);
-
             if($data_admin->admin_level=='admin'){
                 // masukan data login ke session
                 $request->session()->put('admin_id', $data_admin->admin_id);
@@ -74,8 +72,8 @@ class DashboardController extends Controller
             else{
                 return back()->with("pesan", "Email atau Password Salah");
             }
-        } 
-        else 
+        }
+        else
         {
             return back()->with("pesan", "Email atau Password Salah");
         }
@@ -85,11 +83,12 @@ class DashboardController extends Controller
 
     function logout(Request $request)
     {
-        $request->session()->forget('admin_id');
-        $request->session()->forget('admin_name');
-        $request->session()->forget('email');
-        $request->session()->forget('level');
-        $request->session()->forget('token');
+        $request->session()->flush();
+        // $request->session()->forget('admin_id');
+        // $request->session()->forget('admin_name');
+        // $request->session()->forget('email');
+        // $request->session()->forget('level');
+        // $request->session()->forget('token');
         // redirect ke halaman home
         return redirect('login')->with("pesan", "Anda Sudah Logout");
     }
