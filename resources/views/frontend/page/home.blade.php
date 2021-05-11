@@ -6,7 +6,7 @@
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/hero-1.jpg')}}">
+            <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/hero-2.jpg')}}">
+            <!-- <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -35,7 +35,7 @@
                         <h2>Sale <span>50%</span></h2>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <!-- Hero Section End -->
