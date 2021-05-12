@@ -35,8 +35,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="" class="form-label">Alamat Lengkap</label>
+                            <input
+                            value="{{$data !== null ? $data->alamat_lengkap : ""}}"
+                            name="alamat" type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label>Provinsi</label>
-                            <select name="prov_id" id="prov_id" class="form-control @error('prov_id') {{ 'is-invalid' }} @enderror">
+                            <select name="prov_id" id="prov_id" class="js-example-basic-single form-control @error('prov_id') {{ 'is-invalid' }} @enderror">
                                 <option value="">-Pilih Provinsi-</option>
                                 @foreach($prov as $no => $prov)
                                 <option value="{{ $prov->prov_id }}">
@@ -51,17 +59,12 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Kota</label>
-                            <select name="kota_id" id="kota_id" class="form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
+                            <select name="kota_id" id="kota_id" class="js-example-basic-single form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
                                 <option value="">-Pilih Kota-</option>
+                                @foreach ($kota as $k)
+                                    <option value="{{$k->kota_id}}">{{$k->kota_nama}}</option>
+                                @endforeach
                             </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="form-label">Alamat Lengkap</label>
-                            <input
-                            value="{{$data !== null ? $data->alamat_lengkap : ""}}"
-                            name="alamat" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6">
