@@ -20,6 +20,7 @@ class AddExtrasToTbVendor extends Migration
             $table->date("tgl_lahir");
             $table->string("foto_mitra");
             $table->text("alamat_lengkap");
+            $table->integer("prov_id");
             $table->integer("kota_id");
             $table->enum("bank",["BRI","BNI","MANDIRI","BCA"]);
             $table->string("no_rekening");

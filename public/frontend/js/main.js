@@ -53,6 +53,27 @@
     });
 
     /*------------------
+        Kategori
+    --------------------*/
+
+    $('.kategori').owlCarousel({
+        loop:false,
+        margin:25,
+        nav:true,
+        responsive:{
+            0:{
+                items:7
+            },
+            600:{
+                items:7
+            },
+            1000:{
+                items:7
+            }
+        }
+    })
+
+    /*------------------
         Product Slider
     --------------------*/
    $(".product-slider").owlCarousel({
@@ -87,11 +108,11 @@
    $(".allproduct-slider").owlCarousel({
         loop: true,
         margin: 15,
-        center:true,
+        center:false,
         nav: true,
         // items: 4,
-        dots: true,
-        navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+        dots: false,
+        // navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
         smartSpeed: 1200,
         // autoHeight: false,
         autoplay: true,
@@ -103,10 +124,10 @@
                 items: 6,
             },
             992: {
-                items: 8,
+                items: 6,
             },
             1200: {
-                items: 8,
+                items: 6,
             }
         }
     });

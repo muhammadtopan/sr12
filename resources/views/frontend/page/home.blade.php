@@ -9,33 +9,27 @@
             <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-5">
-                            <span>Bag,kids</span>
-                            <h1>Black friday</h1>
-                            <p>SIAPAPUN BISA MEMILIKI TOKO ONLINE PRIBADI MPSTORE</p>
-                            <a href="#" class="primary-btn">Shop Now</a>
+                        <div class="col-lg-7">
+                            <span>We're present</span>
+                            <h3>SR12 Herbal Skincare By Spotlight Mempersembahkan</h3>
+                            <p>SIAPAPUN BISA BISNIS ONLINE DISINI</p>
+                            <!-- <a href="#" class="primary-btn">Shop Now</a> -->
                         </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
                     </div>
                 </div>
             </div>
-            <!-- <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
+            <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-5">
-                            <span>Bag,kids</span>
-                            <h1>Black friday</h1>
-                            <p>SIAPAPUN BISA MEMILIKI TOKO ONLINE PRIBADI MPSTORE</p>
-                            <a href="#" class="primary-btn">Shop Now</a>
+                        <div class="col-lg-7">
+                            <span>We're present</span>
+                            <h3>SR12 Herbal Skincare By Spotlight Mempersembahkan</h3>
+                            <p>SIAPAPUN BISA BISNIS ONLINE DISINI</p>
+                            <!-- <a href="#" class="primary-btn">Shop Now</a> -->
                         </div>
                     </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
-                    </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </section>
     <!-- Hero Section End -->
@@ -44,36 +38,16 @@
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="single-banner">
-                        <img src="{{ asset('frontend/img/banner-1.jpg')}}" alt="">
-                        <div class="inner-text">
-                            <h4>Men’s</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single-banner">
-                        <img src="{{ asset('frontend/img/banner-2.jpg')}}" alt="">
-                        <div class="inner-text">
-                            <h4>Women’s</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single-banner">
-                        <img src="{{ asset('frontend/img/banner-3.jpg')}}" alt="">
-                        <div class="inner-text">
-                            <h4>Kid’s</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="single-banner">
-                        <img src="{{ asset('frontend/img/banner-3.jpg')}}" alt="">
-                        <div class="inner-text">
-                            <h4>Kid’s</h4>
-                        </div>
+                <div class="col-lg12">
+                    <div class="kategori owl-carousel">
+                        @foreach($category as $no => $kategori)
+                            <div class="single-banner">
+                                <img src="{{ asset('frontend/img/kotak.png')}}" alt="">
+                                <div class="inner-text">
+                                    <h6>{{ $kategori->category_name }}</h6>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -88,7 +62,7 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-6">
-                            <h4>Produk</h4>
+                            <h4>PRODUK</h4>
                         </div>
                         <div class="col-6">
                             <div class="filter-control text-right">
@@ -135,18 +109,23 @@
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-6">
+                    <h4>PRODUK</h4>
+                </div>
+                <div class="col-6">
+                    <div class="filter-control text-right">
+                        <ul class="section-tab-nav tab-nav">
+                            <li id="allproduct"><a href="{{('shop.product')}}">Lihat Semua </a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-lg-2">
                     <div class="product-large set-bg" data-setbg="{{ asset('frontend/img/products/women-large.jpg')}}">
                         <h4>Best Seller</h4>
-                        <a href="#">Discover More</a>
+                        <a href="#">Lihat Semua</a>
                     </div>
                 </div>
                 <div class="col-lg-9 offset-lg-1">
-                    <div class="filter-control text-right">
-                        <ul class="section-tab-nav tab-nav">
-                            <li id="allproduct" >Lihat Semua <a data-toggle="tab" href="#allproduct"></a></li>
-                        </ul>
-                    </div>
                     <div class="product-slider owl-carousel">
                         @foreach($product as $no => $product1)
                             <div class="product-item">
@@ -183,18 +162,23 @@
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-6">
+                    <h4>PRODUK</h4>
+                </div>
+                <div class="col-6">
+                    <div class="filter-control text-right">
+                        <ul class="section-tab-nav tab-nav">
+                            <li id="allproduct"><a href="{{('shop.product')}}">Lihat Semua </a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-lg-2">
                     <div class="product-large set-bg" data-setbg="{{ asset('frontend/img/products/man-large.jpg')}}">
-                        <h2>New Product</h2>
-                        <a href="#">Discover More</a>
+                        <h4>New Product</h4>
+                        <a href="#">Lihat Semua</a>
                     </div>
                 </div>
                 <div class="col-lg-9 offset-lg-1">
-                    <div class="filter-control text-right">
-                        <ul class="section-tab-nav tab-nav">
-                            <li id="allproduct" >Lihat emua <a data-toggle="tab" href="#allproduct"></a></li>
-                        </ul>
-                    </div>
                     <div class="product-slider owl-carousel">
                         @foreach($productnew as $no => $product2)
                             <div class="product-item">
@@ -225,6 +209,36 @@
         </div>
     </section>
     <!-- Women Banner Section End -->
+
+    <!-- Blog Details Section Begin -->
+    <section>
+        <div class="container contact-section spad">
+            <div class="row">
+                <div class="col-1">
+                </div>
+                <div class="col-10">
+                    <div class="blog-more">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="contact-title">
+                                    <h4>Testimoni</h4>
+                                </div>
+                            </div>
+                            @foreach($testimony as $no => $testimonies)
+                                <div class="col-sm-4">
+                                    <a href="{{ route('testimon', $testimonies->testimony_id) }}">
+                                        <img src="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}" alt="">
+                                        <h5>{{ Str::limit($testimonies->testimony_judul,50) }}</h5>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Section End -->
 
     <!-- Man Banner Section Begin -->
     <!-- <section class="man-banner spad">
@@ -280,52 +294,8 @@
     </section> -->
     <!-- Man Banner Section End -->
 
-    <!-- Latest Blog Section Begin -->
-    <section class="latest-blog spad">
-        <div class="container">
-            <div class="benefit-items">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="single-benefit">
-                            <div class="sb-icon">
-                                <img src="{{ asset('frontend/img/icon-1.png') }}" alt="">
-                            </div>
-                            <div class="sb-text">
-                                <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-benefit">
-                            <div class="sb-icon">
-                                <img src="{{ asset('frontend/img/icon-2.png') }}" alt="">
-                            </div>
-                            <div class="sb-text">
-                                <h6>Delivery On Time</h6>
-                                <p>If good have prolems</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-benefit">
-                            <div class="sb-icon">
-                                <img src="{{ asset('frontend/img/icon-1.png') }}" alt="">
-                            </div>
-                            <div class="sb-text">
-                                <h6>Secure Payment</h6>
-                                <p>100% secure payment</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Latest Blog Section End -->
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
-
-
+    
     <div class="modal fade bd-example-modal-lg" id="quickView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

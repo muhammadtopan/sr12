@@ -15,7 +15,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $allproduct = ProductModel::all();
+        $allproduct = DB::table('tb_product')
+                    ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
+                    ->select('tb_product.*', 'tb_category.category_name')
+                    ->limit(13)
+                    ->get();
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->select('tb_product.*', 'tb_category.category_name')
@@ -29,6 +33,7 @@ class HomeController extends Controller
                     ->get();
 
         $category = CategoryModel::all();
+        $testimony = TestimonyModel::all();
 
         $active = "home";
         return view(
@@ -36,6 +41,7 @@ class HomeController extends Controller
             [
                 'active' => $active,
                 'category' => $category,
+                'testimony' => $testimony,
                 'allproduct' => $allproduct,
                 'product' => $product,
                 'productnew' => $productnew
