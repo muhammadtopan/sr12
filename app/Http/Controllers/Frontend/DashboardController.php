@@ -14,7 +14,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('frontend/auth/login');
+        $active = "login";
+        return view('frontend/auth/login',
+        [
+        'active' => $active
+        ]);
     }
 
     public function register()
@@ -107,8 +111,8 @@ class DashboardController extends Controller
     {
         $name = session()->get('username');
         return view('frontend/vendor/index',
-        [
-            'name' => $name
+        [   
+            'name' => $name,
         ]);
     }
     

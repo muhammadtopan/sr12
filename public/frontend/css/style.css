@@ -418,11 +418,12 @@ ol {
 	padding: none;
 }
 
+.inner-header .logo {
+	/* padding: 12px 0; */
+}
+
 .inner-header .logo img{
 	height: 64px;
-}
-.inner-header .logo {
-	padding: 12px 0;
 }
 
 .inner-header .logo a {
@@ -823,8 +824,8 @@ ol {
 -----------------------*/
 
 .hero-items .single-hero-items {
-	height: 725px;
-	padding-top: 210px;
+	height: 245px;
+	padding-top: 68px;
 }
 
 .hero-items .single-hero-items span {
@@ -1025,10 +1026,11 @@ ol {
 	height: 100%;
 }
 
-.single-banner .inner-text h4 {
+.single-banner .inner-text h6 {
 	color: #252525;
 	font-weight: 700;
 	padding: 11px 28px;
+	font-size: small;
 	background: #ffffff;
 	border-radius: 2px;
 }
@@ -1041,15 +1043,20 @@ ol {
 	padding-right: 65px;
 	padding-left: 65px;
 	padding-top: 0;
-	padding-bottom: 80px;
+	padding-bottom: 26px;
+}
+.women-banner h4{
+	font-size: 24px;
+	font-weight: 700;
+	margin-top: 26px;
 }
 
 .product-large {
-	height: 420px;
+	height: 292px;
 	margin-left: -15px;
 	margin-right: -15px;
 	text-align: center;
-	padding-top: 285px;
+	padding-top: 168px;
 }
 
 .product-large h2 {
@@ -1096,7 +1103,7 @@ ol {
 .filter-control ul li {
 	list-style: none;
 	display: inline-block;
-	font-size: 20px;
+	font-size: 14px;
 	color: #b2b2b2;
 	margin-right: 22px;
 	position: relative;
@@ -3734,7 +3741,7 @@ ol {
 }
 
 .faq-accordin .card .card-body {
-	padding: 0;
+	padding: 40;
 	padding-top: 13px;
 	padding-bottom: 10px;
 }

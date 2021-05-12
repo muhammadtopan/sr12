@@ -23,6 +23,9 @@ Route::get('contact', 'HomeController@contact')->name('contact');
 Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');
 
+// cari kota
+Route::post('carikota', 'Frontend\DashboardController@carikota')->name('carikota');
+
 Route::middleware(['vendor'])->group(function () {
     Route::get('vendor', 'Frontend\DashboardController@index')->name('vendor');
     Route::get('register_vendor', 'Frontend\DashboardController@register')->name('register_vendor');
@@ -35,9 +38,7 @@ Route::middleware(['vendor.dashboard'])->group(function () {
         Route::get('vendor/dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
         Route::get('stock', 'Frontend\StockController@index')->name('stock');
         Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
-    });
-    // cari kota
-    Route::post('carikota', 'Frontend\DashboardController@carikota');
+    }); 
     Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
     // Stock Product Vendor
 });

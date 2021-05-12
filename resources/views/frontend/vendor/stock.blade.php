@@ -61,11 +61,11 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td class="text-center">
-                                                <img src="{{ asset('lte/dist/img/product/' . $stocks->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br>
+                                                <!-- <img src="{{ asset('lte/dist/img/product/' . $stocks->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br> -->
                                                 {{ $stocks->product_name }}
                                             </td>
                                             <td class="text-center">
-                                                <div class="col-3">
+                                                <div class="col-lg-3">
                                                     <div class="form-group">
                                                         <input type="number" min="0" class="form-control" name="stock_input{{ $stocks->product_id }}" id="stock_input{{ $stocks->product_id }}" value="{{ $stocks->product_stok }}">
                                                     </div>
@@ -99,7 +99,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td class="text-center">
-                                                <img src="{{ asset('lte/dist/img/product/' . $stoksnull->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br>
+                                                <!-- <img src="{{ asset('lte/dist/img/product/' . $stoksnull->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br> -->
                                                 {{ $stoksnull->product_name }}
                                             </td>
                                             <td class="text-center">

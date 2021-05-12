@@ -56,6 +56,17 @@
                             @enderror
                         </div>
                     </div>
+                    <!-- <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Kota</label>
+                            <select name="kota_id" id="kota_id" class="js-example-basic-single form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
+                                <option value="">-Pilih Kota-</option>
+                                @foreach ($kota as $k)
+                                    <option value="{{$k->kota_id}}">{{$k->kota_nama}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div> -->
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Kota</label>
@@ -121,12 +132,12 @@
         e.preventDefault();
         var kota_id = '';
         var prov_id = $('#prov_id').val();
-        axios.post("{{url('carikota')}}", {
+        axios.post("{{ route('carikota') }}", {
             'prov_id': prov_id,
         }).then(function(res) {
-            console.log(res)
-            var kota = res.data.kota
-            for (var i = 0; i < kota.length; i++) {
+            console.log(res.data)
+            var kotaa = res.data.kota
+            for (var i = 0; i < kotaa.length; i++) {
                 kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
             }
             $('#kota_id').html(kota_id)
