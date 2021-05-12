@@ -19,25 +19,10 @@
 <script src="{{asset('lte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('lte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('lte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-    $(function() {
-        // $("#example1").DataTable({
-        //     "responsive": true,
-        //     "autoWidth": false,
-        // });
-        // $('#example2').DataTable({
-        //     "paging": true,
-        //     "lengthChange": false,
-        //     "searching": false,
-        //     "ordering": true,
-        //     "info": true,
-        //     "autoWidth": false,
-        //     "responsive": true,
-        // });
-        // $(".exampledt").DataTable({
-        //     "responsive": true,
-        //     "autoWidth": false,
-        // });
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
     });
 </script>
 <script>
@@ -53,22 +38,5 @@
     // })
 </script>
 <script>
-    /****************************************
-     *       Basic Table                   *
-     ****************************************/
     $('#zero_config').DataTable();
-    //***********************************//
-    // For select 2
-    //***********************************//
-    // $(".select2").select2();
-    /*datwpicker*/
-    // jQuery('.mydatepicker').datepicker();
-    // jQuery('#datepicker-autoclose').datepicker({
-    //     autoclose: true,
-    //     todayHighlight: true
-    // });
-    // quill editor
-    // var quill = new Quill('#editor', {
-    //     theme: 'snow'
-    // });
 </script>
