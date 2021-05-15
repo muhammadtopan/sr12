@@ -25,7 +25,10 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-    
+
+    <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{asset('lte/build/js/axios.min.js')}}"></script>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>

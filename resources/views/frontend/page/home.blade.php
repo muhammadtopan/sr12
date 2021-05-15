@@ -38,7 +38,7 @@
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg12">
+                <div class="col-lg-12">
                     <div class="kategori owl-carousel">
                         @foreach($category as $no => $kategori)
                             <div class="single-banner">
@@ -211,7 +211,7 @@
     <!-- Women Banner Section End -->
 
     <!-- Blog Details Section Begin -->
-    <section>
+    <!-- <section>
         <div class="container contact-section spad">
             <div class="row">
                 <div class="col-1">
@@ -237,8 +237,22 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Blog Details Section End -->
+
+    <!-- Instagram Section Begin -->
+    <div class=" instagram-photo">
+        @foreach($testimony as $no => $testimonies)
+            <div class="insta-item set-bg" data-setbg="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}">
+                <div class="inside-text">
+                    <!-- <i class="ti-instagram"></i> -->
+                    <h5 class="text-light">Testimoni</h5>
+                    <h5><a href="{{ route('testimon', $testimonies->testimony_id) }}">{{ Str::limit($testimonies->testimony_judul,50) }}</a></h5>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <!-- Instagram Section End -->
 
     <!-- Man Banner Section Begin -->
     <!-- <section class="man-banner spad">

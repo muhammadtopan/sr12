@@ -366,7 +366,7 @@
             $('#product_netto').val('');
             $('#product_weight').val('');
             $('#product_unit').val('');
-            $('#summernote').val('');
+            $('#product_desk').val('');
             $('#product_price').val('');
             $('#product_image').val('');
             $('#product_image').attr('required', true);

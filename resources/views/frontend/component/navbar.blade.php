@@ -25,7 +25,7 @@
             </div>
         </div> -->
         <div class="nav-item">
-            <div class="container">
+            <div class="container" style="background-color: #252525;">
                 <div class="inner-header">
                     <div class="row">
                         <div class="col-lg-2 col-md-2">
@@ -47,9 +47,19 @@
                                     @endphp
                                     <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog', $articel->articel_id) }}">Artikel</a></li>
                                     <li class="{{ $active == 'testimony' ? 'active' : '' }}"><a href="{{ route('testimon', $testimony->testimony_id) }}">Testimoni</a></li>
-                                    <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">Yok gabung</a></li>
+                                    <li class="{{ $active == 'login' ? 'active' : '' }}"><a href="{{ route('vendor') }}">Mitra</a></li>
+                                    <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">FAQ</a></li>
                                     <!-- <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Bantuan</a></li> -->
-                                    <li class="{{ $active == 'login' ? 'active' : '' }}"><a href="{{ route('vendor') }}">Masuk</a></li>
+                                    @if( Session::get('tokenUser') == false)
+                                        <li class="{{ $active == 'masuk' ? 'active' : '' }}"><a href="{{ route('user.login') }}">Masuk</a></li>
+                                    @else
+                                        <li><a href="#">Akun</a>
+                                            <ul class="dropdown">
+                                                <li><a href="{{ route('user.profile') }}">Profile</a></li>
+                                                <li><a href="{{ route('user.logout') }}">Keluar</a></li>
+                                            </ul>
+                                        </li>
+                                    @endif
                                 </ul>
                             </nav>
                             <div id="mobile-menu-wrap">
@@ -66,4 +76,4 @@
             </div>
     </header>
     <!-- Header End --> 
-    <br> <br> <br style="margin-bottom: 10px"> 
+    <br> <br> <br style="margin-bottom: 10px">

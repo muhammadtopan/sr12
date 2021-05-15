@@ -10,8 +10,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                     <a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a>
-                        <span>Product</span>
-                        <span>-</span>
+                    <a href="{{ route('shop.product') }}">Product</a>
                         <span>Detail Product</span>
                     </div>
                 </div>
@@ -25,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 d-none d-lg-block">
-                    <div class="filter-widget">
+                    <!-- <div class="filter-widget">
                         <h4 class="fw-title">Paket Product</h4>
                             <ul class="filter-catagories">
                                 @foreach($package as $no => $packagelist)
@@ -46,7 +45,7 @@
                                 </div>
                             @endforeach
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
@@ -57,12 +56,12 @@
                                     <i class="fa fa-search-plus"></i>
                                 </div>
                             </div>
-                            <div class="product-thumbs">
+                            <!-- <div class="product-thumbs">
                                 <div class="product-thumbs-track ps-slider owl-carousel">
                                     <div class="pt active" data-imgbigurl="{{ asset('lte/dist/img/product/'.$product->product_image)}}"><img
                                             src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt=""></div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-lg-6">
                             <div class="product-details">
@@ -73,26 +72,30 @@
                                 <ul class="pd-tags">
                                     <li><span>No. BPOM</span>: {{ $product->product_bpom }}</li>
                                     <li><span>Netto</span>: {{ $product->product_netto }} {{ $product->product_unit }}</li>
+                                    <li><span>Berat</span>: {{ $product->product_weight }} {{ $product->product_unit }}</li>
                                 </ul>
                                 <div class="pd-desc">
                                     <h4>Rp {{ number_format($product->product_price) }} </h4>
-                                    <h4 id="productPrice" class="d-none">{{ $product->product_price }} </h4>
+                                    <h4 id="productPrice" class="d-none">{{ number_format($product->product_price) }} </h4>
                                 </div>
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input id="quantity" type="text" value="1">
+                                        <input id="quantity" type="number" value="1">
                                         <!-- <p id="hiddenQuantity" class="d-none">asdasd</p> -->
                                     </div>
-                                    <a href="#" class="primary-btn pd-cart">Add To Cart</a>
+                                    <a href="{{ route('add_to_cart/'.$product->product_id)}}" class="primary-btn pd-cart">Add To Cart</a>
                                 </div>
-                                <div class="pd-share">
+                                <ul class="pd-tags">
+                                    <li><span>Stok</span>: Ini Stok</li>
+                                </ul>
+                                <!-- <div class="pd-share">
                                     <div class="p-code">Sku : 00012</div>
                                     <div class="pd-social">
                                         <a href="#"><i class="ti-facebook"></i></a>
                                         <a href="#"><i class="ti-twitter-alt"></i></a>
                                         <a href="#"><i class="ti-linkedin"></i></a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -120,65 +123,42 @@
                                                 <p> {!! $product->product_desk !!} </p>
                                             </div>
                                             <div class="col-lg-5">
-                                                <img src="{{ asset('frontend/img/product-single/tab-desc.jpg')}}" alt="">
+                                                <img src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt="">
                                             </div>
-                                        </div>
+                                        </div>Rp {{ number_format($product->product_price) }}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="tab-2" role="tabpanel">
                                     <div class="specification-table">
                                         <table>
                                             <tr>
-                                                <td class="p-catagory">Customer Rating</td>
+                                                <td class="p-catagory">Harga</td>
                                                 <td>
-                                                    <div class="pd-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <span>(5)</span>
-                                                    </div>
+                                                    <div class="p-price">Rp {{ number_format($product->product_price) }}</div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="p-catagory">Price</td>
+                                                <td class="p-catagory">Stok Barang</td>
                                                 <td>
-                                                    <div class="p-price">$495.00</div>
+                                                    <div class="p-stock">ini stok toko</div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="p-catagory">Add To Cart</td>
+                                                <td class="p-catagory">Netto</td>
                                                 <td>
-                                                    <div class="cart-add">+ add to cart</div>
+                                                    <div class="p-weight">{{ $product->product_netto }} {{ $product->product_unit }}</div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="p-catagory">Availability</td>
+                                                <td class="p-catagory">Berat</td>
                                                 <td>
-                                                    <div class="p-stock">22 in stock</div>
+                                                    <div class="p-weight">{{ $product->product_weight }} {{ $product->product_unit }}</div>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="p-catagory">Weight</td>
+                                                <td class="p-catagory">BPOM</td>
                                                 <td>
-                                                    <div class="p-weight">1,3kg</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Size</td>
-                                                <td>
-                                                    <div class="p-size">Xxl</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Color</td>
-                                                <td><span class="cs-color"></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Sku</td>
-                                                <td>
-                                                    <div class="p-code">00012</div>
+                                                    <div class="p-code">{{ $product->product_bpom }}</div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -199,7 +179,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Related Products</h2>
+                        <h2>Produk Terkait</h2>
                     </div>
                 </div>
             </div>
@@ -218,7 +198,7 @@
                             <div class="pi-text">
                                 <div class="catagory-name">{{ $product2->category_name }}</div>
                                 <a href="#">
-                                    <h5>{{ $product2->category_name }}</h5>
+                                    <h5>{{ $product2->product_name }}</h5>
                                 </a>
                                 <div class="product-price">
                                     Rp {{ number_format($product2->product_price) }}

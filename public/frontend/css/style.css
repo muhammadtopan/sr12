@@ -752,7 +752,6 @@ ol {
 .nav-item .nav-menu li {
 	list-style: none;
 	display: inline-block;
-	margin-left: -5px;
 	position: relative;
 }
 
@@ -762,11 +761,10 @@ ol {
 }
 
 .nav-item .nav-menu li a {
-	font-size: 12px;
+	font-size: 10px;
 	font-weight: 700;
 	display: block;
 	color: #ffffff;
-	border-right: 2px solid #3b3b3b;
 	text-transform: uppercase;
 	padding: 10px 24px 10px;
 	-webkit-transition: all 0.3s;
@@ -1029,7 +1027,7 @@ ol {
 .single-banner .inner-text h6 {
 	color: #252525;
 	font-weight: 700;
-	padding: 11px 28px;
+	padding: 10px 10px;
 	font-size: small;
 	background: #ffffff;
 	border-radius: 2px;
@@ -1279,7 +1277,7 @@ ol {
 
 .product-item .pi-text .product-price {
 	color: #e7ab3c;
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 700;
 }
 
@@ -1354,8 +1352,8 @@ ol {
 
 .instagram-photo .insta-item {
 	float: left;
-	width: 16.66%;
-	height: 320px;
+	width: 10%;
+	/* height: 320px; */
 	text-align: center;
 	position: relative;
 }
@@ -1368,6 +1366,7 @@ ol {
 	opacity: 1;
 	visibility: visible;
 	z-index: 99;
+	bottom: 46px;
 }
 
 .instagram-photo .insta-item:before {
@@ -1526,6 +1525,7 @@ ol {
 .footer-section {
 	background: #191919;
 	padding-top: 75px;
+	margin-top: 24px;
 }
 
 .footer-left {
@@ -3744,6 +3744,7 @@ ol {
 	padding: 40;
 	padding-top: 13px;
 	padding-bottom: 10px;
+	padding-left: 60px;
 }
 
 .faq-accordin .card .card-body p {
@@ -3786,8 +3787,8 @@ ol {
 	padding-bottom: 80px;
 }
 
-.register-form h2,
-.login-form h2 {
+.register-form h3,
+.login-form h3 {
 	color: #252525;
 	font-weight: 700;
 	text-align: center;
@@ -3803,7 +3804,7 @@ ol {
 .register-form form .group-input select,
 .login-form form .group-input label {
 	display: block;
-	font-size: 18px;
+	font-size: 14px;
 	color: #252525;
 	margin-bottom: 13px;
 }

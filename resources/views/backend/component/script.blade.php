@@ -26,16 +26,24 @@
     });
 </script>
 <script>
-    // $(function() {
-    //     // Summernote
-    //     $('#summernote').summernote()
+    $(function() {
+        // Summernote
+        $('#summernote').summernote()
 
-    //     // CodeMirror
-    //     CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-    //         mode: "htmlmixed",
-    //         theme: "monokai"
-    //     });
-    // })
+        // CodeMirror
+        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+            mode: "htmlmixed",
+            theme: "monokai"
+        });
+        // Summernote Testing
+        $('.summernote').summernote()
+
+        // CodeMirror
+        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+            mode: "htmlmixed",
+            theme: "monokai"
+        });
+    })
 </script>
 <script>
     $('#zero_config').DataTable();

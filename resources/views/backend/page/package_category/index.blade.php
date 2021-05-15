@@ -202,6 +202,7 @@
                 })
             }else{
                 $('#package_category_nama').val('');
+                $('#summernote').val('');
                 $('#package_category_image').val('');
                 $('#package_category_image').attr('required', true);
             }

@@ -25,22 +25,22 @@
                 <div class="col-lg-12">
                     <div class="faq-accordin">
                         <div class="accordion" id="accordionExample">
-                            <div class="card">
-                                <div class="card-heading active">
-                                    <a class="active" data-toggle="collapse" data-target="#collapseOne">
-                                        Is There Anything I Should Bring?
-                                    </a>
-                                </div>
-                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat.</p>
+                            
+                            @foreach( $syarat as $no => $syarats)
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseOne{{ $syarats->syarat_id }}">
+                                            {{ $syarats->syarat_judul }}
+                                        </a>
+                                    </div>
+                                    <div id="collapseOne{{ $syarats->syarat_id }}" class="collapse" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <p>{!! $syarats->syarat !!}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card">
+                            @endforeach
+                            <!-- <div class="card">
                                 <div class="card-heading">
                                     <a data-toggle="collapse" data-target="#collapseTwo">
                                         Where Can I Find Market Research Reports?
@@ -69,7 +69,7 @@
                                             consequat.</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

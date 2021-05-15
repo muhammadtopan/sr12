@@ -165,6 +165,15 @@
                 </li>
 
                 <li class="nav-item has-treeview menu-open">
+                    <a href="{{ route('syarat')}}" class="nav-link">
+                        <i class="nav-icon fas fa-question-circle"></i>
+                        <p>
+                            FAQ
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item has-treeview menu-open">
                     <a href="{{ route('testimony')}}" class="nav-link">
                         <i class="nav-icon fas fa-comment-dots"></i>
                         <p>

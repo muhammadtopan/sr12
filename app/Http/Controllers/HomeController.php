@@ -9,6 +9,7 @@ use App\Model\CategoryModel;
 use App\Model\ProductModel;
 use App\Model\PackageCategoryModel;
 use App\Model\ArticelModel;
+use App\Model\SyaratModel;
 use App\Model\TestimonyModel;
 
 class HomeController extends Controller
@@ -146,10 +147,14 @@ class HomeController extends Controller
     public function partnership()
     {
         $active = "partnership";
+        // $srt = SyaratModel::first();
+        $syarat = DB::table('tb_syarat')->get();
         return view(
             'frontend/page/partnership',
             [
-                'active' => $active
+                'active' => $active,
+                // 'srt' => $srt,
+                'syarat' => $syarat
             ]
         );
     }

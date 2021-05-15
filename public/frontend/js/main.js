@@ -60,6 +60,7 @@
         loop:false,
         margin:25,
         nav:true,
+        autoHeight:true,
         responsive:{
             0:{
                 items:7
@@ -112,9 +113,7 @@
         nav: true,
         // items: 4,
         dots: false,
-        // navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
         smartSpeed: 1200,
-        // autoHeight: false,
         autoplay: true,
         responsive: {
             0: {
@@ -128,6 +127,33 @@
             },
             1200: {
                 items: 6,
+            }
+        }
+    });
+
+    /*------------------
+        Testimony Slider
+    --------------------*/
+   $(".owl-testimony").owlCarousel({
+        loop: true,
+        margin: 15,
+        center:false,
+        nav: true,
+        // items: 4,
+        dots: false,
+        autoplay: true,
+        responsive: {
+            0: {
+                items: 3,
+            },
+            576: {
+                items: 6,
+            },
+            992: {
+                items: 7,
+            },
+            1200: {
+                items: 7,
             }
         }
     });

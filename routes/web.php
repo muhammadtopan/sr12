@@ -23,9 +23,25 @@ Route::get('contact', 'HomeController@contact')->name('contact');
 Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');
 
+//Costumer Auth
+Route::get('user/login', 'Frontend\CostumerController@index')->name('user.login');
+Route::get('user/register', 'Frontend\CostumerController@register')->name('user.register');
+Route::post('user.aksiregister', 'Frontend\CostumerController@registerAdmin')->name('user.aksiregister');
+Route::post('user.aksilogin', 'Frontend\CostumerController@loginAdmin')->name('user.aksilogin');
+Route::post('carikotauser', 'Frontend\CostumerController@carikota')->name('carikota');
+
 // cari kota
 Route::post('carikota', 'Frontend\DashboardController@carikota')->name('carikota');
 
+// USER SUDAH LOGIN
+Route::middleware(['user.login'])->group(function () {
+    Route::get('user.profile', 'Frontend\CostumerController@profile')->name('user.profile');
+    Route::get('user.logout', 'Frontend\CostumerController@logout')->name('user.logout');
+    
+});
+Route::get('add_to_cart/{product_id}', 'Frontend\CostumerController@add_to_cart')->name('add_to_cart');
+
+//Vendor Belum Login
 Route::middleware(['vendor'])->group(function () {
     Route::get('vendor', 'Frontend\DashboardController@index')->name('vendor');
     Route::get('register_vendor', 'Frontend\DashboardController@register')->name('register_vendor');
@@ -33,6 +49,7 @@ Route::middleware(['vendor'])->group(function () {
     Route::post('aksilogin_vendor', 'Frontend\DashboardController@loginAdmin')->name('aksilogin_vendor');
 });
 
+//Vendor Sudah Login
 Route::middleware(['vendor.dashboard'])->group(function () {
     Route::group(["middleware" => "cek_profile"],function() {
         Route::get('vendor/dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
@@ -43,13 +60,16 @@ Route::middleware(['vendor.dashboard'])->group(function () {
     // Stock Product Vendor
 });
 
+//Profile Vendor
 Route::group(["prefix" => "profile"],function() {
     Route::get("", "Backend\ProfileController@GetUpdateProfile")->name("vendor.update.profile");
     Route::put("", "Backend\ProfileController@PutUpdateProfile");
 });
 
 
-// BACKEND
+// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND 
+// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND 
+// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND 
 Route::middleware(['admin'])->group(function () {
     Route::get('login', 'Backend\DashboardController@index')->name('login');
     Route::get('register', 'Backend\DashboardController@register')->name('register');
@@ -100,7 +120,16 @@ Route::middleware(['dashboard'])->group(function () {
     Route::delete('articel/{articel}', 'Backend\ArtikelController@destroy')->name('articel.delete');
     Route::post('cari_data_articel', 'Backend\ArtikelController@cari_data_articel')->name('cari_data_articel');
 
-    //Data Articel
+    //Data Syarat
+    Route::get('syarat', 'Backend\SyaratController@index')->name('syarat');
+    Route::get('syarat.create', 'Backend\SyaratController@create')->name('syarat.create');
+    Route::post('syarat', 'Backend\SyaratController@store')->name('syarat.store');
+    Route::get('syarat/{syarat}', 'Backend\SyaratController@edit')->name('syarat.edit');
+    Route::put('syarat/{syarat}', 'Backend\SyaratController@update')->name('syarat.update');
+    Route::delete('syarat/{syarat}', 'Backend\SyaratController@destroy')->name('syarat.delete');
+    Route::post('cari_data_syarat', 'Backend\SyaratController@cari_data_syarat')->name('cari_data_syarat');
+
+    //Data Testimony
     Route::get('testimony', 'Backend\TestimonyController@index')->name('testimony');
     Route::get('testimony.create', 'Backend\TestimonyController@create')->name('testimony.create');
     Route::post('testimony', 'Backend\TestimonyController@store')->name('testimony.store');
