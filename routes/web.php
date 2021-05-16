@@ -38,8 +38,8 @@ Route::middleware(['user.login'])->group(function () {
     Route::get('user.profile', 'Frontend\CostumerController@profile')->name('user.profile');
     Route::get('user.logout', 'Frontend\CostumerController@logout')->name('user.logout');
     
+    Route::get('/add_to_cart/{product_id}', 'Frontend\CostumerController@add_to_cart')->name('add_to_cart');
 });
-Route::get('add_to_cart/{product_id}', 'Frontend\CostumerController@add_to_cart')->name('add_to_cart');
 
 //Vendor Belum Login
 Route::middleware(['vendor'])->group(function () {
