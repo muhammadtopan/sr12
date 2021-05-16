@@ -247,7 +247,7 @@
                 <div class="inside-text">
                     <!-- <i class="ti-instagram"></i> -->
                     <h5 class="text-light">Testimoni</h5>
-                    <h5><a href="{{ route('testimon', $testimonies->testimony_id) }}">{{ Str::limit($testimonies->testimony_judul,50) }}</a></h5>
+                    <h5><a href="#">{{ Str::limit($testimonies->testimony_judul,50) }}</a></h5>
                 </div>
             </div>
         @endforeach

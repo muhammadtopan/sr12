@@ -45,13 +45,13 @@
                                         $articel = DB::table('tb_articel')->first();
                                         $testimony = DB::table('tb_testimony')->first();
                                     @endphp
-                                    <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog', $articel->articel_id) }}">Artikel</a></li>
                                     <li class="{{ $active == 'testimony' ? 'active' : '' }}"><a href="{{ route('testimon', $testimony->testimony_id) }}">Testimoni</a></li>
-                                    <li class="{{ $active == 'login' ? 'active' : '' }}"><a href="{{ route('vendor') }}">Mitra</a></li>
+                                    <li class="{{ $active == 'login' ? 'active' : '' }}"><a href="{{ route('vendor') }}">Vendor</a></li>
+                                    <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog', $articel->articel_id) }}">Artikel</a></li>
                                     <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">FAQ</a></li>
                                     <!-- <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Bantuan</a></li> -->
                                     @if( Session::get('tokenUser') == false)
-                                        <li class="{{ $active == 'masuk' ? 'active' : '' }}"><a href="{{ route('user.login') }}">Masuk</a></li>
+                                        <li class="{{ $active == 'masuk' ? 'active' : '' }}"><a href="{{ route('user.login') }}">Akun Belanjaku</a></li>
                                     @else
                                         <li><a href="#">Akun</a>
                                             <ul class="dropdown">
