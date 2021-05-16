@@ -529,6 +529,7 @@ ol {
 
 .inner-header .nav-right li.cart-icon {
 	position: relative;
+	margin-top: 10px;
 }
 
 .inner-header .nav-right li.cart-icon:hover .cart-hover {
@@ -560,7 +561,7 @@ ol {
 
 .inner-header .nav-right li.cart-icon .cart-hover {
 	position: absolute;
-	right: -70px;
+	/* right: -70px; */
 	top: 100px;
 	width: 350px;
 	background: #ffffff;
