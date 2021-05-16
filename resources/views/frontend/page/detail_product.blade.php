@@ -85,9 +85,6 @@
                                     </div>
                                     <a href="{{ route('add_to_cart',$product->product_id)}}" class="primary-btn pd-cart">Add To Cart</a>
                                 </div>
-                                <ul class="pd-tags">
-                                    <li><span>Stok</span>: Ini Stok</li>
-                                </ul>
                                 <!-- <div class="pd-share">
                                     <div class="p-code">Sku : 00012</div>
                                     <div class="pd-social">

@@ -38,7 +38,8 @@ Route::middleware(['user.login'])->group(function () {
     Route::get('user.profile', 'Frontend\CostumerController@profile')->name('user.profile');
     Route::get('user.logout', 'Frontend\CostumerController@logout')->name('user.logout');
     
-    Route::get('/add_to_cart/{product_id}', 'Frontend\CostumerController@add_to_cart')->name('add_to_cart');
+    Route::get('/add_to_cart/{product_id}', 'Frontend\CartController@store')->name('add_to_cart');
+    Route::get('/cart', 'Frontend\CartController@show')->name('cart');
 });
 
 //Vendor Belum Login
