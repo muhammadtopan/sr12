@@ -1,9 +1,15 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{{ route('admin.dashboard')}}" class="brand-link" style="text-align: center; height: 48px;">
         <!-- <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-        <span class="brand-text font-weight-light">
-            <h3>SR12</h3>
-        </span>
+        @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
+            <span class="brand-text font-weight-light">
+                <h3>SR12</h3>
+            </span>
+        @else
+            <span class="brand-text font-weight-light">
+                <h3>{{ session()->get('username') }}</h3>
+            </span>
+        @endif
     </a>
     <div class="sidebar">
         <nav class="mt-2">
@@ -203,6 +209,23 @@
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Profile
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('vendor.order')}}" class="nav-link">
+                        <i class="nav-icon fas fa-cart-arrow-down"></i>
+                        <p>
+                            Orderan
+                            <span class="badge badge-danger right">0</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('vendor.deposit')}}" class="nav-link">
+                        <i class="nav-icon fas fa-money-bill"></i>
+                        <p> 
+                            Histori Deposit
                         </p>
                     </a>
                 </li>

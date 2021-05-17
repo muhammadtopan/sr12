@@ -761,6 +761,16 @@ ol {
 	border-radius: 20px;
 }
 
+.nav-item .nav-menu li.aktif a {
+	background: #9D0511;
+	border-radius: 20px;
+}
+
+.nav-item .nav-menu li.daftar_aktif a {
+	border: 3px solid #e7ab3c;
+	border-radius: 20px;
+}
+
 .nav-item .nav-menu li a {
 	font-size: 10px;
 	font-weight: 700;

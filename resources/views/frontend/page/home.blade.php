@@ -10,9 +10,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-7">
-                            <span>We're present</span>
-                            <h3>SR12 Herbal Skincare By Spotlight Mempersembahkan</h3>
-                            <p>SIAPAPUN BISA BISNIS ONLINE DISINI</p>
+                            <span>We're present.....</span>
+                            <h4>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h4>
+                            <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span> 
                             <!-- <a href="#" class="primary-btn">Shop Now</a> -->
                         </div>
                     </div>
@@ -22,9 +22,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-7">
-                            <span>We're present</span>
-                            <h3>SR12 Herbal Skincare By Spotlight Mempersembahkan</h3>
-                            <p>SIAPAPUN BISA BISNIS ONLINE DISINI</p>
+                            <span>We're present.....</span>
+                            <h4>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h4>
+                            <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
                             <!-- <a href="#" class="primary-btn">Shop Now</a> -->
                         </div>
                     </div>

@@ -11,7 +11,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <a href="{{ route('home') }}"><i class="fa fa-home"></i> Beranda</a>
-                        <span>Login</span>
+                        <span>Login Vendor</span>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-lg-4 offset-lg-1">
                     <div class="login-form">
-                        <h3>Login Mitra</h3>
+                        <h3>Login Vendor</h3>
                         @if(Session::has('pesan'))
                             <p class="alert alert-info">{{ Session::get('pesan') }}</p>
                         @endif
@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1">
                 <div class="register-form login-form">
-                    <h3>Register</h3>
+                    <h3>Daftar Vendor</h3>
                         <form action="{{route('aksiregister_vendor')}}" method="post">
                         @csrf
                             @if(session('errors'))

@@ -3,6 +3,6 @@
 
 @section ('content')
 
-Selamat Datang {{$name}}
+Selamat Datang {{ $name }}
 
 @endsection
