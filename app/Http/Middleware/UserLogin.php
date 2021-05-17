@@ -15,6 +15,6 @@ class UserLogin
      */
     public function handle($request, Closure $next)
     {
-        return session()->has('tokenUser') ? $next($request) : redirect()->route("home")->with("pesan", "Anda Belum Login");
+        return session()->has('tokenUser') ? $next($request) : redirect()->route("  ")->with("pesan", "Anda Belum Login");
     }
 }

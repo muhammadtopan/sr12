@@ -23,6 +23,11 @@ Route::get('contact', 'HomeController@contact')->name('contact');
 Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');
 
+//login mitra
+Route::get('login.mitra', 'HomeController@frontMitra')->name('login.mitra');
+Route::get('tool', 'HomeController@tool')->name('tool');
+
+
 //Costumer Auth
 Route::get('user/login', 'Frontend\CostumerController@index')->name('user.login');
 Route::get('user/register', 'Frontend\CostumerController@register')->name('user.register');
@@ -37,7 +42,7 @@ Route::post('carikota', 'Frontend\DashboardController@carikota')->name('carikota
 Route::middleware(['user.login'])->group(function () {
     Route::get('user.profile', 'Frontend\CostumerController@profile')->name('user.profile');
     Route::get('user.logout', 'Frontend\CostumerController@logout')->name('user.logout');
-    
+    Route::get('home', 'HomeController@index')->name('home.again');
     Route::get('/add_to_cart/{product_id}', 'Frontend\CartController@store')->name('add_to_cart');
     Route::get('/cart', 'Frontend\CartController@show')->name('cart');
 });
@@ -56,6 +61,11 @@ Route::middleware(['vendor.dashboard'])->group(function () {
         Route::get('vendor/dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
         Route::get('stock', 'Frontend\StockController@index')->name('stock');
         Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
+        Route::get('vendor.order', 'Vendor\OrderController@index')->name('vendor.order');
+        Route::get('vendor.order.details', 'Vendor\OrderController@detail_order')->name('vendor.order.details');
+        
+        //deposit
+        Route::get('vendor.deposit', 'Vendor\DepositController@index')->name('vendor.deposit');
     }); 
     Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
     // Stock Product Vendor

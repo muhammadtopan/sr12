@@ -1,27 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Mitra;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\CostumerModel;
+use App\Model\MitraModel;
 use App\Model\ProductModel;
 use App\Helper\JwtHelper;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use DB;
 
-class CostumerController extends Controller
+class DashboardController extends Controller
 {
     public function index()
     {
-        $prov = DB::table('tb_provinsi')->get();
-        $active = "masuk";
-        return view('frontend/auth_user/login',
-        [
-        'active' => $active,
-        'prov' => $prov
-        ]);
+        return view('mitra/auth/login');
     }
 
     public function register()
@@ -37,7 +31,7 @@ class CostumerController extends Controller
         ]);
     }
 
-    public function registerAdmin(Request $request, CostumerModel $costumer)
+    public function registerAdmin(Request $request, MitraModel $costumer)
     {
         // dd($request);
 
@@ -83,18 +77,18 @@ class CostumerController extends Controller
             $data['costumer_address'] = $request->input('costumer_address');
             $data['costumer_password'] = Hash::make($request->input("costumer_password"));
             $data['costumer_status'] = "on";
-            $costumer = CostumerModel::create($data);
+            $costumer = MitraModel::create($data);
             return redirect()
                 ->route('user.login')
                 ->with('message', 'Akun Berhasil Dibuat');
         }
     }
 
-    public function loginAdmin(Request $request, CostumerModel $costumer)
+    public function loginAdmin(Request $request, MitraModel $costumer)
     {
 
         // cek data login
-        // $admin = new CostumerModel();
+        // $admin = new MitraModel();
         $data_costumer = $costumer->CheckLoginCostumer($request->input("costumer_email"), $request->input("costumer_password"));
         // dd($data_costumer);
         if ($data_costumer)
@@ -159,4 +153,3 @@ class CostumerController extends Controller
     }
 
 }
-

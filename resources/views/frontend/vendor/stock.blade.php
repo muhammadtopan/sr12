@@ -59,7 +59,7 @@
                                     <tbody>
                                         @foreach($product as $no => $stocks)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">
                                                 <!-- <img src="{{ asset('lte/dist/img/product/' . $stocks->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br> -->
                                                 {{ $stocks->product_name }}
@@ -97,7 +97,7 @@
                                         @foreach($stok0 as $nomor => $stoksnull)
                                         {{-- {{dd($stoksnull)}} --}}
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">
                                                 <!-- <img src="{{ asset('lte/dist/img/product/' . $stoksnull->product_image )}}" alt="homepage" class="light-logo" style="width: 10em;"> <br> -->
                                                 {{ $stoksnull->product_name }}

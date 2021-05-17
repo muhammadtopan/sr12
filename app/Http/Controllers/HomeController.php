@@ -61,6 +61,28 @@ class HomeController extends Controller
         );
     }
 
+    public function frontMitra()
+    {
+        $active = "login_mitra";
+        return view(
+            'frontend/page/mitra',
+            [
+                'active' => $active
+            ]
+        );
+    }
+
+    public function tool()
+    {
+        $active = "tool";
+        return view(
+            'frontend/page/tool',
+            [
+                'active' => $active
+            ]
+        );
+    }
+
     public function articel($art)
     {
         $articel = ArticelModel::first();
