@@ -2,7 +2,6 @@
 @section ('title', 'Herbal Skincare')
 
 @section ('content')
-
     <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
         <div class="container">
@@ -79,11 +78,15 @@
                                     <h4 id="productPrice" class="d-none">{{ number_format($product->product_price) }} </h4>
                                 </div>
                                 <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input id="quantity" type="number" value="1">
-                                        <!-- <p id="hiddenQuantity" class="d-none">asdasd</p> -->
-                                    </div>
-                                    <a href="{{ route('add_to_cart',$product->product_id)}}" class="primary-btn pd-cart">Add To Cart</a>
+                                    <form action="{{route("add_to_cart",$product->product_id)}}" method="post">
+                                        @csrf
+                                        <div class="pro-qty">
+                                            <input name="qty" id="quantity" type="number" value="{{$qty !== null ? $qty->quantity : 1}}">
+                                            <!-- <p id="hiddenQuantity" class="d-none">asdasd</p> -->
+                                        </div>
+                                        <button class="primary-btn pd-cart" type="submit">Add To Cart</button>
+                                        {{-- <a href="{{ route('add_to_cart',$product->product_id)}}" class="primary-btn pd-cart">Add To Cart</a> --}}
+                                    </form>
                                 </div>
                                 <!-- <div class="pd-share">
                                     <div class="p-code">Sku : 00012</div>
