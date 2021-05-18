@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -33,9 +35,24 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $product_id)
     {
-        
+        $user_id = $request->session()->get("costumer_id");
+        $product = DB::table("tb_product")->where("product_id",$product_id)->first();
+        $old = DB::table("tb_tmp_details")->where("product_id",$product_id)->where("user_id",$user_id)->first();
+        $data = [
+            "user_id" => $user_id,
+            "product_id" => $product_id,
+            "dicount" => 0,
+            "quantity" => $request->qty,
+            "capital_price" => $product->product_price,
+            "selling_price" => $product->product_price,
+            "total_price" => $request->qty * $product->product_price
+        ];
+        $old == null
+        ? DB::table("tb_tmp_details")->insert($data)
+        : DB::table("tb_tmp_details")->where("product_id",$product_id)->where("user_id",$user_id)->update($data);
+        return redirect()->back();
     }
 
     /**

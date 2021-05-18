@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Model\CategoryModel;
-use App\Model\ProductModel;
-use App\Model\PackageCategoryModel;
-use App\Model\ArticelModel;
 use App\Model\SyaratModel;
+use App\Model\ArticelModel;
+use App\Model\ProductModel;
+use App\Model\CategoryModel;
+use Illuminate\Http\Request;
 use App\Model\TestimonyModel;
+use Illuminate\Support\Facades\DB;
+use App\Model\PackageCategoryModel;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,7 @@ class HomeController extends Controller
                     ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_product.product_type','best')
                     ->get();
-                    
+
         $productnew = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->select('tb_product.*', 'tb_category.category_name')
@@ -135,7 +136,7 @@ class HomeController extends Controller
             ]
         );
     }
-    
+
     public function detail_product($product_id)
     {
         $package = PackageCategoryModel::all();
@@ -151,8 +152,7 @@ class HomeController extends Controller
                     ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_product.category_id',$product->category_id)
                     ->get();
-
-
+        $qty = DB::table("tb_tmp_details")->where("product_id",$product_id)->where("user_id",Session::get("costumer_id"))->first();
         $active = "product";
         return view(
             'frontend/page/detail_product',
@@ -161,7 +161,8 @@ class HomeController extends Controller
                 'package' => $package,
                 'category' => $category,
                 'product' => $product,
-                'relate' => $relate
+                'relate' => $relate,
+                "qty" => $qty
             ]
         );
     }

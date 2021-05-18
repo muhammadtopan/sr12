@@ -43,7 +43,7 @@ Route::middleware(['user.login'])->group(function () {
     Route::get('user.profile', 'Frontend\CostumerController@profile')->name('user.profile');
     Route::get('user.logout', 'Frontend\CostumerController@logout')->name('user.logout');
     Route::get('home', 'HomeController@index')->name('home.again');
-    Route::get('/add_to_cart/{product_id}', 'Frontend\CartController@store')->name('add_to_cart');
+    Route::post('/add_to_cart/{product_id}', 'Frontend\CartController@store')->name('add_to_cart');
     Route::get('/cart', 'Frontend\CartController@show')->name('cart');
 });
 
@@ -63,10 +63,10 @@ Route::middleware(['vendor.dashboard'])->group(function () {
         Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
         Route::get('vendor.order', 'Vendor\OrderController@index')->name('vendor.order');
         Route::get('vendor.order.details', 'Vendor\OrderController@detail_order')->name('vendor.order.details');
-        
+
         //deposit
         Route::get('vendor.deposit', 'Vendor\DepositController@index')->name('vendor.deposit');
-    }); 
+    });
     Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
     // Stock Product Vendor
 });
@@ -78,9 +78,9 @@ Route::group(["prefix" => "profile"],function() {
 });
 
 
-// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND 
-// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND 
-// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND 
+// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND
+// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND
+// BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND BACKEND
 Route::middleware(['admin'])->group(function () {
     Route::get('login', 'Backend\DashboardController@index')->name('login');
     Route::get('register', 'Backend\DashboardController@register')->name('register');
