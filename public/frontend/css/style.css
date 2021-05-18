@@ -771,6 +771,16 @@ ol {
 	border-radius: 20px;
 }
 
+.nav-item .nav-menu li.daftar_aktif .dropdown li a {
+    border: 3px solid #252525 !important;
+}
+
+.nav-item .nav-menu li.daftar_aktif .dropdown li:hover a {
+    background: #e7ab3c;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
 .nav-item .nav-menu li a {
 	font-size: 10px;
 	font-weight: 700;
