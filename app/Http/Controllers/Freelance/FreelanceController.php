@@ -12,4 +12,9 @@ class FreelanceController extends Controller
         $data['active'] = '';
         return view('freelance/auth/login', $data);
     }
+
+    public function index()
+    {
+        return view('freelance/page/index');
+    }
 }

@@ -29,6 +29,7 @@ Route::get('tool', 'HomeController@tool')->name('tool');
 
 //login freelance
 Route::get('login/freelance', 'Freelance\FreelanceController@login')->name('login.freelance');
+Route::get('freelance', 'Freelance\FreelanceController@index')->name('freelance');
 
 //Costumer Auth
 Route::get('user/login', 'Frontend\CostumerController@index')->name('user.login');
