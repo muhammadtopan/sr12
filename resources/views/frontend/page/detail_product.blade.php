@@ -82,7 +82,6 @@
                                         @csrf
                                         <div class="pro-qty">
                                             <input name="qty" id="quantity" type="number" value="{{$qty !== null ? $qty->quantity : 1}}">
-                                            <!-- <p id="hiddenQuantity" class="d-none">asdasd</p> -->
                                         </div>
                                         <button class="primary-btn pd-cart" type="submit">Add To Cart</button>
                                         {{-- <a href="{{ route('add_to_cart',$product->product_id)}}" class="primary-btn pd-cart">Add To Cart</a> --}}

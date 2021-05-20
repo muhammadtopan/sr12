@@ -1373,8 +1373,8 @@ ol {
 
 .instagram-photo .insta-item {
 	float: left;
-	width: 10%;
-	/* height: 320px; */
+	width: 100%;
+	height: 100px;
 	text-align: center;
 	position: relative;
 }
@@ -2712,15 +2712,18 @@ ol {
 
 .cart-table table tr td {
 	text-align: center;
-	padding-bottom: 34px;
 }
 
 .cart-table table tr td.first-row {
-	padding-top: 30px;
+	padding-top: 10px;
 }
 
 .cart-table table tr td.cart-pic {
-	width: 21%;
+	width: 15%;
+	}
+
+	.cart-table table tr td.cart-pic img {
+	    height: 140px;
 }
 
 .cart-table table tr td.cart-title {

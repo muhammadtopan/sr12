@@ -134,26 +134,27 @@
     /*------------------
         Testimony Slider
     --------------------*/
-   $(".owl-testimony").owlCarousel({
-        loop: true,
-        margin: 15,
+   $(".testi-slider").owlCarousel({
+        loop: false,
+        margin: 10,
         center:false,
         nav: true,
         // items: 4,
         dots: false,
         autoplay: true,
+        smartSpeed: 1200,
         responsive: {
             0: {
-                items: 3,
+                items: 5,
             },
             576: {
-                items: 6,
+                items: 7,
             },
             992: {
-                items: 7,
+                items: 10,
             },
             1200: {
-                items: 7,
+                items: 10,
             }
         }
     });

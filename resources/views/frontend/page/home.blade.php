@@ -241,13 +241,27 @@
     <!-- Blog Details Section End -->
 
     <!-- Instagram Section Begin -->
-    <div class=" instagram-photo">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h4>TESTIMONI</h4>
+            </div>
+            <div class="col-6">
+                <div class="filter-control text-right">
+                    <ul class="section-tab-nav tab-nav">
+                        <li><a href="https://t.me/joinchat/UeeoAU59XSQ8wTJt" target="_blank">Lihat Semua </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="instagram-photo testi-slider owl-carousel">
         @foreach($testimony as $no => $testimonies)
             <div class="insta-item set-bg" data-setbg="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}">
                 <div class="inside-text">
                     <!-- <i class="ti-instagram"></i> -->
                     <h5 class="text-light">Testimoni</h5>
-                    <h5><a href="#">{{ Str::limit($testimonies->testimony_judul,50) }}</a></h5>
+                    <h5><a href="https://t.me/joinchat/UeeoAU59XSQ8wTJt" target="_blank">{{ Str::limit($testimonies->testimony_judul,50) }}</a></h5>
                 </div>
             </div>
         @endforeach

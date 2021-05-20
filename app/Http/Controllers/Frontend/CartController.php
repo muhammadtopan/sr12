@@ -63,10 +63,17 @@ class CartController extends Controller
      */
     public function show()
     {
+        $user_id = session()->get("costumer_id");
+        $cart = DB::table('tb_tmp_details')
+                    ->join('tb_product', 'tb_product.product_id', '=', 'tb_tmp_details.product_id')
+                    ->where('user_id', $user_id)
+                    ->get();
+
         $active = '';
         return view('frontend/costumer/cart',
         [
-            'active' => $active
+            'active' => $active,
+            'cart' => $cart
         ]);
     }
 
