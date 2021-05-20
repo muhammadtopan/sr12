@@ -27,6 +27,8 @@ Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon')
 Route::get('login.mitra', 'HomeController@frontMitra')->name('login.mitra');
 Route::get('tool', 'HomeController@tool')->name('tool');
 
+//login freelance
+Route::get('login/freelance', 'Freelance\FreelanceController@login')->name('login.freelance');
 
 //Costumer Auth
 Route::get('user/login', 'Frontend\CostumerController@index')->name('user.login');

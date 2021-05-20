@@ -35,7 +35,7 @@ class HomeController extends Controller
                     ->get();
 
         $category = CategoryModel::all();
-        $testimony = TestimonyModel::all();
+        $testimony = TestimonyModel::take(10)->get();
 
         $active = "home";
         return view(
