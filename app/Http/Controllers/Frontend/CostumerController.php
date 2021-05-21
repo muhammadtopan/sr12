@@ -152,5 +152,13 @@ class CostumerController extends Controller
         ], 200);
     }
 
+    public function CheckReferal(Request $request) {
+        $referal = $request->referal;
+        $freelancer = Referal::where("referal",$referal)->first();
+        return isset($freelancer->referal)
+        ? response()->json(["status" => "ok"],200)
+        : response()->json(["status" => "failed"],200);
+    }
+
 }
 

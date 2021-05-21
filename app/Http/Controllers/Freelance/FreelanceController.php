@@ -33,6 +33,7 @@ class FreelanceController extends Controller
             return back()->with("pesan", "Email atau Password Salah");
         }
         Session::put("auth",$data);
+        return redirect()->route("freelance");
     }
 
     public function AksiRegister(Request $request) {
@@ -41,6 +42,7 @@ class FreelanceController extends Controller
 
         // input referal code
         Referal::create(["user_id" => $data->user_id, "referal" => $data->username.\Str::random(5)]);
+        return redirect()->back()->with("pesan", "Registrasi Telah Berhasil, Silahkan Login Untuk Masuk");
     }
 
 }

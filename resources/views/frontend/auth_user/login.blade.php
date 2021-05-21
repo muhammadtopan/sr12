@@ -59,4 +59,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let message = "{{session("message")}}"
+        message === "Akun Berhasil Dibuat" && sessionStorage.getItem("referal") !== undefined
+        ? sessionStorage.removeItem("referal")
+        : ""
+    </script>
+
 @endsection
