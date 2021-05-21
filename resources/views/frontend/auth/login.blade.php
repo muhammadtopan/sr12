@@ -18,7 +18,7 @@
         </div>
     </div>
     <!-- Breadcrumb Form Section Begin -->
-    
+
     <!-- Register Section Begin -->
     <div class="register-login-section spad">
         <div class="container">
@@ -114,7 +114,7 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                            </div>  
+                            </div>
                             <button type="submit" class="site-btn register-btn">REGISTER</button>
                         </form>
                         <!-- <div class="switch-login">

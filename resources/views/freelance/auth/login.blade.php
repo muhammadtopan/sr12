@@ -18,7 +18,7 @@
         </div>
     </div>
     <!-- Breadcrumb Form Section Begin -->
-    
+
     <!-- Register Section Begin -->
     <div class="register-login-section spad">
         <div class="container">
@@ -29,7 +29,7 @@
                         @if(Session::has('pesan'))
                             <p class="alert alert-info">{{ Session::get('pesan') }}</p>
                         @endif
-                        <form action="" method="post">
+                        <form action="{{route("login.freelance")}}" method="post">
                             @csrf
                             <div class="group-input">
                                 <label for="email">Email <span style="color: red">*</span></label>
@@ -59,7 +59,7 @@
                 <div class="col-lg-4 offset-lg-1">
                     <div class="register-form login-form">
                         <h3>Daftar Freelance</h3>
-                            <form action="" method="post">
+                            <form action="{{route("register.freelance")}}" method="post">
                                 @csrf
                                 @if(session('errors'))
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -114,7 +114,7 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                </div>  
+                                </div>
                                 <button type="submit" class="site-btn register-btn">REGISTER</button>
                             </form>
                             <!-- <div class="switch-login">

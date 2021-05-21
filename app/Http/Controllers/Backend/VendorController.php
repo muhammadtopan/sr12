@@ -39,20 +39,24 @@ class VendorController extends Controller
             $product = DB::table('tb_product')->get('product_id');
             $user_id = DB::table('tb_stok')
                     ->where('user_id', '=', $id_parm)->get();
-            // dd($user_id);
-            if(count($user_id) == 0){
-                foreach($product as $p){
-                    DB::table('tb_stok')->insert([
-                        'user_id' => $request->id,
-                        'product_id' => $p->product_id,
-                        'product_stok' => 0,
-                        ]);
-                    }
-                }else{
+
+            // level !== freelance -> create stok
+            $user = DB::table("tb_user")->where("user_id",$request->id)->first();
+            if($user->user_level !== "Freelance") {
+                if(count($user_id) == 0){
+                    foreach($product as $p){
+                        DB::table('tb_stok')->insert([
+                            'user_id' => $request->id,
+                            'product_id' => $p->product_id,
+                            'product_stok' => 0,
+                            ]);
+                        }
+                } else{
                     DB::table('tb_stok')
                     ->where('user_id', $request->id)
                     ->update(['deleted_at' => null]);
                 }
+            }
 
         return response()->json([
             'message' => 'VENDOR TELAH AKTIF',
@@ -63,7 +67,7 @@ class VendorController extends Controller
         DB::table('tb_user')
             ->where('user_id', $request->id)
             ->update(['user_status' => 'off']);
-        
+
             StokModel::where('user_id', '=', $request->id)
             ->delete();
 
