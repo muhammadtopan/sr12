@@ -20,7 +20,13 @@ class FreelanceController extends Controller
         return view('freelance/auth/login', $data);
     }
 
-    public function AksiLogin(FreelanceLogin $request) {
+
+  public function index()
+    {
+        return view('freelance/page/index');
+    }
+
+  public function AksiLogin(FreelanceLogin $request) {
         $loginMethod = new UserModel();
         $data = $loginMethod->CheckLoginUser($request->user_email,$request->user_password);
         if($data === false) {

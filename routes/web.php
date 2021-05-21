@@ -29,6 +29,7 @@ Route::get('tool', 'HomeController@tool')->name('tool');
 
 //login freelance
 Route::get('login/freelance', 'Freelance\FreelanceController@login')->name('login.freelance');
+Route::get('freelance', 'Freelance\FreelanceController@index')->name('freelance');
 Route::post('login/freelance', 'Freelance\FreelanceController@AksiLogin');
 Route::post('register/freelance', 'Freelance\FreelanceController@AksiRegister')->name("register.freelance");
 
