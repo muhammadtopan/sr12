@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\CostumerModel;
 use App\Model\ProductModel;
 use App\Helper\JwtHelper;
+use App\Model\Referal;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use DB;
@@ -39,8 +40,6 @@ class CostumerController extends Controller
 
     public function registerAdmin(Request $request, CostumerModel $costumer)
     {
-        // dd($request);
-
         $messages = [
             'costumer_name.required'          => 'costumer_name wajib diisi',
             'costumer_name.unique'            => 'costumer_name sudah digunakan',
@@ -75,13 +74,8 @@ class CostumerController extends Controller
             $data = $request->all();
             $data['costumer_name'] = ucwords(strtolower($request->input('costumer_name')));
             $data['costumer_email'] = strtolower($request->input('costumer_email'));
-            $data['costumer_phone'] = $request->input('costumer_phone');
-            $data['costumer_ttl'] = $request->input('costumer_ttl');
-            $data['costumer_gender'] = $request->input('costumer_gender');
-            $data['prov_id'] = $request->input('prov_id');
-            $data['kota_id'] = $request->input('kota_id');
-            $data['costumer_address'] = $request->input('costumer_address');
             $data['costumer_password'] = Hash::make($request->input("costumer_password"));
+            $data['referal_code'] = $request->referal;
             $data['costumer_status'] = "on";
             $costumer = CostumerModel::create($data);
             return redirect()
@@ -141,12 +135,12 @@ class CostumerController extends Controller
                     ->select('tb_costumer.*', 'tb_provinsi.prov_nama', 'tb_kota.kota_nama')
                     ->first();
         return view('frontend/costumer/profile',
-        [   
+        [
             'akun' => $akun,
             'active' => $active,
         ]);
     }
-    
+
     public function carikota(Request $request)
     {
         $kota = DB::table('tb_kota')

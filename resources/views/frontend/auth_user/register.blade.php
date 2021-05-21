@@ -48,6 +48,7 @@
                                                     <h3>Daftar Akun</h3>
                                                     <form action="{{route('user.aksiregister')}}" method="post">
                                                     @csrf
+                                                    <input type="hidden" name="referal" value="{{request()->referal}}">
                                                         @if(session('errors'))
                                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                                                 Something it's wrong:
@@ -227,7 +228,7 @@
                                                                     <span class="checkmark"></span>
                                                                 </label>
                                                             </div>
-                                                        </div>  
+                                                        </div>
                                                         <button type="submit" class="site-btn register-btn">Daftar</button>
                                                     </form>
                                                     <!-- <div class="switch-login">

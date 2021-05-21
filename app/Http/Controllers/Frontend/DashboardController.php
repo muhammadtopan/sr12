@@ -26,9 +26,18 @@ class DashboardController extends Controller
         return view('frontend/auth/register');
     }
 
+    public function LoginMethod($request, UserModel $user) {
+        $data = $request->all();
+        $data['user_password'] = Hash::make($request->input("user_password"));
+        $data['username'] = ucwords(strtolower($request->input('username')));
+        $data['user_email'] = strtolower($request->input('user_email'));
+        $data['user_status'] = "off";
+        $user = UserModel::create($data);
+        return $user;
+    }
+
     public function registerAdmin(Request $request, UserModel $user)
     {
-
         $messages = [
             'username.required'          => 'Username wajib diisi',
             'username.unique'            => 'Username sudah digunakan',
@@ -46,8 +55,6 @@ class DashboardController extends Controller
             'user_phone'         => 'required|numeric',
             'user_password'      => 'required|min:6'
         ], $messages);
-        // Pa$$w0rd!
-        // dd($validator);
 
         if ($validator->fails()) {
             return redirect()
@@ -55,12 +62,7 @@ class DashboardController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $data = $request->all();
-            $data['user_password'] = Hash::make($request->input("user_password"));
-            $data['username'] = ucwords(strtolower($request->input('username')));
-            $data['user_email'] = strtolower($request->input('user_email'));
-            $data['user_status'] = "off";
-            $user = UserModel::create($data);
+            $this->LoginMethod($request,new UserModel());
             return redirect()
                 ->route('vendor')
                 ->with('message', 'Data berhasil ditambahkan');
@@ -72,11 +74,9 @@ class DashboardController extends Controller
         // cek data login
         // $admin = new UserModel();
         $data_user = $user->CheckLoginUser($request->input("user_email"), $request->input("user_password"));
-        // dd($data_user);
         if ($data_user)
         {
             $token = JwtHelper::BuatToken($data_user);
-
             // masukan data login ke session
             $request->session()->put('user_id', $data_user->user_id);
             $request->session()->put('username', $data_user->username);
@@ -92,8 +92,6 @@ class DashboardController extends Controller
             return back()->with("pesan", "Email atau Password Salah");
         }
     }
-
-
 
     function logout(Request $request)
     {
@@ -111,11 +109,11 @@ class DashboardController extends Controller
     {
         $name = session()->get('username');
         return view('frontend/vendor/index',
-        [   
+        [
             'name' => $name,
         ]);
     }
-    
+
     public function carikota(Request $request)
     {
         $kota = DB::table('tb_kota')

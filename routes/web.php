@@ -29,13 +29,19 @@ Route::get('tool', 'HomeController@tool')->name('tool');
 
 //login freelance
 Route::get('login/freelance', 'Freelance\FreelanceController@login')->name('login.freelance');
+Route::post('login/freelance', 'Freelance\FreelanceController@AksiLogin');
+Route::post('register/freelance', 'Freelance\FreelanceController@AksiRegister')->name("register.freelance");
+
 
 //Costumer Auth
 Route::get('user/login', 'Frontend\CostumerController@index')->name('user.login');
 Route::get('user/register', 'Frontend\CostumerController@register')->name('user.register');
-Route::post('user.aksiregister', 'Frontend\CostumerController@registerAdmin')->name('user.aksiregister');
-Route::post('user.aksilogin', 'Frontend\CostumerController@loginAdmin')->name('user.aksilogin');
+Route::post('user/aksiregister', 'Frontend\CostumerController@registerAdmin')->name('user.aksiregister');
+Route::post('user/aksilogin', 'Frontend\CostumerController@loginAdmin')->name('user.aksilogin');
 Route::post('carikotauser', 'Frontend\CostumerController@carikota')->name('carikota');
+
+// COSTUMER DAFTAR DENGAN KODE REFERAL
+Route::get('user/register/referal/{referal}', 'Frontend\CostumerController@register')->name("register.user.referal");
 
 // cari kota
 Route::post('carikota', 'Frontend\DashboardController@carikota')->name('carikota');
@@ -105,6 +111,7 @@ Route::middleware(['dashboard'])->group(function () {
     Route::post('product', 'Backend\ProductController@store')->name('product.store');
     Route::post('cari_data_product', 'Backend\ProductController@cari_data_product')->name('cari_data_product');
     Route::delete('product/{product}', 'Backend\ProductController@destroy')->name('product.delete');
+
     //aktivasi product
     Route::post('product/active', 'Backend\ProductController@active')->name('product.active');
     Route::post('product/no_active', 'Backend\ProductController@non_active')->name('product.non_active');
@@ -152,7 +159,4 @@ Route::middleware(['dashboard'])->group(function () {
     Route::post('cari_data_testimony', 'Backend\TestimonyController@cari_data_testimony')->name('cari_data_testimony');
     Route::post('testimony.product', 'Backend\TestimonyController@product')->name('testimony.product');
     Route::post('testimony.consument', 'Backend\TestimonyController@consument')->name('testimony.consument');
-
-
-
 });
