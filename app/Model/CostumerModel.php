@@ -25,6 +25,7 @@ class CostumerModel extends Model
         'costumer_address',
         'costumer_password',
         'costumer_status',
+        'referal'
     ];
 
     public static function GetValidationRule($rule_name)
