@@ -38,12 +38,16 @@
                                 <input type="text" id="kota_id">
                             </div>
                             <div class="col-lg-12">
-                                <label for="kota_id">Vendor</label>
-                                <input type="text" id="kota_id">
+                                <label for="vendor_id">Vendor</label>
+                                <input type="text" id="vendor_id">
                             </div>
                             <div class="col-lg-12">
-                                <label for="kota_id">Ongkir</label>
-                                <input type="text" id="kota_id">
+                                <label for="ongkir">Ongkir</label>
+                                <input type="text" id="ongkir">
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="bank">Pilih Bank</label>
+                                <input type="text" id="bank">
                             </div>
                         </div>
                     </div>
