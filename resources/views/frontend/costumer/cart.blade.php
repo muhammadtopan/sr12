@@ -69,7 +69,7 @@
                                     <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
                                     <li class="cart-total">Total <span>Rp {{ number_format(Session::get('total_price')) }}</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">PROSES CHECK OUT</a>
+                                <a href="{{ route('checkout') }}" class="proceed-btn">PROSES CHECK OUT</a>
                             </div>
                         </div>
                     </div>
