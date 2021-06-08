@@ -63,7 +63,7 @@
                                     <li class="total-price">Total <span>Rp {{ number_format($total_price) }}</span></li>
                                 </ul>
                                 <div class="order-btn">
-                                    <button type="submit" class="site-btn place-btn">Bayar</button>
+                                    <button type="submit" class="site-btn place-btn" data-toggle="modal" data-target="#modalTransfer">Bayar</button>
                                 </div>
                             </div>
                         </div>
@@ -73,5 +73,35 @@
         </div>
     </section>
     <!-- Shopping Cart Section End -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalTransfer" tabindex="-1" role="dialog" aria-labelledby="modalTransferTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTransferTitle">Masukan Bukti Transfer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Bukti Transfer</label>
+                        <input type="file" class="form-control" id="foto_transfer">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Keterangan</label>
+                        <input type="Keterangan" class="form-control" id="keterangan" placeholder="(kalau ada)">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="site-btn place-btn" data-dismiss="modal">Close</button>
+                <button type="button" class="site-btn bg-dark border-dark">Kirim</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
