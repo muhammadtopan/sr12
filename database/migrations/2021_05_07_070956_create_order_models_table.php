@@ -16,9 +16,10 @@ class CreateOrderModelsTable extends Migration
         Schema::create('tb_order', function (Blueprint $table) {
             $table->bigIncrements('order_id');
             $table->integer('user_id');
-            $table->integer('order_address');
+            $table->integer('costumer_id');
+            $table->text('order_address');
             $table->integer('kota_id');
-            $table->enum('order_status',['confirm','processed', 'sent', 'end', 'rejected']);
+            $table->enum('order_status',['waiting','processed', 'sent', 'end', 'rejected']);
             $table->integer('combined_price');
             $table->timestamps();
             $table->softDeletes();
