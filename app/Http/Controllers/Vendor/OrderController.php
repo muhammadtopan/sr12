@@ -4,11 +4,19 @@ namespace App\Http\Controllers\Vendor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\OrderDetailsModel;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     public function index()
     {
+        $orderan = DB::table('tb_order_details')
+                    ->join('contacts', 'users.id', '=', 'contacts.user_id')
+                    ->join('orders', 'users.id', '=', 'orders.user_id')
+                    ->select('users.*', 'contacts.phone', 'orders.price')
+                    ->get();
+
         return view('frontend/vendor/order');
     }
     

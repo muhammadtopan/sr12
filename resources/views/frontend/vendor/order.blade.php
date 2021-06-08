@@ -58,6 +58,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach()
                                         <tr>
                                             <td class="text-center">1</td>
                                             <td class="text-center">
