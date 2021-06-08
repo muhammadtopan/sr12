@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\CostumerModel;
 use App\Model\ProductModel;
+use App\Model\TmpDetailsModel;
 use App\Helper\JwtHelper;
 use App\Model\Referal;
 use Illuminate\Support\Facades\Validator;
@@ -99,6 +100,9 @@ class CostumerController extends Controller
             $request->session()->put('costumer_id', $data_costumer->costumer_id);
             $request->session()->put('costumer_name', $data_costumer->costumer_name);
             $request->session()->put('tokenUser', $token);
+            $total_price = TmpDetailsModel::where("user_id", $data_costumer->costumer_id)->sum('total_price');
+            $request->session()->put('total_price', $total_price);
+
             // dd($request->session());
 
             // redirect ke halaman home

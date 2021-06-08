@@ -4366,3 +4366,6 @@ ol {
 .blog-more .row a h5:hover{
 	color: #e7ab3c;
 }
+.si-pic img {
+    max-height: 74px;
+}

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Model\TmpDetailsModel;
+use Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -52,15 +54,11 @@ class CartController extends Controller
         $old == null
         ? DB::table("tb_tmp_details")->insert($data)
         : DB::table("tb_tmp_details")->where("product_id",$product_id)->where("user_id",$user_id)->update($data);
+        $total_price = TmpDetailsModel::where("user_id", $request->session()->get('costumer_id'))->sum('total_price');
+        $request->session()->put('total_price', $total_price);
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show()
     {
         $user_id = session()->get("costumer_id");
@@ -74,6 +72,24 @@ class CartController extends Controller
         [
             'active' => $active,
             'cart' => $cart
+        ]);
+    }
+
+    public function checkout()
+    {
+        $user_id = session()->get("costumer_id");
+        $cart = DB::table('tb_tmp_details')
+                    ->join('tb_product', 'tb_product.product_id', '=', 'tb_tmp_details.product_id')
+                    ->where('user_id', $user_id)
+                    ->get();
+        $total_price = TmpDetailsModel::where("user_id", Session::get('costumer_id'))->sum('total_price');
+        // dd($total_price);
+        $active = '';
+        return view('frontend/costumer/checkout',
+        [
+            'active' => $active,
+            'cart' => $cart,
+            'total_price' => $total_price
         ]);
     }
 
@@ -106,9 +122,19 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        
+        DB::table("tb_tmp_details")->where("order_details_id",$request->id)->delete();
+        $total_price = TmpDetailsModel::where("user_id", $request->session()->get('costumer_id'))->sum('total_price');
+        $countCart = DB::table('tb_tmp_details')
+                    ->where('user_id', Session::get('costumer_id'))
+                    ->count();
+        $request->session()->put('total_price', $total_price);
+        return response()->json([
+            'total' => $total_price,
+            'barang' => $countCart
+            ]);
     }
 }
 

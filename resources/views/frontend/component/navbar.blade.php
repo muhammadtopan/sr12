@@ -1,29 +1,5 @@
     <!-- Header Section Begin -->
     <header class="header-section fixed-top">
-        <!-- <div class="header-top">
-            <div class="container">
-                <div class="ht-left">
-                    <div class="mail-service">
-                        <i class=" fa fa-envelope"></i>
-                        hello.colorlib@gmail.com
-                    </div>
-                    <div class="phone-service">
-                        <i class=" fa fa-phone"></i>
-                        +65 11.188.888
-                    </div>
-                </div>
-                <div class="ht-right">
-                    <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
-                        <a href="{{ route('vendor') }}" class="login-panel"  style="margin-right: 13px"><i class="fa fa-user"></i>Vendor</a>
-                    <div class="top-social">
-                        <a href="#"><i class="ti-facebook"></i></a>
-                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                        <a href="#"><i class="ti-linkedin"></i></a>
-                        <a href="#"><i class="ti-pinterest"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="nav-item">
             <div class="container" style="background-color: #252525;">
                 <div class="inner-header">
@@ -44,43 +20,54 @@
                                         </a>
                                         <div class="cart-hover">
                                             <!-- TIDAK ADA PRODUK -->
-                                                <!-- <lottie-player src="https://assets6.lottiefiles.com/temp/lf20_jzqS18.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player> -->
-                                                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_rqoqnvef.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
-                                                <!-- <img src="{{asset('frontend/img/undraw/empty-cart.json')}}" alt="" style="width: 25em;"> -->
+                                            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_rqoqnvef.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
                                             <div class="section text-center">
                                                 <h5>Opps.. Masuk dulu keakun belanjaku...</h5>
                                             </div>
                                         </div>
                                     @else
+                                    @php
+                                        $countCart = DB::table('tb_tmp_details')
+                                                    ->where('user_id', Session::get('costumer_id'))
+                                                    ->count();
+                                        $cart = DB::table('tb_tmp_details')
+                                                    ->join('tb_product', 'tb_product.product_id', '=', 'tb_tmp_details.product_id')
+                                                    ->select('tb_tmp_details.*','tb_product.product_name', 'tb_product.product_image')
+                                                    ->where('user_id', Session::get('costumer_id'))
+                                                    ->limit(3)
+                                                    ->get();
+                                    @endphp
                                         <a href="#">
                                             <i class="icon_bag_alt text-light"></i>
-                                            <span>0</span>
+                                            <span id="total_barang">{{ $countCart }}</span>
                                         </a>
                                         <div class="cart-hover">
                                             <div class="select-items">
                                                 <table>
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="si-pic"><img src="{{ asset('frontend/img/select-product-1.jpg')}}" alt=""></td>
-                                                            <td class="si-text">
-                                                                <div class="product-selected">
-                                                                    <p>$60.00 x 1</p>
-                                                                    <h6>Kabino Bedside Table</h6>
-                                                                </div>
-                                                            </td>
-                                                            <td class="si-close">
-                                                                <i class="ti-close"></i>
-                                                            </td>
-                                                        </tr>
+                                                        @foreach($cart as $i => $carts)
+                                                            <tr id="cart{{ $carts->order_details_id }}">
+                                                                <td class="si-pic"><img src="{{ asset('lte/dist/img/product/'. $carts->product_image)}}" alt=""></td>
+                                                                <td class="si-text">
+                                                                    <div class="product-selected">
+                                                                        <p>Rp {{ $carts->selling_price }}x {{$carts->quantity}}</p>
+                                                                        <h6>{{ $carts->product_name }}</h6>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="si-closeid">
+                                                                    <i class="ti-close" onclick="cartDelete('{{ $carts->order_details_id }}')"></i>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <div class="select-total">
                                                 <span>total:</span>
-                                                <h5>$120.00</h5>
+                                                <h5 id="total_price">Rp {{ Session::get('total_price') }}</h5>
                                             </div>
                                             <div class="select-button">
-                                                <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                                <a href="{{ route('cart') }}" class="primary-btn view-card">VIEW CARD</a>
                                                 <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                             </div>
                                         </div>
@@ -93,8 +80,8 @@
                             <nav class="nav-menu mobile-menu mt-3">
                                 <ul>
                                     @php
-                                    $articel = DB::table('tb_articel')->first();
-                                    $testimony = DB::table('tb_testimony')->first();
+                                        $articel = DB::table('tb_articel')->first();
+                                        $testimony = DB::table('tb_testimony')->first();
                                     @endphp
                                     <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Beranda</a></li>
                                     <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{ route('about') }}">Tentang Kami</a></li>
@@ -134,3 +121,18 @@
     </header>
     <!-- Header End --> 
     <br> <br> <br style="margin-bottom: 10px">
+
+    <script>
+        async function cartDelete(id) {
+            let cart = document.getElementById(`cart${id}`);
+            cart.remove();
+            let res = await axios.delete('{{route("cart.delete")}}', 
+            {params: {
+                    'id': id
+                }
+            })
+            console.log(res);
+            $('#total_price').text(res.data.total);
+            $('#total_barang').text(res.data.barang);
+        }
+    </script>

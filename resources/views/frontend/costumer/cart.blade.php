@@ -60,16 +60,16 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="cart-buttons">
-                                <a href="{{ route('shop.product') }}" class="primary-btn continue-shop">Continue shopping</a>
+                                <a href="{{ route('shop.product') }}" class="primary-btn continue-shop">Lanjutkan Belanja</a>
                             </div>
                         </div>
                         <div class="col-lg-4 offset-lg-4">
                             <div class="proceed-checkout">
                                 <ul>
-                                    <li class="subtotal">Subtotal <span>$240.00</span></li>
-                                    <li class="cart-total">Total <span>$240.00</span></li>
+                                    <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
+                                    <li class="cart-total">Total <span>Rp {{ number_format(Session::get('total_price')) }}</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                <a href="#" class="proceed-btn">PROSES CHECK OUT</a>
                             </div>
                         </div>
                     </div>

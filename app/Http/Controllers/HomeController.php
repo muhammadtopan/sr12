@@ -7,6 +7,7 @@ use App\Model\ArticelModel;
 use App\Model\ProductModel;
 use App\Model\CategoryModel;
 use Illuminate\Http\Request;
+use App\Model\TmpDetailsModel;
 use App\Model\TestimonyModel;
 use Illuminate\Support\Facades\DB;
 use App\Model\PackageCategoryModel;
