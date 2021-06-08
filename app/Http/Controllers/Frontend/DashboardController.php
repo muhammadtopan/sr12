@@ -96,19 +96,13 @@ class DashboardController extends Controller
     function logout(Request $request)
     {
         $request->session()->flush();
-        // $request->session()->forget('user_id');
-        // $request->session()->forget('username');
-        // $request->session()->forget('user_email');
-        // $request->session()->forget('user_level');
-        // $request->session()->forget('token_vendor');
-        // redirect ke halaman home
         return redirect('vendor')->with("pesan", "Anda Sudah Logout");
     }
 
     public function dashboard()
     {
         $name = session()->get('username');
-        return view('frontend/vendor/index',
+                    return view('frontend/vendor/index',
         [
             'name' => $name,
         ]);

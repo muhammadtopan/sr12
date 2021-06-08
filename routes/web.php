@@ -54,6 +54,8 @@ Route::middleware(['user.login'])->group(function () {
     Route::get('home', 'HomeController@index')->name('home.again');
     Route::post('/add_to_cart/{product_id}', 'Frontend\CartController@store')->name('add_to_cart');
     Route::get('/cart', 'Frontend\CartController@show')->name('cart');
+    Route::delete('cart', 'Frontend\CartController@destroy')->name('cart.delete');
+    Route::get('checkout', 'Frontend\CartController@checkout')->name('checkout');
 });
 
 //Vendor Belum Login
