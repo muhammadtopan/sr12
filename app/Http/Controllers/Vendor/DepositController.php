@@ -4,12 +4,26 @@ namespace App\Http\Controllers\Vendor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Session;
+use DB;
 
 class DepositController extends Controller
 {
     public function index()
     {
-        return view('frontend/vendor/deposit/index');
+        $vendor = DB::table('tb_vendor')
+                ->where('user_id', Session::get('user_id'))
+                ->get();
+        $saldo = DB::table('tb_saldo')
+                ->where('user_id', Session::get('user_id'))
+                ->get();
+        // dd($saldo);
+        return view('frontend/vendor/deposit/index',
+            [
+                'vendor' => $vendor[0],
+                'saldo' => $saldo
+            ]
+        );
     }
 
     /**
