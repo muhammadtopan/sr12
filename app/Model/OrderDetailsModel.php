@@ -20,4 +20,6 @@ class OrderDetailsModel extends Model
         'capital_price',
         'selling_price',
         'total_price',
+    ];
+    
 }

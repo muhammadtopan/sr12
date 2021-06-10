@@ -70,10 +70,12 @@ Route::middleware(['vendor'])->group(function () {
 Route::middleware(['vendor.dashboard'])->group(function () {
     Route::group(["middleware" => "cek_profile"],function() {
         Route::get('vendor/dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
+        // Stock
         Route::get('stock', 'Frontend\StockController@index')->name('stock');
         Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
+        // Order
         Route::get('vendor.order', 'Vendor\OrderController@index')->name('vendor.order');
-        Route::get('vendor.order.details', 'Vendor\OrderController@detail_order')->name('vendor.order.details');
+        Route::get('vendor.order.details/{order_id}', 'Vendor\OrderController@detail_order')->name('vendor.order.details');
 
         //deposit
         Route::get('vendor.deposit', 'Vendor\DepositController@index')->name('vendor.deposit');

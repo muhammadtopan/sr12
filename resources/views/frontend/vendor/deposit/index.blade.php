@@ -9,10 +9,10 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <div class="col-12">
-                    <h1>BRI - 123456789</h1>
+                    <h1>{{ $vendor->bank }} - {{ $vendor->no_rekening }}</h1>
                 </div>
                 <div class="col-12">
-                    <h5>Sisa Saldo Anda : <span>Rp {{number_format(1000)}}</span></h5>
+                    <h5>Sisa Saldo Anda : <span>Rp {{number_format($vendor->saldo)}}</span></h5>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -58,23 +58,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">ini tanggal</td>
-                                            <td class="text-center">
-                                                Rp {{number_format(120000)}}
-                                            </td>
-                                            <td class="text-center">
-                                            Rp {{number_format(120000)}}
-                                            </td>
-                                            <td class="text-center">
-                                            Rp {{number_format(120000)}}
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="{{ route('vendor.order.details') }}" class="btn btn-sm btn-info my-4">
-                                                    <i class="fa fa-edit .text-white"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        @foreach($saldo as $i => $history)
+                                            <tr>
+                                                <td>{{ $history->created_at }}</td>
+                                                <td>
+                                                    Rp {{number_format($history->kredit)}}
+                                                </td>
+                                                <td>
+                                                    Rp {{number_format($history->debit)}}
+                                                </td>
+                                                <td>
+                                                    Rp {{number_format($history->saldo)}}
+                                                </td>
+                                                <td>
+                                                    @if($history->desc != 'income')
+                                                        <p>Tarik dana #{{ $history->action_code }}</p>
+                                                    @else
+                                                        <p>Pemayaran Order #{{ $history->action_code }}</p>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -17,6 +17,8 @@ class CreateOrderModelsTable extends Migration
             $table->bigIncrements('order_id');
             $table->integer('user_id');
             $table->integer('costumer_id');
+            $table->string('invoice');
+            $table->string('proof');
             $table->text('order_address');
             $table->integer('kota_id');
             $table->enum('order_status',['waiting','processed', 'sent', 'end', 'rejected']);

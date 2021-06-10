@@ -18,4 +18,5 @@ class OrderModel extends Model
         'kota_id',
         'order_status',
         'combined_price',
+    ];
 }

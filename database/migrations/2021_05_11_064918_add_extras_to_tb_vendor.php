@@ -13,7 +13,7 @@ class AddExtrasToTbVendor extends Migration
      */
     public function up()
     {
-        Schema::table('tb_vendor', function (Blueprint $table) {
+        Schema::create('tb_vendor', function (Blueprint $table) {
             $table->foreignId("user_id");
             $table->string("nama_lengkap");
             $table->bigInteger("nik")->unsigned();
@@ -24,6 +24,7 @@ class AddExtrasToTbVendor extends Migration
             $table->integer("kota_id");
             $table->enum("bank",["BRI","BNI","MANDIRI","BCA"]);
             $table->string("no_rekening");
+            $table->string("saldo")->default(0);
             $table->string("nama_pemilik_rekening");
             $table->string("selfie_ktp");
             $table->foreign("user_id")->on("tb_user")->references("user_id");
