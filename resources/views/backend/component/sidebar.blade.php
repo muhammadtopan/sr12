@@ -1,20 +1,21 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="{{ route('admin.dashboard')}}" class="brand-link" style="text-align: center; height: 48px;">
-        <!-- <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-        @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
-            <span class="brand-text font-weight-light">
-                <h3>SR12</h3>
-            </span>
-        @else
-            <span class="brand-text font-weight-light">
-                <h3>{{ session()->get('username') }}</h3>
-            </span>
-        @endif
-    </a>
+    @if( Session::get('admin_0level') == 'admin' && Session::get("user_level")  == null )
+        <a href="{{ route('admin.dashboard')}}" class="brand-link" style="text-align: center; height: 48px;">
+            <!-- <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+                <span class="brand-text font-weight-light">
+                    <h3>SR12</h3>
+                </span>
+        </a>
+    @else
+        <a href="{{ route('vendor.dashboard')}}" class="brand-link" style="text-align: center; height: 48px;">
+                <span class="brand-text font-weight-light">
+                    <h3>{{ session()->get('username') }}</h3>
+                </span>
+        </a>
+    @endif
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
 
             <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -212,12 +213,18 @@
                         </p>
                     </a>
                 </li>
+                @php
+                $jumlah_orderan = DB::table('tb_order')
+                            ->where('tb_order.user_id', Session::get('user_id'))
+                            ->where('order_status', 'waiting')
+                            ->count();
+                @endphp
                 <li class="nav-item">
                     <a href="{{ route('vendor.order')}}" class="nav-link">
                         <i class="nav-icon fas fa-cart-arrow-down"></i>
                         <p>
                             Orderan
-                            <span class="badge badge-danger right">0</span>
+                            <span class="badge badge-danger right">{{ $jumlah_orderan }}</span>
                         </p>
                     </a>
                 </li>

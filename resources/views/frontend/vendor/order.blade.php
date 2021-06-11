@@ -51,27 +51,33 @@
                                 <table id="zero_config" class="table table-bordered table-hover">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>No</th>
-                                            <th>Orderan</th>
-                                            <th>Tanggal</th>
-                                            <th>Detail</th>
+                                            <th class="text-center" width=5%;>No</th>
+                                            <th class="text-center">Orderan</th>
+                                            <th class="text-center">Tanggal</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">
-                                                asd
-                                            </td>
-                                            <td class="text-center">
-                                                asd
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="{{ route('vendor.order.details') }}" class="btn btn-sm btn-info my-4">
-                                                    <i class="fa fa-edit .text-white"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        @foreach($orderan as $i => $order)
+                                            <tr>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
+                                                <td class="text-center">
+                                                    {{ $order->invoice }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ explode(' ',$order->created_at)[0] }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ $order->order_status }}
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('vendor.order.details', $order->order_id) }}" class="btn btn-sm btn-info">
+                                                        <i class="fa fa-edit .text-white"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -84,24 +90,30 @@
                                             <th>No</th>
                                             <th>Orderan</th>
                                             <th>Tanggal</th>
+                                            <th>Status</th>
                                             <th>Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td class="text-center">
-                                                asd
-                                            </td>
-                                            <td class="text-center">
-                                                asd
-                                            </td>
-                                            <td class="text-center">
-                                                <button class="btn btn-sm btn-info my-4">
-                                                    <i class="fa fa-edit .text-white"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        @foreach($orderanh as $i => $orderh)
+                                            <tr>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
+                                                <td class="text-center">
+                                                    {{ $orderh->invoice }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ explode(' ',$orderh->created_at)[0] }}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{ $orderh->order_status }}
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('vendor.order.details', $orderh->order_id) }}" class="btn btn-sm btn-info">
+                                                        <i class="fa fa-edit .text-white"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
