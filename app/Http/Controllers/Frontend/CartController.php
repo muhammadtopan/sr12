@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Model\TmpDetailsModel;
 use Session;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Customer\CheckoutController;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
@@ -75,21 +76,31 @@ class CartController extends Controller
         ]);
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
+        $checkout = new CheckoutController();
         $user_id = session()->get("costumer_id");
+        $user = DB::table("tb_costumer")->where("costumer_id",$user_id)->first();
+        $vendor_dalam_kota = $checkout->getVendorDalamKota($user->prov_id,$user->kota_id, $request);
         $cart = DB::table('tb_tmp_details')
                     ->join('tb_product', 'tb_product.product_id', '=', 'tb_tmp_details.product_id')
                     ->where('user_id', $user_id)
                     ->get();
         $total_price = TmpDetailsModel::where("user_id", Session::get('costumer_id'))->sum('total_price');
-        // dd($total_price);
+        $provinsi = DB::table("tb_provinsi")->get();
+        $kota = DB::table("tb_kota")->where("prov_id",$user->prov_id)->get();
         $active = '';
         return view('frontend/costumer/checkout',
         [
             'active' => $active,
+            "user" => $user,
             'cart' => $cart,
-            'total_price' => $total_price
+            "kota" => $kota,
+            "provinsi" => $provinsi,
+            'total_price' => $total_price,
+            "multi_data" => $vendor_dalam_kota,
+            "qty" => $request->qty,
+            "product_id" => $request->product_id
         ]);
     }
 
@@ -124,7 +135,6 @@ class CartController extends Controller
      */
     public function destroy(Request $request)
     {
-        
         DB::table("tb_tmp_details")->where("order_details_id",$request->id)->delete();
         $total_price = TmpDetailsModel::where("user_id", $request->session()->get('costumer_id'))->sum('total_price');
         $countCart = DB::table('tb_tmp_details')

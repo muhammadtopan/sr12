@@ -20,7 +20,6 @@ class FreelanceController extends Controller
         return view('freelance/auth/login', $data);
     }
 
-
   public function index()
     {
         return view('freelance/page/index');

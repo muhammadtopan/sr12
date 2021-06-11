@@ -17,6 +17,5 @@ class OrderModel extends Model
         'order_address',
         'kota_id',
         'order_status',
-        'combined_price',
-    ];
+        'combined_price'];
 }

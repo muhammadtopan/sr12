@@ -19,7 +19,5 @@ class OrderDetailsModel extends Model
         'quantity',
         'capital_price',
         'selling_price',
-        'total_price',
-    ];
-    
+        'total_price',];
 }
