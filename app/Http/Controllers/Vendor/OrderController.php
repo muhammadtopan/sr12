@@ -24,7 +24,7 @@ class OrderController extends Controller
                         ->where('order_status', 'end')
                         ->get();
     
-        return view('frontend/vendor/order', 
+        return view('vendor/order', 
         [
             'orderan' => $orderan,
             'orderanh' => $orderanh
@@ -41,7 +41,7 @@ class OrderController extends Controller
                         ->where('tb_order_details.order_details_id', $order)
                         ->get();
         // dd($order_detail[0]);
-        return view('frontend/vendor/detail_order',
+        return view('vendor/detail_order',
         [
             'order_detail' => $order_detail[0]
         ]

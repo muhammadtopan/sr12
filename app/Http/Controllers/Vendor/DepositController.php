@@ -18,7 +18,7 @@ class DepositController extends Controller
                 ->where('user_id', Session::get('user_id'))
                 ->get();
         // dd($saldo);
-        return view('frontend/vendor/deposit/index',
+        return view('vendor/deposit/index',
             [
                 'vendor' => $vendor[0],
                 'saldo' => $saldo

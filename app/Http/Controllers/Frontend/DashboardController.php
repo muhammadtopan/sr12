@@ -58,7 +58,7 @@ class DashboardController extends Controller
 
         if ($validator->fails()) {
             return redirect()
-                ->route('register_vendor')
+                ->route('vendor')
                 ->withErrors($validator)
                 ->withInput();
         } else {
@@ -102,7 +102,7 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $name = session()->get('username');
-                    return view('frontend/vendor/index',
+                    return view('vendor/index',
         [
             'name' => $name,
         ]);

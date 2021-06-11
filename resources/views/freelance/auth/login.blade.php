@@ -86,12 +86,9 @@
                                     <label for="user_phone">Phone <span style="color: red">*</span></label>
                                     <input type="text" placeholder="082386464060" id="user_phone" name="user_phone" value="{{ old('user_phone') ?? $umkm->user_phone ?? '' }}" required>
                                 </div>
-                                <div class="group-input">
+                                <div class="group-input d-none">
                                     <label for="user_level">Jenis Mitra <span style="color: red">*</span></label>
                                     <select name="user_level" id="user_level" class="form-control @error('user_level') {{ 'is-invalid' }} @enderror">
-                                        <option value="Distributor">Distributor</option>
-                                        <option value="Agen">Agen</option>
-                                        <option value="Sub-Agen">Sub Agen</option>
                                         <option value="Freelance" selected>Freelance</option>
                                     </select>
                                 </div>

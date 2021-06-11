@@ -28,7 +28,7 @@ class StockController extends Controller
                 ->get();
 
 
-        return view('frontend/vendor/stock',
+        return view('vendor/stock',
         [
             'product' => $product,
             'stok0' => $stok0,

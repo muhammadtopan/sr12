@@ -91,8 +91,7 @@
                                 <select name="user_level" id="user_level" class="form-control @error('user_level') {{ 'is-invalid' }} @enderror">
                                     <option value="Distributor">Distributor</option>
                                     <option value="Agen">Agen</option>
-                                    <option value="Sub-Agen">Sub Agen</option>
-                                    <option value="Freelance" selected>Freelance</option>
+                                    <option value="Sub-Agen" selected>Sub Agen</option>
                                 </select>
                             </div>
                             <div class="group-input">

@@ -72,7 +72,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button data-input="{{$stocks->product_id}}" class="btn btn-sm btn-dark my-4" onclick="update_stok(this, '{{$stocks->stok_id}}','{{ route("stock.update") }}', '{{$stocks->product_id}}')">
+                                                <button data-input="{{$stocks->product_id}}" class="btn btn-sm btn-dark" onclick="update_stok(this, '{{$stocks->stok_id}}','{{ route("stock.update") }}', '{{$stocks->product_id}}')">
                                                     <i class="fa fa-edit .text-white" style="color: #fff !important"></i>
                                                 </button>
                                             </td>
@@ -110,7 +110,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button data-input="{{$stoksnull->stok_id}}" class="btn btn-sm btn-dark my-4" onclick="update_stok(this, '{{$stoksnull->stok_id}}','{{ route("stock.update") }}', '{{$stoksnull->product_id}}')">
+                                                <button data-input="{{$stoksnull->stok_id}}" class="btn btn-sm btn-dark" onclick="update_stok(this, '{{$stoksnull->stok_id}}','{{ route("stock.update") }}', '{{$stoksnull->product_id}}')">
                                                     <i class="fa fa-edit .text-white" style="color: #fff !important"></i>
                                                 </button>
                                             </td>

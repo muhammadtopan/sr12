@@ -12,7 +12,7 @@ class ProfileController extends Controller
         $data = DB::table("tb_vendor")->where("user_id",$request->session()->get("user_id"))->first();
         $prov = DB::table("tb_provinsi")->get();
         $kota = DB::table("tb_kota")->get();
-        return view("frontend.vendor.profile",
+        return view("vendor.profile",
         [
             'data' => $data,
             'prov' => $prov,
@@ -50,6 +50,7 @@ class ProfileController extends Controller
                 "alamat_lengkap" => $request->alamat,
                 "bank" => $request->bank,
                 "no_rekening" => $request->no_rekening,
+                "saldo" => 0,
                 "nama_pemilik_rekening" => $request->pemilik_rekening,
                 "selfie_ktp" => $request->file("selfie_ktp")->store("selfie_ktp")
             ]);
