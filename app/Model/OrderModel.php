@@ -13,7 +13,7 @@ class OrderModel extends Model
     protected $table = 'tb_order';
     protected $primaryKey = 'order_id';
     protected $fillable = [
-      "user_id", "costumer_id", "invoice", "proof", "order_address", "kote_id",
+      "user_id", "costumer_id", "invoice", "proof", "order_address", "kota_id",
       "order_status", "combined_price"
     ];
 }

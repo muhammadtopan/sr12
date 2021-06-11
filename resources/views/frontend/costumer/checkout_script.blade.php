@@ -40,6 +40,7 @@
             let vendor = document.getElementById("vendor")
             let data = res.data
             let option = "";
+            
             data.forEach(d => {
                 option+= `<option value="${d.vendor.user_id}">${d.vendor.nama_lengkap}</option>`
             })
@@ -64,7 +65,7 @@
             let option = ""
             data[0].costs.forEach(c => {
                 // console.log(c.cost);
-                option += `<option value="${c.cost[0].value}"> Ongkir: ${new Intl.NumberFormat().format(c.cost[0].value)} Deskripsi: ${c.description} Estimasi: ${c.cost[0].etd} </option>`
+                option += `<option value="${c.cost[0].value}"> Ongkir: ${new Intl.NumberFormat().format(c.cost[0].value)} Deskripsi: ${c.description} Estimasi: ${c.cost[0].etd} hari </option>`
             })
             document.getElementById("jenis_kirim").innerHTML = option
             document.getElementById("jenis_kirim_container").style.display = "initial"

@@ -64,7 +64,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div id="jenis_kirim_container" style="display: none" class="col-lg-12">
+                        <div id="jenis_kirim_container" class="col-lg-12">
                             <label for="jenis_kirim">Jenis Pengiriman</label>
                             <div class="form-group">
                                 <select  name="jenis_kirim" onchange="changeTotal(this)" id="jenis_kirim" class="form-control">

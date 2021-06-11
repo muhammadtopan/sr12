@@ -61,17 +61,16 @@ class CheckoutController extends Controller
     }
 
     public function checkout(Request $request) {
-
         $order = OrderModel::create([
             "user_id" => $request->vendor,
             "costumer_id" => Session::get("costumer_id"),
-            "invoice" => date("dMY")."-".$request->vendor."-".Session::get("costumer_id")."-".\Str::random(5),
+            "invoice" => date("dmYHis").Session::get("costumer_id"),
             "proof" => $request->file("bukti_transfer")->store("bukti_transfer"),
             "order_address" => $request->alamat_lengkap,
             "kota_id" => $request->kota,
             "order_status" => "waiting",
             "combined_price" => (int)$request->jenis_kirim + (int)$request->total
-        ]);
+        ]);  
 
         DB::transaction(function() use($request,$order) {
             // dd(Session::all());
@@ -92,5 +91,7 @@ class CheckoutController extends Controller
                 ]);
             }
         });
+        return redirect()
+                    ->route('home');
     }
 }
