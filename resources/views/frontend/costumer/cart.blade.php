@@ -21,60 +21,65 @@
     <!-- Shopping Cart Section Begin -->
     <section class="shopping-cart spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="cart-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Gambar</th>
-                                    <th class="p-name">Nama Produk</th>
-                                    <th>Harga</th>
-                                    <th>Jumlah</th>
-                                    <th>Total</th>
-                                    <th><i class="ti-close"></i></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($cart as $no => $carts)
+            <form action="{{route("checkout")}}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="cart-table">
+                            <table>
+                                <thead>
                                     <tr>
-                                        <td class="cart-pic first-row"><img src="{{ asset('lte/dist/img/product/'. $carts->product_image)}}" alt=""></td>
-                                        <td class="cart-title first-row">
-                                            <h5>{{ $carts->product_name }}</h5>
-                                        </td>
-                                        <td class="p-price first-row">Rp {{ number_format($carts->selling_price) }}</td>
-                                        <td class="qua-col first-row">
-                                            <div class="quantity">
-                                                <div class="pro-qty">
-                                                    <input type="text" value="{{ $carts->quantity }}">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="total-price first-row">Rp {{ number_format($carts->total_price) }}</td>
-                                        <td class="close-td first-row"><i class="ti-close"></i></td>
+                                        <th>Gambar</th>
+                                        <th class="p-name">Nama Produk</th>
+                                        <th>Harga</th>
+                                        <th>Jumlah</th>
+                                        <th>Total</th>
+                                        <th><i class="ti-close"></i></th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="cart-buttons">
-                                <a href="{{ route('shop.product') }}" class="primary-btn continue-shop">Lanjutkan Belanja</a>
-                            </div>
+                                </thead>
+                                <tbody>
+                                    @foreach($cart as $no => $carts)
+                                        <tr>
+                                            <td class="cart-pic first-row"><img src="{{ asset('lte/dist/img/product/'. $carts->product_image)}}" alt=""></td>
+                                            <td class="cart-title first-row">
+                                                <h5>{{ $carts->product_name }}</h5>
+                                            </td>
+                                            <input type="hidden" name="product_id[]" value="{{$carts->product_id}}">
+                                            <input type="hidden" name="price[]" value="{{$carts->selling_price}}">
+                                            <td class="p-price first-row">Rp {{ number_format($carts->selling_price) }}</td>
+                                            <td class="qua-col first-row">
+                                                <div class="quantity">
+                                                    <div class="pro-qty">
+                                                        <input type="text" name="qty[]" value="{{ $carts->quantity }}">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="total-price first-row">Rp {{ number_format($carts->total_price) }}</td>
+                                            <td class="close-td first-row"><i class="ti-close"></i></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="col-lg-4 offset-lg-4">
-                            <div class="proceed-checkout">
-                                <ul>
-                                    <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
-                                    <li class="cart-total">Total <span>Rp {{ number_format(Session::get('total_price')) }}</span></li>
-                                </ul>
-                                <a href="{{ route('checkout') }}" class="proceed-btn">PROSES CHECK OUT</a>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="cart-buttons">
+                                    <a href="{{ route('shop.product') }}" class="primary-btn continue-shop">Lanjutkan Belanja</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 offset-lg-4">
+                                <div class="proceed-checkout">
+                                    <ul>
+                                        <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
+                                        <li class="cart-total">Total <span>Rp {{ number_format(Session::get('total_price')) }}</span></li>
+                                    </ul>
+                                    <button type="submit" class="proceed-btn">PROSES CHECK OUT</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
     <!-- Shopping Cart Section End -->
