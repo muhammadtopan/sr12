@@ -13,6 +13,7 @@ class CreateOrderModelsTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('tb_order', function (Blueprint $table) {
             $table->bigIncrements('order_id');
             $table->integer('user_id');
