@@ -64,9 +64,12 @@ class CheckoutController extends Controller
 
         $order = OrderModel::create([
             "user_id" => $request->vendor,
-            "order_address" => 0,
+            "costumer_id" => Session::get("costumer_id"),
+            "invoice" => date("dMY")."-".$request->vendor."-".Session::get("costumer_id")."-".\Str::random(5),
+            "proof" => $request->file("bukti_transfer")->store("bukti_transfer"),
+            "order_address" => $request->alamat_lengkap,
             "kota_id" => $request->kota,
-            "order_status" => "processed",
+            "order_status" => "waiting",
             "combined_price" => (int)$request->jenis_kirim + (int)$request->total
         ]);
 
@@ -76,9 +79,6 @@ class CheckoutController extends Controller
                 // kurangi stok vendor
                 $product = StokModel::where("user_id", $request->vendor)->where("product_id",$request->product_id[$key])->first();
                 $tmp = DB::table("tb_tmp_details")->where("user_id", Session::get("costumer_id"))->where("product_id",$request->product_id[$key])->first();
-                $product->update([
-                    "product_stok" => $product->product_stok - (int)$qty
-                ]);
 
                 // input order detail
                 OrderDetailsModel::create([

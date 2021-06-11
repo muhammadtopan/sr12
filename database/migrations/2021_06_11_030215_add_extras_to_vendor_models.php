@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddExtrasToTbVendor extends Migration
+class AddExtrasToVendorModels extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddExtrasToTbVendor extends Migration
      */
     public function up()
     {
-        Schema::create('tb_vendor', function (Blueprint $table) {
+        Schema::table('tb_vendor', function (Blueprint $table) {
             $table->foreignId("user_id");
             $table->string("nama_lengkap");
             $table->bigInteger("nik")->unsigned();
@@ -28,7 +28,6 @@ class AddExtrasToTbVendor extends Migration
             $table->string("nama_pemilik_rekening");
             $table->string("selfie_ktp");
             $table->foreign("user_id")->on("tb_user")->references("user_id");
-
         });
     }
 
@@ -39,7 +38,7 @@ class AddExtrasToTbVendor extends Migration
      */
     public function down()
     {
-        Schema::table('tb_vendor', function (Blueprint $table) {
+        Schema::table('vendor_models', function (Blueprint $table) {
             //
         });
     }
