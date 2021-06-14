@@ -31,10 +31,15 @@ Route::get('tool', 'HomeController@tool')->name('tool');
 Route::get('login/freelance', 'Freelance\FreelanceController@login')->name('login.freelance');
 Route::post('login/freelance', 'Freelance\FreelanceController@AksiLogin');
 Route::post('register/freelance', 'Freelance\FreelanceController@AksiRegister')->name("register.freelance");
-Route::group(['middleware'=>'auth'],function () {
+// Route::group(['middleware'=>'auth'],function () {
+    Route::get('freelance.logout', 'Freelance\FreelanceController@logout')->name('freelance.logout');
     Route::get('freelance', 'Freelance\FreelanceController@index')->name('freelance');
+    Route::get('freelance.profile', 'Freelance\FreelanceController@profile')->name('freelance.profile');
+    Route::get('freelance.r.transaksi', 'Freelance\FreelanceController@rtransaksi')->name('freelance.r.transaksi');
+    Route::get('freelance.r.affiliate', 'Freelance\FreelanceController@raffiliate')->name('freelance.r.affiliate');
+    Route::get('freelance.deposite', 'Freelance\FreelanceController@deposite')->name('freelance.deposite');
     
-});
+// });
 
 
 //Costumer Auth
