@@ -41,37 +41,13 @@ class CostumerController extends Controller
 
     public function registerAdmin(Request $request, CostumerModel $costumer)
     {
-        $messages = [
-            'costumer_name.required'          => 'costumer_name wajib diisi',
-            'costumer_name.unique'            => 'costumer_name sudah digunakan',
-            'costumer_email.required'        => 'Email wajib diisi',
-            'costumer_email.email'           => 'Email tidak valid',
-            'costumer_email.unique'          => 'Email sudah terdaftar',
-            'costumer_phone.numeric'          => 'Ikuti format nomor telpon yang ada',
-            'costumer_password.required'     => 'Password wajib diisi',
-            'costumer_password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
-        ];
-
-        $validator = Validator::make($request->all(), [
-            'costumer_name'          => 'required',
-            'costumer_email'         => 'required|email|unique:users,email',
-            'costumer_phone'         => 'required|numeric',
-            'costumer_ttl'           => 'required',
-            'costumer_gender'        => 'required',
-            'prov_id'                => 'required',
-            'kota_id'                => 'required',
-            'costumer_address'       => 'required',
-            'costumer_password'      => 'required|min:6'
-        ], $messages);
-        // Pa$$w0rd!
-        // dd($validator);
-
-        if ($validator->fails()) {
-            return redirect()
-                ->route('user.login')
-                ->withErrors($validator)
-                ->withInput();
-        } else {
+        $request->validate([
+            "costumer_name" => ["required", "unique:tb_costumer,costumer_name"],
+            "costumer_email" => ["required", "email", "unique:tb_costumer,costumer_email"],
+            "costumer_phone" => ["required", "numeric"],
+            "costumer_password" => ["required", "confirmed"],
+            "costumer_password_confirmation" => ["required"]
+        ]);
             $data = $request->all();
             $data['costumer_name'] = ucwords(strtolower($request->input('costumer_name')));
             $data['costumer_email'] = strtolower($request->input('costumer_email'));
@@ -82,7 +58,6 @@ class CostumerController extends Controller
             return redirect()
                 ->route('user.login')
                 ->with('message', 'Akun Berhasil Dibuat');
-        }
     }
 
     public function loginAdmin(Request $request, CostumerModel $costumer)
