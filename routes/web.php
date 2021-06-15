@@ -19,6 +19,7 @@ Route::get('shop.product', 'HomeController@product')->name('shop.product');
 Route::get('detail_product/{product_id}', 'HomeController@detail_product')->name('detail_product');
 Route::get('about', 'HomeController@about')->name('about');
 Route::get('partnership', 'HomeController@partnership')->name('partnership');
+Route::get('syarat_mitra', 'HomeController@syarat_mitra')->name('syarat_mitra');
 Route::get('contact', 'HomeController@contact')->name('contact');
 Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');

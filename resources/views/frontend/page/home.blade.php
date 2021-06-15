@@ -5,30 +5,37 @@
 
     <!-- Hero Section Begin -->
     <section class="hero-section">
-        <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <span>We're present.....</span>
-                            <h4>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h4>
-                            <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span> 
-                            <!-- <a href="#" class="primary-btn">Shop Now</a> -->
+        <div class="row">
+            <div class="col-md-9 pr-0">
+                <div class="hero-items owl-carousel">
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <span>We're present.....</span>
+                                    <h5>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span> 
+                                    <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <span>We're present.....</span>
+                                    <h5>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
+                                    <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <span>We're present.....</span>
-                            <h4>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h4>
-                            <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                            <!-- <a href="#" class="primary-btn">Shop Now</a> -->
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-3 pl-0">
+                <img class="foto-bersama" src="{{ asset('frontend/img/banner-1.jpg')}}" alt="">
             </div>
         </div>
     </section>
@@ -42,10 +49,10 @@
                     <div class="kategori owl-carousel">
                         @foreach($category as $no => $kategori)
                             <div class="single-banner">
-                                <img src="{{ asset('frontend/img/kotak.png')}}" alt="">
-                                <div class="inner-text">
+                                <img src="{{ asset('lte/dist/img/category/'. $kategori->category_image)}}" alt="">
+                                <!-- <div class="inner-text">
                                     <h6>{{ $kategori->category_name }}</h6>
-                                </div>
+                                </div> -->
                             </div>
                         @endforeach
                     </div>
@@ -105,12 +112,54 @@
     </section>
     <!-- Semua Produk -->
 
-    <!-- Women Banner Section Begin -->
+    <!-- Paket Product -->
+    <section class="women-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>PAKET PRODUK</h4>
+                        </div>
+                        <div class="col-6">
+                            <div class="filter-control text-right">
+                                <ul class="section-tab-nav tab-nav">
+                                    <li id="allproduct"><a href="{{('shop.product')}}">Lihat Semua</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-slider owl-carousel">
+                        @foreach($paket as $no => $pakets)
+                        <!-- <div class="col-lg-3 col-sm-6"> -->
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <a href="#">
+                                        <img src="{{ asset('lte/dist/img/package_category/' . $pakets->package_category_image )}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">{{ $pakets->package_category_name }}</div>
+                                    <div class="product-price">
+                                        Rp {{ number_format($pakets->package_category_price) }}
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Paket Product -->
+
+    <!-- Best Seller Begin -->
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6">
-                    <h4>PRODUK</h4>
+                    <h4>BEST PRODUK</h4>
                 </div>
                 <div class="col-6">
                     <div class="filter-control text-right">
@@ -119,11 +168,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-2">
-                    <div class="product-large set-bg" data-setbg="{{ asset('frontend/img/products/women-large.jpg')}}">
-                        <h4>Best Seller</h4>
-                        <a href="#">Lihat Semua</a>
+                <a href="{{ route('detail_product',$productterbest->product_id) }}">
+                    <div class="col-lg-2">
+                        <div class="product-large set-bg" data-setbg="{{ asset('lte/dist/img/product/' . $productterbest->product_image )}}">
                     </div>
+                </a>
                 </div>
                 <div class="col-lg-9 offset-lg-1">
                     <div class="product-slider owl-carousel">
@@ -155,15 +204,15 @@
             </div>
         </div>
     </section>
-    <!-- Women Banner Section End -->
+    <!-- Best Seller End -->
 
 
-    <!-- Women Banner Section Begin -->
+    <!-- New Product Begin -->
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6">
-                    <h4>PRODUK</h4>
+                    <h4>PRODUK BARU</h4>
                 </div>
                 <div class="col-6">
                     <div class="filter-control text-right">
@@ -172,11 +221,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-2">
-                    <div class="product-large set-bg" data-setbg="{{ asset('frontend/img/products/man-large.jpg')}}">
-                        <h4>New Product</h4>
-                        <a href="#">Lihat Semua</a>
+                <a href="{{ route('detail_product',$productterbest->product_id) }}">
+                    <div class="col-lg-2">
+                        <div class="product-large set-bg" data-setbg="{{ asset('lte/dist/img/product/' . $productternew->product_image )}}">
                     </div>
+                </a>
                 </div>
                 <div class="col-lg-9 offset-lg-1">
                     <div class="product-slider owl-carousel">
@@ -208,37 +257,7 @@
             </div>
         </div>
     </section>
-    <!-- Women Banner Section End -->
-
-    <!-- Blog Details Section Begin -->
-    <!-- <section>
-        <div class="container contact-section spad">
-            <div class="row">
-                <div class="col-1">
-                </div>
-                <div class="col-10">
-                    <div class="blog-more">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="contact-title">
-                                    <h4>Testimoni</h4>
-                                </div>
-                            </div>
-                            @foreach($testimony as $no => $testimonies)
-                                <div class="col-sm-4">
-                                    <a href="{{ route('testimon', $testimonies->testimony_id) }}">
-                                        <img src="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}" alt="">
-                                        <h5>{{ Str::limit($testimonies->testimony_judul,50) }}</h5>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Blog Details Section End -->
+    <!-- New Product End -->
 
     <!-- Instagram Section Begin -->
     <div class="container-fluid">
@@ -257,13 +276,7 @@
     </div>
     <div class="instagram-photo testi-slider owl-carousel">
         @foreach($testimony as $no => $testimonies)
-            <div class="insta-item set-bg" data-setbg="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}">
-                <div class="inside-text">
-                    <!-- <i class="ti-instagram"></i> -->
-                    <h5 class="text-light">Testimoni</h5>
-                    <h5><a href="https://t.me/joinchat/UeeoAU59XSQ8wTJt" target="_blank">{{ Str::limit($testimonies->testimony_judul,50) }}</a></h5>
-                </div>
-            </div>
+            <div class="insta-item set-bg" data-setbg="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}"></div>
         @endforeach
     </div>
     <!-- Instagram Section End -->
