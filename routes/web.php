@@ -32,13 +32,13 @@ Route::get('login/freelance', 'Freelance\FreelanceController@login')->name('logi
 Route::post('login/freelance', 'Freelance\FreelanceController@AksiLogin');
 Route::post('register/freelance', 'Freelance\FreelanceController@AksiRegister')->name("register.freelance");
 // Route::group(['middleware'=>'auth'],function () {
-    Route::get('freelance.logout', 'Freelance\FreelanceController@logout')->name('freelance.logout');
+    Route::get('freelance/logout', 'Freelance\FreelanceController@logout')->name('freelance.logout');
     Route::get('freelance', 'Freelance\FreelanceController@index')->name('freelance');
-    Route::get('freelance.profile', 'Freelance\FreelanceController@profile')->name('freelance.profile');
-    Route::get('freelance.r.transaksi', 'Freelance\FreelanceController@rtransaksi')->name('freelance.r.transaksi');
-    Route::get('freelance.r.affiliate', 'Freelance\FreelanceController@raffiliate')->name('freelance.r.affiliate');
-    Route::get('freelance.deposite', 'Freelance\FreelanceController@deposite')->name('freelance.deposite');
-    
+    Route::get('freelance/profile', 'Freelance\FreelanceController@profile')->name('freelance.profile');
+    Route::get('freelance/r/transaksi', 'Freelance\FreelanceController@rtransaksi')->name('freelance.r.transaksi');
+    Route::get('freelance/r/affiliate', 'Freelance\FreelanceController@raffiliate')->name('freelance.r.affiliate');
+    Route::get('freelance/deposite', 'Freelance\FreelanceController@deposite')->name('freelance.deposite');
+    Route::get('freelance/update', 'Freelance\FreelanceController@getUpdateProfile')->name("freelance.profile.update");
 // });
 
 
@@ -83,9 +83,9 @@ Route::middleware(['vendor.dashboard'])->group(function () {
         Route::get('stock', 'Frontend\StockController@index')->name('stock');
         Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
         // Order
-        Route::get('vendor.order', 'Vendor\OrderController@index')->name('vendor.order');
-        Route::get('vendor.order.details/{order_id}', 'Vendor\OrderController@detail_order')->name('vendor.order.details');
-
+        Route::get('vendor/order', 'Vendor\OrderController@index')->name('vendor.order');
+        Route::get('vendor/order/details/{order_id}', 'Vendor\OrderController@detail_order')->name('vendor.order.details');
+        Route::get("vendor/order/update-status/{order}",'Vendor\OrderController@update_status')->name("vendor.order.update.status");
         //deposit
         Route::get('vendor.deposit', 'Vendor\DepositController@index')->name('vendor.deposit');
     });

@@ -17,25 +17,23 @@ class CheckoutController extends Controller
 {
 
     public function getVendorDalamKota($prov,$kota,Request $request) {
-        $vendor_dalam_kota = [];
-        $vendors = VendorModel::where("kota_id",$kota)->get();
-        count($vendors) < 1
-        ? $vendors = VendorModel::where("prov_id",$prov)->get()
-        : "";
-        foreach ($vendors as $v) {
-            foreach ($request->qty as $key => $stok) {
-                $product = StokModel::where("user_id", $v->user_id)->where("product_stok", ">=", $stok)->where("product_id", $request->product_id[$key])->first();
-                if ($product !== null) {
-                    $barang = ProductModel::where("product_id",$product->product_id)->first();
-                    array_push($vendor_dalam_kota, [
-                        "vendor" => $v,
-                        "product" => $product,
-                        "barang" => $barang
-                    ]);
-                }
+     //   SELECT * FROM tb_vendor WHERE user_id IN (SELECT user_id FROM tb_stok WHERE product_stok > 90 AND tb_vendor.kota_id = 345)
+        $query = "SELECT * FROM tb_vendor WHERE user_id IN (";
+        $sub_query = "SELECT user_id FROM tb_stok WHERE ";
+        foreach ($request->qty as $key => $qty) {
+            if($key === 0) {
+                $sub_query .= "product_stok > ".$qty;
+            } else {
+                $sub_query .= " AND product_stok > ".$qty;
             }
         }
-        return $vendor_dalam_kota;
+        $sub_query .= " AND tb_vendor.kota_id = ".$kota.")";
+        $vendor = null;
+        $vendor = DB::select($query.$sub_query);
+        if(count($vendor) < 1) {
+            $vendor = DB::select("SELECT * FROM tb_vendor WHERE prov_id = $prov");
+        }
+        return $vendor;
     }
 
     public function checkoutTahap1(Request $request) {
@@ -70,7 +68,7 @@ class CheckoutController extends Controller
             "kota_id" => $request->kota,
             "order_status" => "waiting",
             "combined_price" => (int)$request->jenis_kirim + (int)$request->total
-        ]);  
+        ]);
 
         DB::transaction(function() use($request,$order) {
             // dd(Session::all());
@@ -79,7 +77,6 @@ class CheckoutController extends Controller
                 $product = StokModel::where("user_id", $request->vendor)->where("product_id",$request->product_id[$key])->first();
                 $tmp = DB::table("tb_tmp_details")->where("user_id", Session::get("costumer_id"))->where("product_id",$request->product_id[$key])->first();
 
-                // input order detail
                 OrderDetailsModel::create([
                     "order_id" => $order->order_id,
                     "product_id" => $request->product_id[$key],
@@ -91,7 +88,6 @@ class CheckoutController extends Controller
                 ]);
             }
         });
-        return redirect()
-                    ->route('home');
+        return redirect()->route('home');
     }
 }

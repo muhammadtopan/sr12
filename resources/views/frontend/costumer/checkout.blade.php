@@ -58,8 +58,8 @@
                             <label for="vendor_id">Vendor</label>
                             <div class="form-group">
                                 <select name="vendor" onchange="cekOngkir(this)" id="vendor" class="form-control">
-                                    @foreach ($multi_data as $v)
-                                        <option value="{{$v['vendor']->user_id}}">{{$v["vendor"]->nama_lengkap}}</option>
+                                    @foreach ($vendor as $v)
+                                        <option value="{{$v->user_id}}">{{$v->nama_lengkap}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -40,9 +40,9 @@
             let vendor = document.getElementById("vendor")
             let data = res.data
             let option = "";
-            
+
             data.forEach(d => {
-                option+= `<option value="${d.vendor.user_id}">${d.vendor.nama_lengkap}</option>`
+                option+= `<option value="${d.user_id}">${d.nama_lengkap}</option>`
             })
             vendor.innerHTML = option
         } catch (error) {
@@ -51,27 +51,28 @@
 
     }
 
+    let total = document.getElementById("total").innerText.split(",").join("")
+    localStorage.setItem("old", total)
+    document.getElementById("total").innerText = new Intl.NumberFormat().format(parseInt(total) + parseInt(data[0].costs[0].cost[0].value))
+
     async function cekOngkir(e) {
         let kota_value = kota.value
         let vendor_id = e.value
         try {
             let res = await axios.get('/api/cek-ongkir', {
                 params: {
-                    destination: kota_value,
+                    destination: document.getElementById("kota_id").value,
                     vendor: vendor_id
                 }
             })
             let data = res.data;
             let option = ""
+            console.log(data);
             data[0].costs.forEach(c => {
-                // console.log(c.cost);
                 option += `<option value="${c.cost[0].value}"> Ongkir: ${new Intl.NumberFormat().format(c.cost[0].value)} Deskripsi: ${c.description} Estimasi: ${c.cost[0].etd} hari </option>`
             })
             document.getElementById("jenis_kirim").innerHTML = option
             document.getElementById("jenis_kirim_container").style.display = "initial"
-
-            let total = document.getElementById("total").innerText.split(",").join("")
-            localStorage.setItem("old", total)
             document.getElementById("total").innerText = new Intl.NumberFormat().format(parseInt(total) + parseInt(data[0].costs[0].cost[0].value))
 
         } catch (error) {
