@@ -39,23 +39,6 @@
                                     <div class="blog-detail-desc">
                                         <p>{!! $articel->articel_isi !!}</p>
                                     </div>
-                                    <div class="blog-more">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="contact-title">
-                                                    <h4>Testimoni</h4>
-                                                </div>
-                                            </div>
-                                            @foreach($articelss as $no => $testimonies)
-                                            <div class="col-sm-4">
-                                                <a href="{{ route('testimon', $testimonies->testimony_id) }}">
-                                                    <img src="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}" alt="">
-                                                    <h5>{{ Str::limit($testimonies->testimony_judul,50) }}</h5>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                    </div>
                                 </div>
                             </div>
                         </div>
