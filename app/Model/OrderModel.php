@@ -14,6 +14,6 @@ class OrderModel extends Model
     protected $primaryKey = 'order_id';
     protected $fillable = [
       "user_id", "costumer_id", "invoice", "proof", "order_address", "kota_id",
-      "order_status", "combined_price"
+      "order_status", "combined_price", "noresi"
     ];
 }

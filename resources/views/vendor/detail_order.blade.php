@@ -34,39 +34,41 @@
                         </div>
                     @endif
                     <div class="card-header bg-dark py-3">
-                        <div class="d-flex justify-content-between">
-                            <h3 class="card-title">{{ $order_detail->costumer_name }}</h3>
-                            <h3 class="card-title">ID. Invoice {{ $order_detail->invoice }}</h3>
+                        <div class="d-flex">
+                            <h3 class="card-title ml-2 mr-2 ">Total: Rp {{ number_format($order_detail[0]->total_price) }}</h3>
+                            <h3 class="card-title ml-2 mr-2 ">Status: {{ $order_detail[0]->order_status }}</h3>
+                            <h3 class="card-title ml-2 mr-2 ">Costumer: {{ $order_detail[0]->costumer_name }}</h3>
+                            <h3 class="card-title ml-2 mr-2 ">Invoice: {{ $order_detail[0]->invoice }}</h3>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-12 text-right">
-                                @if( $order_detail->order_status != 'end' )
-                                    <button class="btn btn-info" data-toggle="tooltip" title="Terima Pesanan"><i class="fas fa-vote-yea"></i></button>
-                                    <button class="btn btn-secondary" data-toggle="tooltip" title="Resi"><i class="fas fa-paper-plane"></i></button>    
+                            <div class="col-lg-12 mb-3">
+                                @if( $order_detail[0]->order_status != 'end' )
+                                    @if ($order_detail[0]->order_status === "waiting")
+                                        <a  class="btn btn-info" data-toggle="tooltip" title="Terima Pesanan" href="{{route("vendor.order.update.status",$order_detail[0]->order_id)}}"><i class="fas fa-vote-yea"></i></a>
+                                    @endif
+                                    @if ($order_detail[0]->order_status === "processed")
+                                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-secondary"><i class="fas fa-paper-plane"></i></button>
+                                    @endif
                                     <button class="btn btn-warning" data-toggle="tooltip" title="Cetak Faktur"><i class="fas fa-file-invoice"></i></button>
                                     <button class="btn btn-danger" data-toggle="tooltip" title="Tolak Pesanan"><i class="fas fa-times-circle"></i></button>
                                 @else
                                     <button class="btn btn-warning" data-toggle="tooltip" title="Cetak Faktur"><i class="fas fa-file-invoice"></i></button>
                                 @endif
                             </div>
-                            <div class="col-md-4">
-                                <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top p-3" src="{{ asset('lte/dist/img/product/'.$order_detail->product_image) }}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4>{{ $order_detail->product_name }}</h4>
-                                        <p class="card-text">Rp {{ number_format($order_detail->product_price) }}</p>
+                            @foreach ($order_detail as $od)
+                                <div class="col-md-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top p-3" src="{{ asset('lte/dist/img/product/'.$od->product_image) }}" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h4>{{ $od->product_name }}</h4>
+                                            <p class="card-text">Rp {{ number_format($od->product_price) }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <h3>Rp {{ number_format($order_detail->total_price) }}</h3>
-                            </div>
-                            <div class="col-md-2">
-                                <h5>{{ $order_detail->order_status }}</h5>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -79,5 +81,33 @@
     <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+
+<!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Input Resi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{route("vendor.order.update.status",$order_detail[0]->order_id)}}" method="get">
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="" class="form-label">No.Resi</label>
+                        <input type="text" name="noresi"  class="form-control">
+                    </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Input No.Resi</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 @endsection

@@ -8,18 +8,11 @@
             let res = await axios.get("http://localhost:8000/api/check-referal", {params:{referal:arr[4]}})
             const {status} = res.data;
             if(status === "ok") {
-                let referal = sessionStorage.getItem("referal")
-                if(referal === null) {
-                    sessionStorage.setItem("referal",arr[4])
-                }
+                sessionStorage.setItem("referal",arr[4])
+            } else {
+                window.history.pushState("","",`/user/register/`);
             }
-            return
         })()
-    } else {
-        // ganti url jika ada kode referal
-        let referal = sessionStorage.getItem("referal")
-        console.log(referal);
-        window.history.pushState("","",`/user/register/referal/${referal}`);
     }
 
 </script>

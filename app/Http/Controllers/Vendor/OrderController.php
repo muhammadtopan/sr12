@@ -18,99 +18,48 @@ class OrderController extends Controller
                         ->where('tb_order.user_id', Session::get('user_id'))
                         ->where('order_status', 'waiting')
                         ->get();
-        
+
         $orderanh = DB::table('tb_order')
                         ->where('tb_order.user_id', Session::get('user_id'))
                         ->where('order_status', 'end')
                         ->get();
-    
-        return view('vendor/order', 
+
+        return view('vendor/order',
         [
             'orderan' => $orderan,
             'orderanh' => $orderanh
         ]
     );
     }
-    
+
     public function detail_order($order)
     {
         $order_detail = DB::table('tb_order_details')
                         ->join('tb_order','tb_order_details.order_id', '=', 'tb_order.order_id')
                         ->join('tb_product','tb_order_details.product_id', '=', 'tb_product.product_id')
                         ->join('tb_costumer','tb_order.costumer_id', '=', 'tb_costumer.costumer_id')
-                        ->where('tb_order_details.order_details_id', $order)
                         ->get();
         // dd($order_detail[0]);
         return view('vendor/detail_order',
         [
-            'order_detail' => $order_detail[0]
+            'order_detail' => $order_detail
         ]
     );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function update_status(Request $request, $order) {
+        $order = OrderModel::where("order_id",(int)$order)->first();
+        if($order->order_status === "waiting") {
+            $order->update([
+                "order_status" => "processed"
+            ]);
+        } else if($order->order_status === "processed") {
+            $order->update([
+                "order_status" => "sent",
+                "noresi" => (int)$request['noresi']
+            ]);
+        }
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

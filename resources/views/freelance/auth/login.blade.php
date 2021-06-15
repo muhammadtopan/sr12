@@ -56,10 +56,10 @@
                         </div> -->
                     </div>
                 </div>
-                <div class="col-lg-4 offset-lg-1">
+                <div class="col-lg-6 offset-lg-1">
                     <div class="register-form login-form">
                         <h3>Daftar Freelance</h3>
-                            <form action="{{route("register.freelance")}}" method="post">
+                            <form action="{{route("register.freelance")}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @if(session('errors'))
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -74,36 +74,130 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="group-input">
-                                    <label for="username">Username <span style="color: red">*</span></label>
-                                    <input type="text" placeholder="Username" id="username" name="username" value="{{ old('username') ?? $umkm->username ?? '' }}" required>
-                                </div>
-                                <div class="group-input">
-                                    <label for="user_email">Email <span style="color: red">*</span></label>
-                                    <input type="text" placeholder="Email" id="user_email" name="user_email" value="{{ old('user_email') ?? $umkm->user_email ?? '' }}" required>
-                                </div>
-                                <div class="group-input">
-                                    <label for="user_phone">Phone <span style="color: red">*</span></label>
-                                    <input type="text" placeholder="082386464060" id="user_phone" name="user_phone" value="{{ old('user_phone') ?? $umkm->user_phone ?? '' }}" required>
-                                </div>
-                                <div class="group-input d-none">
-                                    <label for="user_level">Jenis Mitra <span style="color: red">*</span></label>
-                                    <select name="user_level" id="user_level" class="form-control @error('user_level') {{ 'is-invalid' }} @enderror">
-                                        <option value="Freelance" selected>Freelance</option>
-                                    </select>
-                                </div>
-                                <div class="group-input">
-                                    <label for="user_password">Password <span style="color: red">*</span></label>
-                                    <input type="password" placeholder="Password" id="user_password" name="user_password" value="{{ old('user_password') ?? $umkm->user_password ?? '' }}">
-                                </div>
-                                <div class="group-input">
-                                    <label for="password_confirmation">Confirm Password <span style="color: red">*</span></label>
-                                    <input type="password" placeholder="Password" id="password_confirmation" name="password_confirmation">
-                                </div>
-                                <div class="group-input gi-check">
-                                    <div class="gi-more">
-                                        <a href="{{ route('partnership') }}" class="forget-pass"> <span style="color: red">*</span> Syarat dan Ketentuan</a>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="username">Username <span style="color: red">*</span></label>
+                                            <input type="text" placeholder="Username" id="username" name="username" value="{{ old('username') ?? $umkm->username ?? '' }}" required>
+                                        </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="nama_lengkap">Nama Lengkap <span style="color: red">*</span></label>
+                                            <input type="text" placeholder="Nama Lengkap" id="nama_lengkap" name="nama_lengkap" value="{{ old('nama_lengkap') ?? $umkm->nama_lengkap ?? '' }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="user_email">Email <span style="color: red">*</span></label>
+                                            <input type="text" placeholder="Email" id="user_email" name="user_email" value="{{ old('user_email') ?? $umkm->user_email ?? '' }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="nik">NIK <span style="color: red">*</span></label>
+                                            <input type="number" placeholder="NIK" id="nik" name="nik" value="{{ old('nik') ?? $umkm->nik ?? '' }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="user_phone">Phone <span style="color: red">*</span></label>
+                                            <input type="text" placeholder="082386464060" id="user_phone" name="user_phone" value="{{ old('user_phone') ?? $umkm->user_phone ?? '' }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="tgl_lahir">Tanggal lahir <span style="color: red">*</span></label>
+                                            <input type="date" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir') ?? $umkm->tgl_lahir ?? '' }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="user_level">Jenis Mitra <span style="color: red">*</span></label>
+                                            <select name="user_level" id="user_level" class="form-control @error('user_level') {{ 'is-invalid' }} @enderror">
+                                                <option value="Freelance" selected>Freelance</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="group-input">
+                                           <label for="" class="form-label">Alamat Lengkap</label>
+                                           <input type="text" name="alamat_lengkap" id="" class="form-control">
+                                       </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="user_password">Password <span style="color: red">*</span></label>
+                                            <input type="password" placeholder="Password" id="user_password" name="user_password" value="{{ old('user_password') ?? $umkm->user_password ?? '' }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="password_confirmation">Confirm Password <span style="color: red">*</span></label>
+                                            <input type="password" placeholder="Password" id="password_confirmation" name="password_confirmation">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-inpur">
+                                            <label for="" class="form-label">Foto Mitra</label>
+                                            <input type="file" name="foto_mitra" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="" class="form-label">Selfie KTP Mitra</label>
+                                            <input type="file" name="selfie_ktp" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="group-input">
+                                            <label for="" class="form-label">Bank</label>
+                                            <select class="form-control" name="bank" id="">
+                                                <option value="{{null}}" selected disabled>Pilih Bank</option>
+                                                <option value="BRI">BRI</option>
+                                                <option value="BNI">BNI</option>
+                                                <option value="BCA">BCA</option>
+                                                <option value="BCA">BCA</option>
+                                                <option value="MANDIRI">MANDIRI</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="" class="form-label">Nama Pemilik Rekening</label>
+                                            <input type="text" name="nama_pemilik_rekening"  class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="group-input">
+                                            <label for="">No.Rekening</label>
+                                            <input type="number" name="no_rekening"  class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="group-input gi-check">
                                     <div class="gi-more">
                                         <label for="save-pass">
                                             Saya Sudah Baca Syarat dan Ketentuan Gabung Jadi Mitra
@@ -123,5 +217,5 @@
         </div>
     </div>
 
-    
+
 @endsection

@@ -31,25 +31,36 @@ public function index()
 
 public function profile()
     {
-        $data['active'] = 'profile';    
+        $referals = DB::table("referals")->where("user_id",Session::get("auth")->user_id)->first();
+        $data['referal'] = $referals->referal;
+        $data['active'] = 'profile';
+        $data['vendor'] = DB::table("tb_vendor")->where("user_id", Session::get("auth")->user_id)->first();
         return view('freelance/page/profile', $data);
+    }
+
+    public function getUpdateProfile() {
+        $data = [];
+        $data['user'] = Session::get('auth');
+        $data['vendor'] = DB::table("tb_vendor")->where("user_id",$data['user']->user_id)->first();
+        $data['active'] = "";
+        return view("freelance.page.update_profile",$data);
     }
 
 public function rtransaksi()
     {
-        $data['active'] = 'rtransaksi';    
+        $data['active'] = 'rtransaksi';
         return view('freelance/page/transaction', $data);
     }
 
 public function raffiliate()
     {
-        $data['active'] = 'raffiliate';    
+        $data['active'] = 'raffiliate';
         return view('freelance/page/affiliate', $data);
     }
 
 public function deposite()
     {
-        $data['active'] = 'deposite';    
+        $data['active'] = 'deposite';
         return view('freelance/page/deposite', $data);
     }
 
@@ -66,6 +77,22 @@ public function AksiLogin(FreelanceLogin $request) {
     public function AksiRegister(Request $request) {
         $register = new DashboardController();
         $data = $register->LoginMethod($request, new UserModel());
+
+        DB::table("tb_vendor")->insert([
+            "user_id" => $data->user_id,
+            "nama_lengkap" => $request->nama_lengkap,
+            "nik" => $request->nik,
+            "tgl_lahir" => $request->tgl_lahir,
+            "foto_mitra" => $request->file("foto_mitra")->store("foto_mitra"),
+            "alamat_lengkap" => $request->alamat_lengkap,
+            "prov_id" => 0,
+            "kota_id" => 0,
+            "bank" => $request->bank,
+            "no_rekening" => $request->no_rekening,
+            "saldo" => 0,
+            "nama_pemilik_rekening" => $request->nama_pemilik_rekening,
+            "selfie_ktp" => $request->file("selfie_ktp")->store("selfie_ktp")
+        ]);
 
         // input referal code
         Referal::create(["user_id" => $data->user_id, "referal" => $data->username.\Str::random(5)]);

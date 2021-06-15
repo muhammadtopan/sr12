@@ -98,7 +98,7 @@ class CartController extends Controller
             "kota" => $kota,
             "provinsi" => $provinsi,
             'total_price' => $total_price,
-            "multi_data" => $vendor_dalam_kota,
+            "vendor" => $vendor_dalam_kota,
             "qty" => $request->qty,
             "product_id" => $request->product_id
         ]);
