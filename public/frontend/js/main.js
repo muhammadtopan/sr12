@@ -43,10 +43,11 @@
         margin: 0,
         nav: true,
         items: 1,
-        dots: false,
+        dots: true,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
-        navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+        // navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+        navText: false,
         smartSpeed: 1200,
         autoHeight: false,
         autoplay: true,
@@ -104,7 +105,7 @@
     });
 
     /*------------------
-        Product Slider
+        All Product Slider
     --------------------*/
    $(".allproduct-slider").owlCarousel({
         loop: true,
@@ -127,6 +128,32 @@
             },
             1200: {
                 items: 6,
+            }
+        }
+    });
+
+    /*------------------
+        All Product Slider
+    --------------------*/
+   $(".package-slider").owlCarousel({
+        loop: true,
+        margin: 15,
+        center:false,
+        nav: true,
+        // items: 4,
+        dots: false,
+        responsive: {
+            0: {
+                items: 3,
+            },
+            576: {
+                items: 7,
+            },
+            992: {
+                items: 7,
+            },
+            1200: {
+                items: 7,
             }
         }
     });
@@ -287,12 +314,12 @@
         max: maxPrice,
 		values: [minPrice, maxPrice],
 		slide: function (event, ui) {
-			minamount.val('$' + ui.values[0]);
-			maxamount.val('$' + ui.values[1]);
+			minamount.val('Rp ' + ui.values[0]);
+			maxamount.val('Rp ' + ui.values[1]);
 		}
 	});
-	minamount.val('$' + rangeSlider.slider("values", 0));
-    maxamount.val('$' + rangeSlider.slider("values", 1));
+	minamount.val('Rp ' + rangeSlider.slider("values", 0));
+    maxamount.val('Rp ' + rangeSlider.slider("values", 1));
 
     /*-------------------
 		Radio Btn
@@ -344,5 +371,14 @@
 		}
 		$button.parent().find('input').val(newVal);
 	});
+
+    /*-------------------
+		Syarat Mitra
+	--------------------- */
+    $('#syarat').scrollspy({ target: '#navbar-example3' })
+
+    $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this).scrollspy('refresh')
+    })
 
 })(jQuery);

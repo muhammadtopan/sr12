@@ -28,12 +28,22 @@ class HomeController extends Controller
                     ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_product.product_type','best')
                     ->get();
+        
+        $paket = DB::table('tb_package_category')->get();
 
         $productnew = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_product.product_type','new')
                     ->get();
+        
+        $productternew[0] = DB::table('tb_product')
+                    ->where('tb_product.product_type','new')
+                    ->first();
+
+        $productterbest[0] = DB::table('tb_product')
+                    ->where('tb_product.product_type','best')
+                    ->first();
 
         $category = CategoryModel::all();
         $testimony = TestimonyModel::take(10)->get();
@@ -47,7 +57,10 @@ class HomeController extends Controller
                 'testimony' => $testimony,
                 'allproduct' => $allproduct,
                 'product' => $product,
-                'productnew' => $productnew
+                'paket' => $paket,
+                'productnew' => $productnew,
+                'productternew' => $productternew[0],
+                'productterbest' => $productterbest[0]
             ]
         );
     }
@@ -57,6 +70,17 @@ class HomeController extends Controller
         $active = "about";
         return view(
             'frontend/page/about',
+            [
+                'active' => $active
+            ]
+        );
+    }
+
+    public function syarat_mitra()
+    {
+        $active = "syarat";
+        return view(
+            'frontend/page/syarat',
             [
                 'active' => $active
             ]
