@@ -78,7 +78,25 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    
+                    <div class="card card-primary card-outline">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Nama Lengkap</label>
+                                    <h5>Nama</h5>
+                                    <label>Email</label>
+                                    <h5>email@email.com</h5>
+                                    <label>No. HP</label>
+                                    <h5>0813654648</h5>
+                                    <label>Tanggal Lahir</label>
+                                    <h5>05-05-2002</h5>
+                                    <label>Alamat Lengkap</label>
+                                    <h5>Ini Alamat</h5>
+                                    <a href="#" class="btn btn-info btn-block"><i class="fa fa-user"></i> <b>Ubah Data Diri</b></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div><!--/. container-fluid -->
