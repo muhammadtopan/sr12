@@ -39,7 +39,10 @@ Route::post('register/freelance', 'Freelance\FreelanceController@AksiRegister')-
     Route::get('freelance/r/affiliate', 'Freelance\FreelanceController@raffiliate')->name('freelance.r.affiliate');
     Route::get('freelance/deposite', 'Freelance\FreelanceController@deposite')->name('freelance.deposite');
     Route::get('freelance/update', 'Freelance\FreelanceController@getUpdateProfile')->name("freelance.profile.update");
-// });
+    Route::put('freelance/update', 'Freelance\FreelanceController@putUpdateProfile');
+    Route::get('freelance/update/photo-profile', 'Freelance\FreelanceController@GetUpdatePhoto')->name("vendor.update.photo.profile");
+    Route::put('freelance/update/photo-profile', 'Freelance\FreelanceController@PutUpdatePhoto');
+    // });
 
 
 //Costumer Auth

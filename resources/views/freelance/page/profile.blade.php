@@ -52,15 +52,15 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="img-fluid img-circle"
-                                    src="{{asset('lte/dist/img/a.jpg')}}"
+                                <img style="width: 100px;height:100px" class="img-fluid img-circle"
+                                    src="{{asset('/dokumen/'.$vendor->foto_mitra)}}"
                                     alt="User profile picture">
                             </div>
                             <h3 class="profile-username text-center">{{$vendor->nama_lengkap}}</h3>
 
                             <p class="text-muted text-center">{{$vendor->nama_lengkap}}</p>
 
-                            <a href="#" class="btn btn-primary btn-block"><i class="fa fa-image"></i> <b>Ubah Foto</b></a>
+                            <a href="{{route("vendor.update.photo.profile")}}" class="btn btn-primary btn-block"><i class="fa fa-image"></i> <b>Ubah Foto</b></a>
                             <a href="#" class="btn btn-warning btn-block"><i class="fa fa-key"></i> <b>Ubah Sandi</b></a>
                         </div>
                     </div>
