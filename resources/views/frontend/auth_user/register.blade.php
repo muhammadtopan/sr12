@@ -119,8 +119,8 @@
                                                             <input type="password" placeholder="Password" id="costumer_password" name="costumer_password">
                                                         </div>
                                                         <div class="group-input">
-                                                            <label for="password_confirmation">Confirm Password <span style="color: red">*</span></label>
-                                                            <input type="password" placeholder="Password" id="password_confirmation" name="password_confirmation">
+                                                            <label for="costumer_password_confirmation">Confirm Password <span style="color: red">*</span></label>
+                                                            <input type="password" placeholder="Password" id="password_confirmation" name="costumer_password_confirmation">
                                                         </div>
                                                         <!-- <div class="group-input gi-check">
                                                             <div class="gi-more">

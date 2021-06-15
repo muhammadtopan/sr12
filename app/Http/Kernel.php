@@ -69,6 +69,8 @@ class Kernel extends HttpKernel
         'vendor.dashboard' => \App\Http\Middleware\VendorDashboard::class,
         'user.login' => \App\Http\Middleware\UserLogin::class,
         'vendor.dashboard' => \App\Http\Middleware\VendorDashboard::class,
-        'cek_profile' => \App\Http\Middleware\cek_profile::class
+        'cek_profile' => \App\Http\Middleware\cek_profile::class,
+        'login_freelance' => \App\Http\Middleware\LoginFreelancer::class,
+        'unlogin_freelance' => \App\Http\Middleware\UnloginFreelancer::class,
     ];
 }

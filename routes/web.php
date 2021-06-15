@@ -28,10 +28,13 @@ Route::get('login.mitra', 'HomeController@frontMitra')->name('login.mitra');
 Route::get('tool', 'HomeController@tool')->name('tool');
 
 //login freelance
-Route::get('login/freelance', 'Freelance\FreelanceController@login')->name('login.freelance');
-Route::post('login/freelance', 'Freelance\FreelanceController@AksiLogin');
-Route::post('register/freelance', 'Freelance\FreelanceController@AksiRegister')->name("register.freelance");
-// Route::group(['middleware'=>'auth'],function () {
+Route::group(["middleware" => "unlogin_freelance"], function() {
+    Route::get('login/freelance', 'Freelance\FreelanceController@login')->name('login.freelance');
+    Route::post('login/freelance', 'Freelance\FreelanceController@AksiLogin');
+    Route::post('register/freelance', 'Freelance\FreelanceController@AksiRegister')->name("register.freelance");
+});
+
+Route::group(["middleware" => "login_freelance"],function() {
     Route::get('freelance/logout', 'Freelance\FreelanceController@logout')->name('freelance.logout');
     Route::get('freelance', 'Freelance\FreelanceController@index')->name('freelance');
     Route::get('freelance/profile', 'Freelance\FreelanceController@profile')->name('freelance.profile');
@@ -42,6 +45,8 @@ Route::post('register/freelance', 'Freelance\FreelanceController@AksiRegister')-
     Route::put('freelance/update', 'Freelance\FreelanceController@putUpdateProfile');
     Route::get('freelance/update/photo-profile', 'Freelance\FreelanceController@GetUpdatePhoto')->name("vendor.update.photo.profile");
     Route::put('freelance/update/photo-profile', 'Freelance\FreelanceController@PutUpdatePhoto');
+});
+// Route::group(['middleware'=>'auth'],function () {
     // });
 
 
