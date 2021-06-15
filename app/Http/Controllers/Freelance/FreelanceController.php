@@ -11,6 +11,7 @@ use App\Model\Referal;
 use App\Model\UserModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class FreelanceController extends Controller
 {
@@ -44,6 +45,62 @@ public function profile()
         $data['vendor'] = DB::table("tb_vendor")->where("user_id",$data['user']->user_id)->first();
         $data['active'] = "";
         return view("freelance.page.update_profile",$data);
+    }
+
+    public function putUpdateProfile(Request $request) {
+        $request->validate([
+            "nama_lengkap" => ["required"],
+            "username" => ["required"],
+            "email" => ["required"],
+            "alamat_lengkap" => ["required"],
+            "nik" => ["required"],
+            "no_telpon" => ["required"],
+            "tgl_lahir" => ["required"],
+            "bank" => ["required"],
+            "nama_pemilik_rekening" => ["required"],
+            "no_rekening" => ["required"]
+        ]);
+
+        if($request->nama_lengkap !== $request->nama_pemilik_rekening) {
+            return redirect()->back();
+        } else {
+            DB::transaction(function() use($request) {
+                // update user
+                DB::table("tb_user")->where("user_id",Session::get("auth")->user_id)->update([
+                    "username" => $request->username,
+                    "user_email" => $request->email,
+                    "user_phone" => $request->no_telpon,
+                ]);
+
+                // update vendor
+                DB::table("tb_vendor")->where("user_id", Session::get("auth")->user_id)->update([
+                    "nama_lengkap" => $request->nama_lengkap,
+                    "nik" => $request->nik,
+                    "tgl_lahir" => $request->tgl_lahir,
+                    "alamat_lengkap" => $request->nama_lengkap,
+                    "bank" => $request->bank,
+                    "no_rekening" => $request->no_rekening,
+                    "nama_pemilik_rekening" => $request->nama_pemilik_rekening
+                ]);
+            });
+        }
+        return redirect()->back();
+    }
+
+    public function GetUpdatePhoto() {
+        $data['vendor'] = DB::table("tb_vendor")->where("user_id",Session::get("auth")->user_id)->first();
+        $data['active'] = "";
+        return view("freelance.page.update_photo", $data);
+    }
+
+    public function PutUpdatePhoto(Request $request) {
+        $request->validate(["foto_mitra" => "required"]);
+        $vendor = DB::table("tb_vendor")->where("user_id", Session::get("auth")->user_id)->first();
+        Storage::delete($vendor->foto_mitra);
+        DB::table("tb_vendor")->where("user_id",Session::get("auth")->user_id)->update([
+            "foto_mitra" => $request->file("foto_mitra")->store("foto_mitra")
+        ]);
+        return redirect()->back();
     }
 
 public function rtransaksi()
@@ -102,7 +159,7 @@ public function AksiLogin(FreelanceLogin $request) {
     function logout(Request $request)
     {
         $request->session()->flush();
-        return redirect('login.freelance')->with("pesan", "Anda Sudah Logout");
+        return redirect()->route('login.freelance')->with("pesan", "Anda Sudah Logout");
     }
 
 }
