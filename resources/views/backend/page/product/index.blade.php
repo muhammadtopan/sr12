@@ -324,7 +324,7 @@
 
     function cekNew(product_id, ceklis) {
         if (ceklis.checked) {
-            // alert("ceklis Dihidupkan")
+            // alert("ceklis Dihidupkan")   
             axios.post("{{route('product.new')}}", {
                 'id': product_id,
             }).then(function(res) {

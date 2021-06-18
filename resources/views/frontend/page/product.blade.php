@@ -30,7 +30,8 @@
                                 <div class="bc-item">
                                     <label for="ctglist{{ $ctglist->category_id }}">
                                         {{ $ctglist->category_name }}
-                                        <input type="checkbox" id="ctglist{{ $ctglist->category_id }}">
+                                        <input type="checkbox" id="ctglist{{ $ctglist->category_id }}" 
+                                        onclick="kategori(<?= $ctglist->category_id ?>,this)">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
@@ -114,5 +115,7 @@
         </div>
     </section>
     <!-- Product Shop Section End -->
+
+    <script src="{{asset('frontend/js/filter_product.js')}}"></script>
 
 @endsection

@@ -217,4 +217,9 @@ class HomeController extends Controller
             ]
         );
     }
+
+    public function kategori(Request $request)
+    {
+        
+    }
 }

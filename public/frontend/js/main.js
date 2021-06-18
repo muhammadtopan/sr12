@@ -64,10 +64,10 @@
         autoHeight:true,
         responsive:{
             0:{
-                items:7
+                items:3
             },
             600:{
-                items:7
+                items:3
             },
             1000:{
                 items:7
