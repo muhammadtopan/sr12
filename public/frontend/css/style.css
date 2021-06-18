@@ -99,7 +99,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #fff;
+	color: #e7ab3c;
 }
 
 ul,
@@ -3379,15 +3379,17 @@ ol {
 }
 
 .blog-details-inner .blog-quote {
-	margin-bottom: 65px;
+	margin-top: 25px;
 }
+
+
 
 .blog-details-inner .blog-quote p {
 	position: relative;
 	color: #252525;
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 700;
-	line-height: 30px;
+	line-height: 20px;
 	padding-left: 32px;
 }
 
@@ -3402,7 +3404,7 @@ ol {
 	position: absolute;
 	left: 0;
 	top: 0;
-	height: 88px;
+	height: 44px;
 	width: 3px;
 	background: #e7ab3c;
 	content: "";
@@ -4122,7 +4124,7 @@ ol {
 @media only screen and (max-width: 767px) {
 	.instagram-photo .insta-item {
 		width: 50%;
-		height: 300px;
+		/* height: 300px; */
 	}
 	.copyright-reserved .copyright-text {
 		float: none;

@@ -64,4 +64,300 @@
         </div>
     </section>
 
+    <!-- PROFIL COMPANY SR12 Begin -->
+    <section class="latest-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>PROFIL COMPANY SR12</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-blog">
+                        <div class="latest-text">
+                            <a href="#">
+                                <h4>SR12 Herbal Skincare adalah</h4>
+                            </a>
+                            <p>PT. SR12 Herbal Kosmetik adalah perusahaan yang bergerak di Bidang Herbal & skincare. Didirikan pada tahun 2015 oleh Tony Firmansyah, S.Farm., Apt. & Asrianty Salam, S.Farm. PT. SR12 Herbal Perkasa saat ini memiliki 3 pabrik yang terletak di provinsi Jawa Barat, dan ditangani oleh tenaga profesional di bidangnya.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-blog">
+                        <div class="latest-text">
+                            <a href="#">
+                                <h4>Apakah Produk SR12 Aman & Halal?</h4>
+                            </a>
+                            <p>Produk-produk yang dipasarkan oleh perusahaan merupakan produk yang telah melalui serangkaian uji dari beberapa saintifis yang bersertifikasi, teruji di Laboratorium Sucofindo dan bebas dari Mercury & Hydroquinon serta telah terdaftar di <a href="#"> BPOM RI.</a> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-blog">
+                        <div class="latest-text">
+                            <a href="#">
+                                <h4>Produk SR12 dan Manfaatnya</h4>
+                            </a>
+                            <p>Produk SR12 Herbal Skincare memiliki banyak varian yang semuanya memiliki fungsi masing-masing sesuai dengan peruntukannya. Konsultasikan permasalahan yang kamu alami agar kami bisa merekomendasikan produk yang tepat sesuai dengan jenis dan masalah kulitmu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PROFIL COMPANY SR12 End -->
+
+    <!-- SR12 HERBAL SKINCARE Begin -->
+    <section class="latest-blog spad">
+        <div class="container blog-details-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>SR12 HERBAL SKINCARE</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-post">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 prev-blog mb-4">
+                        <div class="pb-pic">
+                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                        </div>
+                        <div class="pb-text">
+                            <span>Senior Distributor Resmi SR12 Skincare</span>
+                            <H6>Jaminan produk original, legal, resmi, dan ber-BPOM Mitra resmi tersebar setiap Kota/Kabupaten</H6>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 prev-blog mb-4">
+                        <div class="pb-pic">
+                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                        </div>
+                        <div class="pb-text">
+                            <span>Diskon Reseler</span>
+                            <H6>Mitra reseler mendapatkan diskon 20% dari setiap pembelanjaan. Berpeluang menjadi Mitra (Vendor) SR12 Herbal Store</H6>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 prev-blog mb-4">
+                        <div class="pb-pic">
+                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                        </div>
+                        <div class="pb-text">
+                            <span>Konsultasi Gratis</span>
+                            <H6>Sampaikan keluhan permasalahan yang dialami Akan dilayani oleh mitra/konsultan SR12 yang berpengalaman</H6>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 prev-blog mb-4">
+                        <div class="pb-pic">
+                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                        </div>
+                        <div class="pb-text">
+                            <span>Peluang Agen</span>
+                            <H6>Mitra Agen mendapatkan diskon lebih besar dan berpeluang besar menjadi pemasok/ distributor area setiap Kota/ Kabupaten</H6>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 prev-blog mb-4">
+                        <div class="pb-pic">
+                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                        </div>
+                        <div class="pb-text">
+                            <span>Bimbingan Bisnis</span>
+                            <H6>Bimbingan bisnis akan dibantu oleh Senior Distributor Manfaatkan kebutuhan produk menjadi peluang bisnis</H6>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 prev-blog mb-4">
+                        <div class="pb-pic">
+                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                        </div>
+                        <div class="pb-text">
+                            <span>Peluang Distributor</span>
+                            <H6>Terbuka untuk semua mitra SR12 Ada bimbingan dan konsultasi khusus</H6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SR12 HERBAL SKINCARE End -->
+
+    <!-- SENIOR DISTRIBUTOR SR12 HERBAL SKINCARE Begin -->
+    <section class="latest-blog spad">
+        <div class="container blog-details-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>SENIOR DISTRIBUTOR SR12 HERBAL SKINCARE</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-detail-desc">
+                <p>
+                    SR12 Herbal Skincare adalah perusahaan yang bergerak menumbuhkembangkan ekonomi masyarakat Indonesia. Membuka peluang usaha dan bisnis untuk setiap orang yang mau berjuang dan siap untuk tumbuh, dimana peluang Distributor terbuka lebar untuk semua Mitra SR12. Kami merupakan Senior Distributor SR12 sejak 2017 dan siap membantu mitra-mitra baru yang ingin bergabung dan tumbuh bersama kami.
+                </p>
+                <p>
+                    Kami membuka kesempatan seluas-luasnya untuk kamu yang beniat untuk menjadi mitra kami. Kesempatan bergabung menjadi mitra SR12 memiliki keuntungan lebih dibanding jika kamu hanya sebagai konsumen. Kami memiliki sistem dan bimbingan mitra yang bergabung bersama kami. kamu dapat memulainya sesuai posisi mitra yang sesuai dengan Passion bisnismu.
+                </p>
+            </div>
+            <div class="blog-large-pic">
+                <img src="{{asset('frontend/img/seniordu.png')}}" alt="">
+            </div>
+        </div>
+    </section>
+    <!-- SENIOR DISTRIBUTOR SR12 HERBAL SKINCARE End -->
+
+    <!-- KEUNTUNGAN BELANJA DI MARKETPLACE SR12 HERBAL STORE Begin -->
+    <section class="latest-blog spad">
+        <div class="container blog-details-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>KEUNTUNGAN BELANJA DI MARKETPLACE SR12 HERBAL STORE</h2>
+                    </div>
+                    <div class="row">
+                        <div class="blog-quote col-lg-6 col-md-6">
+                            <p>
+                                Mendapatkan akun konsumen AKUN BELANJAKU sehingga bisa belanja produk SR12 dimana saja (melalui website marketplace SR12 Herbal Store)
+                            </p>
+                            <p>
+                                Bisa mendapatkan produk SR12 dari Mitra terdekat di setiap Kota/Kabupaten di seluruh Indonesia
+                            </p>
+                            <p>
+                                Biaya ongkir lebih murah karena produk dikirim dari mitra terdekat
+                            </p>
+                            <p>
+                                Mendapatkan Voucher Point dari setiap total pembelanjaan dan bisa ditukarkan dengan Give menarik untuk langganan setia SR12 Herbal Store
+                            </p>
+                            <p>
+                                Beli produk SR12 1 Pcs berpeluang menjadi Mitra SR12, khusus Marketer
+                            </p>
+                            <p>
+                                Dapat Sharing Profit sebesar 15% dari totalan omset produk (khusus Marketer)
+                            </p>
+                            <p>
+                                Sharing Profit dapat dicairkan setiap awal bulan sesuai syarat dan ketentuan Marketer
+                            </p>
+                            <p>
+                                Bisa ikut jualan dan promosi melalui sistem dropship (Hubungi admin website)
+                            </p>
+                            <p>
+                                Mendapatkan konsultasi gratis manfaat produk dan konsultasi masalah kulit 
+                            </p>
+                            <p>
+                                Ketersediaan dan keaslian produk terjamin 
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="single-latest-blog">
+                                <div class="latest-text">
+                                    <a href="#">
+                                        <h4>Bisa Gabung Jadi Mitra SR12 Herbal Skincare</h4>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-detail-desc">
+                        <p>
+                        Kami membuka kesempatan seluas-luasnya untuk kamu yang berniat untuk menjadi mitra kami. Kesempatan bergabung menjadi mitra SR12 memiliki keuntungan lebih dibanding jika kamu hanya sebagai konsumen. Kami memiliki sistem dan bimbingan mitra atau member yang bergabung bersama kami. Kamu dapat memulainya dari tingkatan marketer, reseller, sub-agen, ataupun agen sr12 skincare. Untuk syarat dan ketentuan menjadi Mitra SR12 :
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-more">
+            <div class="row text-center">
+                <div class="col-sm-3">
+                    <img src="{{asset('frontend/img/blog/blog-detail-1.jpg')}}" alt="">
+                    <p>Untuk syarat lengkapnya <a href="#">(KLIK DISINI)</a></p>
+                </div>
+                <div class="col-sm-3">
+                    <img src="{{asset('frontend/img/blog/blog-detail-2.jpg')}}" alt="">
+                    <p>Untuk syarat lengkapnya <a href="#">(KLIK DISINI)</a></p>
+                </div>
+                <div class="col-sm-3">
+                    <img src="{{asset('frontend/img/blog/blog-detail-3.jpg')}}" alt="">
+                    <p>Untuk syarat lengkapnya <a href="#">(KLIK DISINI)</a></p>
+                </div>
+                <div class="col-sm-3">
+                    <img src="{{asset('frontend/img/blog/blog-detail-1.jpg')}}" alt="">
+                    <p>Untuk syarat lengkapnya <a href="#">(KLIK DISINI)</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- KEUNTUNGAN BELANJA DI MARKETPLACE SR12 HERBAL STORE End -->
+
+    <!-- National Distibutor Convention (NDC) Begin -->
+    <section class="latest-blog spad">
+        <div class="container blog-details-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>National Distibutor Convention (NDC)</h2>
+                    </div>
+                    <div class="blog-detail-desc">
+                        <p>
+                            National Distributor Convention atau lebih dikenal dengan istilah NDC. NDC merupakan agenda tahunan perusahaan SR12 Herbal Skincare yang biasanya dilaksanakan pada akhir-akhir tahun. Kegiatan NDC merupakan perwujudan kepedulian perusahaan terhadap mitra distributor utama SR12 di seluruh Indonesia. Kepedulian ini merupakan aplikasi dari meningkatkan kekuatan usaha secara bersama dan terus melakukan pembenahan-pembenahan setiap tahunnya sesuai dengan perubahan dan tuntutan era digital saat sekarang ini. Untuk setiap perubahan peraturan dan kebutuhan pasar, SR12 selalu melibatkan mitra Distributor di dalamnya.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- National Distibutor Convention (NDC) End -->
+
+    <!-- Kategori & Katalog Produk SR12 Skincare  Begin -->
+    <section class="latest-blog spad">
+        <div class="container blog-details-inner">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Kategori & Katalog Produk SR12 Skincare </h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="single-latest-blog">
+                                <p>
+                                    Berikut ini merupakan katalog produk sr12 terbaru dengan beberapa update harga dan penambahan produk baru. 
+                                    <p>
+                                        Kamu bisa mendownloadnya dengan mengisi form di bawah ini. 
+                                    </p> 
+                                    <p>
+                                        Katalog akan langsung dikirim lewat email kamu masing-masing. 
+                                    </p>
+                                    <p>
+                                        Pastikan emailmu aktif agar link download katalog sr12 skincare bisa kami kirimkan.
+                                    </p>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="leave-comment">
+                                <form action="#" class="comment-form">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input type="text" placeholder="Name">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" placeholder="Email">
+                                        </div>
+                                        <div class="col-lg-12 text-right">
+                                            <button type="submit" class="site-btn">Download</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-large-pic">
+                        <img src="{{asset('frontend/img/products.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Kategori & Katalog Produk SR12 Skincare  End -->
+
 @endsection

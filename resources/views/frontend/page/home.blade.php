@@ -281,60 +281,6 @@
     </div>
     <!-- Instagram Section End -->
 
-    <!-- Man Banner Section Begin -->
-    <!-- <section class="man-banner spad">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="filter-control">
-                        <ul>
-                        <li id="allproduct" class="active">All <a data-toggle="tab" href="#allproduct"></a></li>
-                            @foreach($category as $no => $categories2)
-                                <li id="li{{ $categories2->category_id }}">
-                                    <a data-toggle="tab" href="#{{ $categories2->category_id }}">
-                                    {{ $categories2->category_name }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="product-slider owl-carousel">
-                        @foreach($productnew as $no => $product2)
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <a href="{{ route('detail_product',$product2->product_id)}}">
-                                        <img src="{{ asset('lte/dist/img/product/' . $product2->product_image )}}" alt="">
-                                    </a>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                        <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">{{ $product2->category_name }}</div>
-                                    <a href="#">
-                                        <h5>{{ $product2->category_name }}</h5>
-                                    </a>
-                                    <div class="product-price">
-                                        {{ $product2->product_price }}
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1">
-                    <div class="product-large set-bg m-large" data-setbg="{{ asset('frontend/img/products/man-large.jpg') }}">
-                        <h2>New Poduct</h2>
-                        <a href="#">Discover More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Man Banner Section End -->
-
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
     
     <div class="modal fade bd-example-modal-lg" id="quickView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
