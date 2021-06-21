@@ -76,10 +76,13 @@
                                 <label for="bank">Pilih Bank</label>
                                 <select name="bank" id="" class="form-control">
                                     <option selected value="{{null}}"disabled>Pilih Bank</option>
-                                    <option value="BRI">BRI</option>
+                                    @foreach ($bank as $b)
+                                        <option value="{{$b->bank_name}}">{{$b->bank_name}}</option>
+                                    @endforeach
+                                    {{-- <option value="BRI">BRI</option>
                                     <option value="BNI">BNI</option>
                                     <option value="MANDIRI">MANDIRI</option>
-                                    <option value="BCA">BCA</option>
+                                    <option value="BCA">BCA</option> --}}
                                 </select>
                             </div>
                         </div>

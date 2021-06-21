@@ -67,7 +67,8 @@ class CheckoutController extends Controller
             "order_address" => $request->alamat_lengkap,
             "kota_id" => $request->kota,
             "order_status" => "waiting",
-            "combined_price" => (int)$request->jenis_kirim + (int)$request->total
+            "combined_price" => (int)$request->jenis_kirim + (int)$request->total,
+            "bank_name" => $request->bank
         ]);
 
         DB::transaction(function() use($request,$order) {

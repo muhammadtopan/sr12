@@ -52,6 +52,9 @@
                                     @if ($order_detail[0]->order_status === "processed")
                                         <button data-toggle="modal" data-target="#exampleModal" class="btn btn-secondary"><i class="fas fa-paper-plane"></i></button>
                                     @endif
+                                    @if ($order_detail[0]->order_status === "sent")
+                                        <a  class="btn btn-success" data-toggle="tooltip" title="Barang Sampai" href="{{route("vendor.order.update.status",$order_detail[0]->order_id)}}"><i class="fas fa-check"></i></a>
+                                    @endif
                                     <button class="btn btn-warning" data-toggle="tooltip" title="Cetak Faktur"><i class="fas fa-file-invoice"></i></button>
                                     <button class="btn btn-danger" data-toggle="tooltip" title="Tolak Pesanan"><i class="fas fa-times-circle"></i></button>
                                 @else
