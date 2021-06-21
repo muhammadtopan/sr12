@@ -82,6 +82,7 @@ class CartController extends Controller
         $user_id = session()->get("costumer_id");
         $user = DB::table("tb_costumer")->where("costumer_id",$user_id)->first();
         $vendor_dalam_kota = $checkout->getVendorDalamKota($user->prov_id,$user->kota_id, $request);
+        $bank = DB::table("tb_bank")->get();
         $cart = DB::table('tb_tmp_details')
                     ->join('tb_product', 'tb_product.product_id', '=', 'tb_tmp_details.product_id')
                     ->where('user_id', $user_id)
@@ -94,6 +95,7 @@ class CartController extends Controller
         [
             'active' => $active,
             "user" => $user,
+            "bank" => $bank,
             'cart' => $cart,
             "kota" => $kota,
             "provinsi" => $provinsi,
