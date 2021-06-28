@@ -103,21 +103,33 @@ public function profile()
         return redirect()->back();
     }
 
-public function rtransaksi()
+    public function rtransaksi()
     {
+        $transaksi = DB::table("tb_saldo")->where("desc","income")->where("user_id",Session::get("auth")->user_id)->orderBy("saldo_id", "desc")->get();
         $data['active'] = 'rtransaksi';
+        $data['transaksi'] = $transaksi;
         return view('freelance/page/transaction', $data);
     }
 
-public function raffiliate()
+    public function raffiliate()
     {
+        $referal = DB::table("referals")->where("user_id", Session::get("auth")->user_id)->first();
+        $costumer = DB::table("tb_costumer")->where("referal",$referal->referal)->get();
+        $order = [];
+        foreach ($costumer as $c) {
+            $order_referal = DB::table("tb_order")->where("costumer_id",$c->costumer_id)->where("order_status","end")->get();
+            $order [] = $order_referal;
+        }
+        $data['order'] = $order;
         $data['active'] = 'raffiliate';
         return view('freelance/page/affiliate', $data);
     }
 
 public function deposite()
     {
+        $transaksi = DB::table("tb_saldo")->where("desc","withdrawal")->where("user_id",Session::get("auth")->user_id)->orderBy("saldo_id", "desc")->get();
         $data['active'] = 'deposite';
+        $data['transaksi'] = $transaksi;
         return view('freelance/page/deposite', $data);
     }
 

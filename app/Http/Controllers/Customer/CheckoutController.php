@@ -70,14 +70,11 @@ class CheckoutController extends Controller
             "combined_price" => (int)$request->jenis_kirim + (int)$request->total,
             "bank_name" => $request->bank
         ]);
-
         DB::transaction(function() use($request,$order) {
-            // dd(Session::all());
             foreach ($request->qty as $key => $qty) {
                 // kurangi stok vendor
                 $product = StokModel::where("user_id", $request->vendor)->where("product_id",$request->product_id[$key])->first();
                 $tmp = DB::table("tb_tmp_details")->where("user_id", Session::get("costumer_id"))->where("product_id",$request->product_id[$key])->first();
-
                 OrderDetailsModel::create([
                     "order_id" => $order->order_id,
                     "product_id" => $request->product_id[$key],
@@ -87,6 +84,7 @@ class CheckoutController extends Controller
                     "selling_price" => $tmp->selling_price,
                     "total_price" => (int)$tmp->selling_price * (int)$qty
                 ]);
+                DB::table("tb_tmp_details")->where("user_id", Session::get("costumer_id"))->where("product_id",$request->product_id[$key])->delete();
             }
         });
         return redirect()->route('home');
