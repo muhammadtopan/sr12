@@ -39,16 +39,19 @@ Route::group(["middleware" => "unlogin_freelance"], function() {
 });
 
 Route::group(["middleware" => "login_freelance"],function() {
+    Route::get('freelance/profile', 'Freelance\FreelanceController@profile')->name('freelance.profile');
     Route::get('freelance/logout', 'Freelance\FreelanceController@logout')->name('freelance.logout');
     Route::get('freelance', 'Freelance\FreelanceController@index')->name('freelance');
-    Route::get('freelance/profile', 'Freelance\FreelanceController@profile')->name('freelance.profile');
-    Route::get('freelance/r/transaksi', 'Freelance\FreelanceController@rtransaksi')->name('freelance.r.transaksi');
-    Route::get('freelance/r/affiliate', 'Freelance\FreelanceController@raffiliate')->name('freelance.r.affiliate');
-    Route::get('freelance/deposite', 'Freelance\FreelanceController@deposite')->name('freelance.deposite');
     Route::get('freelance/update', 'Freelance\FreelanceController@getUpdateProfile')->name("freelance.profile.update");
     Route::put('freelance/update', 'Freelance\FreelanceController@putUpdateProfile');
     Route::get('freelance/update/photo-profile', 'Freelance\FreelanceController@GetUpdatePhoto')->name("vendor.update.photo.profile");
     Route::put('freelance/update/photo-profile', 'Freelance\FreelanceController@PutUpdatePhoto');
+
+    Route::group(["middleware" => "filter_freelance"], function() {
+        Route::get('freelance/r/transaksi', 'Freelance\FreelanceController@rtransaksi')->name('freelance.r.transaksi');
+        Route::get('freelance/r/affiliate', 'Freelance\FreelanceController@raffiliate')->name('freelance.r.affiliate');
+        Route::get('freelance/deposite', 'Freelance\FreelanceController@deposite')->name('freelance.deposite');
+    });
 });
 // Route::group(['middleware'=>'auth'],function () {
     // });

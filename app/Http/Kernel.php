@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         'cek_profile' => \App\Http\Middleware\cek_profile::class,
         'login_freelance' => \App\Http\Middleware\LoginFreelancer::class,
         'unlogin_freelance' => \App\Http\Middleware\UnloginFreelancer::class,
+        'filter_freelance' => \App\Http\Middleware\FilterFreelance::class,
     ];
 }
