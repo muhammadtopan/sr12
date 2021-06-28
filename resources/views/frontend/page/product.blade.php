@@ -28,10 +28,9 @@
                         <div class="fw-brand-check">
                             @foreach($category as $no => $ctglist)
                                 <div class="bc-item">
-                                    <label for="ctglist{{ $ctglist->category_id }}">
+                                    <label>
                                         {{ $ctglist->category_name }}
-                                        <input type="checkbox" id="ctglist{{ $ctglist->category_id }}" 
-                                        onclick="kategori(<?= $ctglist->category_id ?>,this)">
+                                        <input type="checkbox" id="ctglist" value="{{$ctglist->category_id}}">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
@@ -82,7 +81,7 @@
                         </div>
                     </div>
                     <div class="product-list">
-                        <div class="row">
+                        <div class="row" id="pr-container">
                             @foreach($product as $no => $pdklist)
                                 <div class="col-lg-3 col-sm-4">
                                     <div class="product-item">
@@ -116,6 +115,78 @@
     </section>
     <!-- Product Shop Section End -->
 
-    <script src="{{asset('frontend/js/filter_product.js')}}"></script>
+    <script>
+        let list = Array.from(document.querySelectorAll("#ctglist"))
+        let container = document.getElementById("pr-container")
+        let listId = [];
+
+        addEventListener("DOMContentLoaded", (e) => {
+            localStorage.setItem("oldPR", container.innerHTML)
+        })
+
+        function filterIndex(index, id) {
+            if(index >= 0) {
+                listId = listId.filter(l => {
+                    return l !== id
+                })
+            } else {
+                listId.push(id)
+            }
+        }
+
+        function updateUI(data) {
+            let product = "";
+            data.forEach(d => {
+                        product += `
+                        <div class="col-lg-3 col-sm-4">
+                                    <div class="product-item">
+                                        <div class="pi-pic">
+                                            <a href="http://localhost:8000/detail-product/${d.product_id}">
+                                                <img src='{{env("APP_URL")}}/lte/dist/img/product/${d.product_image}' alt="">
+                                            </a>
+                                            <ul>
+                                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                <!-- <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
+                                            </ul>
+                                        </div>
+                                        <div class="pi-text">
+                                            <div class="catagory-name"> ${d.category_name}</div>
+                                            <a href="#">
+                                                <h5> ${d.product_name} </h5>
+                                            </a>
+                                            <div class="product-price">
+                                                Rp.${new Intl.NumberFormat().format(d.product_price)}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        `
+            })
+            return product
+        }
+
+        list.forEach(l => {
+            l.addEventListener("click", async (e) => {
+                let id = parseInt(e.target.value)
+                let index = listId.indexOf(id)
+                filterIndex(index, id);
+
+                if(listId.length > 0) {
+                    let data = []
+                    let res = await axios.get("/api/filter-kategori", {params: {data: listId}})
+                    res.data.forEach(d => {
+                        data = [...data,...d]
+                    })
+                    let product = updateUI(data)
+                    container.innerHTML = product
+                } else {
+                    container.innerHTML = localStorage.getItem("oldPR")
+                }
+            })
+        })
+    </script>
+
+    {{-- <script src="{{asset('frontend/js/filter_product.js')}}"></script> --}}
 
 @endsection

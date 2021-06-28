@@ -28,7 +28,7 @@ class HomeController extends Controller
                     ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_product.product_type','best')
                     ->get();
-        
+
         $paket = DB::table('tb_package_category')->get();
 
         $productnew = DB::table('tb_product')
@@ -36,7 +36,7 @@ class HomeController extends Controller
                     ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_product.product_type','new')
                     ->get();
-        
+
         $productternew[0] = DB::table('tb_product')
                     ->where('tb_product.product_type','new')
                     ->first();
@@ -218,8 +218,20 @@ class HomeController extends Controller
         );
     }
 
-    public function kategori(Request $request)
-    {
-        
+
+    public function filterKategori(Request $request) {
+
+        $data = [];
+
+        foreach ($request->data as $id) {
+            $product = DB::table('tb_product')
+            ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
+            ->select('tb_product.*', 'tb_category.category_name')
+            ->where("tb_product.category_id", (int)$id)
+            ->get();
+            $data [] = $product;
+        }
+        return response()->json($data);
     }
+
 }
