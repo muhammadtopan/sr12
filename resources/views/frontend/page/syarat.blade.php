@@ -18,45 +18,46 @@
     </div>
     <!-- Breadcrumb Form Section Begin -->
 
-    <section id="syarat" data-spy="scroll" data-target="#navbar-example3">
-        <div class="row">
-            <div class="col-md-4">
-                <nav id="navbar-example3" class="navbar navbar-light bg-light">
-                <!-- <a class="navbar-brand" href="#">MITRA RESMI SR12 HERBAL SKINCARE</a> -->
-                    <nav class="nav nav-pills flex-column">
-                        <a class="nav-link" href="#item-1">Item 1</a>
-                        <nav class="nav nav-pills flex-column">
-                            <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a>
-                            <a class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
-                        </nav>
-                        <a class="nav-link" href="#item-2">Item2</a>
-                        <a class="nav-link" href="#item-3">Item3</a>
-                        <nav class="nav nav-pills flex-column">
-                            <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
-                            <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
-                        </nav>
-                    </nav>
-                </nav>
-            </div>
-            <div class="col-md-2">
-                <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
-                    <h4 id="item-1">Item 1</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, vero ipsa. Hic doloribus aperiam perferendis incidunt quis quae eveniet iure ex neque! Inventore, soluta? Labore natus commodi aliquid perferendis fugiat!</p>
-                    <h5 id="item-1-1">Item 1-1</h5>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, vero ipsa. Hic doloribus aperiam perferendis incidunt quis quae eveniet iure ex neque! Inventore, soluta? Labore natus commodi aliquid perferendis fugiat!</p>
-                    <h5 id="item-1-2">Item 2-2</h5>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, vero ipsa. Hic doloribus aperiam perferendis incidunt quis quae eveniet iure ex neque! Inventore, soluta? Labore natus commodi aliquid perferendis fugiat!</p>
-                    <h4 id="item-2">Item 2</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, vero ipsa. Hic doloribus aperiam perferendis incidunt quis quae eveniet iure ex neque! Inventore, soluta? Labore natus commodi aliquid perferendis fugiat!</p>
-                    <h4 id="item-3">Item 3</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, vero ipsa. Hic doloribus aperiam perferendis incidunt quis quae eveniet iure ex neque! Inventore, soluta? Labore natus commodi aliquid perferendis fugiat!</p>
-                    <h5 id="item-3-1">Item 3-1</h5>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, vero ipsa. Hic doloribus aperiam perferendis incidunt quis quae eveniet iure ex neque! Inventore, soluta? Labore natus commodi aliquid perferendis fugiat!</p>
-                    <h5 id="item-3-2">Item 3-2</h5>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, vero ipsa. Hic doloribus aperiam perferendis incidunt quis quae eveniet iure ex neque! Inventore, soluta? Labore natus commodi aliquid perferendis fugiat!</p>
+        <!-- Syarat Begin -->
+        <section class="product-shop spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+                        <div class="filter-widget">
+                            <h4 class="fw-title">MITRA RESMI SR12</h4>
+                            <ul class="filter-catagories">
+                                <li><a class="btn btn-rounded" href="#">Persebaran Mitra </a></li>
+                                <li><a href="#">Keunggulan</a></li>
+                                <li><a href="#">Ketentuan Umum</a></li>
+                                <li><a href="#">Target Mitra</a></li>
+                                <li>
+                                    <a href="#">
+                                        Cara Gabung
+                                    </a>
+                                    <ul class="pl-4">
+                                        <li>Marketer</li>
+                                        <li>Reseler</li>
+                                        <li>Sub-Agen</li>
+                                        <li>Agen</li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Dristributor Utama</a></li>
+                                <li><a href="#">Kenapa SR12</a></li>
+                                <li><a href="#">Kenapa Harus Gabung</a></li>
+                                <li><a href="#">Kesimpulan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 order-1 order-lg-2">
+                        <div class="product-list">
+                            <div class="row">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam commodi, qui pariatur ex eum, aliquid nemo eligendi in, reprehenderit inventore a ducimus culpa. Porro dicta aperiam aliquam possimus eum.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <!-- Product Shop Section End -->
 
 @endsection
