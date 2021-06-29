@@ -19,7 +19,15 @@
 <script src="{{asset('lte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('lte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('lte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('lte/plugins/chart.js/Chart.min.js')}}"></script>
+<script src="{{asset('lte/dist/js/demo.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+//Date range picker
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 <script>
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
