@@ -219,19 +219,6 @@ class HomeController extends Controller
     }
 
 
-    public function filterKategori(Request $request) {
 
-        $data = [];
-
-        foreach ($request->data as $id) {
-            $product = DB::table('tb_product')
-            ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
-            ->select('tb_product.*', 'tb_category.category_name')
-            ->where("tb_product.category_id", (int)$id)
-            ->get();
-            $data [] = $product;
-        }
-        return response()->json($data);
-    }
 
 }
