@@ -7,12 +7,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Stock Product</h1>
+                <h1>Stok Produk</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Stock Product</li>
+                    <li class="breadcrumb-item"><a href="{{ route('vendor') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Stok Produk</li>
                 </ol>
             </div>
         </div>

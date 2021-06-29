@@ -53,9 +53,20 @@ Route::group(["middleware" => "login_freelance"],function() {
         Route::get('freelance/deposite', 'Freelance\FreelanceController@deposite')->name('freelance.deposite');
     });
 });
-// Route::group(['middleware'=>'auth'],function () {
-    // });
 
+//Gudang
+Route::get('gudang', 'Gudang\GudangController@index')->name('gudang.dashboard');
+Route::get('gudang/profile', 'Gudang\GudangController@profile')->name('gudang.profile');
+Route::get('gudang/stock', 'Gudang\GudangController@stock')->name('gudang.stock');
+Route::get('gudang/mitra', 'Gudang\GudangController@mitra')->name('gudang.mitra');
+Route::get('gudang/ro', 'Gudang\GudangController@ro')->name('gudang.ro');
+Route::get('gudang/orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
+Route::get('gudang/sale', 'Gudang\GudangController@sale')->name('gudang.sale');
+Route::get('gudang/best_seller', 'Gudang\GudangController@best_seller')->name('gudang.best_seller');
+Route::get('gudang/profit', 'Gudang\GudangController@profit')->name('gudang.profit');
+Route::get('gudang/history', 'Gudang\GudangController@history')->name('gudang.history');
+Route::get('gudang/laporan', 'Gudang\GudangController@laporan')->name('gudang.laporan');
+Route::get('gudang/setting', 'Gudang\GudangController@setting')->name('gudang.setting');
 
 //Costumer Auth
 Route::get('user/login', 'Frontend\CostumerController@index')->name('user.login');

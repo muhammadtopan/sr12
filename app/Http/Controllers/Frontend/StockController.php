@@ -13,7 +13,7 @@ class StockController extends Controller
     public function index()
     {
         // cari data produk si vendor
-        $product = DB::table('tb_product')
+        $product = DB::table('tb_product') 
                 ->leftJoin('tb_stok','tb_product.product_id', '=', 'tb_stok.product_id')
                 ->select('tb_stok.*','tb_product.product_name', 'tb_product.product_id', 'tb_product.product_image')
                 ->where('tb_stok.user_id', '=', session()->get('user_id'))
