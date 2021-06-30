@@ -55,7 +55,7 @@ class FilterController extends Controller
                     ->get();
                     $data [] = $product;
                 }
-            } else if($sort === "product-terbaru") {
+            } else if($sort === "product_terbaru") {
                 foreach ($request->data as $id) {
                     $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')

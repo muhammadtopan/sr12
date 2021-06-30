@@ -148,7 +148,7 @@
                                         <div class="product-item">
                                             <div class="pi-pic">
                                                 <a href="http://localhost:8000/detail-product/${d.product_id}">
-                                                    <img src='{{env("APP_URL")}}/lte/dist/img/product/${d.product_image}' alt="">
+                                                    <img src='{{env("APP_URL")}}:8000/lte/dist/img/product/${d.product_image}' alt="">
                                                 </a>
                                                 <ul>
                                                     <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
