@@ -119,7 +119,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{route("data_vendor.gudang")}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Gudang</p>
                             </a>
@@ -231,7 +231,7 @@
                 <li class="nav-item">
                     <a href="{{ route('vendor.deposit')}}" class="nav-link">
                         <i class="nav-icon fas fa-money-bill"></i>
-                        <p> 
+                        <p>
                             Histori Deposit
                         </p>
                     </a>

@@ -47,12 +47,34 @@ class CheckoutController extends Controller
         return response()->json($data);
     }
 
+    public function konversiBerat($berat, $satuan, $jumlah) {
+        if($satuan === "g" || $satuan === "ml") {
+            return (int)$berat * $jumlah;
+        } else if($satuan === "mg") {
+            return ($berat / 1000) * $jumlah;
+        } else if($satuan === "l") {
+            return ($berat * 1000) * $jumlah;
+        }
+    }
+
+    public function getTotalBerat($product, $user) {
+        $total = 0;
+        foreach ($product as $p) {
+            $pd = DB::table("tb_product")->where("product_id", $p)->first();
+            $jumlah = DB::table("tb_tmp_details")->where("product_id", $p)->where("user_id", $user)->first("quantity");
+            $berat = $this->konversiBerat($pd->product_weight, $pd->product_unit, $jumlah->quantity);
+            $total += $berat;
+        }
+        return $total;
+    }
+
     public function checkOngkir(Request $request) {
+        $berat = $this->getTotalBerat($request->product, $request->user);
         $vendor = VendorModel::where("user_id", (int)$request->vendor)->first();
         $cost = RajaOngkir::ongkosKirim([
             'origin'        => $vendor->kota_id, // ID kota/kabupaten asal
             'destination'   => $request->destination, // ID kota/kabupaten tujuan
-            'weight'        => 100, // berat barang dalam gram
+            'weight'        => ceil($berat), // berat barang dalam gram
             'courier'       => "jne" // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
         ])->get();
         return response()->json($cost);

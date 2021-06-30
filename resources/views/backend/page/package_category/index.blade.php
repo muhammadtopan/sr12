@@ -36,7 +36,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <button onclick="modal_tambah('{{route("package_category.store")}}', 'tambah')" class="btn btn-lg btn-dark my-4">
+                        <button onclick="modal_tambah('{{route('package_category.store')}}', 'tambah')" class="btn btn-lg btn-dark my-4" data-toggle="modal" data-target="#ModalTambah">
                             <i class="fa fa-plus"></i>
                         </button>
                         <table id="example2" class="table table-bordered table-hover">
@@ -57,9 +57,12 @@
                                         <img src="{{ asset('lte/dist/img/package_category/' . $categories->package_category_image )}}" alt="homepage" class="light-logo" style="width: 10em;">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-warning btn-sm" 
-                                        onclick="modal_tambah('{{ route("package_category.store") }}', '{{ $categories->package_category_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
-                                        <button type="button" class="btn btn-danger btn-sm" 
+                                        <button type="button" class="btn btn-warning btn-sm"
+                                        data-toggle="modal" data-target="#ModalTambah"
+                                        onclick="modal_tambah('{{ route('package_category.store') }}', '{{ $categories->package_category_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                        data-toggle="modal" data-target="#ModalHapus"
                                         onclick="modal_hapus('{{ route('package_category.delete', $categories->package_category_id) }}')"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -100,7 +103,7 @@
                             <input type="text" class="form-control" name="package_category_name" id="package_category_name" placeholder="Nama Kategori" value="{{ old('package_category_name') ?? $category->package_category_name ?? '' }}" required>
                         </div>
                         <label for="package_category_name">List Product</label>
-                        <div class="row"> 
+                        <div class="row">
                             @foreach($product as $no => $products)
                                 <div class="col-sm-3">
                                     <!-- checkbox -->
@@ -165,13 +168,13 @@
                 }).then(function(res) {
                     var package_category = res.data.produk;
                     var package_category_detail = res.data.detail;
-                    
+
                     $('#package_category_id').val(package_category.package_category_id);
                     $('#package_category_name').val(package_category.package_category_name);
                     $('#summernote').val(package_category.package_category_step);
                     $('#package_category_image').attr('required', false);
                     $('#summernote').val(package_category_detail.package_category_step);
-                    
+
                     // ceklis barnag
 
                     var a = [];
@@ -195,7 +198,7 @@
                     //         }
                     //     }
                     // }
-                    
+
                     // $('#kategori_id').val(package_category.kategori_id).change();
                 }).catch(function(err) {
                     // console.log(err)
@@ -207,7 +210,6 @@
                 $('#package_category_image').attr('required', true);
             }
             $('#formCategory').attr('action', url);
-            $('#ModalTambah').modal('show');
         }
 
         // untuk hapus data

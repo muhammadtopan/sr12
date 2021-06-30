@@ -46,7 +46,8 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content" id="custom-tabs-two-tabContent">
-                            <button onclick="modal_tambah('{{route("product.store")}}', 'tambah')" class="btn btn-lg btn-dark my-4">
+                            {{-- {{route("product.store")}} --}}
+                            <button onclick="modal_tambah('{{route('product.store')}}', 'tambah')" class="btn btn-lg btn-dark my-4" data-toggle="modal" data-target="#ModalTambah">
                                 <i class="fa fa-plus"></i>
                             </button>
                             <button class="btn btn-lg btn-success my-4" onclick="location.reload(true);" style="margin-left: 20px;">
@@ -73,12 +74,12 @@
                                             </td>
                                             <td>
                                                 <label class="switch">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        class="cek_status" 
+                                                    <input
+                                                        type="checkbox"
+                                                        class="cek_status"
                                                         id="cek_status"
-                                                        value="{{ $products->product_status }}" 
-                                                        onchange="cekStatus(<?= $products->product_id ?>, this)" 
+                                                        value="{{ $products->product_status }}"
+                                                        onchange="cekStatus(<?= $products->product_id ?>, this)"
                                                         <?php echo ($products->product_status == 'on') ? "checked" : "" ?> >
                                                     <span class="slider round"></span>
                                                 </label>
@@ -89,7 +90,9 @@
                                                 <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="new" onclick="cekNew(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'new') ? "checked" : "" ?>>New Product
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $products->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
+                                                <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route('product.store') }}', '{{ $products->product_id  }}')" data-toggle="modal" data-target="#ModalTambah">
+                                                    <i class="fa fa-edit .text-white" style="color: #fff !important"></i>
+                                                </button>
                                                 <button type="button" class="btn btn-danger btn-sm" onclick="modal_hapus('{{ route("product.delete", $products->product_id) }}')"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -117,19 +120,23 @@
                                                 </td>
                                                 <td>
                                                     <label class="switch">
-                                                        <input 
-                                                            type="checkbox" 
-                                                            class="cek_status" 
+                                                        <input
+                                                            type="checkbox"
+                                                            class="cek_status"
                                                             id="cek_status"
-                                                            value="{{ $productoffs->product_status }}" 
-                                                            onchange="cekStatus(<?= $productoffs->product_id ?>, this)" 
+                                                            value="{{ $productoffs->product_status }}"
+                                                            onchange="cekStatus(<?= $productoffs->product_id ?>, this)"
                                                             <?php echo ($productoffs->product_status == 'on') ? "checked" : "" ?> >
                                                         <span class="slider round"></span>
                                                     </label>
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route("product.store") }}', '{{ $productoffs->product_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
-                                                    <button type="button" class="btn btn-danger btn-sm" onclick="modal_hapus('{{ route("product.delete", $productoffs->product_id) }}')"><i class="fa fa-trash"></i></button>
+                                                    <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route('product.store') }}', '{{ $productoffs->product_id  }}')" data-toggle="modal" data-target="#ModalTambah">
+                                                        <i class="fa fa-edit .text-white" style="color: #fff !important"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-sm" onclick="modal_hapus('{{ route('product.delete', $productoffs->product_id) }}')" data-toggle="modal" data-target="#ModalHapus">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -319,12 +326,12 @@
             }).catch(function(err) {
                 console.log(err);
             })
-        } 
+        }
     }
 
     function cekNew(product_id, ceklis) {
         if (ceklis.checked) {
-            // alert("ceklis Dihidupkan")   
+            // alert("ceklis Dihidupkan")
             axios.post("{{route('product.new')}}", {
                 'id': product_id,
             }).then(function(res) {
@@ -333,10 +340,11 @@
             }).catch(function(err) {
                 console.log(err);
             })
-        } 
+        }
     }
 
     function modal_tambah(url, aksi) {
+
         if (aksi != 'tambah') {
             // ambil data dari axios
             axios.post("{{ route('cari_data_product') }}", {
@@ -372,7 +380,6 @@
             $('#product_image').attr('required', true);
         }
         $('#formproduct').attr('action', url);
-        $('#ModalTambah').modal('show');
     }
 
     // untuk hapus data
