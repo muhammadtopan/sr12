@@ -71,12 +71,12 @@
                                             </td>
                                             <td>
                                                 <label class="switch">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        class="cek_status" 
-                                                        id="cek_status" 
-                                                        value="{{ $vendors->user_status }}" 
-                                                        onchange="cekStatus(<?= $vendors->user_id ?>, this)" 
+                                                    <input
+                                                        type="checkbox"
+                                                        class="cek_status"
+                                                        id="cek_status"
+                                                        value="{{ $vendors->user_status }}"
+                                                        onchange="cekStatus(<?= $vendors->user_id ?>, this)"
                                                         <?php echo ($vendors->user_status == 'on') ? "checked" : "" ?> >
                                                     <span class="slider round"></span>
                                                 </label>
@@ -108,12 +108,12 @@
                                             </td>
                                             <td>
                                                 <label class="switch">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        class="cek_status" 
-                                                        id="cek_status" 
-                                                        value="{{ $vendorso->user_status }}" 
-                                                        onchange="cekStatus(<?= $vendorso->user_id ?>, this)" 
+                                                    <input
+                                                        type="checkbox"
+                                                        class="cek_status"
+                                                        id="cek_status"
+                                                        value="{{ $vendorso->user_status }}"
+                                                        onchange="cekStatus(<?= $vendorso->user_id ?>, this)"
                                                         <?php echo ($vendorso->user_status == 'on') ? "checked" : "" ?> >
                                                     <span class="slider round"></span>
                                                 </label>

@@ -75,4 +75,10 @@ class VendorController extends Controller
             'message' => 'VENDOR TELAH DI NONAKTIFKAN',
         ], 200);
     }
+
+    public function getDataMitra() {
+        $data['active'] = "active";
+        return view("backend.page.vendor.mitra.mitra", $data);
+    }
+
 }

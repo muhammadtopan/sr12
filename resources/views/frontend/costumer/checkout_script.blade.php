@@ -53,7 +53,14 @@
 
     let total = document.getElementById("total").innerText.split(",").join("")
     localStorage.setItem("old", total)
-    document.getElementById("total").innerText = new Intl.NumberFormat().format(parseInt(total) + parseInt(data[0].costs[0].cost[0].value))
+    // document.getElementById("total").innerText = new Intl.NumberFormat().format(parseInt(total) + parseInt(data[0].costs[0].cost[0].value))
+
+    let newId = []
+    let user_id = document.getElementById("user_id").value
+    let idProduct = Array.from(document.querySelectorAll("#product_id"))
+    idProduct.forEach(id => {
+        newId.push(id.value)
+    })
 
     async function cekOngkir(e) {
         let kota_value = kota.value
@@ -62,9 +69,12 @@
             let res = await axios.get('/api/cek-ongkir', {
                 params: {
                     destination: document.getElementById("kota_id").value,
-                    vendor: vendor_id
+                    vendor: vendor_id,
+                    product: newId,
+                    user: user_id
                 }
             })
+            console.log(res.data);
             let data = res.data;
             let option = ""
             console.log(data);

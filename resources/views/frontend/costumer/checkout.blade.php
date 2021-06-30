@@ -94,7 +94,8 @@
                         <input type="hidden" name="total" value="{{$total_price}}">
                         @foreach ($qty as $key => $q)
                             <input type="hidden" name="qty[]" value="{{$q}}">
-                            <input type="hidden" name="product_id[]" value="{{$product_id[$key]}}">
+                            <input type="hidden" name="product_id[]" value="{{$product_id[$key]}}" id="product_id">
+                            <input type="hidden" name="user_id" id="user_id" value="{{Session::get("costumer_id")}}">
                         @endforeach
                         <div class="order-total">
                             <ul class="order-table">

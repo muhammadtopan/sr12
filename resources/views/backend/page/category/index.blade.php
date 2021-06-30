@@ -36,36 +36,42 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <button onclick="modal_tambah('{{route("category.store")}}', 'tambah')" class="btn btn-lg btn-dark my-4">
+                        <button
+                        data-toggle="modal" data-target="#ModalTambah"
+                        onclick="modal_tambah('{{route('category.store')}}', 'tambah')" class="btn btn-lg btn-dark my-4">
                             <i class="fa fa-plus"></i>
                         </button>
-                        <table id="example2" class="table table-bordered table-hover">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Kategori Barang</th>
-                                    <th>Gambar</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($category as $no => $categories)
-                                <tr>
-                                    <td>{{ $no + 1 }}</td>
-                                    <td>{{ $categories->category_name }}</td>
-                                    <td>
-                                        <img src="{{ asset('lte/dist/img/category/' . $categories->category_image )}}" alt="homepage" class="light-logo" style="width: 10em;">
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" 
-                                        onclick="modal_tambah('{{ route("category.store") }}', '{{ $categories->category_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
-                                        <button type="button" class="btn btn-danger btn-sm" 
-                                        onclick="modal_hapus('{{ route('category.delete', $categories->category_id) }}')"><i class="fa fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table id="zero-config" class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kategori Barang</th>
+                                        <th>Gambar</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($category as $no => $categories)
+                                    <tr>
+                                        <td>{{ $no + 1 }}</td>
+                                        <td>{{ $categories->category_name }}</td>
+                                        <td>
+                                            <img src="{{ asset('lte/dist/img/category/' . $categories->category_image )}}" alt="homepage" class="light-logo" style="width: 10em;">
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning btn-sm"
+                                            data-toggle="modal" data-target="#ModalTambah"
+                                            onclick="modal_tambah('{{ route('category.store') }}', '{{ $categories->category_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm"
+                                            data-toggle="modal" data-target="#ModalHapus"
+                                            onclick="modal_hapus('{{ route('category.delete', $categories->category_id) }}')"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -137,7 +143,7 @@
     </div>
 
     <script>
-        function modal_tambah(url, aksi){ 
+        function modal_tambah(url, aksi){
             if(aksi != 'tambah'){
                 // ambil data dari axios
                 axios.post("{{ route('cari_data_kategori') }}", {
@@ -153,12 +159,13 @@
                     // console.log(err)
                 })
             }else{
+                console.log("bisa");
                 $('#category_nama').val('');
                 $('#category_image').val('');
                 $('#category_image').attr('required', true);
             }
             $('#formCategory').attr('action', url);
-            $('#ModalTambah').modal('show');
+            // $('#ModalTambah').modal('show');
         }
 
         // untuk hapus data

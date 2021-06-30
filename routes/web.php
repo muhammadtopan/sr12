@@ -55,18 +55,21 @@ Route::group(["middleware" => "login_freelance"],function() {
 });
 
 //Gudang
-Route::get('gudang', 'Gudang\GudangController@index')->name('gudang.dashboard');
-Route::get('gudang/profile', 'Gudang\GudangController@profile')->name('gudang.profile');
-Route::get('gudang/stock', 'Gudang\GudangController@stock')->name('gudang.stock');
-Route::get('gudang/mitra', 'Gudang\GudangController@mitra')->name('gudang.mitra');
-Route::get('gudang/ro', 'Gudang\GudangController@ro')->name('gudang.ro');
-Route::get('gudang/orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
-Route::get('gudang/sale', 'Gudang\GudangController@sale')->name('gudang.sale');
-Route::get('gudang/best_seller', 'Gudang\GudangController@best_seller')->name('gudang.best_seller');
-Route::get('gudang/profit', 'Gudang\GudangController@profit')->name('gudang.profit');
-Route::get('gudang/history', 'Gudang\GudangController@history')->name('gudang.history');
-Route::get('gudang/laporan', 'Gudang\GudangController@laporan')->name('gudang.laporan');
-Route::get('gudang/setting', 'Gudang\GudangController@setting')->name('gudang.setting');
+Route::group(["prefix" => "gudang"],function() {
+    Route::get('', 'Gudang\GudangController@index')->name('gudang.dashboard');
+    Route::get('login', 'Gudang\GudangController@getLogin')->name("gudang.login");
+    Route::get('profile', 'Gudang\GudangController@profile')->name('gudang.profile');
+    Route::get('stock', 'Gudang\GudangController@stock')->name('gudang.stock');
+    Route::get('mitra', 'Gudang\GudangController@mitra')->name('gudang.mitra');
+    Route::get('ro', 'Gudang\GudangController@ro')->name('gudang.ro');
+    Route::get('orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
+    Route::get('sale', 'Gudang\GudangController@sale')->name('gudang.sale');
+    Route::get('best_seller', 'Gudang\GudangController@best_seller')->name('gudang.best_seller');
+    Route::get('profit', 'Gudang\GudangController@profit')->name('gudang.profit');
+    Route::get('history', 'Gudang\GudangController@history')->name('gudang.history');
+    Route::get('laporan', 'Gudang\GudangController@laporan')->name('gudang.laporan');
+    Route::get('setting', 'Gudang\GudangController@setting')->name('gudang.setting');
+});
 
 //Costumer Auth
 Route::get('user/login', 'Frontend\CostumerController@index')->name('user.login');
@@ -165,11 +168,18 @@ Route::middleware(['dashboard'])->group(function () {
     Route::post('cari_kategori_paket', 'Backend\PackageCategoryController@cari_kategori_paket')->name('cari_kategori_paket');
     Route::delete('package_category/{package_category}', 'Backend\PackageCategoryController@destroy')->name('package_category.delete');
 
+    Route::group(["prefix" => "data-vendor"], function() {
+        Route::get("", 'Backend\VendorController@index')->name('data_vendor');
+
+        //aktivasi data_vendor
+        Route::post('active', 'Backend\VendorController@active')->name('data_vendor.active');
+        Route::post('no_active', 'Backend\VendorController@non_active')->name('data_vendor.non_active');
+
+        // data DU / Gudang / Mitra
+        Route::get('gudang', "Backend\VendorController@getDataMitra")->name("data_vendor.gudang");
+
+    });
     // Vendor
-    Route::get('data_vendor', 'Backend\VendorController@index')->name('data_vendor');
-    //aktivasi data_vendor
-    Route::post('data_vendor/active', 'Backend\VendorController@active')->name('data_vendor.active');
-    Route::post('data_vendor/no_active', 'Backend\VendorController@non_active')->name('data_vendor.non_active');
 
     //Data Articel
     Route::get('articel', 'Backend\ArtikelController@index')->name('articel');

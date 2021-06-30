@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class GudangController extends Controller
 {
+    public function getLogin() {
+        $data['active'] = 'Login Mitra';
+        return view("gudang/page/login", $data);
+    }
+
     public function index()
     {
         $data['active'] = 'dashboard';
@@ -54,7 +59,7 @@ class GudangController extends Controller
         $data['active'] = 'best_seller';
         return view('gudang/page/best_seller', $data);
     }
-    
+
         public function history()
         {
             $data['active'] = 'history';
