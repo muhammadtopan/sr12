@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
-use App\Model\UserModel;
 use App\Model\StokModel;
+use App\Model\UserModel;
+use App\Model\GudangModel;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\TambahMitraRequest;
+use Illuminate\Support\Facades\Validator;
 
 class VendorController extends Controller
 {
@@ -77,8 +80,30 @@ class VendorController extends Controller
     }
 
     public function getDataMitra() {
+        $data['provinsi'] = DB::table("tb_provinsi")->get();
+        $data['mitra'] = DB::table("tb_gudang")->get();
         $data['active'] = "active";
         return view("backend.page.vendor.mitra.mitra", $data);
+    }
+
+    public function postDataMitra(TambahMitraRequest $request) {
+            GudangModel::create([
+                "id_leader" => Session::get("admin_id"),
+                "level" => "DU",
+                "nama_gudang" => $request->nama_gudang,
+                "no_wa" => $request->no_wa,
+                "email" => $request->email,
+                "password" => Hash::make($request->password),
+                "nik" => $request->nik,
+                "tanggal_lahir" => $request->tanggal_lahir,
+                "kelamin" => $request->kelamin,
+                "prov_id" => $request->prov_id,
+                "kota_id" => $request->kota_id,
+                "alamat" => $request->alamat,
+                "photo_toko" => $request->file("photo_toko")->store("mitra_toko_foto"),
+                "selfi_ktp" => $request->file("selfi_ktp")->store("mitra_selfi_ktp")
+            ]);
+            return redirect()->back();
     }
 
 }

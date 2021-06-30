@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,19 +57,36 @@ Route::group(["middleware" => "login_freelance"],function() {
 
 //Gudang
 Route::group(["prefix" => "gudang"],function() {
-    Route::get('', 'Gudang\GudangController@index')->name('gudang.dashboard');
-    Route::get('login', 'Gudang\GudangController@getLogin')->name("gudang.login");
-    Route::get('profile', 'Gudang\GudangController@profile')->name('gudang.profile');
-    Route::get('stock', 'Gudang\GudangController@stock')->name('gudang.stock');
-    Route::get('mitra', 'Gudang\GudangController@mitra')->name('gudang.mitra');
-    Route::get('ro', 'Gudang\GudangController@ro')->name('gudang.ro');
-    Route::get('orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
-    Route::get('sale', 'Gudang\GudangController@sale')->name('gudang.sale');
-    Route::get('best_seller', 'Gudang\GudangController@best_seller')->name('gudang.best_seller');
-    Route::get('profit', 'Gudang\GudangController@profit')->name('gudang.profit');
-    Route::get('history', 'Gudang\GudangController@history')->name('gudang.history');
-    Route::get('laporan', 'Gudang\GudangController@laporan')->name('gudang.laporan');
-    Route::get('setting', 'Gudang\GudangController@setting')->name('gudang.setting');
+    // auth
+    Route::group(["middleware" => "GudangTidakLogin"],function() {
+        Route::get('login', 'Gudang\GudangController@getLogin')->name("gudang.login");
+        Route::post("login", "Gudang\GudangController@postLogin");
+    });
+
+    Route::group(["middleware" => "GudangLogin"],function() {
+        Route::get('', 'Gudang\GudangController@index')->name('gudang.dashboard');
+        Route::get('profile', 'Gudang\GudangController@profile')->name('gudang.profile');
+        Route::get('stock', 'Gudang\GudangController@stock')->name('gudang.stock');
+        Route::get('mitra', 'Gudang\GudangController@mitra')->name('gudang.mitra');
+        Route::get('ro', 'Gudang\GudangController@ro')->name('gudang.ro');
+        Route::get('orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
+        Route::get('sale', 'Gudang\GudangController@sale')->name('gudang.sale');
+        Route::get('best_seller', 'Gudang\GudangController@best_seller')->name('gudang.best_seller');
+        Route::get('profit', 'Gudang\GudangController@profit')->name('gudang.profit');
+        Route::get('history', 'Gudang\GudangController@history')->name('gudang.history');
+        Route::get('laporan', 'Gudang\GudangController@laporan')->name('gudang.laporan');
+        Route::get('setting', 'Gudang\GudangController@setting')->name('gudang.setting');
+
+        // profile
+        Route::put('/update-profile', "Gudang\GudangController@UpdateProfile")->name("gudang.update_profile");
+        Route::put('/update-password', "Gudang\GudangController@UpdatePassword")->name("gudang.update_password");
+        Route::put('/update-foto', "Gudang\GudangController@UpdateFoto")->name("gudang.update_foto");
+
+        Route::get("logout",function() {
+            Session::flush();
+            return redirect()->route("gudang.login");
+        });
+    });
 });
 
 //Costumer Auth
@@ -177,6 +195,7 @@ Route::middleware(['dashboard'])->group(function () {
 
         // data DU / Gudang / Mitra
         Route::get('gudang', "Backend\VendorController@getDataMitra")->name("data_vendor.gudang");
+        Route::post("gudang", "Backend\VendorController@postDataMitra");
 
     });
     // Vendor

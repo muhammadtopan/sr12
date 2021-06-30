@@ -73,5 +73,7 @@ class Kernel extends HttpKernel
         'login_freelance' => \App\Http\Middleware\LoginFreelancer::class,
         'unlogin_freelance' => \App\Http\Middleware\UnloginFreelancer::class,
         'filter_freelance' => \App\Http\Middleware\FilterFreelance::class,
+        'GudangTidakLogin' => \App\Http\Middleware\GudangTidakLogin::class,
+        'GudangLogin' => \App\Http\Middleware\GudangLogin::class,
     ];
 }
