@@ -56,6 +56,16 @@
                                             <th>Status</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @foreach ($mitra as $m)
+                                            <tr>
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$m->nama_gudang}}</td>
+                                                <td>{{$m->level}}</td>
+                                                <td class="text-success">Aktif</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -71,4 +81,5 @@
 </section>
 <!-- Button trigger modal -->
 @include('backend.page.vendor.mitra.modal_mitra')
+@include('backend.page.vendor.mitra.script')
 @endsection

@@ -25,6 +25,7 @@ class GudangModel extends Model
         'alamat',
         'photo_toko',
         'selfi_ktp',
-        'jumlah_penjualan'
+        'jumlah_penjualan',
+        "password"
     ];
 }

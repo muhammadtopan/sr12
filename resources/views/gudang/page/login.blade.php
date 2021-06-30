@@ -2,8 +2,6 @@
 @section ('title', 'Login')
 
 @section ('content')
-
-
     <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
         <div class="container">
@@ -11,7 +9,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <a href="{{ route('home') }}"><i class="fa fa-home"></i> Beranda</a>
-                        <span>Login Freelance</span>
+                        <span>Login Mitra</span>
                     </div>
                 </div>
             </div>
@@ -29,7 +27,7 @@
                         @if(Session::has('pesan'))
                             <p class="alert alert-info">{{ Session::get('pesan') }}</p>
                         @endif
-                        <form action="{{route("login.freelance")}}" method="post">
+                        <form action="{{route("gudang.login")}}" method="post">
                             @csrf
                             <div class="group-input">
                                 <label for="email">Email <span style="color: red">*</span></label>

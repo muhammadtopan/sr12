@@ -17,7 +17,7 @@ class CreateGudangModelsTable extends Migration
             $table->bigIncrements('id_gudang');
             $table->integer('id_leader');
             $table->string('nama_gudang', 100);
-            $table->integer('no_wa');
+            $table->bigInteger('no_wa');
             $table->string('email', 100);
             $table->string('nik', 100);
             $table->date('tanggal_lahir');
