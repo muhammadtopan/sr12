@@ -42,7 +42,7 @@
 
         <div class="content-wrapper">
             @yield('content')
-        </div>
+        </div>  
 
         @include('backend/component/footer')
     </div>

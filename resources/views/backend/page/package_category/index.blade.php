@@ -120,7 +120,7 @@
                         </div>
                         <div class="form-group">
                             <label for="summernote">Cara Pakai</label>
-                            <textarea id="summernote" class="form-control" name="package_category_step" value="{{ old('package_category_step') ?? $category->package_category_step ?? '' }}"></textarea>
+                            <textarea id="summernote" class="form-control" name="package_category_step"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="package_category_image">Foto Paket</label>
@@ -171,11 +171,11 @@
 
                     $('#package_category_id').val(package_category.package_category_id);
                     $('#package_category_name').val(package_category.package_category_name);
-                    $('#summernote').val(package_category.package_category_step);
+                    $('#summernote').summernote('code', package_category.package_category_step);
                     $('#package_category_image').attr('required', false);
-                    $('#summernote').val(package_category_detail.package_category_step);
+                    $('#summernote').summernote('code', package_category_detail.package_category_step);
 
-                    // ceklis barnag
+                    // ceklis barang
 
                     var a = [];
                     for(var i in package_category_detail){
@@ -199,13 +199,13 @@
                     //     }
                     // }
 
-                    // $('#kategori_id').val(package_category.kategori_id).change();
+                    $('#kategori_id').val(package_category.kategori_id).change();
                 }).catch(function(err) {
                     // console.log(err)
                 })
             }else{
-                $('#package_category_nama').val('');
-                $('#summernote').val('');
+                $('#package_category_name').val('');
+                $('#summernote').summernote('code','');
                 $('#package_category_image').val('');
                 $('#package_category_image').attr('required', true);
             }

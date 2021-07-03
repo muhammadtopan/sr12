@@ -227,8 +227,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="product_desk">Keterangan Produk</label>
-                        <textarea id="product_desk" class="form-control" name="product_desk" value="{!!$product->product_desk !!}"></textarea>
+                        <label for="summernote">Keterangan Produk</label>
+                        <textarea id="summernote" class="form-control" name="product_desk"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="product_image">Foto Produk</label>
@@ -273,7 +273,6 @@
 
 <script>
 
-    document.getElementById("summernote").value;
 
     function cekStatus(product_id, ceklis) {
         if (ceklis.checked) {
@@ -351,7 +350,8 @@
                 'product_id': aksi,
             }).then(function(res) {
                 var product = res.data;
-                console.log(product)
+                let tes = document.getElementById("summernote")
+                tes.value = "asdasdasdas"
                 $('#product_id').val(product.product_id);
                 $('#category_id').val(product.category_id);
                 $('#product_name').val(product.product_name);
@@ -359,7 +359,8 @@
                 $('#product_netto').val(product.product_netto);
                 $('#product_weight').val(product.product_weight);
                 $('#product_unit').val(product.product_unit);
-                $('#product_desk').val(product.product_desk);
+                $('#summernote').summernote("code", product.product_desk);
+                // $(".summernote").summernote("code", "your text");
                 $('#product_price').val(product.product_price);
                 $('#product_image').attr('required', false);
                 // $('#kategori_id').val(product.kategori_id).change();
@@ -374,7 +375,7 @@
             $('#product_netto').val('');
             $('#product_weight').val('');
             $('#product_unit').val('');
-            $('#product_desk').val('');
+            $('#summernote').summernote('code','');
             $('#product_price').val('');
             $('#product_image').val('');
             $('#product_image').attr('required', true);

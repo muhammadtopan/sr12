@@ -4,7 +4,6 @@
 <script src="{{asset('lte/dist/js/adminlte.js')}}"></script>
 <!-- Summernote -->
 <script src="{{asset('lte/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script src="{{asset('lte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 
 <!-- DataTables  & Plugins -->
 <script src="{{asset('lte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -23,8 +22,8 @@
 <script src="{{asset('lte/dist/js/demo.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-//Date range picker
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<!-- Date range picker -->
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
@@ -38,19 +37,14 @@
         // Summernote
         $('#summernote').summernote()
 
-        // CodeMirror
-        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-            mode: "htmlmixed",
-            theme: "monokai"
-        });
         // Summernote Testing
         $('.summernote').summernote()
 
         // CodeMirror
-        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-            mode: "htmlmixed",
-            theme: "monokai"
-        });
+        // CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+        //     mode: "htmlmixed",
+        //     theme: "monokai"
+        // });
     })
 </script>
 <script>
