@@ -74,7 +74,7 @@
                         <div class="col-6">
                             <div class="filter-control text-right">
                                 <ul class="section-tab-nav tab-nav">
-                                    <li id="allproduct"><a href="{{route('shop.product')}}">Lihat Semua </a></li>
+                                    <li id="allproduct"><a href="{{('shop/product')}}">Lihat Semua </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -280,6 +280,53 @@
         @endforeach
     </div>
     <!-- Instagram Section End -->
+
+    <!-- Latest Blog Section Begin -->
+    <section class="latest-blog spad">
+        <div class="container">
+            <div class="benefit-items">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <!-- <img src="{{asset('frontend/img/icon-1.png')}}" alt=""> -->
+                                <lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_k985zjll.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop autoplay></lottie-player>
+                            </div>
+                            <div class="sb-text">
+                                <h6>BELANJA HEMAT</h6>
+                                <p>untuk kamu yang hobi jualan <a href="#" class="btn btn-sm btn-warning text-light">klik disini</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <!-- <img src="{{asset('frontend/img/icon-2.png')}}" alt=""> -->
+                                <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_BzsCRH.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                            </div>
+                            <div class="sb-text">
+                                <h6>PELUANG BISNIS</h6>
+                                <p>untuk kamu didaerahmu <a href="#" class="btn btn-sm btn-warning text-light">klik disini</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <!-- <img src="{{asset('frontend/img/icon-1.png')}}" alt=""> -->
+                                <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_S1HvNl.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                            </div>
+                            <div class="sb-text">
+                                <h6>HADIAH MENARIK</h6>
+                                <p>segera tukarkan pointnya <a href="{{ route('user.register') }}" class="btn btn-sm btn-warning text-light">klik disini</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Latest Blog Section End -->
 
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
 
