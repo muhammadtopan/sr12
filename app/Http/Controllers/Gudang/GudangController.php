@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Gudang;
 
+use App\Http\Controllers\Backend\VendorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TambahMitraRequest;
 use App\Http\Requests\UpdateMitraRequest;
 use App\Model\GudangModel;
 use Illuminate\Support\Facades\Hash;
@@ -56,8 +58,36 @@ class GudangController extends Controller
 
     public function mitra()
     {
+        Session::remove("bread");
+        $data['provinsi'] = DB::table("tb_provinsi")->get();
         $data['active'] = 'mitra';
+        $data['mitra'] = GudangModel::where("id_leader", Session::get("auth")->id_gudang)->get();
         return view('gudang/page/mitra', $data);
+    }
+
+    public function postDataMitra(TambahMitraRequest $request) {
+        $vendor = new VendorController();
+        return $vendor->postDataMitra($request, $request->level, Session::get("auth")->id_gudang);
+    }
+
+    public function deleteDataMitra(GudangModel $m) {
+        dd($m);
+    }
+
+    public function inviteDetailMitra(GudangModel $m) {
+        $bread = [];
+        if(Session::get("bread") === null) {
+            $bread [] = $m->nama_gudang;
+            Session::put("bread", $bread);
+        } else {
+            $search = array_search($m->nama_gudang, Session::get("bread"));
+            if($search == 0) {
+                Session::push("bread", $m->nama_gudang);
+            }
+        }
+        $data['mitra'] = $m->invited;
+        $data['active'] = "invited";
+        return view("gudang.page.mitra",$data);
     }
 
     public function orderan()

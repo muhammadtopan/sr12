@@ -9,7 +9,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-                <a class="btn btn-light btn-sm" href="#" role="button"><i class="fas fa-sign-out-alt"></i></a>
+                <a class="btn btn-light btn-sm" href="{{route("gudang.logout")}}" role="button"><i class="fas fa-sign-out-alt"></i></a>
         </li>
     </ul>
 </nav>

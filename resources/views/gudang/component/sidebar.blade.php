@@ -12,7 +12,9 @@
                 <img src="{{ asset('lte/dist/img/a.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Username Gudang</a>
+                <a href="#" class="d-block" style="text-transform: capitalize">
+                    {{Session::get("auth")->nama_gudang}} - {{Session::get("auth")->level}}
+                </a>
             </div>
         </div>
         <!-- Sidebar Menu -->
