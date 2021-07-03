@@ -38,9 +38,9 @@ class OrderController extends Controller
                         ->join('tb_order','tb_order_details.order_id', '=', 'tb_order.order_id')
                         ->join('tb_costumer','tb_order.costumer_id', '=', 'tb_costumer.costumer_id')
                         ->join('tb_product','tb_order_details.product_id', '=', 'tb_product.product_id')
+                        ->join("tb_kota", "tb_kota.kota_id", "tb_order.kota_id")
                         ->where("tb_order.order_id",$order)
                         ->get();
-        // dd($order_detail);
         return view('vendor/detail_order',
         [
             'order_detail' => $order_detail

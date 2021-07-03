@@ -14,6 +14,7 @@ class GudangModel extends Model
     protected $primaryKey = 'id_gudang';
     protected $fillable = [
         'id_leader',
+        "level",
         'nama_gudang',
         'no_wa',
         'email',
@@ -28,4 +29,9 @@ class GudangModel extends Model
         'jumlah_penjualan',
         "password"
     ];
+
+    public function invited() {
+        return $this->hasMany(GudangModel::class, "id_leader");
+    }
+
 }

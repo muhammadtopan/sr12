@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Session;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('shop/product', 'HomeController@product')->name('shop.product');
+Route::get('shop/product/{filter}', 'HomeController@product')->name('shop.product.filter');
 Route::get('detail-product/{product_id}', 'HomeController@detail_product')->name('detail_product');
 Route::get('about', 'HomeController@about')->name('about');
 Route::get('partnership', 'HomeController@partnership')->name('partnership');
@@ -82,10 +83,15 @@ Route::group(["prefix" => "gudang"],function() {
         Route::put('/update-password', "Gudang\GudangController@UpdatePassword")->name("gudang.update_password");
         Route::put('/update-foto', "Gudang\GudangController@UpdateFoto")->name("gudang.update_foto");
 
+        // post data mitra
+        Route::post('mitra', 'Gudang\GudangController@postDataMitra');
+        Route::get('mitra/delete/{m:nama_gudang}', 'Gudang\GudangController@deleteDataMitra')->name("gudang.delete");
+        Route::get('mitra/invite/{m}', 'Gudang\GudangController@inviteDetailMitra')->name("gudang.inivite.detail");
+
         Route::get("logout",function() {
             Session::flush();
             return redirect()->route("gudang.login");
-        });
+        })->name("gudang.logout");
     });
 });
 
