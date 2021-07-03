@@ -117,6 +117,11 @@ ol {
 	text-align: center;
 }
 
+.section-title.tools {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
 .section-title .product-price {
 	font-size: 24px;
 	font-weight: 700;
@@ -147,6 +152,18 @@ ol {
 	background: #e7ab3c;
 	content: "";
 	margin: 0 auto;
+}
+
+.section-title.tools h3:before {
+    position: absolute;
+    left: 0;
+    /* right: 0; */
+    bottom: -14px;
+    width: 80px;
+    height: 3px;
+    background: #e7ab3c;
+    content: "";
+    margin: 0 auto;
 }
 
 .section-title p {

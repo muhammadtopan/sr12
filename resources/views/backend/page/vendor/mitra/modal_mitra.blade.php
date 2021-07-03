@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="" class="form-label">Alamat</label>
+                    <label for="" class="form-label">Alamat</label> 
                     <input type="text" name="alamat"  class="form-control">
                 </div>
             </div>

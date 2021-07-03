@@ -26,7 +26,7 @@
                         <div class="filter-widget">
                             <h4 class="fw-title">MITRA RESMI SR12</h4>
                             <ul class="filter-catagories">
-                                <li><a class="btn btn-rounded" href="#">Persebaran Mitra </a></li>
+                                <li><a href="#">Persebaran Mitra </a></li>
                                 <li><a href="#">Keunggulan</a></li>
                                 <li><a href="#">Ketentuan Umum</a></li>
                                 <li><a href="#">Target Mitra</a></li>
@@ -51,7 +51,11 @@
                     <div class="col-lg-8 order-1 order-lg-2">
                         <div class="product-list">
                             <div class="row">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non numquam commodi, qui pariatur ex eum, aliquid nemo eligendi in, reprehenderit inventore a ducimus culpa. Porro dicta aperiam aliquam possimus eum.</p>
+                                <div class="col-lg-12">
+                                    <div class="section-title text-left">
+                                        <h2>From The Blog</h2>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

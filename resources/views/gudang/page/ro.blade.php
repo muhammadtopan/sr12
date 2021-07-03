@@ -20,45 +20,67 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
+    <!-- Main content --> 
     <section class="content">
         <div class="container-fluid">
             <!-- Info boxes -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-danger card-outline">
+                    <div class="card card-danger card-outline card-tabs">
                         <div class="card-body">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="tab-content" id="custom-tabs-two-tabContent">
+                                <div class="tab-pane fade show active" id="verifikasi" role="tabpanel" aria-labelledby="verifikasi-tab">
+                                    <table id="zero_config" class="table table-bordered table-hover">
+                                        <thead class="">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Product</th>
+                                                <th>Stock Tersedia</th>
+                                                <th>Stock Leader</th>
+                                                <th>RO</th>
+                                                <th>Harga</th>
+                                                <!-- <th>Pesan</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td class="text-center">nama product</td>
+                                                <td class="text-center">13</td>
+                                                <td class="text-center">23</td>
+                                                <td class="text-center">
+                                                    <div class="col-lg-3">
+                                                        <div class="form-group">
+                                                            <input type="number" min="0" class="form-control" name="stock_input" id="stock_input" value="0">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">Rp {{ number_format(10000) }}</td>
+                                                <!-- <td>
+                                                    <button data-input="" class="btn btn-sm btn-danger">
+                                                        <i class="fa fa-check"></i>
+                                                    </button>
+                                                </td> -->
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td></td>
+                                                <td colspan="4">Jumlah</td>
+                                                <td class="text-center">Rp {{ number_format(10000) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5"> Pesan, jika jumlah pesanan kurang dari yang di harapkan keluarlah pesan pesannan anda nanggung, silahkan tambah beberapa item </td>
+                                                <td>
+                                                    <button class="col-12 btn btn-danger">Pesan</button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+                        <!-- /.card-body -->
                     </div>
                 </div>
             </div>
