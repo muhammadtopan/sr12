@@ -1,7 +1,8 @@
 <aside class="control-sidebar control-sidebar-dark">
 </aside>
 <footer class="main-footer">
-    Copyright &copy; <script>
+    Copyright &copy; 
+    <script>
         document.write(new Date().getFullYear());
     </script> <a href="" target="_blank" style="color: #B9BABC">SR12</a> | <i class="fa fa-heart-o" aria-hidden="true"></i> by Taufano.  
 </footer>

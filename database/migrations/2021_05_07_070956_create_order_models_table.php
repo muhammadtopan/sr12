@@ -24,6 +24,8 @@ class CreateOrderModelsTable extends Migration
             $table->integer('kota_id');
             $table->enum('order_status',['waiting','processed', 'sent', 'end', 'rejected']);
             $table->integer('combined_price');
+            $table->string('noresi');
+            $table->integer('komisi');
             $table->timestamps();
             $table->softDeletes();
         });
