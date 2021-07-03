@@ -69,11 +69,11 @@
                             <div class="col-lg-7 col-md-7">
                                 <div class="select-option">
                                     <select class="sorting" id="sorting" onchange="filterSorting(this)">
-                                        <option value="acak">Acak</option>
-                                        <option value="harga-terendah">Harga Terendah</option>
-                                        <option value="harga-tertinggi">Harga Tertinggi</option>
-                                        <option value="product_terbaru">Product Terbaru</option>
-                                        <option value="best-seller">Best Seller</option>
+                                        <option id="acak" value="acak">Acak</option>
+                                        <option id="terendah" value="harga-terendah">Harga Terendah</option>
+                                        <option id="tertinggi" value="harga-tertinggi">Harga Tertinggi</option>
+                                        <option id="product-terbaru" value="product_terbaru">Product Terbaru</option>
+                                        <option id="best-seller" value="best-seller">Best Seller</option>
                                     </select>
                                 </div>
                             </div>
@@ -124,9 +124,11 @@
 
         addEventListener("DOMContentLoaded", (e) => {
             localStorage.setItem("oldPR", container.innerHTML)
-            let slider = document.getElementById("slider-filter")
-            slider.dataset.min = new Intl.NumberFormat().format(0)
-            slider.dataset.max = new Intl.NumberFormat().format(500000)
+            let params = window.location.pathname.split("/")[3]
+            let data = {
+                value: params
+            }
+            filterSorting(data);
         })
 
         // Filter Checkbox
@@ -147,7 +149,7 @@
                             <div class="col-lg-3 col-sm-4">
                                         <div class="product-item">
                                             <div class="pi-pic">
-                                                <a href="http://localhost:8000/detail-product/${d.product_id}">
+                                                <a href="http://{{env("APP_URL")}}:8000/detail-product/${d.product_id}">
                                                     <img src='{{env("APP_URL")}}:8000/lte/dist/img/product/${d.product_image}' alt="">
                                                 </a>
                                                 <ul>
@@ -181,6 +183,10 @@
                 container.innerHTML = product
             }
 
+            function reset() {
+                container.innerHTML = localStorage.getItem("oldPR")
+            }
+
             list.forEach(l => {
                 check = true
                 l.addEventListener("click", async (e) => {
@@ -193,20 +199,18 @@
                         let res = await axios.get("/api/filter-kategori", {params: {data: listId, filter, min, max}})
                         loopingUpdate(res.data)
                     } else {
-                        container.innerHTML = localStorage.getItem("oldPR")
+                        reset()
                     }
                 })
             })
         // Filter Checkbox
-
-
         // filter sorting
             async function filterSorting(e) {
                 filter = e.value
+                filter = filter == "product-terbaru" ? "product_terbaru" : ""
                 let res = await axios.get("/api/filter-sorting", {params: {sort:filter}})
                 let ui = updateUI(res.data)
                 container.innerHTML = ui
-                // console.log(res.data);
             }
         // filter sorting
 
@@ -222,10 +226,6 @@
             }
         }
         // filter slider
-
-
     </script>
-    {{-- <script src="{{asset('frontend/js/filter_product.js')}}"></script> --}}
-
 
 @endsection

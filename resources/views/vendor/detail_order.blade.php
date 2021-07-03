@@ -35,10 +35,13 @@
                     @endif
                     <div class="card-header bg-dark py-3">
                         <div class="d-flex">
-                            <h3 class="card-title ml-2 mr-2 ">Total: Rp {{ number_format($order_detail[0]->total_price) }}</h3>
-                            <h3 class="card-title ml-2 mr-2 ">Status: {{ $order_detail[0]->order_status }}</h3>
-                            <h3 class="card-title ml-2 mr-2 ">Costumer: {{ $order_detail[0]->costumer_name }}</h3>
-                            <h3 class="card-title ml-2 mr-2 ">Invoice: {{ $order_detail[0]->invoice }}</h3>
+                            <h3 class="card-title ml-2 mr-2 ">Total: <br/> Rp {{ number_format($order_detail[0]->total_price) }}</h3>
+                            <h3 class="card-title ml-2 mr-2 ">Status: <br/> {{ $order_detail[0]->order_status }}</h3>
+                            <h3 class="card-title ml-2 mr-2 ">Costumer: <br/> {{ $order_detail[0]->costumer_name }}</h3>
+                            <h3 class="card-title ml-2 mr-2 ">Invoice: <br/> {{ $order_detail[0]->invoice }}</h3>
+                           <br/>
+                            <h3 class="card-title ml-2 mr-2 ">Kota: <br/> {{ $order_detail[0]->kota_nama }}</h3>
+                            <h3 class="card-title ml-2 mr-2 ">Alamat Lengkap: <br/> {{ $order_detail[0]->costumer_address }}</h3>
                         </div>
                     </div>
                     <!-- /.card-header -->

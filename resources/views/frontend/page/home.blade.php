@@ -14,7 +14,7 @@
                                 <div class="col-lg-7">
                                     <span>We're present.....</span>
                                     <h5>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
-                                    <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span> 
+                                    <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
                                     <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                         <div class="col-6">
                             <div class="filter-control text-right">
                                 <ul class="section-tab-nav tab-nav">
-                                    <li id="allproduct"><a href="{{('shop.product')}}">Lihat Semua </a></li>
+                                    <li id="allproduct"><a href="{{route('shop.product')}}">Lihat Semua </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                 <div class="col-6">
                     <div class="filter-control text-right">
                         <ul class="section-tab-nav tab-nav">
-                            <li id="allproduct"><a href="{{('shop.product')}}">Lihat Semua </a></li>
+                            <li id="allproduct"><a href="{{route('shop.product.filter', "best-seller")}}">Lihat Semua </a></li>
                         </ul>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                 <div class="col-6">
                     <div class="filter-control text-right">
                         <ul class="section-tab-nav tab-nav">
-                            <li id="allproduct"><a href="{{('shop.product')}}">Lihat Semua </a></li>
+                            <li id="allproduct"><a href="{{('shop.product.filter', "product-terbaru")}}">Lihat Semua </a></li>
                         </ul>
                     </div>
                 </div>
@@ -282,7 +282,7 @@
     <!-- Instagram Section End -->
 
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
-    
+
     <div class="modal fade bd-example-modal-lg" id="quickView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

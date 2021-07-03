@@ -1,5 +1,6 @@
 
   <!-- Modal -->
+
   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -9,13 +10,42 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{route("data_vendor.gudang")}}" method="post" enctype="multipart/form-data">
+        <form action="{{
+           request()->is("gudang/mitra") ? route("gudang.mitra") : route("data_vendor.gudang")
+        }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-body">
                 <div class="form-group">
                     <label for="" class="form-label">Nama Mitra</label>
                     <input type="text" name="nama_gudang"  class="form-control">
                 </div>
+                @if (request()->is("gudang/mitra"))
+                    <div class="form-group">
+                        <label for="" class="form-label">Level</label>
+                        <select name="level" class="form-control">
+                            <option value="" disable selected>Pilih Level</option>
+                            @if (Session::get("admin_id") !== null)
+                                <option value="DU">DU</option>
+                            @endif
+                            @if (Session::get("admin_id") !== null || Session::get("auth")->level === "agen" || Session::get("auth")->level === "DU")
+                                <option value="agen">Agen</option>
+                            @endif
+                            @if (Session::get("admin_id") !== null ||
+                            Session::get("auth")->level === "agen" ||
+                            Session::get("auth")->level === "DU" ||
+                            Session::get("auth")->level === "sub-agen")
+                                <option value="sub-agen">Sub Agen</option>
+                            @endif
+                            @if (Session::get("admin_id") !== null ||
+                            Session::get("auth")->level === "agen" ||
+                            Session::get("auth")->level === "DU" ||
+                            Session::get("auth")->level === "sub-agen" ||
+                            Session::get("auth")->level === "seller")
+                                <option value="seller">Seller</option>
+                            @endif
+                        </select>
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="" class="form-label">No.Wa</label>
                     <input type="number" name="no_wa" id="" class="form-control">
