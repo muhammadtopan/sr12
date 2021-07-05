@@ -58,7 +58,7 @@
         let data = []
         let idGudang = document.getElementById("id_gudang");
         let idBarang = Array.from(document.querySelectorAll("#id_barang"))
-
+        console.log(idBarang);
         idBarang.forEach(async (ib) => {
             let item = JSON.parse(localStorage.getItem(ib.value))
             if(item !== null && !isNaN(item.jumlah) && parseInt(item.jumlah) > 0) {

@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\PesananMitra;
 use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -25,4 +26,9 @@ class ProductModel extends Model
         'product_status',
         'product_slug',
     ];
+
+    public function pesananMitra() {
+        return $this->hasMany(PesananMitra::class, "product_id");
+    }
+
 }

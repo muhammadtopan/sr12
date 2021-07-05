@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\PesananMitraRekap;
 use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -40,6 +41,10 @@ class GudangModel extends Model
 
     public function getLeader() {
         return $this->belongsTo(GudangModel::class, "id_leader");
+    }
+
+    public function rekap() {
+        return $this->hasMany(PesananMitraRekap::class, "id_gudang");
     }
 
 }

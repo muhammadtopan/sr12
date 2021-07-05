@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Histori Gudang</h1>
+                <h1 class="m-0">Detail Histori Pesanan Gudang</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('gudang.dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">History</li>
+                    <li class="breadcrumb-item active">Detail History</li>
                 </ol>
             </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,30 +31,33 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Ongkir</th>
-                                    <th scope="col">Total Belanja</th>
-                                    <th scope="col">Total Keseluruhan</th>
-                                    <th scope="col">Status</th>
-                                    <th>Aksi</th>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Nama Product</th>
+                                        <th scope="col">Jumlah</th>
+                                        <th scope="col">Harga Satuan</th>
+                                        <th>Status</th>
+                                        <th scope="col">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($history as $h)
+                                    @foreach ($item as $i)
                                         <tr>
                                             <th scope="row">{{$loop->iteration}}</th>
-                                            <td>Rp.{{number_format($h->ongkir)}}</td>
-                                            <td>Rp.{{number_format($h->total_belanja)}}</td>
-                                            <td>Rp.{{number_format($h->total_belanja + $h->ongkir)}}</td>
-                                            <td style="text-transform:capitalize">{{$h->status}}</td>
-                                            <th>
-                                                <a href="{{route("gudang.detail.history", $h)}}" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-search text-white"></i>
-                                                </a>
-                                            </th>
+                                            <td>{{$i->product->product_name}}</td>
+                                            <td>{{$i->jumlah}}</td>
+                                            <td>Rp.{{number_format($i->product->product_price)}}</td>
+                                            <td>{{$i->status}}</td>
+                                            <td>Rp.{{number_format($i->jumlah * $i->product->product_price)}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot style="text-transform: capitalize">
+                                    <tr>
+                                        <td></td>
+                                        <td colspan="4" style="font-weight: 700">Total Belanja + Diskon</td>
+                                        <td>Rp {{ number_format($total) }}</td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

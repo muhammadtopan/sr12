@@ -31,31 +31,27 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Mitra</th>
+                                        <th scope="col">Invoice</th>
+                                        <th scope="col">Status</th>
+                                        <th>Detail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    </tr>
+                                    @foreach ($item as $i)
+                                        <tr>
+                                            <th scope="row">{{$loop->iteration}}</th>
+                                            <td>{{$i->gudang->nama_gudang}}}</td>
+                                            <td>{{$i->action_code}}</td>
+                                            <td>{{$i->status}}</td>
+                                            <td>
+                                                <a href="" class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-search text-white"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
