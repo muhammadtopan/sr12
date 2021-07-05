@@ -18,10 +18,16 @@
     </div>
     <!-- Breadcrumb Section Begin -->
 
+
     <!-- Faq Section Begin -->
     <div class="faq-section spad">
         <div class="container">
             <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2 style="font-size: 24px">PERTANYAAN YANG BANYAK MUNCUL KETIKA MENSOSIALISASIKAN SR12 HERBAL STORE</h2>
+                    </div>
+                </div>
                 <div class="col-lg-12">
                     <div class="faq-accordin">
                         <div class="accordion" id="accordionExample">
