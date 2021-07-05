@@ -34,4 +34,12 @@ class GudangModel extends Model
         return $this->hasMany(GudangModel::class, "id_leader");
     }
 
+    public function getMitra() {
+        return $this->hasMany(GudangModel::class, "id_leader");
+    }
+
+    public function getLeader() {
+        return $this->belongsTo(GudangModel::class, "id_leader");
+    }
+
 }

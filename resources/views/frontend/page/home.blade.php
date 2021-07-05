@@ -217,7 +217,7 @@
                 <div class="col-6">
                     <div class="filter-control text-right">
                         <ul class="section-tab-nav tab-nav">
-                            <li id="allproduct"><a href="{{('shop.product.filter', "product-terbaru")}}">Lihat Semua </a></li>
+                            <li id="allproduct"><a href="{{route('shop.product.filter', "product-terbaru")}}">Lihat Semua </a></li>
                         </ul>
                     </div>
                 </div>
