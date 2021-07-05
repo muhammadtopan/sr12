@@ -50,7 +50,7 @@
                                             <input type="hidden" name="ongkir" id="jumlah_ongkir">
                                             <tbody>
                                                 @foreach ($stok as $s)
-                                                <input type="number" name="id_barang[]" value="{{$s["id_barang"]}}" id="id_barang">
+                                                <input type="number" name="id_barang[]" value="{{$s["id_barang"]}}" id="id_barang" style="display: none">
                                                     <tr>
                                                         <td class="text-center">{{$loop->iteration}}</td>
                                                         <td class="text-center">{{$s["nama_barang"]}}</td>

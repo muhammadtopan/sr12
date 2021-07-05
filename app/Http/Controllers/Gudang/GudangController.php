@@ -72,9 +72,10 @@ class GudangController extends Controller
         return $vendor->postDataMitra($request, $request->level, Session::get("auth")->id_gudang);
     }
 
-    public function deleteDataMitra(GudangModel $m) {
-        dd($m);
-    }
+    // public function deleteDataMitra(GudangModel $m) {
+        // $data['active'] = "Orderan";
+        // return view("gudang.page.mitra",$data);
+    // }
 
     public function inviteDetailMitra(GudangModel $m) {
         $bread = [];
@@ -94,6 +95,7 @@ class GudangController extends Controller
 
     public function orderan()
     {
+        $data['item'] = PesananMitraRekap::where("id_leader", Session::get("auth")->id_gudang)->get();
         $data['active'] = 'orderan';
         return view('gudang/page/orderan', $data);
     }
@@ -157,13 +159,14 @@ class GudangController extends Controller
     public function postRo(Request $request) {
         $pesananMitra = $this->pesananMitra($request);
         PesananMitraRekap::create([
-            "order_id" => $pesananMitra[0]->id,
+            "id_gudang" => Session::get("auth")->id_gudang,
+            "id_leader" => Session::get("auth")->id_leader,
             "ongkir" => $request->ongkir,
             "status" => $pesananMitra[0]->status,
             "action_code" => $pesananMitra[2],
             "total_belanja" => $pesananMitra[1]
         ]);
-        dd("Berhasil");
+        return redirect()->back();
     }
 
     public function sale()
@@ -180,8 +183,26 @@ class GudangController extends Controller
 
         public function history()
         {
+            $history = PesananMitraRekap::where("id_gudang", Session::get("auth")->id_gudang)->get();
+            $data['history'] = $history;
             $data['active'] = 'history';
             return view('gudang/page/history', $data);
+        }
+
+        public function getHistoryTotal($item){
+            $total = 0;
+            foreach ($item as $i) {
+                $total += $i->jumlah * $i->product->product_price;
+            }
+            return $total;
+        }
+
+        public function detailHistory(PesananMitraRekap $h) {
+            $data['item'] = $h->pesananMitra;
+            $total = $this->getHistoryTotal($data['item']);
+            $data['total'] = $total;
+            $data['active'] = "detail history";
+            return view('gudang/page/detail_history', $data);
         }
 
     public function profit()

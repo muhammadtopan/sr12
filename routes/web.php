@@ -69,15 +69,22 @@ Route::group(["prefix" => "gudang"],function() {
         Route::get('profile', 'Gudang\GudangController@profile')->name('gudang.profile');
         Route::get('stock', 'Gudang\GudangController@stock')->name('gudang.stock');
         Route::get('mitra', 'Gudang\GudangController@mitra')->name('gudang.mitra');
-        Route::get('ro', 'Gudang\GudangController@ro')->name('gudang.ro');
-        Route::post("ro", "Gudang\GudangController@postRo");
-        Route::get('orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
         Route::get('sale', 'Gudang\GudangController@sale')->name('gudang.sale');
         Route::get('best_seller', 'Gudang\GudangController@best_seller')->name('gudang.best_seller');
         Route::get('profit', 'Gudang\GudangController@profit')->name('gudang.profit');
-        Route::get('history', 'Gudang\GudangController@history')->name('gudang.history');
         Route::get('laporan', 'Gudang\GudangController@laporan')->name('gudang.laporan');
         Route::get('setting', 'Gudang\GudangController@setting')->name('gudang.setting');
+
+        // orderan
+        Route::get('orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
+
+        // history
+        Route::get('history', 'Gudang\GudangController@history')->name('gudang.history');
+        Route::get('history/{h}', 'Gudang\GudangController@detailHistory')->name("gudang.detail.history");
+
+        // ro
+        Route::get('ro', 'Gudang\GudangController@ro')->name('gudang.ro');
+        Route::post("ro", "Gudang\GudangController@postRo");
 
         // profile
         Route::put('/update-profile', "Gudang\GudangController@UpdateProfile")->name("gudang.update_profile");

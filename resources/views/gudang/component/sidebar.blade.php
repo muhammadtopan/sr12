@@ -68,12 +68,14 @@
                                 <p>Daftar Orderan</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('gudang.ro') }}" class="nav-link {{ $active == 'ro' ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>RO</p>
-                            </a>
-                        </li>
+                        @if (Session::get("auth")->level !== "DU")
+                            <li class="nav-item">
+                                <a href="{{ route('gudang.ro') }}" class="nav-link {{ $active == 'ro' ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>RO</p>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a href="{{ route('gudang.sale') }}" class="nav-link {{ $active == 'sale' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>

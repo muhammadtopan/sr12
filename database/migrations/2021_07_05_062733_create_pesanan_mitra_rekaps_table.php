@@ -15,7 +15,8 @@ class CreatePesananMitraRekapsTable extends Migration
     {
         Schema::create('pesanan_mitra_rekaps', function (Blueprint $table) {
             $table->id();
-            $table->integer("order_id");
+            $table->integer("id_gudang");
+            $table->integer("id_leader");
             $table->integer("ongkir");
             $table->string("status");
             $table->timestamps();
