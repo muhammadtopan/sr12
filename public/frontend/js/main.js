@@ -111,7 +111,7 @@
         loop: true,
         margin: 15,
         center:false,
-        nav: true,
+        nav: false,
         // items: 4,
         dots: false,
         smartSpeed: 1200,
@@ -139,7 +139,7 @@
         loop: true,
         margin: 15,
         center:false,
-        nav: true,
+        nav: false,
         // items: 4,
         dots: false,
         responsive: {
@@ -376,9 +376,49 @@
 		Syarat Mitra
 	--------------------- */
     $('#syarat').scrollspy({ target: '#navbar-example3' })
-
+    
     $('[data-spy="scroll"]').each(function () {
         var $spy = $(this).scrollspy('refresh')
+    })
+    
+    /*-------------------
+        Why-join
+    --------------------- */
+    $('.owl-why-join').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:false,
+        responsive:{
+            0:{
+                items:3
+            },
+            600:{
+                items:4
+            },
+            1000:{
+                items:6
+            }
+        }
+    })
+    
+    /*-------------------
+        owl-ilmu-strategi
+    --------------------- */
+    $('.owl-ilmu-strategi').owlCarousel({
+        loop:false,
+        margin:10,
+        nav:false,
+        responsive:{
+            0:{
+                items:3
+            },
+            600:{
+                items:5
+            },
+            1000:{
+                items:5
+            }
+        }
     })
 
 })(jQuery);

@@ -85,7 +85,7 @@
                                     @endphp
                                     <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Beranda</a></li>
                                     <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{ route('about') }}">Tentang Kami</a></li>
-                                    <!-- <li class="{{ $active == 'syarat' ? 'active' : '' }}"><a href="{{ route('syarat_mitra') }}">Mitra</a></li> -->
+                                    <li class="{{ $active == 'syarat' ? 'active' : '' }}"><a href="{{ route('syarat_mitra') }}">Mitra</a></li>
                                     <!-- <li class="{{ $active == 'login_mitra' ? 'active' : '' }}"><a href="{{ route('login.mitra') }}">Login</a></li> -->
                                     <li class="{{ $active == 'tool' ? 'active' : '' }}"><a href="{{ route('tool') }}">Tool</a></li>
                                     <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Toko</a></li>
