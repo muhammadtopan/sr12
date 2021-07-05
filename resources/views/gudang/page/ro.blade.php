@@ -20,10 +20,11 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content --> 
+    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <!-- Info boxes -->
+            <input type="hidden" id="level" value="{{Session::get("auth")->level}}">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-danger card-outline card-tabs">
@@ -43,34 +44,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="text-center">1</td>
-                                                <td class="text-center">nama product</td>
-                                                <td class="text-center">13</td>
-                                                <td class="text-center">23</td>
-                                                <td class="text-center">
-                                                    <div class="col-lg-3">
-                                                        <div class="form-group">
-                                                            <input type="number" min="0" class="form-control" name="stock_input" id="stock_input" value="0">
+                                            @foreach ($stok as $s)
+                                                <tr>
+                                                    <td class="text-center">{{$loop->iteration}}</td>
+                                                    <td class="text-center">{{$s["nama_barang"]}}</td>
+                                                    <td class="text-center">{{$s["mitra_stok"]}}</td>
+                                                    <td class="text-center">{{$s["leader_stok"]}}</td>
+                                                    <td class="text-center">
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <input type="number" min="0" class="form-control" name="stock_input" id="stock_input" data-harga="{{$s["harga_barang"]}}" data-id="{{$s["id_barang"]}}" value="0">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">Rp {{ number_format(10000) }}</td>
-                                                <!-- <td>
-                                                    <button data-input="" class="btn btn-sm btn-danger">
-                                                        <i class="fa fa-check"></i>
-                                                    </button>
-                                                </td> -->
-                                            </tr>
+                                                    </td>
+                                                    <td class="text-center">Rp {{ number_format($s["harga_barang"]) }}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
-                                        <tfoot>
+                                        <tfoot style="text-transform: capitalize">
                                             <tr>
                                                 <td></td>
-                                                <td colspan="4">Jumlah</td>
-                                                <td class="text-center">Rp {{ number_format(10000) }}</td>
+                                                <td colspan="4">Jumlah Sebelum Diskon  {{Session::get("auth")->level}}</td>
+                                                <td id="total_tagihan" class="text-center">Rp {{ number_format(0) }}</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="5"> Pesan, jika jumlah pesanan kurang dari yang di harapkan keluarlah pesan pesannan anda nanggung, silahkan tambah beberapa item </td>
+                                                <td></td>
+                                                <td colspan="4">Jumlah Setelah Diskon {{Session::get("auth")->level}}</td>
+                                                <td id="total_tagihan_diskon" class="text-center">Rp {{ number_format(0) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5" id="pesan-alert"> Pesan, jika jumlah pesanan kurang dari yang di harapkan keluarlah pesan pesannan anda nanggung, silahkan tambah beberapa item </td>
                                                 <td>
                                                     <button class="col-12 btn btn-danger">Pesan</button>
                                                 </td>
@@ -88,5 +91,5 @@
         </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
-
+    @include('gudang.page.script.ro_script')
 @endsection

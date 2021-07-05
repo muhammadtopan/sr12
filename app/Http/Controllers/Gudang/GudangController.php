@@ -96,8 +96,36 @@ class GudangController extends Controller
         return view('gudang/page/orderan', $data);
     }
 
+    public function getStok($id) {
+        $data = DB::table("mitra_stoks")->where("user_id",$id)->get();
+        return $data;
+    }
+
+    public function getBarang($id) {
+        return DB::table("tb_product")->where("product_id", $id)->first();
+    }
+
+    public function mixData($mitra, $leader) {
+        $data = [];
+        foreach ($mitra as $key => $m) {
+            $barang = $this->getBarang($m->product_id);
+            array_push($data, [
+                "id_barang" => $barang->product_id,
+                "nama_barang" => $barang->product_name,
+                "harga_barang" => $barang->product_price,
+                "mitra_stok" => $m->product_stok,
+                "leader_stok" => $leader[$key]->product_stok
+            ]);
+        }
+        return $data;
+    }
+
     public function ro()
     {
+        $auth = Session::get("auth");
+        $mitraStok = $this->getStok($auth->id_gudang);
+        $leaderStok = $this->getStok($auth->id_leader);
+        $data["stok"]  = $this->mixData($mitraStok, $leaderStok);
         $data['active'] = 'ro';
         return view('gudang/page/ro', $data);
     }
