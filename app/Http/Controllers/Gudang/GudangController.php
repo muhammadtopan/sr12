@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TambahMitraRequest;
 use App\Http\Requests\UpdateMitraRequest;
 use App\Model\GudangModel;
+use App\PesananMitra;
+use App\PesananMitraRekap;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -128,6 +130,40 @@ class GudangController extends Controller
         $data["stok"]  = $this->mixData($mitraStok, $leaderStok);
         $data['active'] = 'ro';
         return view('gudang/page/ro', $data);
+    }
+
+    public function pesananMitra($request) {
+        $pesananMitra = null;
+        $total = 0;
+        $action_code = \Str::random(5).date("dmY");
+        foreach ($request->id_barang as $key => $ib) {
+            if($request->stock_input[$key] > 0) {
+                $product = DB::table("tb_product")->where("product_id",$ib)->first();
+                $pesananMitra = PesananMitra::create([
+                    "mitra_id" => Session::get("auth")->id_gudang,
+                    "leader_id" => Session::get("auth")->id_leader,
+                    "product_id" => $ib,
+                    "jumlah" => $request->stock_input[$key],
+                    "status" => "wait",
+                    "total" => $request->stock_input[$key] *  $product->product_price,
+                    "action_code" => $action_code
+                ]);
+                $total += $pesananMitra->total;
+            }
+        }
+        return [$pesananMitra,$total,$action_code];
+    }
+
+    public function postRo(Request $request) {
+        $pesananMitra = $this->pesananMitra($request);
+        PesananMitraRekap::create([
+            "order_id" => $pesananMitra[0]->id,
+            "ongkir" => $request->ongkir,
+            "status" => $pesananMitra[0]->status,
+            "action_code" => $pesananMitra[2],
+            "total_belanja" => $pesananMitra[1]
+        ]);
+        dd("Berhasil");
     }
 
     public function sale()

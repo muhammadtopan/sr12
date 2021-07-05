@@ -68,16 +68,21 @@ class CheckoutController extends Controller
         return $total;
     }
 
+    public function getOngkir($origin, $desti, $weight, $courier = "jne") {
+        $cost = RajaOngkir::ongkosKirim([
+            'origin'        => $origin, // ID kota/kabupaten asal
+            'destination'   => $desti, // ID kota/kabupaten tujuan
+            'weight'        => ceil($weight), // berat barang dalam gram
+            'courier'       => $courier // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
+        ])->get();
+        return $cost;
+    }
+
     public function checkOngkir(Request $request) {
         $berat = $this->getTotalBerat($request->product, $request->user);
         $vendor = VendorModel::where("user_id", (int)$request->vendor)->first();
-        $cost = RajaOngkir::ongkosKirim([
-            'origin'        => $vendor->kota_id, // ID kota/kabupaten asal
-            'destination'   => $request->destination, // ID kota/kabupaten tujuan
-            'weight'        => ceil($berat), // berat barang dalam gram
-            'courier'       => "jne" // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
-        ])->get();
-        return response()->json($cost);
+        $ongkir = $this->getOngkir($vendor->kota_id, $request->destination, $berat);
+        return response()->json($ongkir);
     }
 
     public function checkout(Request $request) {

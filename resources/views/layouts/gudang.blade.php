@@ -36,7 +36,6 @@
 <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm accent-danger">
     <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('lte/ckeditor/ckeditor.js')}}"> </script>
-    <script src="{{asset('lte/build/js/axios.min.js')}}"></script>
     <script src="{{asset('lte/build/js/toastr.min.js')}}"></script>
     <div class="wrapper">
         @include('gudang/component/navbar')
