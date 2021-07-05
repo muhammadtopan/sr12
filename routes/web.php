@@ -70,6 +70,7 @@ Route::group(["prefix" => "gudang"],function() {
         Route::get('stock', 'Gudang\GudangController@stock')->name('gudang.stock');
         Route::get('mitra', 'Gudang\GudangController@mitra')->name('gudang.mitra');
         Route::get('ro', 'Gudang\GudangController@ro')->name('gudang.ro');
+        Route::post("ro", "Gudang\GudangController@postRo");
         Route::get('orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
         Route::get('sale', 'Gudang\GudangController@sale')->name('gudang.sale');
         Route::get('best_seller', 'Gudang\GudangController@best_seller')->name('gudang.best_seller');

@@ -21,6 +21,8 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+    <form action="{{route("gudang.ro")}}" method="post">
+        @csrf
     <section class="content">
         <div class="container-fluid">
             <!-- Info boxes -->
@@ -43,42 +45,56 @@
                                                 <!-- <th>Pesan</th> -->
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            @foreach ($stok as $s)
-                                                <tr>
-                                                    <td class="text-center">{{$loop->iteration}}</td>
-                                                    <td class="text-center">{{$s["nama_barang"]}}</td>
-                                                    <td class="text-center">{{$s["mitra_stok"]}}</td>
-                                                    <td class="text-center">{{$s["leader_stok"]}}</td>
-                                                    <td class="text-center">
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <input type="number" min="0" class="form-control" name="stock_input" id="stock_input" data-harga="{{$s["harga_barang"]}}" data-id="{{$s["id_barang"]}}" value="0">
+                                            <input type="hidden" name="total" id="total">
+                                            <input type="hidden" name="id_gudang" id="id_gudang" value="{{Session::get("auth")->id_gudang}}"> <br />
+                                            <input type="hidden" name="ongkir" id="jumlah_ongkir">
+                                            <tbody>
+                                                @foreach ($stok as $s)
+                                                <input type="number" name="id_barang[]" value="{{$s["id_barang"]}}" id="id_barang">
+                                                    <tr>
+                                                        <td class="text-center">{{$loop->iteration}}</td>
+                                                        <td class="text-center">{{$s["nama_barang"]}}</td>
+                                                        <td class="text-center">{{$s["mitra_stok"]}}</td>
+                                                        <td class="text-center">{{$s["leader_stok"]}}</td>
+                                                        <td class="text-center">
+                                                            <div class="col-lg-3">
+                                                                <div class="form-group">
+                                                                    <input type="number" min="0" class="form-control" name="stock_input[]" id="stock_input" data-harga="{{$s["harga_barang"]}}" data-id="{{$s["id_barang"]}}" value="0">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">Rp {{ number_format($s["harga_barang"]) }}</td>
+                                                        </td>
+                                                        <td class="text-center">Rp {{ number_format($s["harga_barang"]) }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                            <tfoot style="text-transform: capitalize">
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="4">Jumlah Sebelum Diskon  {{Session::get("auth")->level}}</td>
+                                                    <td id="total_tagihan" class="text-center">Rp {{ number_format(0) }}</td>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                        <tfoot style="text-transform: capitalize">
-                                            <tr>
-                                                <td></td>
-                                                <td colspan="4">Jumlah Sebelum Diskon  {{Session::get("auth")->level}}</td>
-                                                <td id="total_tagihan" class="text-center">Rp {{ number_format(0) }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td colspan="4">Jumlah Setelah Diskon {{Session::get("auth")->level}}</td>
-                                                <td id="total_tagihan_diskon" class="text-center">Rp {{ number_format(0) }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="5" id="pesan-alert"> Pesan, jika jumlah pesanan kurang dari yang di harapkan keluarlah pesan pesannan anda nanggung, silahkan tambah beberapa item </td>
-                                                <td>
-                                                    <button class="col-12 btn btn-danger">Pesan</button>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="4">Jumlah Setelah Diskon {{Session::get("auth")->level}}</td>
+                                                    <td id="total_tagihan_diskon" class="text-center">Rp {{ number_format(0) }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="4">Ongkir</td>
+                                                    <td id="ongkir" class="text-center">Rp 0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="4">Total Tagihan ( Total Yang Digunakan Adalah Total Setelah )</td>
+                                                    <td id="total_tagihan_seluruhnya" class="text-center">Rp 0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" id="pesan-alert"> Pesan, jika jumlah pesanan kurang dari yang di harapkan keluarlah pesan pesannan anda nanggung, silahkan tambah beberapa item </td>
+                                                    <td>
+                                                        <button type="submit" class="col-12 btn btn-danger">Pesan</button>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -90,6 +106,8 @@
             <!-- /.row -->
         </div><!--/. container-fluid -->
     </section>
+</form>
+
     <!-- /.content -->
     @include('gudang.page.script.ro_script')
 @endsection

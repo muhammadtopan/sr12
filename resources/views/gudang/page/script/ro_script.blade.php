@@ -1,4 +1,5 @@
 <script>
+    let totalInput = document.getElementById("total");
     let input = document.querySelectorAll("#stock_input")
     let tagihan = document.getElementById("total_tagihan")
     let diskon = document.getElementById("total_tagihan_diskon")
@@ -48,8 +49,50 @@
             }
             diskon.innerText = `Rp.${new Intl.NumberFormat().format(tagihan_diskon)}`
             tagihan.innerText = `Rp.${new Intl.NumberFormat().format(total)}`
+            totalInput.value = tagihan_diskon
+            getOngkir(tagihan_diskon);
         })
     });
+
+    function getOngkir(diskon) {
+        let data = []
+        let idGudang = document.getElementById("id_gudang");
+        let idBarang = Array.from(document.querySelectorAll("#id_barang"))
+
+        idBarang.forEach(async (ib) => {
+            let item = JSON.parse(localStorage.getItem(ib.value))
+            if(item !== null && !isNaN(item.jumlah) && parseInt(item.jumlah) > 0) {
+                data.push({...item, id:ib.value})
+                let ongkir = await fetchOngkir(data ,idGudang)
+                if(ongkir !== undefined) {
+                    document.getElementById("ongkir").innerText = `Rp.${new Intl.NumberFormat().format(ongkir)}`
+                    // document.getElementById("total_tagihan_seluruhnya").innerText = `Rp.${new Intl.NumberFormat().format(ongkir + diskon)}`
+                    document.getElementById("jumlah_ongkir").value = ongkir
+                    document.getElementById("total_tagihan_seluruhnya").innerText = `Rp.${new Intl.NumberFormat().format(parseInt(ongkir + diskon))}`
+                }
+            }
+        });
+    }
+
+    async function fetchOngkir(data, idGudang) {
+        // console.log(axios);
+        let res = await axios.get("/api/cek-ongkir-mitra", {
+            params: {
+                idBarang: data ,
+                idGudang: idGudang.value
+            }
+        });
+        console.log(res.data);
+        let ongkir = null;
+        let costs = res.data[0].costs
+        if(costs.length > 1) {
+            let cost = costs[costs.length - 1].cost[0].value
+            ongkir = cost
+        } else {
+            ongkir = costs[0].cost[0].value
+        }
+        return ongkir
+    }
 
     function discountMin(total, dis) {
         let newDis = parseInt(dis) - 10

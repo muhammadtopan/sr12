@@ -1,4 +1,6 @@
 <!-- Bootstrap -->
+{{-- <script src="https://unpkg.com/axios@0.21.1/dist/axios.min.js"></script> --}}
+<script src="{{asset('lte/build/js/axios.min.js')}}"></script>
 <script src="{{asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE -->
 <script src="{{asset('lte/dist/js/adminlte.js')}}"></script>
