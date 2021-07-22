@@ -15,14 +15,17 @@ class MitraModel extends Model
     protected $table = 'tb_mitra';
     protected $primaryKey = 'mitra_id';
     protected $fillable = [
-        'mitra_name',
-        'mitra_email',
+        'mitra_name', 
         'mitra_phone',
+        'mitra_email',
+        'ktp_number',
         'mitra_ttl',
         'mitra_gender',
         'prov_id',
         'kota_id',
         'mitra_address',
+        'selfie_ktp',
+        'mitra_position',
         'mitra_password',
         'mitra_status',
     ];

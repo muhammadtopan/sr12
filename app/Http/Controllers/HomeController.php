@@ -78,11 +78,13 @@ class HomeController extends Controller
 
     public function syarat_mitra()
     {
+        $prov = DB::table('tb_provinsi')->get();
         $active = "syarat";
         return view(
             'frontend/page/syarat',
             [
-                'active' => $active
+                'active' => $active,
+                'prov' => $prov
             ]
         );
     }

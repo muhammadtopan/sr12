@@ -98,12 +98,13 @@
                                         <li class="{{ $active == 'regis' ? 'active' : '' }} daftar_aktif"><a href="{{ route('user.register') }}">Daftar</a></li>
                                         <li class="{{ $active == 'masuk' ? 'active' : '' }} daftar_aktif"><a href="{{ route('user.login') }}">Akun Belanjaku</a></li>
                                     @else
-                                        <li class="daftar_aktif"><a href="#">{{Session::get('costumer_name')}}</a>
-                                            <ul class="dropdown">
-                                                <li><a href="{{ route('user.profile') }}">Profile</a></li>
-                                                <li><a href="{{ route('user.logout') }}">Keluar</a></li>
-                                            </ul>
-                                        </li>
+                                    <li class="daftar_aktif"><a href="#">{{Session::get('costumer_name')}}</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{ route('user.profile') }}">Profile</a></li>
+                                            <li><a href="#">Point: 30</a></li>
+                                            <li><a href="{{ route('user.logout') }}">Keluar</a></li>
+                                        </ul>
+                                    </li>
                                     @endif
                                 </ul>
                             </nav>
