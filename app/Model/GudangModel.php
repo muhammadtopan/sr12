@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\PesananMitra;
 use App\PesananMitraRekap;
 use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Model;
@@ -45,6 +46,14 @@ class GudangModel extends Model
 
     public function rekap() {
         return $this->hasMany(PesananMitraRekap::class, "id_gudang");
+    }
+
+    public function pesananMitra() {
+        return $this->hasMany(PesananMitra::class, "mitra_id");
+    }
+
+    public function orderanLeader() {
+        return $this->hasMany(PesananMitra::class, "leader_id");
     }
 
 }

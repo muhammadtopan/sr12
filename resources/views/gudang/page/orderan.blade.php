@@ -42,11 +42,11 @@
                                     @foreach ($item as $i)
                                         <tr>
                                             <th scope="row">{{$loop->iteration}}</th>
-                                            <td>{{$i->gudang->nama_gudang}}}</td>
+                                            <td>{{$i->gudang->nama_gudang}}</td>
                                             <td>{{$i->action_code}}</td>
                                             <td>{{$i->status}}</td>
                                             <td>
-                                                <a href="" class="btn btn-danger btn-sm">
+                                                <a href="{{route("gudang.orderan.detail", $i)}}" class="btn btn-danger btn-sm">
                                                     <i class="fa fa-search text-white"></i>
                                                 </a>
                                             </td>

@@ -77,6 +77,7 @@ Route::group(["prefix" => "gudang"],function() {
 
         // orderan
         Route::get('orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
+        Route::get('/order/{i}', 'Gudang\GudangController@orderanDetail')->name("gudang.orderan.detail");
 
         // history
         Route::get('history', 'Gudang\GudangController@history')->name('gudang.history');

@@ -100,6 +100,12 @@ class GudangController extends Controller
         return view('gudang/page/orderan', $data);
     }
 
+    public function orderanDetail(PesananMitraRekap $i) {
+        $data['active'] = "detail orderan";
+        $data['item'] = $i->pesananMitra;
+        return view("gudang.page.orderan_detail", $data);
+    }
+
     public function getStok($id) {
         $data = DB::table("mitra_stoks")->where("user_id",$id)->get();
         return $data;
