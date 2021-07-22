@@ -31,56 +31,80 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function registerAdmin(Request $request, MitraModel $costumer)
+    public function registMitra(Request $request, MitraModel $mitra)
     {
         // dd($request);
 
         $messages = [
-            'costumer_name.required'          => 'costumer_name wajib diisi',
-            'costumer_name.unique'            => 'costumer_name sudah digunakan',
-            'costumer_email.required'        => 'Email wajib diisi',
-            'costumer_email.email'           => 'Email tidak valid',
-            'costumer_email.unique'          => 'Email sudah terdaftar',
-            'costumer_phone.numeric'          => 'Ikuti format nomor telpon yang ada',
-            'costumer_password.required'     => 'Password wajib diisi',
-            'costumer_password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
+            'mitra_name.required'         => 'Nama Mitra wajib diisi',
+            'mitra_name.unique'           => 'Nama Mitra sudah digunakan',
+            'mitra_phone.numeric'         => 'Ikuti format nomor telpon yang ada',
+            'mitra_phone.unique'         => 'Nomor Whatsapp sudah digunakan, gunakan nomor yang lain',
+            'mitra_email.required'        => 'Email wajib diisi',
+            'mitra_email.email'           => 'Email tidak valid',
+            'mitra_email.unique'          => 'Email sudah terdaftar',
+            'ktp_number.required'         => 'No. KTP wajib diisi',
+            'ktp_number.unique'         => 'No. KTP sudah digunakan, silahkan cek kembali no. KTP anda',
+            'mitra_ttl.required'          => 'Tanggal lahir wajib diisi',
+            'mitra_gender.required'       => 'Jenis kelamin wajib diisi',
+            'prov_id.required'            => 'Provinsi wajib diisi',
+            'kota_id.required'            => 'Kota wajib diisi',
+            'mitra_address.required'      => 'Alamat wajib diisi',
+            'mitra_position.required'     => 'Alamat wajib diisi',
+            'mitra_password.required'     => 'Password wajib diisi ',
+            'mitra_password.min'          => 'Password wajib diisi min 6 karakter',
+            'mitra_password.confirmed'    => 'Password tidak sama dengan konfirmasi password',
+            // 'selfie_ktp.max'            => 'Tipe file harus seperti yang telah ditentukan (jpg,jpeg,png)',
+            'selfie_ktp.max'            => 'Ukuran file max 200kb',
         ];
 
         $validator = Validator::make($request->all(), [
-            'costumer_name'          => 'required',
-            'costumer_email'         => 'required|email|unique:users,email',
-            'costumer_phone'         => 'required|numeric',
-            'costumer_ttl'           => 'required',
-            'costumer_gender'        => 'required',
-            'prov_id'                => 'required',
-            'kota_id'                => 'required',
-            'costumer_address'       => 'required',
-            'costumer_password'      => 'required|min:6'
+            'mitra_name'          => 'required',
+            'mitra_phone'         => 'required|numeric|unique:tb_mitra,mitra_phone',
+            'mitra_email'         => 'required|email|unique:tb_mitra,mitra_email',
+            'ktp_number'          => 'required|unique:tb_mitra,ktp_number',
+            'mitra_ttl'           => 'required',
+            'mitra_gender'        => 'required',
+            'prov_id'             => 'required',
+            'kota_id'             => 'required',
+            'mitra_address'       => 'required',
+            'mitra_position'      => 'required',
+            // 'selfie_ktp'          => 'nullable|mimes:jpg,jpeg,png',
+            'selfie_ktp'          => 'nullable|size:200',
+            'mitra_password'      => 'required|min:6'
         ], $messages);
         // Pa$$w0rd!
         // dd($validator);
 
         if ($validator->fails()) {
             return redirect()
-                ->route('user.login')
+                ->route('user.register')
                 ->withErrors($validator)
                 ->withInput();
         } else {
             $data = $request->all();
-            $data['costumer_name'] = ucwords(strtolower($request->input('costumer_name')));
-            $data['costumer_email'] = strtolower($request->input('costumer_email'));
-            $data['costumer_phone'] = $request->input('costumer_phone');
-            $data['costumer_ttl'] = $request->input('costumer_ttl');
-            $data['costumer_gender'] = $request->input('costumer_gender');
+            $data['mitra_name'] = ucwords(strtolower($request->input('mitra_name')));
+            $data['mitra_phone'] = $request->input('mitra_phone');
+            $data['mitra_email'] = strtolower($request->input('mitra_email'));
+            $data['ktp_number'] = $request->input('ktp_number');
+            $data['mitra_ttl'] = $request->input('mitra_ttl');
+            $data['mitra_gender'] = $request->input('mitra_gender');
             $data['prov_id'] = $request->input('prov_id');
             $data['kota_id'] = $request->input('kota_id');
-            $data['costumer_address'] = $request->input('costumer_address');
-            $data['costumer_password'] = Hash::make($request->input("costumer_password"));
-            $data['costumer_status'] = "on";
-            $costumer = MitraModel::create($data);
+            $data['mitra_address'] = $request->input('mitra_address');
+            if ($request->hasFile('selfie_ktp') != null) {
+                $foto = $request->file('selfie_ktp');
+                $filename = time() . "." . $foto->getClientOriginalExtension;
+                $foto->move('img/frontend/img/mitra/' . $filename);
+                $data['selfie_ktp'] = $filename;
+            }
+            $data['mitra_position'] = $request->input('mitra_position');
+            $data['mitra_password'] = Hash::make($request->input("mitra_password"));
+            $data['mitra_status'] = "off";
+            $mitra = MitraModel::create($data);
             return redirect()
-                ->route('user.login')
-                ->with('message', 'Akun Berhasil Dibuat');
+                ->route('user.register')
+                ->with('message', 'Akun Berhasil Dibuat, tunggu 2x24 jam untuk dihubungi Admin');
         }
     }
 
