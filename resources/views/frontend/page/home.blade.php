@@ -8,24 +8,24 @@
         <div class="row">
             <div class="col-md-9 pr-0">
                 <div class="hero-items owl-carousel">
-                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/all_product.jpg')}}">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7">
                                     <span>We're present.....</span>
-                                    <h5>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
                                     <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/time-bg.jpg')}}">
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/all_product.jpg')}}">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7">
                                     <span>We're present.....</span>
-                                    <h5>SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
                                     <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
                                 </div>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="col-md-3 pl-0">
-                <img class="foto-bersama" src="{{ asset('frontend/img/banner-1.jpg')}}" alt="">
+                <img class="foto-bersama p-1 pt-4 pb-4" style="background: #e7ab3c" src="{{ asset('frontend/img/slider/foto.jpg')}}" alt="">
             </div>
         </div>
     </section>

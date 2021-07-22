@@ -29,7 +29,8 @@ Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon')
 // Filter Kategori
 Route::post('filter.kategori/{category_id}', 'HomeController@kategori')->name('filter.kategori');
 
-//login mitra
+// mitra
+Route::post('regist/mitra', 'Mitra\DashboardController@registMitra')->name("regist-mitra");
 Route::get('login.mitra', 'HomeController@frontMitra')->name('login.mitra');
 Route::get('tool', 'HomeController@tool')->name('tool');
 

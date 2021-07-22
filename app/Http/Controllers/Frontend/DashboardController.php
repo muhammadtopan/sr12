@@ -39,18 +39,18 @@ class DashboardController extends Controller
     public function registerAdmin(Request $request, UserModel $user)
     {
         $messages = [
-            'username.required'          => 'Username wajib diisi',
-            'username.unique'            => 'Username sudah digunakan',
-            'user_email.required'        => 'Email wajib diisi',
-            'user_email.email'           => 'Email tidak valid',
-            'user_email.unique'          => 'Email sudah terdaftar',
-            'user_phone.numeric'          => 'Ikuti format nomor telpon yang ada',
-            'user_password.required'     => 'Password wajib diisi',
-            'user_password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
+            'username.required'         => 'Username wajib diisi',
+            'username.unique'           => 'Username sudah digunakan',
+            'user_email.required'       => 'Email wajib diisi',
+            'user_email.email'          => 'Email tidak valid',
+            'user_email.unique'         => 'Email sudah terdaftar',
+            'user_phone.numeric'        => 'Ikuti format nomor telpon yang ada',
+            'user_password.required'    => 'Password wajib diisi',
+            'user_password.confirmed'   => 'Password tidak sama dengan konfirmasi password'
         ];
 
         $validator = Validator::make($request->all(), [
-            'username'          => 'required',
+            'username'           => 'required',
             'user_email'         => 'required|email|unique:users,email',
             'user_phone'         => 'required|numeric',
             'user_password'      => 'required|min:6'
@@ -113,7 +113,7 @@ class DashboardController extends Controller
         $kota = DB::table('tb_kota')
             ->where('prov_id', '=', $request->prov_id)
             ->get();
-        dd($kota);
+        // dd($kota);
         return response()->json([
             'kota' => $kota,
         ], 200);

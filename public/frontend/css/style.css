@@ -532,7 +532,7 @@ ol {
 }
 
 .inner-header .nav-right li.heart-icon a {
-	color: #252525;
+	color: #252525 !important;
 	position: relative;
 	display: inline-block;
 }
@@ -2948,7 +2948,6 @@ ol {
 -----------------------*/
 
 .checkout-section {
-	padding-top: 80px;
 	padding-bottom: 80px;
 }
 
@@ -3949,7 +3948,7 @@ ol {
 	top: 4px;
 	height: 13px;
 	width: 13px;
-	border: 1px solid #6C6C6C;
+	border: 1px solid #fff;
 	border-radius: 2px;
 }
 
@@ -3958,7 +3957,7 @@ ol {
 	top: -2px;
 	width: 13px;
 	height: 6px;
-	border: solid #ffffff;
+	border: solid #fff;
 	border-width: 2px 2px 0px 0px;
 	-webkit-transform: rotate(127deg);
 	-ms-transform: rotate(127deg);
@@ -4410,4 +4409,15 @@ ol {
 
 #syarat {
     position: relative;
+}
+.product-content-regis {
+    background-color: #800020;
+}
+
+.specification-table-regis {
+    background-color: #006a4e;
+}
+
+.register-form.login-form form label {
+    color: #fff !important;
 }
