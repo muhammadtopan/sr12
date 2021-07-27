@@ -78,6 +78,7 @@ Route::group(["prefix" => "gudang"],function() {
 
         // orderan
         Route::get('orderan', 'Gudang\GudangController@orderan')->name('gudang.orderan');
+        Route::get('/order/{i}', 'Gudang\GudangController@orderanDetail')->name("gudang.orderan.detail");
 
         // history
         Route::get('history', 'Gudang\GudangController@history')->name('gudang.history');
@@ -119,14 +120,26 @@ Route::post('carikota', 'Frontend\DashboardController@carikota')->name('carikota
 
 // USER SUDAH LOGIN
 Route::middleware(['user.login'])->group(function () {
-    Route::get('user.profile', 'Frontend\CostumerController@profile')->name('user.profile');
-    Route::get('user.logout', 'Frontend\CostumerController@logout')->name('user.logout');
+    Route::get('user/profile', 'Frontend\CostumerController@profile')->name('user.profile');
+    Route::get('user/logout', 'Frontend\CostumerController@logout')->name('user.logout');
     Route::get('home', 'HomeController@index')->name('home.again');
     Route::post('/add_to_cart/{product_id}', 'Frontend\CartController@store')->name('add_to_cart');
     Route::get('/cart', 'Frontend\CartController@show')->name('cart');
     Route::delete('cart', 'Frontend\CartController@destroy')->name('cart.delete');
     Route::post('checkout', 'Frontend\CartController@checkout')->name('checkout');
     Route::post('/checkout-fix', 'Customer\CheckoutController@checkout')->name("checkout.fix");
+
+    // akun belanjaku
+        Route::group(["prefix" => "user/profile/"], function() {
+            Route::get("/keranjang", "Frontend\CostumerController@GetDashboardKeranjang")->name("user.profile.keranjang");
+            Route::get('/keranjang/{tgl}', "Frontend\CostumerController@GetDashboardKeranjangDetail")->name("user.profile.keranjang.detail");
+
+            Route::get('/voucher', 'Frontend\CostumerController@GetListVoucher')->name("user.profile.voucher");
+            Route::get('/voucher-redeem/{v}', 'Frontend\CostumerController@RedeemVoucher')->name("user.profile.voucher.redeem");
+            Route::get('/voucher/history', 'Frontend\CostumerController@HistoryVoucher')->name("user.profile.voucher.history");
+        });
+    // akun belanjaku
+
 });
 
 //Vendor Belum Login
@@ -173,8 +186,21 @@ Route::middleware(['admin'])->group(function () {
 });
 
 Route::middleware(['dashboard'])->group(function () {
-    Route::get('admin.dashboard', 'Backend\DashboardController@dashboard')->name('admin.dashboard');
+    Route::get('admin/dashboard', 'Backend\DashboardController@dashboard')->name('admin.dashboard');
     Route::get('logout', 'Backend\DashboardController@logout')->name('logout');
+
+    // Voucher
+    Route::group(["prefix" => "voucher"],function() {
+        Route::get("/", "Backend\VoucherController@index")->name("voucher");
+        Route::post('', "Backend\VoucherController@PostVoucher");
+        Route::get("/delete/{v}", "Backend\VoucherController@DeleteVoucher")->name("voucher.delete");
+        Route::get('/edit/{v}',"Backend\VoucherController@GetEditVoucher")->name("voucher.edit");
+        Route::put('/edit/{v}',"Backend\VoucherController@PutEditVoucer");
+        Route::put("/status/{v}", "Backend\VoucherController@PutVoucherStatus")->name("voucher.status");
+        Route::put('/gambar/{v}', "Backend\VoucherController@PutVoucherGambar")->name("voucher.gambar");
+        Route::get("/redeem","Backend\VoucherController@GetVoucherRedeem")->name("voucher.redeem");
+        Route::get('/redeem/konfirmasi/{r}', "Backend\VoucherController@VoucherRedeemKonfirmasi")->name("voucher.redeem.konfirmasi");
+    });
 
     // Product Category
     Route::get('category', 'Backend\CategoryController@index')->name('category');

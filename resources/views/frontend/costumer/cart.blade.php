@@ -43,6 +43,7 @@
                             <table>
                                 <thead>
                                     <tr>
+                                        <th>Checkout ?</th>
                                         <th>Gambar</th>
                                         <th class="p-name">Nama Produk</th>
                                         <th>Harga</th>
@@ -54,10 +55,14 @@
                                 <tbody>
                                     @foreach($cart as $no => $carts)
                                         <tr>
+                                            <td>
+                                                <input type="checkbox" name="checkout[]" />
+                                            </td>
                                             <td class="cart-pic first-row"><img src="{{ asset('lte/dist/img/product/'. $carts->product_image)}}" alt=""></td>
                                             <td class="cart-title first-row">
                                                 <h5>{{ $carts->product_name }}</h5>
                                             </td>
+                                            <input type="hidden" name="order_details_id[]" value="{{$carts->order_details_id}}">
                                             <input type="hidden" name="product_id[]" value="{{$carts->product_id}}">
                                             <input type="hidden" name="price[]" value="{{$carts->selling_price}}">
                                             <td class="p-price first-row">Rp {{ number_format($carts->selling_price) }}</td>
