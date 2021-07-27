@@ -198,6 +198,8 @@ Route::middleware(['dashboard'])->group(function () {
         Route::put('/edit/{v}',"Backend\VoucherController@PutEditVoucer");
         Route::put("/status/{v}", "Backend\VoucherController@PutVoucherStatus")->name("voucher.status");
         Route::put('/gambar/{v}', "Backend\VoucherController@PutVoucherGambar")->name("voucher.gambar");
+        Route::get("/redeem","Backend\VoucherController@GetVoucherRedeem")->name("voucher.redeem");
+        Route::get('/redeem/konfirmasi/{r}', "Backend\VoucherController@VoucherRedeemKonfirmasi")->name("voucher.redeem.konfirmasi");
     });
 
     // Product Category

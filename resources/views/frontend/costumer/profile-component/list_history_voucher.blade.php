@@ -23,7 +23,6 @@
                             <h4 class="card-title">Data Keranjang Berdasarkan Waktu</h4>
                         </div>
                         <div class="card-body">
-                            <a href="{{route('user.profile.voucher.history')}}" class="btn btn-danger btn-sm mb-3 text-white"><i class="fas fa-search-plus"></i> Lihat History Saya</a>
                             <div class="table-responsive">
                                 <table class="table table-hover" id="zero_config">
                                     <thead>

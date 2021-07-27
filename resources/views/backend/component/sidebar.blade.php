@@ -142,35 +142,36 @@
                                 <p>Freelancer</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Paket Produk
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('package_category') }}" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Kategori Paket</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> -->
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('voucher')}}" class="nav-link">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-ticket-alt"></i>
                         <p>
                             Voucher
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('voucher')}}" class="nav-link">
+                                <p>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    Voucher
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('voucher.redeem')}}" class="nav-link">
+                                <p>
+                                    <i class="far fa-circle nav-icon"></i>
+                                    Redeem Voucher
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
 
                 <li class="nav-item has-treeview">
                     <a href="{{ route('articel')}}" class="nav-link">

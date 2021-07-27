@@ -74,7 +74,7 @@
                                         @endif
                                     </li>
                                 </ul>
-                            </div>    
+                            </div>
                         </div>
                         <div class="col-lg-10 text-right col-md-10">
                             <nav class="nav-menu mobile-menu mt-3">
@@ -109,7 +109,7 @@
                                 </ul>
                             </nav>
                             <div id="mobile-menu-wrap">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -118,17 +118,17 @@
         </div>
         <div class="nav-item">
             <div class="container text-right">
-                
+
             </div>
     </header>
-    <!-- Header End --> 
+    <!-- Header End -->
         <br> <br style="margin-bottom: 10px">
 
     <script>
         async function cartDelete(id) {
             let cart = document.getElementById(`cart${id}`);
             cart.remove();
-            let res = await axios.delete('{{route("cart.delete")}}', 
+            let res = await axios.delete('{{route("cart.delete")}}',
             {params: {
                     'id': id
                 }

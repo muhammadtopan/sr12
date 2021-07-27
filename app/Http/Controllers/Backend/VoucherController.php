@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Voucher;
+use App\RedeemVoucher;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class VoucherController extends Controller
@@ -76,6 +78,22 @@ class VoucherController extends Controller
     public function GetDetailVoucher(Request $request) {
         $voucher = Voucher::where("id", $request->id)->first();
         return response()->json($voucher,200);
+    }
+
+    public function GetVoucherRedeem() {
+        $redeem = RedeemVoucher::join("tb_costumer", "redeem_vouchers.id_costumer", "=", "tb_costumer.costumer_id")
+        ->join("vouchers", "redeem_vouchers.id_voucher", "=", "vouchers.id")
+        ->get(["tb_costumer.costumer_name","redeem_vouchers.id","vouchers.nama_voucher", "redeem_vouchers.status","vouchers.item","vouchers.jumlah_point","redeem_vouchers.created_at"]);
+        // ->get(["tb_costumer.costumer.name","redeem_vouchers.id","vouchers.nama_voucher", "redeem_vouchers.status","vouchers.item","vouchers.jumlah_point","redeem_vouchers.created_at"]);
+        return view("backend.page.voucher.redeem",compact("redeem"));
+    }
+
+    public function VoucherRedeemKonfirmasi(RedeemVoucher $r) {
+        $pesan = $r->status == "konfirmasi" ? "Konfirmasi Berhasil Dibatalkan" : "Penukaran Voucher Telah Disetujui";
+        $r->update([
+            "status" => $r->status == "konfirmasi" ? "belum konfirmasi" : "konfirmasi"
+        ]);
+        return redirect()->back()->with("pesan", $pesan);
     }
 
 }
