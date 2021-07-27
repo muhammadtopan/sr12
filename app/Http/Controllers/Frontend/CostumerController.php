@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Model\CostumerModel;
-use App\Model\ProductModel;
-use App\Model\TmpDetailsModel;
-use App\Helper\JwtHelper;
-use App\Model\Referal;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
 use DB;
+use App\Model\Referal;
+use App\Helper\JwtHelper;
+use App\Model\ProductModel;
+use App\Model\CostumerModel;
+use Illuminate\Http\Request;
+use App\Model\TmpDetailsModel;
+use App\Http\Controllers\Controller;
+use App\RedeemVoucher;
+use App\Voucher;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class CostumerController extends Controller
 {
@@ -137,6 +141,69 @@ class CostumerController extends Controller
         return isset($freelancer->referal)
         ? response()->json(["status" => "ok"],200)
         : response()->json(["status" => "failed"],200);
+    }
+
+    public function GetDashboardKeranjang(Request $request) {
+        $cart = TmpDetailsModel::where("user_id", Session::get("costumer_id"))->get()->groupBy(function($data) {
+            return $data->created_at->format("d-M-Y");
+        });
+        $data['active'] = "";
+        $data['data'] = $cart;
+        return view("frontend.costumer.profile-component.list_cart", $data);
+    }
+
+    public function GetDashboardKeranjangDetail($tgl) {
+        $detail = [];
+        $data = ProductModel::where("tb_tmp_details.user_id", Session::get("costumer_id"))
+        ->join("tb_tmp_details", "tb_tmp_details.product_id","tb_product.product_id",)
+        ->get();
+        foreach ($data as $d) {
+            if($d->created_at->format("d-M-Y") == $tgl) {
+                $detail[] = $d;
+            }
+        }
+        $data['active'] = "";
+        $data['data'] = $detail;
+        return view("frontend.costumer.profile-component.detail_cart", $data);
+    }
+
+    public function GetListVoucher() {
+        $vouchers = Voucher::where("status", "aktif")->get();
+        $data["active"] = "";
+        $data['vouchers'] = $vouchers;
+        return view("frontend.costumer.profile-component.list_voucher", $data);
+    }
+
+    public function RedeemVoucher(Voucher $v) {
+       // cek point user
+       $user = DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->first();
+
+        if($user->point < $v->jumlah_point) {
+            return redirect()->back()->with("pesan", "Point Kamu Tidak Cukup");
+        } else {
+            RedeemVoucher::create([
+                "id_costumer" => $user->costumer_id,
+                "id_voucher" => $v->id
+            ]);
+            $v->update([
+                "jumlah_penukaran" => $v->jumlah_penukaran + 1
+            ]);
+            DB::table("tb_costumer")->where("costumer_id",$user->costumer_id)->update([
+                "point" => $user->point - $v->point
+            ]);
+            return redirect()->back()->with("pesan", "Penukaran Point Berhasil");
+        }
+    }
+
+    public function HistoryVoucher() {
+        $vouchers = RedeemVoucher::join("tb_costumer", "redeem_vouchers.id_costumer", "=", "tb_costumer.costumer_id")
+        ->join("vouchers", "redeem_vouchers.id_voucher", "=", "vouchers.id")
+        ->where("id_costumer", Session::get("costumer_id"))
+        ->get(["redeem_vouchers.id","vouchers.nama_voucher", "redeem_vouchers.status","vouchers.item","vouchers.jumlah_point","redeem_vouchers.created_at"]);
+
+        $data["active"] = "";
+        $data["vouchers"] = $vouchers;
+        return view("frontend.costumer.profile-component.list_history_voucher", $data);
     }
 
 }

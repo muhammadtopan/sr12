@@ -1,101 +1,105 @@
-@extends ('frontend/layout.app')
-@section ('title', 'Herbal Skincare')
+@extends ('layouts/profile-costumer')
+@section ('title', 'Dashboard')
 
 @section ('content')
-    <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
-                    <a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a>
-                        <span>Profile</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Dashboard gudang</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('gudang.dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
-    <!-- Breadcrumb Section Begin -->
+    <!-- /.content-header -->
 
-    <!-- Profile Begin -->
-    <section class="checkout-section">
-        <div class="container">
-            <form action="#" class="checkout-form">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product-tab">
-                            <div class="tab-item">
-                                <ul class="nav col-12" role="tablist">
-                                    <li>
-                                        <a class="active" data-toggle="tab" href="#tab-1" role="tab">Profile</a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tab" href="#tab-2" role="tab">Point <span class="bg-warning text-white p-1 rounded">30</span></a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="tab" href="#tab-3" role="tab">Pembelian</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="tab-item-content">
-                                <div class="tab-content">
-                                    <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
-                                        <div class="row">
-                                            <div class="col-lg-12 text-center">
-                                                <h4>Profile</h4>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <label for="costumer_name">Nama</label>
-                                                        <input type="text" id="costumer_name" name="costumer_name" value="{{ $akun->costumer_name }}" readonly>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <label for="costumer_email">Email</label>
-                                                        <input type="text" id="costumer_email" name="costumer_email" value="{{ $akun->costumer_email}}" readonly>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <label for="costumer_phone">Telepon</label>
-                                                        <input type="text" id="costumer_phone" name="costumer_phone" value="{{ $akun->costumer_phone}}" readonly>
-                                                    </div>
-                                                    <div class="col-lg-12 group-input">
-                                                        <label for="costumer_gender">Jenis Kelamin</label>
-                                                        <select name="costumer_gender" id="costumer_gender" class="form-control @error('costumer_gender') {{ 'is-invalid' }} @enderror" >
-                                                            <option value="LK" <?php echo ($akun->costumer_gender == 'LK') ? 'selected' : '' ?>>Laki-laki</option>
-                                                            <option value="PR" <?php echo ($akun->costumer_gender == 'PR') ? 'selected' : '' ?>>Perempuan</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="col-lg-12">
-                                                    <label for="prov_id">Provinsi</label>
-                                                    <input type="text" id="prov_id" name="prov_id" value="{{ $akun->prov_nama}}" readonly>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <label for="kota_id">Kota/Kab</label>
-                                                    <input type="text" id="kota_id" name="kota_id" value="{{ $akun->kota_nama}}" readonly>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <label for="costumer_address">Alamat</label>
-                                                    <input type="text" id="costumer_address" name="costumer_address" value="{{ $akun->costumer_address}}" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade-in" id="tab-2" role="tabpanel">
-                                        point
-                                    </div>
-                                    <div class="tab-pane fade-in" id="tab-3" role="tabpanel">
-                                        Pembelian
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="info-box card-danger card-outline">
+                        <div class="info-box-content">
+                            <h4 class="info-box-text">Rentang waktu data</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" name="daterange" class="form-control">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- /.info-box -->
                 </div>
-            </form>
+                <!-- /.col -->
+
+                <!-- BAR CHART -->
+                <!-- /.col-md-6 -->
+                <div class="col-lg-12">
+                    <div class="card card-danger card-outline">
+                        <div class="card-body">
+                            <div class="d-flex">
+                            <p class="d-flex flex-column">
+                                <span class="text-bold text-lg">$18,230.00</span>
+                                <span>Sales Over Time</span>
+                            </p>
+                            <p class="ml-auto d-flex flex-column text-right">
+                                <span class="text-success">
+                                <i class="fas fa-arrow-up"></i> 33.1%
+                                </span>
+                                <span class="text-muted">Since last month</span>
+                            </p>
+                            </div>
+                            <!-- /.d-flex -->
+
+                            <div class="position-relative mb-4">
+                            <canvas id="sales-chart" height="200"></canvas>
+                            </div>
+
+                            <div class="d-flex flex-row justify-content-end">
+                            <span class="mr-2">
+                                <i class="fas fa-square text-primary"></i> This year
+                            </span>
+
+                            <span>
+                                <i class="fas fa-square text-gray"></i> Last year
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col-md-6 -->
+                <!-- /.card -->
+
+            </div>
+            <!-- /.row -->
         </div>
+        <!--/. container-fluid -->
     </section>
-    <!-- Profile End -->
+    <!-- /.content -->
+
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{asset('lte/dist/js/pages/dashboard3.js')}}"></script>
+    <script>
+        // $('input[name="dates"]').daterangepicker();
+        $(function() {
+            $('input[name="daterange"]').daterangepicker({
+                opens: 'left'
+            }, function(start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+        });
+    </script>
+
+
 @endsection

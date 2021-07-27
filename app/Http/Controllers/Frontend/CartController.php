@@ -8,6 +8,8 @@ use App\Model\TmpDetailsModel;
 use Session;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Customer\CheckoutController;
+use App\Model\ProductModel;
+use App\TmpDetail;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
@@ -42,7 +44,7 @@ class CartController extends Controller
     {
         $user_id = $request->session()->get("costumer_id");
         $product = DB::table("tb_product")->where("product_id",$product_id)->first();
-        $old = DB::table("tb_tmp_details")->where("product_id",$product_id)->where("user_id",$user_id)->first();
+        $old = TmpDetailsModel::where("product_id",$product_id)->where("user_id",$user_id)->first();
         $data = [
             "user_id" => $user_id,
             "product_id" => $product_id,
@@ -52,9 +54,12 @@ class CartController extends Controller
             "selling_price" => $product->product_price,
             "total_price" => $request->qty * $product->product_price
         ];
-        $old == null
-        ? DB::table("tb_tmp_details")->insert($data)
-        : DB::table("tb_tmp_details")->where("product_id",$product_id)->where("user_id",$user_id)->update($data);
+        if($old != null) {
+            $old->update($data);
+        } else {
+            TmpDetailsModel::create($data);
+        }
+
         $total_price = TmpDetailsModel::where("user_id", $request->session()->get('costumer_id'))->sum('total_price');
         $request->session()->put('total_price', $total_price);
         return redirect()->back();
@@ -78,21 +83,35 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
+        $cart = [];
+        $product_id = [];
+        $qty = [];
+        $total_price = 0;
         $checkout = new CheckoutController();
+        $continueProses = $request->checkout;
         $user_id = session()->get("costumer_id");
         $user = DB::table("tb_costumer")->where("costumer_id",$user_id)->first();
         $vendor_dalam_kota = $checkout->getVendorDalamKota($user->prov_id,$user->kota_id, $request);
         $bank = DB::table("tb_bank")->get();
-        $cart = DB::table('tb_tmp_details')
-                    ->join('tb_product', 'tb_product.product_id', '=', 'tb_tmp_details.product_id')
-                    ->where('user_id', $user_id)
-                    ->get();
-        $total_price = TmpDetailsModel::where("user_id", Session::get('costumer_id'))->sum('total_price');
+
+        foreach ($continueProses as $key => $c) {
+            $data =  DB::table('tb_tmp_details')
+                        ->join('tb_product', 'tb_product.product_id', '=', 'tb_tmp_details.product_id')
+                        ->where("order_details_id", $request->order_details_id[$key])
+                        ->where('user_id', $user_id)
+                        ->first();
+            $cart[] = $data;
+            $product_id[] = $data->product_id;
+            $qty[] = $data->quantity;
+            $total_price += $data->quantity * $data->selling_price;
+        }
+        // $total_price = TmpDetailsModel::where("user_id", Session::get('costumer_id'))->sum('total_price');
         $provinsi = DB::table("tb_provinsi")->get();
         $kota = DB::table("tb_kota")->where("prov_id",$user->prov_id)->get();
         $active = '';
         return view('frontend/costumer/checkout',
         [
+            "continue" => $continueProses,
             'active' => $active,
             "user" => $user,
             "bank" => $bank,
@@ -101,8 +120,8 @@ class CartController extends Controller
             "provinsi" => $provinsi,
             'total_price' => $total_price,
             "vendor" => $vendor_dalam_kota,
-            "qty" => $request->qty,
-            "product_id" => $request->product_id
+            "qty" => $qty,
+            "product_id" => $product_id
         ]);
     }
 
@@ -146,7 +165,7 @@ class CartController extends Controller
         return response()->json([
             'total' => $total_price,
             'barang' => $countCart
-            ]);
+        ]);
     }
 }
 

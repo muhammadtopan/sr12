@@ -85,6 +85,16 @@ class CheckoutController extends Controller
         return response()->json($ongkir);
     }
 
+    public function SetPoint(int $point) {
+        if($point > 100000) {
+            $point = (int)$point / 100000;
+            $user = DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->first();
+            DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->update([
+                "point" => $user->point + $point
+            ]);
+        }
+    }
+
     public function checkout(Request $request) {
         $order = OrderModel::create([
             "user_id" => $request->vendor,
@@ -97,23 +107,31 @@ class CheckoutController extends Controller
             "combined_price" => (int)$request->jenis_kirim + (int)$request->total,
             "bank_name" => $request->bank
         ]);
-        DB::transaction(function() use($request,$order) {
+        $total = DB::transaction(function() use($request,$order) {
+            $total = 0;
             foreach ($request->qty as $key => $qty) {
                 // kurangi stok vendor
                 $product = StokModel::where("user_id", $request->vendor)->where("product_id",$request->product_id[$key])->first();
                 $tmp = DB::table("tb_tmp_details")->where("user_id", Session::get("costumer_id"))->where("product_id",$request->product_id[$key])->first();
-                OrderDetailsModel::create([
-                    "order_id" => $order->order_id,
-                    "product_id" => $request->product_id[$key],
-                    "dicount" => 0,
-                    "quantity" => $qty,
-                    "capital_price" => $tmp->capital_price,
-                    "selling_price" => $tmp->selling_price,
-                    "total_price" => (int)$tmp->selling_price * (int)$qty
-                ]);
-                DB::table("tb_tmp_details")->where("user_id", Session::get("costumer_id"))->where("product_id",$request->product_id[$key])->delete();
+                // dd($tmp->capital_price);
+                if($tmp != null) {
+                    OrderDetailsModel::create([
+                        "order_id" => $order->order_id,
+                        "product_id" => $request->product_id[$key],
+                        "dicount" => 0,
+                        "quantity" => $qty,
+                        "capital_price" => $tmp->capital_price,
+                        "selling_price" => $tmp->selling_price,
+                        "total_price" => (int)$tmp->total_price
+                    ]);
+                    $total += $tmp->total_price;
+                    DB::table("tb_tmp_details")->where("user_id", Session::get("costumer_id"))->where("product_id",$request->product_id[$key])->delete();
+                }
             }
+            return $total;
         });
+        $this->SetPoint($total);
         return redirect()->route('home');
     }
 }
+

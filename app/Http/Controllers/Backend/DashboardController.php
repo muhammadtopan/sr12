@@ -67,7 +67,7 @@ class DashboardController extends Controller
                 $request->session()->put('admin_level', $data_admin->admin_level);
                 $request->session()->put('token', $token);
                 // redirect ke halaman home
-                return redirect('admin.dashboard')->with("pesan", "Selamat datang " . session('admin_name'));
+                return redirect()->route('admin.dashboard')->with("pesan", "Selamat datang " . session('admin_name'));
             }
             else{
                 return back()->with("pesan", "Email atau Password Salah");
