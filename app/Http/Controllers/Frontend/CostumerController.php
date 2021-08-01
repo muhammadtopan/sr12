@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use DB;
+use App\Voucher;
+use Carbon\Carbon;
 use App\Model\Referal;
+use App\RedeemVoucher;
 use App\Helper\JwtHelper;
 use App\Model\ProductModel;
 use App\Model\CostumerModel;
 use Illuminate\Http\Request;
 use App\Model\TmpDetailsModel;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\RedeemVoucher;
-use App\Voucher;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -204,6 +204,30 @@ class CostumerController extends Controller
         $data["active"] = "";
         $data["vouchers"] = $vouchers;
         return view("frontend.costumer.profile-component.list_history_voucher", $data);
+    }
+
+    public function HistoryBayar() {
+        $history = DB::table("tb_order")
+        ->join("tb_vendor", "tb_vendor.user_id", "tb_order.user_id")
+        ->join("tb_kota", "tb_kota.kota_id", "tb_order.kota_id")
+        ->where("costumer_id", Session::get("costumer_id"))
+        ->where("order_status", "!=", "waiting")
+        ->where("order_status", "!=", "rejected")->get(["tb_order.order_id", "tb_vendor.nama_lengkap", "tb_order.bank_name", "tb_order.invoice", "tb_order.noresi", "tb_order.combined_price"]);
+
+        $data["active"] = "";
+        $data["history"] = $history;
+        return view("frontend.costumer.profile-component.history-paid-shop", $data);
+    }
+
+    public function HistoryBayarDetail($order) {
+        $order_detail = $history = DB::table("tb_order")
+        ->join("tb_order_details", "tb_order_details.order_id", "tb_order.order_id")
+        ->join("tb_product", "tb_product.product_id", "tb_order_details.product_id")
+        ->where("tb_order_details.order_id", $order)
+        ->get(["tb_order.order_id", "tb_order.bank_name", "tb_order.invoice", "tb_order.noresi", "tb_order.combined_price", "tb_product.product_name", "tb_order_details.quantity", "tb_order_details.total_price"]);
+        $data["active"] = "";
+        $data["detail"] = $order_detail;
+        return view("frontend.costumer.profile-component.history-paid-shop-detail", $data);
     }
 
 }

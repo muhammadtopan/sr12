@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
+Route::get("/tes", function() {
+    $nama = "Fariz";
+    $nama1 = $nama;
+    $nama1 = "abdul";
+    echo $nama;
+    echo $nama1;
+});
+
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('shop/product', 'HomeController@product')->name('shop.product');
@@ -139,12 +147,22 @@ Route::middleware(['user.login'])->group(function () {
 
     // akun belanjaku
         Route::group(["prefix" => "user/profile/"], function() {
-            Route::get("/keranjang", "Frontend\CostumerController@GetDashboardKeranjang")->name("user.profile.keranjang");
-            Route::get('/keranjang/{tgl}', "Frontend\CostumerController@GetDashboardKeranjangDetail")->name("user.profile.keranjang.detail");
+            Route::group(["prefix" => "keranjang"],function() {
+                Route::get("/", "Frontend\CostumerController@GetDashboardKeranjang")->name("user.profile.keranjang");
+                Route::get('/{tgl}', "Frontend\CostumerController@GetDashboardKeranjangDetail")->name("user.profile.keranjang.detail");
+            });
 
-            Route::get('/voucher', 'Frontend\CostumerController@GetListVoucher')->name("user.profile.voucher");
-            Route::get('/voucher-redeem/{v}', 'Frontend\CostumerController@RedeemVoucher')->name("user.profile.voucher.redeem");
-            Route::get('/voucher/history', 'Frontend\CostumerController@HistoryVoucher')->name("user.profile.voucher.history");
+            Route::group(["prefix" => "voucher"],function() {
+                Route::get('/', 'Frontend\CostumerController@GetListVoucher')->name("user.profile.voucher");
+                Route::get('/voucher-redeem/{v}', 'Frontend\CostumerController@RedeemVoucher')->name("user.profile.voucher.redeem");
+                Route::get('/history', 'Frontend\CostumerController@HistoryVoucher')->name("user.profile.voucher.history");
+            });
+
+            Route::group(["prefix" => "history/bayar"],function() {
+                Route::get('/', 'Frontend\CostumerController@HistoryBayar')->name("user.profile.bayar");
+                Route::get('/{order}','Frontend\CostumerController@HistoryBayarDetail')->name("user.profile.bayar.detail");
+            });
+
         });
     // akun belanjaku
 

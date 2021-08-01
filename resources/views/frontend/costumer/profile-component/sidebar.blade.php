@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('gudang.stock') }}" class="nav-link {{ $active == 'stock' ? 'active' : '' }}">
+                    <a href="{{ route('user.profile.bayar') }}" class="nav-link {{ $active == 'stock' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-coins"></i>
                         <p>
                             Bayar

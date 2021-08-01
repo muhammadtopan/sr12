@@ -131,7 +131,7 @@
             localStorage.setItem("oldPR", container.innerHTML)
             let params = window.location.pathname.split("/")[3]
             let data = {
-                value: params
+                value: "product_terbaru"
             }
             filterSorting(data);
         })
@@ -212,7 +212,6 @@
         // filter sorting
             async function filterSorting(e) {
                 filter = e.value
-                filter = filter == "product-terbaru" ? "product_terbaru" : ""
                 let res = await axios.get("/api/filter-sorting", {params: {sort:filter}})
                 let ui = updateUI(res.data)
                 container.innerHTML = ui
