@@ -142,7 +142,7 @@ class ProductController extends Controller
 
     public function destroy(ProductModel $product)
     {
-
+        
         $product_file = $product->product_image;
         if ($product_file != null) {
             unlink('lte/dist/img/product/' . $product_file);

@@ -10,15 +10,13 @@ class ArticelModel extends Model
 {
     use SoftDeletes;
     use Timestamp;
-    protected $table = 'tb_articel';
-    protected $primaryKey = 'articel_id';
+    protected $table = 'tb_article';
+    protected $primaryKey = 'article_id';
     protected $fillable = [
-        'articel_judul',
-        'articel_tanggal',
-        'articel_penulis',
-        'articel_isi',
-        'articel_gambar',
-        'articel_slug',
-        'articel_viewer',
+        'category_id',
+        'article_judul',
+        'article_isi',
+        'article_slug',
+        'article_viewer',
     ];
 }

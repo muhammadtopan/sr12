@@ -50,7 +50,7 @@
                             </div>
                             <div class="group-input">
                                 <label for="user_phone">Phone <span style="color: red">*</span></label>
-                                <input type="text" placeholder="082386464060" id="user_phone" name="user_phone" value="{{ old('user_phone') ?? $umkm->user_phone ?? '' }}" required>
+                                <input type="text" placeholder="08**********" id="user_phone" name="user_phone" value="{{ old('user_phone') ?? $umkm->user_phone ?? '' }}" required>
                             </div>
                             <div class="group-input">
                                 <label for="user_level">Jenis Mitra <span style="color: red">*</span></label>

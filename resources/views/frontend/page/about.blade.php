@@ -124,7 +124,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 prev-blog mb-4">
                         <div class="pb-pic">
-                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                            <img src="{{asset('frontend/img/about/1.jpeg')}}" alt="">
                         </div>
                         <div class="pb-text">
                             <span>Senior Distributor Resmi SR12 Skincare</span>
@@ -133,7 +133,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 prev-blog mb-4">
                         <div class="pb-pic">
-                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                            <img src="{{asset('frontend/img/about/2.jpeg')}}" alt="">
                         </div>
                         <div class="pb-text">
                             <span>Diskon Reseler</span>
@@ -142,7 +142,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 prev-blog mb-4">
                         <div class="pb-pic">
-                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                            <img src="{{asset('frontend/img/about/3.jpeg')}}" alt="">
                         </div>
                         <div class="pb-text">
                             <span>Konsultasi Gratis</span>
@@ -151,7 +151,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 prev-blog mb-4">
                         <div class="pb-pic">
-                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                            <img src="{{asset('frontend/img/about/4.jpeg')}}" alt="">
                         </div>
                         <div class="pb-text">
                             <span>Peluang Agen</span>
@@ -160,7 +160,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 prev-blog mb-4">
                         <div class="pb-pic">
-                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                            <img src="{{asset('frontend/img/about/5.jpeg')}}" alt="">
                         </div>
                         <div class="pb-text">
                             <span>Bimbingan Bisnis</span>
@@ -169,7 +169,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 prev-blog mb-4">
                         <div class="pb-pic">
-                            <img src="{{asset('frontend/img/blog/prev-blog.png')}}" alt="">
+                            <img src="{{asset('frontend/img/about/6.jpeg')}}" alt="">
                         </div>
                         <div class="pb-text">
                             <span>Peluang Distributor</span>
@@ -216,7 +216,7 @@
                         <h2>KEUNTUNGAN BELANJA DI MARKETPLACE SR12 HERBAL STORE</h2>
                     </div>
                     <div class="row">
-                        <div class="blog-quote col-lg-6 col-md-6">
+                        <div class="blog-quote col-lg-12 col-md-12">
                             <p>
                                 Mendapatkan akun konsumen AKUN BELANJAKU sehingga bisa belanja produk SR12 dimana saja (melalui website marketplace SR12 Herbal Store)
                             </p>
@@ -248,16 +248,52 @@
                                 Ketersediaan dan keaslian produk terjamin 
                             </p>
                         </div>
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-12 col-md-12">
                             <div class="single-latest-blog">
                                 <div class="latest-text">
-                                    <a href="#">
+                                    <!-- <a href="#">
                                         <h4>Bisa Gabung Jadi Mitra SR12 Herbal Skincare</h4>
-                                    </a>
+                                    </a> -->
+                                    <div class="section-title">
+                                        <h2>Bisa Gabung Jadi Mitra SR12 Herbal Skincare</h2>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Partner Logo Section Begin -->
+                    <div class="partner-logo">
+                        <div class="container">
+                            <div class="logo-carousel owl-carousel">
+                                <div class="logo-item">
+                                    <div class="tablecell-inner">
+                                        <h3 class="text-white">Marketer <i class="fa fa-arrow-circle-right"></i></h3>
+                                    </div>
+                                </div>
+                                <div class="logo-item">
+                                    <div class="tablecell-inner">
+                                        <h3 class="text-white">Reseller <i class="fa fa-arrow-circle-right"></i></h3>
+                                    </div>
+                                </div>
+                                <div class="logo-item">
+                                    <div class="tablecell-inner">
+                                        <h3 class="text-white">Sub-Agen <i class="fa fa-arrow-circle-right"></i></h3>
+                                    </div>
+                                </div>
+                                <div class="logo-item">
+                                    <div class="tablecell-inner">
+                                        <h3 class="text-white">Agen <i class="fa fa-arrow-circle-right"></i></h3>
+                                    </div>
+                                </div>
+                                <div class="logo-item">
+                                    <div class="tablecell-inner">
+                                        <h3 class="text-white py-1 px-3 rounded " style="border: 3px solid #fff">Distributor </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Partner Logo Section End -->
                     <div class="blog-detail-desc">
                         <p>
                         Kami membuka kesempatan seluas-luasnya untuk kamu yang berniat untuk menjadi mitra kami. Kesempatan bergabung menjadi mitra SR12 memiliki keuntungan lebih dibanding jika kamu hanya sebagai konsumen. Kami memiliki sistem dan bimbingan mitra atau member yang bergabung bersama kami. Kamu dapat memulainya dari tingkatan marketer, reseller, sub-agen, ataupun agen sr12 skincare. Untuk syarat dan ketentuan menjadi Mitra SR12 :
@@ -333,15 +369,32 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6">.
                             <div class="leave-comment">
-                                <form action="#" class="comment-form">
+                            @if(Session::has('messages'))
+                                <p class="alert alert-info">{{ Session::get('messages') }}</p>
+                            @endif
+                                <form action="{{ route('download-katalog')}}" method="post" class="comment-form">
+                                    @csrf
+                                    @if(session('errors'))
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            Ada yang salah:
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <input type="text" placeholder="Name">
+                                            <input name="name" type="text" placeholder="Name">
                                         </div>
                                         <div class="col-lg-6">
-                                            <input type="text" placeholder="Email">
+                                            <input name="email" type="text" placeholder="Email">
                                         </div>
                                         <div class="col-lg-12 text-right">
                                             <button type="submit" class="site-btn">Download</button>

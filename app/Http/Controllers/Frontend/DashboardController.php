@@ -8,6 +8,7 @@ use App\Model\UserModel;
 use App\Helper\JwtHelper;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use DB;
 
 class DashboardController extends Controller
@@ -102,9 +103,11 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $name = session()->get('username');
+        $active = 'dashboard';
                     return view('vendor/index',
         [
             'name' => $name,
+            'active' => $active,
         ]);
     }
 

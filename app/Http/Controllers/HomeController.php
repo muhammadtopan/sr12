@@ -111,19 +111,22 @@ class HomeController extends Controller
         );
     }
 
-    public function articel($art)
+    public function articel($id)
     {
-        $articel = ArticelModel::first();
-        $articles = ArticelModel::all();
-        $articelss = TestimonyModel::all();
+        $articles = DB::table('tb_article')->get();
+        $categories = DB::table('tb_article_category')->get();
+        
+        // dd($categories);
+        $artikel = DB::table('tb_article')->where('article_id', $id)->get();
         $active = "articel";
+        // dd($artikel[0]);
         return view(
             'frontend/page/articel',
             [
                 'active' => $active,
-                'articel' => $articel,
                 'articles' => $articles,
-                'articelss' => $articelss
+                'ctg' => $categories,
+                'artikel' => $artikel[0]
             ]
         );
     }
@@ -194,6 +197,32 @@ class HomeController extends Controller
         );
     }
 
+    public function search(Request $request)
+    {
+        // menangkap data pencarian
+		$search = $request->search;
+        $package = PackageCategoryModel::all();
+        $category = CategoryModel::all();
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $product = DB::table('tb_product')
+                    ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
+                    ->select('tb_product.*', 'tb_category.category_name')
+                    ->where('product_name','like',"%".$search."%")
+                    ->get();
+
+        $active = "product";
+        return view(
+            'frontend/page/product',
+            [
+                'active' => $active,
+                'package' => $package,
+                'category' => $category,
+                'product' => $product,
+            ]
+        );
+    }
+
     public function partnership()
     {
         $active = "partnership";
@@ -220,7 +249,27 @@ class HomeController extends Controller
         );
     }
 
-
-
+    public function packageFilter($id)
+    {
+        $package = PackageCategoryModel::all();
+        $category = CategoryModel::all();
+        $product = DB::table('tb_product')
+                    ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
+                    ->join('tb_product_package', 'tb_product_package.product_id', '=', 'tb_product.product_id')
+                    ->join('tb_package_category', 'tb_package_category.package_category_id', '=', 'tb_product_package.package_category_id')
+                    // ->select('tb_product.*', 'tb_category.category_name')
+                    ->where('tb_package_category.package_category_id', $id)
+                    ->get();
+        $active = "product";
+        return view(
+            'frontend/page/product',
+            [
+                'active' => $active,
+                'package' => $package,
+                'category' => $category,
+                'product' => $product,
+            ]
+        );
+    }
 
 }

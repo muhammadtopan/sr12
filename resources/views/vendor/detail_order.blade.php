@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('vendor') }}">Home</a></li>
                     <li class="breadcrumb-item active"><a href="{{ route('vendor.order') }}">Orderan</a></li>
                     <li class="breadcrumb-item active">Rincian Order</li>
                 </ol>

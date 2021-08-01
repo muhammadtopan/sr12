@@ -1,5 +1,5 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    @if( Session::get('admin_0level') == 'admin' && Session::get("user_level")  == null )
+    @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
         <a href="{{ route('admin.dashboard')}}" class="brand-link" style="text-align: center; height: 48px;">
             <!-- <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
                 <span class="brand-text font-weight-light">
@@ -162,16 +162,35 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview menu-open">
-                    <a href="{{ route('articel')}}" class="nav-link">
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             Artikel
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('article-category')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Kategori Artikel
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('article')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Artikel
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
-                <li class="nav-item has-treeview menu-open">
+                
+                <li class="nav-item has-treeview">
                     <a href="{{ route('syarat')}}" class="nav-link">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>
@@ -180,7 +199,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="{{ route('testimony')}}" class="nav-link">
                         <i class="nav-icon fas fa-comment-dots"></i>
                         <p>
@@ -198,18 +217,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('stock')}}" class="nav-link">
-                        <i class="nav-icon fas fa-coins"></i>
-                        <p>
-                            Product
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('vendor.update.profile')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Profile
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('stock')}}" class="nav-link">
+                        <i class="nav-icon fas fa-coins"></i>
+                        <p>
+                            Product
                         </p>
                     </a>
                 </li>

@@ -83,5 +83,36 @@
         </div>
     </div>
     <!-- Faq Section End -->
+    <section class="blog-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog-details-inner">
+                        <div class="blog-detail-title">
+                            <h2>CARA BELANJA DI SR12 HERBAL STORE</h2>
+                            <p>Berikut ini merupakan panduan cara belanja yang sering ditanyakan di Marketplace SR12 Herbal Store:</p>
+                        </div>
+                        <div class="blog-quote">
+                            <p>“ Technology is nothing. What's important is that you have a faith in people, that
+                                they're basically good and smart, and if you give them tools, they'll do wonderful
+                                things with them.” <span>- Steven Jobs</span></p>
+                            <p>“ Technology is nothing. What's important is that you have a faith in people, that
+                                they're basically good and smart, and if you give them tools, they'll do wonderful
+                                things with them.” <span>- Steven Jobs</span></p>
+                            <p>“ Technology is nothing. What's important is that you have a faith in people, that
+                                they're basically good and smart, and if you give them tools, they'll do wonderful
+                                things with them.” <span>- Steven Jobs</span></p>
+                            <p>“ Technology is nothing. What's important is that you have a faith in people, that
+                                they're basically good and smart, and if you give them tools, they'll do wonderful
+                                things with them.” <span>- Steven Jobs</span></p>
+                            <p>“ Technology is nothing. What's important is that you have a faith in people, that
+                                they're basically good and smart, and if you give them tools, they'll do wonderful
+                                things with them.” <span>- Steven Jobs</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @endsection

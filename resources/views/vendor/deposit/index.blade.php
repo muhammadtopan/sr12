@@ -30,25 +30,25 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
+                <div class="card card-success card-outline">
                     @if(session()->has('message'))
                         <div class="alert alert-success">
                             <strong>{{ session()->get('message') }}</strong>
                             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
                         </div>
                     @endif
-                    <div class="card-header bg-dark">
+                    <div class="card-header ">
                         <h3 class="card-title">Histori Deposit</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <button class="btn btn-info mb-2"><i class="fas fa-dollar-sign"></i>Tarik Dana</button>
+                                <button class="btn btn-success mb-2"><i class="fas fa-dollar-sign"></i>Tarik Dana</button>
                             </div>
                             <div class="col-lg-12">
                                 <table id="zero_config" class="table table-bordered table-hover">
-                                    <thead class="thead-dark">
+                                    <thead class="thead-light">
                                         <tr>
                                             <th>Tanggal</th>
                                             <th>Kredit</th>

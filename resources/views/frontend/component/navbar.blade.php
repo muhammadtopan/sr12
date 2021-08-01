@@ -68,7 +68,7 @@
                                                 </div>
                                                 <div class="select-button">
                                                     <a href="{{ route('cart') }}" class="primary-btn view-card">VIEW CARD</a>
-                                                    <a href="{{ route('checkout') }}" class="primary-btn checkout-btn">CHECK OUT</a>
+                                                    <!-- <a href="{{ route('checkout') }}" class="primary-btn checkout-btn">CHECK OUT</a> -->
                                                 </div>
                                             </div>
                                         @endif
@@ -79,8 +79,22 @@
                         <div class="col-lg-10 text-right col-md-10">
                             <nav class="nav-menu mobile-menu mt-3">
                                 <ul>
+                                    <!-- search -->
+                                    <li>
+                                        <button type="button" class="search-product" data-toggle="modal" data-target="#searchModal">
+                                            <i class="ti-search""></i>
+                                        </button>
+                                    </li>
+                                    <!-- <div class="advanced-search">
+                                        <button type="button" class="category-btn">All Categories</button>
+                                        <form action="#" class="input-group">
+                                            <input type="text" placeholder="What do you need?">
+                                            <button type="button"><i class="ti-search"></i></button>
+                                        </form>
+                                    </div> -->
+
                                     @php
-                                        $articel = DB::table('tb_articel')->first();
+                                        $articel = DB::table('tb_article')->first();
                                         $testimony = DB::table('tb_testimony')->first();
                                     @endphp
                                     <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Beranda</a></li>
@@ -89,7 +103,7 @@
                                     <!-- <li class="{{ $active == 'login_mitra' ? 'active' : '' }}"><a href="{{ route('login.mitra') }}">Login</a></li> -->
                                     <li class="{{ $active == 'tool' ? 'active' : '' }}"><a href="{{ route('tool') }}">Tool</a></li>
                                     <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Toko</a></li>
-                                    <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog', $articel->articel_id) }}">Artikel</a></li>
+                                    <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog', $articel->article_id) }}">Artikel</a></li>
                                     <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">FAQ</a></li>
                                     <!-- <li class="{{ $active == 'testimony' ? 'active' : '' }}"><a href="{{ route('testimon', $testimony->testimony_id) }}">Testimoni</a></li> -->
                                     <!-- <li class="{{ $active == 'login' ? 'active' : '' }}"><a href="{{ route('vendor') }}">Vendor</a></li> -->
@@ -109,7 +123,7 @@
                                 </ul>
                             </nav>
                             <div id="mobile-menu-wrap">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -123,6 +137,22 @@
     </header>
     <!-- Header End --> 
         <br> <br style="margin-bottom: 10px">
+
+    <!-- Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-body inner-header bg-modal-search">
+                <div class="advanced-search">
+                    <form action="{{ route('search-product')}}" class="input-group" method="GET">
+                        <input type="text" name="search" placeholder="Nama Produk" value="{{ old('search') }}">
+                        <button type="submit"><i class="ti-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         async function cartDelete(id) {

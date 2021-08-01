@@ -75,7 +75,7 @@ class PackageCategoryController extends Controller
                         "package_category_id" => $category->package_category_id,
                         "product_id" => $no,
                     ]);
-        }
+                }   
 
                 
 

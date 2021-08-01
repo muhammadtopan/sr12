@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use App\Model\ArticelModel;
+use App\Model\ArticleCategoryModel;
 use Illuminate\Support\Str;
 
 
@@ -17,41 +18,40 @@ class ArtikelController extends Controller
     public function index()
     {
         $artikel = ArticelModel::all();
+        $article = ArticelModel::first();
+        $categories = ArticleCategoryModel::all();
+
         return view(
             'backend/page/artikel/index',
             [
-                'artikel' => $artikel
+                'artikel' => $artikel,
+                'article' => $article,
+                'categories' => $categories
             ]
         );
     }
 
     public function store(Request $request, ArticelModel $artikel)
     {
-        if($request->articel_id == null){
+        if($request->article_id == null){
             // tambah
+            // dd($request);
             $validator = Validator::make($request->all(),[
-                'articel_judul'           => 'required',
-                'articel_tanggal'           => 'required',
-                'articel_penulis'           => 'required',
-                'articel_isi'           => 'required',
-                'articel_gambar'         => 'required|mimes:jpg,jpeg,png'
+                'category_id'           => 'required',
+                'article_judul'           => 'required',
+                'article_isi'           => 'required'
             ]);
             if ($validator->fails()) {
                 return redirect()
-                    ->route('articel.store')
+                    ->route('article.store')
                     ->withErrors($validator)
                     ->withInput();
             } else {
-                $foto = $request->file('articel_gambar');
-                $filename = time() . "." . $foto->getClientOriginalExtension();
-                $foto->move('lte/dist/img/articel/', $filename);
 
-                $artikel->articel_judul = $request->input('articel_judul');
-                $artikel->articel_tanggal = $request->input('articel_tanggal');
-                $artikel->articel_penulis = $request->input('articel_penulis');
-                $artikel->articel_isi = $request->input('articel_isi');
-                $artikel->articel_slug = Str::slug($request->input('articel_judul'));
-                $artikel->articel_gambar = $filename;
+                $artikel->category_id = $request->input('category_id');
+                $artikel->article_judul = $request->input('article_judul');
+                $artikel->article_isi = $request->input('article_isi');
+                $artikel->article_slug = Str::slug($request->input('article_judul'));
                 $artikel->save();
 
                 return redirect()
@@ -61,68 +61,40 @@ class ArtikelController extends Controller
         }else{
             // edit
             $validator = Validator::make($request->all(),[
-                'articel_judul'           => 'required',
-                'articel_tanggal'           => 'required',
-                'articel_penulis'           => 'required',
-                'articel_isi'           => 'required',
-                'articel_gambar'         => 'required|mimes:jpg,jpeg,png'
+                'category_id'         => 'required',
+                'article_judul'         => 'required',
+                'article_isi'           => 'required',
             ]);
             if ($validator->fails()) {
                 return redirect()
-                    ->route('articel.store', $request->articel_id)
+                    ->route('article.store', $request->article_id)
                     ->withErrors($validator)
                     ->withInput();
             } else {
-                if ($request->hasFile('articel_gambar') != null) {
-                    $brg_gmb = DB::table('tb_articel')
-                                ->where('articel_id', '=', $request->articel_id)
-                                ->first();
-                    // dd($request);
-                    unlink('lte/dist/img/articel/' . $brg_gmb->articel_gambar);
-                    $foto = $request->file('articel_gambar');
-                    $filename = time() . "." . $foto->getClientOriginalExtension();
-                    $foto->move('lte/dist/img/articel/', $filename);
-                    
 
-                    DB::table('tb_articel')
-                        ->where('articel_id', '=', $request->articel_id)
+                    DB::table('tb_article')
+                        ->where('article_id', '=', $request->article_id)
                         ->update([
-                            $artikel->articel_judul = $request->input('articel_judul'),
-                            $artikel->articel_tanggal = $request->input('articel_tanggal'),
-                            $artikel->articel_penulis = $request->input('ararticel_penulis'),
-                            $artikel->articel_isi = $request->input('articel_isi'),
-                            $artikel->articel_slug = Str::slug($request->input('articel_judul')),
-                            $artikel->articel_gambar = $filename
+                            'category_id' => $request->input('category_id'),
+                            'article_judul' => $request->input('article_judul'),
+                            'article_isi' => $request->input('article_isi'),
+                            'article_slug' => Str::slug($request->input('article_judul')),
                         ]);
-
-                }else{
-
-                    DB::table('tb_articel')
-                        ->where('articel_id', '=', $request->articel_id)
-                        ->update([
-                            'articel_judul' => $request->input('articel_judul'),
-                            'articel_tanggal' => $request->input('articel_tanggal'),
-                            'articel_penulis' => $request->input('articel_penulis'),
-                            'articel_isi' => $request->input('articel_isi'),
-                            'articel_slug' => Str::slug($request->input('articel_judul')),
-                        ]);
-                }
                 return redirect()
-                    ->route('articel')
+                    ->route('article')
                     ->with('message', 'Data berhasil diperbaiki');
             }
         }
 
     }
 
-    public function destroy(ArticelModel $artikel)
+    public function destroy(ArticelModel $article)
     {
-
-        $artikel_file = $artikel->articel_gambar;
-        if ($artikel_file != null) {
-            unlink('lte/dist/img/articel/' . $artikel_file);
+        $articel_file = $article->article_gambar;
+        if ($articel_file != null) {
+            unlink('lte/dist/img/articel/' . $articel_file);
         }
-        $artikel->forceDelete();
+        $article->forceDelete();
 
         return redirect()
             ->back()
@@ -131,11 +103,9 @@ class ArtikelController extends Controller
 
     public function cari_data_articel(Request $request)
     {
-
-        $data = DB::table('tb_articel')
-                ->where('articel_id','=',$request->articel_id)
+        $data = DB::table('tb_article')
+                ->where('article_id','=',$request->article_id)
                 ->first();
-
         return json_encode($data);
     }
 }

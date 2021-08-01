@@ -41,7 +41,7 @@
                         <h4 class="fw-title">Paket Product</h4>
                         <ul class="filter-catagories">
                             @foreach($package as $no => $packagelist)
-                                <li><a href="#">{{ $packagelist->package_category_name }}</a></li>
+                                <li><a href="{{ url('filter/packages/'. $packagelist->package_category_id)}}">{{ $packagelist->package_category_name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="product-list">
                         <div class="row" id="pr-container">
-                            @foreach($product as $no => $pdklist)
+                            @forelse($product as $no => $pdklist)
                                 <div class="col-lg-3 col-sm-4">
                                     <div class="product-item">
                                         <div class="pi-pic">
@@ -105,7 +105,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <div class="col-lg-12">
+                                    <h4 class="text-center">Oppss... Barang yang kamu cari  tidak ada, silahkan menggunakan kata kunci yang lain</h4>
+                                </div>
+                                <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_CWcCII.json"  background="transparent"  speed="1"  style="width: 100%; height: 100%;"  loop  autoplay></lottie-player>
+                            @endforelse
                         </div>
                     </div>
                 </div>

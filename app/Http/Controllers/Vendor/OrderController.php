@@ -24,10 +24,14 @@ class OrderController extends Controller
                         ->where('tb_order.user_id', Session::get('user_id'))
                         ->where('order_status', "!=", 'waiting')
                         ->get();
+        
+        $active = 'orderan';
+        
         return view('vendor/order',
         [
             'orderan' => $orderan,
-            'orderanh' => $orderanh
+            'orderanh' => $orderanh,
+            'active' => $active,
         ]
     );
     }

@@ -26,12 +26,14 @@ class StockController extends Controller
                 ->where('tb_stok.user_id', '=', session()->get('user_id'))
                 ->where('tb_stok.product_stok', '=', 0)
                 ->get();
-
+        
+        $active = 'stock';
 
         return view('vendor/stock',
         [
             'product' => $product,
             'stok0' => $stok0,
+            'active' => $active,
         ]);
     }
     public function update(Request $request)
