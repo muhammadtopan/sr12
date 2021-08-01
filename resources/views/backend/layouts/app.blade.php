@@ -30,16 +30,23 @@
 </head>
 
 <!-- <body class="hold-transition sidebar-mini text-sm"> -->
-<body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm">
+@if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
+    <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm">
+@else
+    <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm accent-success">
+@endif
     <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('lte/ckeditor/ckeditor.js')}}"> </script>
     <script src="{{asset('lte/build/js/axios.min.js')}}"></script>
     <script src="{{asset('lte/build/js/toastr.min.js')}}"></script>
-    <div class="wrapper">
-        @include('backend/component/navbar')
-
-        @include('backend/component/sidebar')
-
+    <div class="wrapper"> 
+        @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
+            @include('backend/component/navbar')
+            @include('backend/component/sidebar')
+        @else
+            @include('vendor/component/navbar')
+            @include('vendor/component/sidebar')
+        @endif
         <div class="content-wrapper">
             @yield('content')
         </div>  

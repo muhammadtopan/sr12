@@ -31,7 +31,7 @@
                             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
                         </div>
                     @endif
-                    <div class="card-header bg-dark p-0 pt-1">
+                    <div class="card-header bg-success p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="verifikasi-tab" data-toggle="pill" href="#verifikasi" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Stock</a>
@@ -48,7 +48,7 @@
                             {{-- Stock > 0 --}}
                             <div class="tab-pane fade show active" id="verifikasi" role="tabpanel" aria-labelledby="verifikasi-tab">
                                 <table id="zero_config" class="table table-bordered table-hover">
-                                    <thead class="thead-dark">
+                                    <thead class="thead-light">
                                         <tr>
                                             <th>No</th>
                                             <th>Product</th>
@@ -72,7 +72,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button data-input="{{$stocks->product_id}}" class="btn btn-sm btn-dark" onclick="update_stok(this, '{{$stocks->stok_id}}','{{ route("stock.update") }}', '{{$stocks->product_id}}')">
+                                                <button data-input="{{$stocks->product_id}}" class="btn btn-sm btn-success" onclick="update_stok(this, '{{$stocks->stok_id}}','{{ route("stock.update") }}', '{{$stocks->product_id}}')">
                                                     <i class="fa fa-edit .text-white" style="color: #fff !important"></i>
                                                 </button>
                                             </td>
@@ -85,7 +85,7 @@
                             {{-- Stock = 0 --}}
                             <div class="tab-pane fade" id="belum-verifikasi" role="tabpanel" aria-labelledby="belum-verifikasi-tab">
                                 <table id="zero_config" class="table table-bordered table-hover">
-                                    <thead class="thead-dark">
+                                    <thead class="thead-light">
                                         <tr>
                                             <th>No</th>
                                             <th>Product</th>
@@ -110,7 +110,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button data-input="{{$stoksnull->stok_id}}" class="btn btn-sm btn-dark" onclick="update_stok(this, '{{$stoksnull->stok_id}}','{{ route("stock.update") }}', '{{$stoksnull->product_id}}')">
+                                                <button data-input="{{$stoksnull->stok_id}}" class="btn btn-sm btn-success" onclick="update_stok(this, '{{$stoksnull->stok_id}}','{{ route("stock.update") }}', '{{$stoksnull->product_id}}')">
                                                     <i class="fa fa-edit .text-white" style="color: #fff !important"></i>
                                                 </button>
                                             </td>

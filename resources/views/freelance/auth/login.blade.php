@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1">
-                    <div class="register-form login-form">
+                    <div class="register-form freelance login-form">
                         <h3>Daftar Freelance</h3>
                             <form action="{{route("register.freelance")}}" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -108,7 +108,7 @@
                                     <div class="col-md-6">
                                         <div class="group-input">
                                             <label for="user_phone">Phone <span style="color: red">*</span></label>
-                                            <input type="text" placeholder="082386464060" id="user_phone" name="user_phone" value="{{ old('user_phone') ?? $umkm->user_phone ?? '' }}" required>
+                                            <input type="text" placeholder="08**********" id="user_phone" name="user_phone" value="{{ old('user_phone') ?? $umkm->user_phone ?? '' }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -120,7 +120,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 d-none">
                                         <div class="group-input">
                                             <label for="user_level">Jenis Mitra <span style="color: red">*</span></label>
                                             <select name="user_level" id="user_level" class="form-control @error('user_level') {{ 'is-invalid' }} @enderror">
@@ -128,11 +128,11 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                       <div class="group-input">
-                                           <label for="" class="form-label">Alamat Lengkap</label>
-                                           <input type="text" name="alamat_lengkap" id="" class="form-control">
-                                       </div>
+                                    <div class="col-md-12">
+                                        <div class="group-input">
+                                            <label for="" class="form-label">Alamat Lengkap</label>
+                                            <input type="text" name="alamat_lengkap" id="" class="form-control" placeholder="alamat">
+                                        </div>
                                     </div>
                                 </div>
 
@@ -146,7 +146,7 @@
                                     <div class="col-md-6">
                                         <div class="group-input">
                                             <label for="password_confirmation">Confirm Password <span style="color: red">*</span></label>
-                                            <input type="password" placeholder="Password" id="password_confirmation" name="password_confirmation">
+                                            <input type="password" placeholder="Ulangi Password" id="password_confirmation" name="password_confirmation">
                                         </div>
                                     </div>
                                 </div>
@@ -186,13 +186,13 @@
                                     <div class="col-md-6">
                                         <div class="group-input">
                                             <label for="" class="form-label">Nama Pemilik Rekening</label>
-                                            <input type="text" name="nama_pemilik_rekening"  class="form-control">
+                                            <input type="text" name="nama_pemilik_rekening"  class="form-control" placeholder="nama pemmilik rekening">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="group-input">
                                             <label for="">No.Rekening</label>
-                                            <input type="number" name="no_rekening"  class="form-control">
+                                            <input type="number" name="no_rekening" class="form-control" placeholder="no. rekening">
                                         </div>
                                     </div>
                                 </div>

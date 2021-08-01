@@ -17,11 +17,13 @@ class DepositController extends Controller
         $saldo = DB::table('tb_saldo')
                 ->where('user_id', Session::get('user_id'))
                 ->get();
+        $active = 'history';
         // dd($saldo);
         return view('vendor/deposit/index',
             [
                 'vendor' => $vendor[0],
-                'saldo' => $saldo
+                'saldo' => $saldo,
+                'active' => $active,
             ]
         );
     }

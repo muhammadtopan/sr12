@@ -36,7 +36,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <button onclick="modal_tambah('{{route("articel.store")}}', 'tambah')" class="btn btn-lg btn-dark my-4">
+                        <button onclick="modal_tambah('{{route("article.store")}}', 'tambah')" class="btn btn-lg btn-dark my-4">
                             <i class="fa fa-plus"></i>
                         </button>
                         <table id="example2" class="table table-bordered table-hover">
@@ -44,7 +44,6 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Judul Artikel</th>
-                                    <th>Gambar</th>
                                     <th>Isi</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -53,16 +52,13 @@
                             @foreach($artikel as $no => $artikels)
                                 <tr>
                                     <td>{{ $no + 1 }}</td>
-                                    <td>{{ $artikels->articel_judul }}</td>
-                                    <td>{!! Str::limit($artikels->articel_isi,400) !!}</td>
-                                    <td>
-                                        <img src="{{ asset('lte/dist/img/articel/' . $artikels->articel_gambar )}}" alt="homepage" class="light-logo" style="width: 10em;">
-                                    </td>
+                                    <td>{{ $artikels->article_judul }}</td>
+                                    <td>{!! Str::limit($artikels->article_isi,400) !!}</td>
                                     <td>
                                         <button type="button" class="btn btn-warning btn-sm" 
-                                        onclick="modal_tambah('{{ route("articel.store") }}', '{{ $artikels->articel_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
+                                        onclick="modal_tambah('{{ route("article.store") }}', '{{ $artikels->article_id  }}')"><i class="fa fa-edit .text-white" style="color: #fff !important"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm" 
-                                        onclick="modal_hapus('{{ route('articel.delete', $artikels->articel_id) }}')"><i class="fa fa-trash"></i></button>
+                                        onclick="modal_hapus('{{ route('article.delete', $artikels->article_id) }}')"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -76,7 +72,7 @@
             </div>
             <!-- /.row -->
         </div>
-    <!-- /.container-fluid -->
+        <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 
@@ -84,41 +80,36 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Input Product Baru</h4>
+                    <h4 class="modal-title">Form Artikel</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                @php
-                    $artikel = DB::table('tb_articel')
-                                ->first();
-                @endphp
-                    <form action="" method="POST" enctype="multipart/form-data" id="formarticel">
+                    <form action="" method="POST" enctype="multipart/form-data" id="formarticle">
                         @csrf
-                        <input type="hidden" name="articel_id" id="articel_id">
+                        <input type="hidden" name="article_id" id="article_id">
                         <div class="form-group">
-                            <label for="articel_judul">Judul Artikel</label>
-                            <input type="text" class="form-control" name="articel_judul" id="articel_judul" placeholder="Judul Artikel" value="{{ old('articel_judul') ?? $artikel->articel_judul ?? '' }}" required>
-                        </div>
-                        <div class="form-group col-4">
-                            <label for="articel_tanggal">Tanggal</label>
-                            <input type="date" class="form-control" name="articel_tanggal" id="articel_tanggal" value="{{ old('articel_tanggal') ?? $artikel->articel_tanggal ?? '' }}" required>
+                            <label for="category_id">Kategori</label>
+                            <select name="category_id" id="category_id" class="form-control @error('category_id') {{ 'is-invalid' }} @enderror">
+                                <option value="">-Kategori-</option>
+                                @foreach($categories as $no => $category)
+                                    <option value="{{ $category->category_id }}">
+                                        {{ $category->category_name}}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="articel_penulis">Judul Artikel</label>
-                            <input type="text" class="form-control" name="articel_penulis" id="articel_penulis" placeholder="Nama Penulis" value="{{ old('articel_penulis') ?? $artikel->articel_penulis ?? '' }}" required>
+                            <label for="article_judul">Judul Artikel</label>
+                            <input type="text" class="form-control" name="article_judul" id="article_judul" placeholder="Judul Artikel" value="{{ old('article_judul') ?? $article->article_judul ?? '' }}" required>
                         </div>
                         <div class="form-group">
                             <label for="summernote">Isi Artikel</label>
-                            <textarea id="summernote" class="form-control" name="articel_isi" value="{{ old('articel_isi') ?? $artikel->articel_isi ?? '' }}"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="articel_gambar">Foto Barang</label>
-                            <input type="file" class="form-control" name="articel_gambar" id="articel_gambar">
+                            <textarea id="summernote" class="form-control" name="article_isi"></textarea>
                         </div>
                         <div class="row text-right" style="margin-right: 2px">
-                            <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -154,30 +145,24 @@
         function modal_tambah(url, aksi){ 
             if(aksi != 'tambah'){
                 // ambil data dari axios
-                axios.post("{{ route('cari_data_articel') }}", {
-                    'articel_id': aksi,
+                axios.post("{{ route('cari_data_article') }}", {
+                    'article_id': aksi,
                 }).then(function(res) {
                     var artikel = res.data;
                     console.log(artikel)
-                    $('#articel_id').val(artikel.articel_id);
-                    $('#articel_judul').val(artikel.articel_judul);
-                    $('#articel_tanggal').val(artikel.articel_tanggal);
-                    $('#articel_penulis').val(artikel.articel_penulis);
-                    $('#articel_isi').val(artikel.articel_isi);
-                    $('#articel_gambar').attr('required', false);
-                    // $('#kategori_id').val(artikel.kategori_id).change();
+                    $('#article_id').val(artikel.article_id);
+                    $('#category_id').val(artikel.category_id);
+                    $('#article_judul').val(artikel.article_judul);
+                    $('#summernote').summernote('code',artikel.article_isi);
                 }).catch(function(err) {
                     // console.log(err)
                 })
             }else{
-                $('#articel_judul').val('');
-                $('#articel_tanggal').val('');
-                $('#articel_penulis').val('');
-                $('#articel_isi').val('');
-                $('#articel_gambar').val('');
-                $('#articel_gambar').attr('required', true);
+                $('#category_id').val('');
+                $('#article_judul').val('');
+                $('#summernote').val('');
             }
-            $('#formarticel').attr('action', url);
+            $('#formarticle').attr('action', url);
             $('#ModalTambah').modal('show');
         }
 

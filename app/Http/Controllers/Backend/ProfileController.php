@@ -12,11 +12,13 @@ class ProfileController extends Controller
         $data = DB::table("tb_vendor")->where("user_id",$request->session()->get("user_id"))->first();
         $prov = DB::table("tb_provinsi")->get();
         $kota = DB::table("tb_kota")->get();
+        $active = 'profile';
         return view("vendor.profile",
         [
             'data' => $data,
             'prov' => $prov,
-            'kota' => $kota
+            'kota' => $kota,
+            'active' => $active,
         ]);
         // compact("data"));
     }
@@ -59,6 +61,10 @@ class ProfileController extends Controller
                 "selfie_ktp" => $request->file("selfie_ktp")->store("selfie_ktp")
             ]);
         }
-        return redirect()->route("vendor.dashboard");
+        $active = 'dashboard';
+        return redirect()->route("vendor.dashboard",
+        [
+            'active' => $active
+        ]);
     }
 }

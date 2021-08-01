@@ -183,13 +183,13 @@
                             @endforeach
                         </select>
                         @if(isset($category))
-                        <script>
-                            document.getElementById('category_id').value =
-                                '<?php echo $category->category_id ?>'
-                        </script>
+                            <script>
+                                document.getElementById('category_id').value =
+                                    '<?php echo $category->category_id ?>'
+                            </script>
                         @endif
                         @error('category_id')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
@@ -345,7 +345,7 @@
     function modal_tambah(url, aksi) {
 
         if (aksi != 'tambah') {
-            // ambil data dari axios
+            // ambil data dari axios.
             axios.post("{{ route('cari_data_product') }}", {
                 'product_id': aksi,
             }).then(function(res) {

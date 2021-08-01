@@ -13,15 +13,13 @@ class CreateArticelModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_articel', function (Blueprint $table) {
-            $table->bigIncrements('articel_id');
-            $table->string('articel_judul');
-            $table->date('articel_tanggal');
-            $table->string('articel_penulis');
-            $table->text('articel_isi');
-            $table->string('articel_gambar');
-            $table->string('articel_slug')->nullable();
-            $table->integer('articel_viewer')->default(0);
+        Schema::create('tb_article', function (Blueprint $table) {
+            $table->bigIncrements('article_id');
+            $table->integer('category_id');
+            $table->string('article_judul');
+            $table->text('article_isi');
+            $table->string('article_slug')->nullable();
+            $table->integer('article_viewer')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -495,8 +495,11 @@ ol {
 }
 
 .inner-header .advanced-search .input-group {
-	max-width: 70%;
+	max-width: 98%;
 	height: 100%;
+}
+.bg-modal-search {
+    background-color: #252525;
 }
 
 .inner-header .advanced-search .input-group input {
@@ -518,6 +521,14 @@ ol {
 	background: #e7ab3c;
 	padding: 12px 16px 12px;
 	cursor: pointer;
+}
+
+li button.search-product {
+    color: #ffffff;
+    border: 1px solid #e7ab3c;
+    border-radius: 50px;
+    padding: 6px 10px;
+    background: #e7ab3c;
 }
 
 .inner-header .nav-right {
@@ -3224,7 +3235,6 @@ ol {
 
 .blog-sidebar .recent-post .recent-blog .rb-item {
 	overflow: hidden;
-	margin-bottom: 30px;
 	display: block;
 }
 
@@ -3783,7 +3793,7 @@ ol {
 
 .faq-accordin .card {
 	border: none;
-	margin-bottom: 22px;
+	margin-bottom: 10px;
 }
 
 .faq-accordin .card .card-heading {
@@ -3791,6 +3801,9 @@ ol {
 	color: #252525;
 	font-weight: 700;
 	cursor: pointer;
+}
+.faq-accordin .card .card-heading.article-menu {
+    font-size: 14px !important;
 }
 
 .faq-accordin .card .card-heading a {
@@ -3807,6 +3820,7 @@ ol {
 
 .faq-accordin .card .card-body p {
 	margin-bottom: 0;
+	font-size: 12px;
 }
 
 .faq-accordin .card-heading a:after,
@@ -4242,7 +4256,7 @@ ol {
 		color: #fff;
 	}
 	.inner-header .nav-right li.cart-icon .cart-hover {
-		left: -50px;
+		left: -130px;
 	}
 	.product-show-option p {
 		text-align: left;
@@ -4420,4 +4434,7 @@ ol {
 
 .register-form.login-form form label {
     color: #fff !important;
+}
+.register-form.freelance.login-form form label {
+    color: #000 !important;
 }

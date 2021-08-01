@@ -20,14 +20,18 @@
                         </div>
                     </div>
                 </div>
+                @php
+                    $articel = DB::table('tb_article')->first();
+                    $testimony = DB::table('tb_testimony')->first();
+                @endphp
                 <div class="col-lg-2 offset-lg-1">
                     <div class="footer-widget">
                         <h5>Informasi</h5>
                         <ul>
-                            <li><a href="#">Tentang Kami</a></li>
-                            <li><a href="#">Artikel</a></li>
-                            <li><a href="#">Mitra</a></li>  
-                            <li><a href="#">FAQ</a></li>
+                            <li><a href="{{ route('about') }}">Tentang Kami</a></li>
+                            <li><a href="{{ route('blog', $articel->article_id) }}">Artikel</a></li>
+                            <li><a href="{{ route('syarat_mitra') }}">Mitra</a></li>  
+                            <li><a href="{{ route('partnership') }}">FAQ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -35,10 +39,10 @@
                     <div class="footer-widget">
                         <h5>SR12 Herbal Store</h5>
                         <ul>
-                            <li><a href="#">Akun Belanjaku</a></li>
+                            <li><a href="{{ route('user.login') }}">Akun Belanjaku</a></li>
                             <li><a href="#">Katalog</a></li>
-                            <li><a href="#">Keranjang</a></li>
-                            <li><a href="#">Toko</a></li>
+                            <!-- <li><a href="#">Keranjang</a></li> -->
+                            <li><a href="{{ route('shop.product') }}">Toko</a></li>
                         </ul>
                     </div>
                 </div>

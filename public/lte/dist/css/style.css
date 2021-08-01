@@ -63,3 +63,10 @@ border-radius: 50%;
 .asd{
 width: 2px;
 }
+.card-header.bg-success ul.nav li.nav-item a.active {
+    color: #000 !important;
+}
+
+.card-header.bg-success ul.nav li.nav-item a {
+    color: #fff !important;
+}

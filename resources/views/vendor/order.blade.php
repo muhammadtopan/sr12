@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('vendor') }}">Home</a></li>
                     <li class="breadcrumb-item active">Orderan</li>
                 </ol>
             </div>
@@ -32,7 +32,7 @@
                             <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
                         </div>
                     @endif
-                    <div class="card-header bg-dark p-0 pt-1">
+                    <div class="card-header bg-success p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="verifikasi-tab" data-toggle="pill" href="#verifikasi" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Orderan</a>
@@ -49,7 +49,7 @@
                             {{-- Waiting List --}}
                             <div class="tab-pane fade show active" id="verifikasi" role="tabpanel" aria-labelledby="verifikasi-tab">
                                 <table id="zero_config" class="table table-bordered table-hover">
-                                    <thead class="thead-dark">
+                                    <thead class="thead-light">
                                         <tr>
                                             <th class="text-center" width=5%;>No</th>
                                             <th class="text-center">Orderan</th>
@@ -85,7 +85,7 @@
                             {{-- History --}}
                             <div class="tab-pane fade" id="belum-verifikasi" role="tabpanel" aria-labelledby="belum-verifikasi-tab">
                                 <table id="zero_config" class="table table-bordered table-hover">
-                                    <thead class="thead-dark">
+                                    <thead class="thead-light">
                                         <tr>
                                             <th>No</th>
                                             <th>Orderan</th>

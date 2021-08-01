@@ -165,7 +165,7 @@
         loop: false,
         margin: 10,
         center:false,
-        nav: true,
+        nav: false,
         // items: 4,
         dots: false,
         autoplay: true,
@@ -222,9 +222,12 @@
         autoplay: true,
         responsive: {
             0: {
+                items: 1,
+            },
+            600: {
                 items: 3,
             },
-            768: {
+            1000: {
                 items: 5,
             }
         }
@@ -439,6 +442,19 @@
                 items:5
             }
         }
+    })
+    
+    /*-------------------
+        slide-testi
+    --------------------- */
+    $('.slide-testi').owlCarousel({
+        loop:true,
+        margin:10,
+        center:true,
+        nav:false,
+        autoplay: true,
+        smartSpeed: 1200,
+        items:2
     })
 
 })(jQuery);

@@ -19,15 +19,23 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('shop/product', 'HomeController@product')->name('shop.product');
 Route::get('shop/product/{filter}', 'HomeController@product')->name('shop.product.filter');
 Route::get('detail-product/{product_id}', 'HomeController@detail_product')->name('detail_product');
+//About
 Route::get('about', 'HomeController@about')->name('about');
+Route::post('download/katalog','Web\KatalogController@download')->name('download-katalog');
+Route::get('send/katalog','Mail\MailController@katalog');
+
 Route::get('partnership', 'HomeController@partnership')->name('partnership');
 Route::get('syarat-mitra', 'HomeController@syarat_mitra')->name('syarat_mitra');
 Route::get('contact', 'HomeController@contact')->name('contact');
 Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');
 
-// Filter Kategori
+// Filter
 Route::post('filter.kategori/{category_id}', 'HomeController@kategori')->name('filter.kategori');
+Route::get('filter/packages/{id}', 'HomeController@packageFilter')->name('filter.packages');
+
+// Search
+Route::get('search/product', 'HomeController@search')->name('search-product');
 
 // mitra
 Route::post('regist/mitra', 'Mitra\DashboardController@registMitra')->name("regist-mitra");
@@ -156,11 +164,15 @@ Route::middleware(['vendor.dashboard'])->group(function () {
         Route::get('vendor/dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
         // Stock
         Route::get('stock', 'Frontend\StockController@index')->name('stock');
+        Route::get('first/stock', 'Vendor\StockAwalController@index')->name('first.stock');
         Route::post('stock/update', 'Frontend\StockController@update')->name('stock.update');
         // Order
         Route::get('vendor/order', 'Vendor\OrderController@index')->name('vendor.order');
         Route::get('vendor/order/details/{order_id}', 'Vendor\OrderController@detail_order')->name('vendor.order.details');
         Route::get("vendor/order/update-status/{order}",'Vendor\OrderController@update_status')->name("vendor.order.update.status");
+        //Best Seller
+        Route::get('best_seller', 'Vendor\BestOrderController@index')->name('best_seller');
+
         //deposit
         Route::get('vendor.deposit', 'Vendor\DepositController@index')->name('vendor.deposit');
     });
@@ -241,15 +253,22 @@ Route::middleware(['dashboard'])->group(function () {
     });
     // Vendor
 
-    //Data Articel
-    Route::get('articel', 'Backend\ArtikelController@index')->name('articel');
-    Route::get('articel.create', 'Backend\ArtikelController@create')->name('articel.create');
-    Route::post('articel', 'Backend\ArtikelController@store')->name('articel.store');
-    Route::get('articel/{articel}', 'Backend\ArtikelController@edit')->name('articel.edit');
-    Route::put('articel/{articel}', 'Backend\ArtikelController@update')->name('articel.update');
-    Route::delete('articel/{articel}', 'Backend\ArtikelController@destroy')->name('articel.delete');
-    Route::post('cari_data_articel', 'Backend\ArtikelController@cari_data_articel')->name('cari_data_articel');
 
+    //Data Articel
+    Route::get('article', 'Backend\ArtikelController@index')->name('article');
+    Route::get('article.create', 'Backend\ArtikelController@create')->name('article.create');
+    Route::post('article', 'Backend\ArtikelController@store')->name('article.store');
+    Route::get('article/{article}', 'Backend\ArtikelController@edit')->name('article.edit');
+    Route::put('article/{article}', 'Backend\ArtikelController@update')->name('article.update');
+    Route::delete('article/{article}', 'Backend\ArtikelController@destroy')->name('article.delete');
+    Route::post('cari_data_article', 'Backend\ArtikelController@cari_data_articel')->name('cari_data_article');
+    
+    //Categori Artikel
+    Route::get('article/category', 'Backend\ArticleCategoryController@index')->name('article-category');
+    Route::post('article/category', 'Backend\ArticleCategoryController@store')->name('article_category.store');
+    Route::delete('articel/category/{category}', 'Backend\ArticleCategoryController@destroy')->name('article_category.delete');
+    Route::post('cari_data_category_articel', 'Backend\ArticleCategoryController@cari_data_category_articel')->name('cari_data_category_articel');
+    
     //Data Syarat
     Route::get('syarat', 'Backend\SyaratController@index')->name('syarat');
     Route::get('syarat.create', 'Backend\SyaratController@create')->name('syarat.create');
