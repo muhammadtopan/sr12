@@ -56,7 +56,7 @@
                                     @foreach($cart as $no => $carts)
                                         <tr>
                                             <td>
-                                                <input type="checkbox" name="checkout[]" />
+                                                <input type="checkbox" name="checkout[]" value="{{$carts->order_details_id}}" />
                                             </td>
                                             <td class="cart-pic first-row"><img src="{{ asset('lte/dist/img/product/'. $carts->product_image)}}" alt=""></td>
                                             <td class="cart-title first-row">

@@ -93,11 +93,10 @@ class CartController extends Controller
         $user = DB::table("tb_costumer")->where("costumer_id",$user_id)->first();
         $vendor_dalam_kota = $checkout->getVendorDalamKota($user->prov_id,$user->kota_id, $request);
         $bank = DB::table("tb_bank")->get();
-
         foreach ($continueProses as $key => $c) {
             $data =  DB::table('tb_tmp_details')
                         ->join('tb_product', 'tb_product.product_id', '=', 'tb_tmp_details.product_id')
-                        ->where("order_details_id", $request->order_details_id[$key])
+                        ->where("order_details_id", $c)
                         ->where('user_id', $user_id)
                         ->first();
             $cart[] = $data;
