@@ -9,7 +9,11 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
+            @if(Session::get("costumer_id") == null)
                 <a class="btn btn-light btn-sm" href="{{route("gudang.logout")}}" role="button"><i class="fas fa-sign-out-alt"></i></a>
+            @else
+                <a class="btn btn-light btn-sm" href="{{route("user.logout")}}" role="button"><i class="fas fa-sign-out-alt"></i></a>
+            @endif
         </li>
     </ul>
 </nav>

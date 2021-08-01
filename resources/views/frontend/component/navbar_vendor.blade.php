@@ -88,7 +88,7 @@
             <div class="container text-right">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li><a href="{{ route('home') }}">Home</a></li> 
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="{{ route('about') }}">About Us</a></li>
                         <li><a href="{{ route('shop.product') }}">Produck</a></li>
                         <li><a href="{{ route('partnership') }}">Partnership</a></li>
@@ -96,9 +96,9 @@
                     </ul>
                 </nav>
                 <div id="mobile-menu-wrap">
-                    
+
                 </div>
             </div>
         </div>
     </header>
-    <!-- Header End --> 
+    <!-- Header End -->

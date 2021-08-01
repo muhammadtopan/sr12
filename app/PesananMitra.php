@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\GudangModel;
 use App\Model\ProductModel;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,14 @@ class PesananMitra extends Model
 
     public function product() {
         return $this->belongsTo(ProductModel::class, "product_id");
+    }
+
+    public function mitra() {
+        return $this->belongsTo(GudangModel::class, "mitra_id");
+    }
+
+    public function leader() {
+        return $this->belongsTo(GudangModel::class, "leader_id");
     }
 
 }
