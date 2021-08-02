@@ -17,13 +17,13 @@
             <!-- Info boxes -->
             <div class="row">
                 <div class="col-12">
-                    <div class="info-box card-danger card-outline">
+                    <div class="info-box card-warning card-outline">
                       <div class="info-box-content">
                         <div class="card-header">
                             <h4 class="card-title">Data Keranjang Berdasarkan Waktu</h4>
                         </div>
                         <div class="card-body">
-                            <a href="{{route('user.profile.voucher.history')}}" class="btn btn-danger btn-sm mb-3 text-white"><i class="fas fa-search-plus"></i> Lihat History Saya</a>
+                            <a href="{{route('user.profile.voucher.history')}}" class="btn btn-warning btn-sm mb-3 text-white"><i class="fas fa-search-plus"></i> Lihat History Saya</a>
                             <div class="table-responsive">
                                 <table class="table table-hover" id="zero_config">
                                     <thead>

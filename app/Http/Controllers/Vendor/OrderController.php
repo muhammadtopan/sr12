@@ -45,9 +45,12 @@ class OrderController extends Controller
                         ->join("tb_kota", "tb_kota.kota_id", "tb_order.kota_id")
                         ->where("tb_order.order_id",$order)
                         ->get();
+
+        $active = 'orderan';
         return view('vendor/detail_order',
         [
-            'order_detail' => $order_detail
+            'order_detail' => $order_detail,
+            'active' => $active,
         ]
     );
     }

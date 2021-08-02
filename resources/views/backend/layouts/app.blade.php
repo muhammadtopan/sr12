@@ -33,7 +33,7 @@
 @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
     <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm">
 @else
-    <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm accent-success">
+    <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm">
 @endif
     <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('lte/ckeditor/ckeditor.js')}}"> </script>

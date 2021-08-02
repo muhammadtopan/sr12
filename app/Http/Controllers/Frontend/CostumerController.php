@@ -147,7 +147,7 @@ class CostumerController extends Controller
         $cart = TmpDetailsModel::where("user_id", Session::get("costumer_id"))->get()->groupBy(function($data) {
             return $data->created_at->format("d-M-Y");
         });
-        $data['active'] = "";
+        $data['active'] = "keranjang";
         $data['data'] = $cart;
         return view("frontend.costumer.profile-component.list_cart", $data);
     }
@@ -169,7 +169,7 @@ class CostumerController extends Controller
 
     public function GetListVoucher() {
         $vouchers = Voucher::where("status", "aktif")->get();
-        $data["active"] = "";
+        $data["active"] = "voucher";
         $data['vouchers'] = $vouchers;
         return view("frontend.costumer.profile-component.list_voucher", $data);
     }
@@ -201,7 +201,7 @@ class CostumerController extends Controller
         ->where("id_costumer", Session::get("costumer_id"))
         ->get(["redeem_vouchers.id","vouchers.nama_voucher", "redeem_vouchers.status","vouchers.item","vouchers.jumlah_point","redeem_vouchers.created_at"]);
 
-        $data["active"] = "";
+        $data["active"] = "voucher";
         $data["vouchers"] = $vouchers;
         return view("frontend.costumer.profile-component.list_history_voucher", $data);
     }

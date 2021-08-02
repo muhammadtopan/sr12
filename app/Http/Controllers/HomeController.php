@@ -208,7 +208,8 @@ class HomeController extends Controller
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->select('tb_product.*', 'tb_category.category_name')
-                    ->where('product_name','like',"%".$search."%")
+                    ->orWhere('product_name','like',"%".$search."%") 
+                    ->orWhere('category_name','like',"%".$search."%") 
                     ->get();
 
         $active = "product";

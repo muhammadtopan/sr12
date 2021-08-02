@@ -72,8 +72,8 @@
                                                     {{ $order->order_status }}
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('vendor.order.details', $order->order_id) }}" class="btn btn-sm btn-info">
-                                                        <i class="fa fa-edit .text-white"></i>
+                                                    <a href="{{ route('vendor.order.details', $order->order_id) }}" class="btn btn-sm btn-success">
+                                                        <i class="fa fa-edit" style="color: #fff"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -108,8 +108,8 @@
                                                     {{ $orderh->order_status }}
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('vendor.order.details', $orderh->order_id) }}" class="btn btn-sm btn-info">
-                                                        <i class="fa fa-edit .text-white"></i>
+                                                    <a href="{{ route('vendor.order.details', $orderh->order_id) }}" class="btn btn-sm btn-success">
+                                                        <i class="fa fa-edit .text-light"></i>
                                                     </a>
                                                 </td>
                                             </tr>
