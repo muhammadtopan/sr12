@@ -103,9 +103,13 @@
                                     <!-- <li class="{{ $active == 'login_mitra' ? 'active' : '' }}"><a href="{{ route('login.mitra') }}">Login</a></li> -->
                                     <li class="{{ $active == 'tool' ? 'active' : '' }}"><a href="{{ route('tool') }}">Tool</a></li>
                                     <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Toko</a></li>
-                                    <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog', $articel->article_id) }}">Artikel</a></li>
+                                    @if ($articel != null)
+                                        <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog',$articel->article_id) }}">Artikel</a></li>
+                                    @endif
                                     <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">FAQ</a></li>
+                                    @if ($testimony != null)
                                     <!-- <li class="{{ $active == 'testimony' ? 'active' : '' }}"><a href="{{ route('testimon', $testimony->testimony_id) }}">Testimoni</a></li> -->
+                                    @endif
                                     <!-- <li class="{{ $active == 'login' ? 'active' : '' }}"><a href="{{ route('vendor') }}">Vendor</a></li> -->
                                     <!-- <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Bantuan</a></li> -->
                                     @if( Session::get('tokenUser') == false)

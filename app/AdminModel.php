@@ -13,10 +13,10 @@ class AdminModel extends Model
     protected $table = "tb_admin";
     protected $primaryKey = 'admin_id';
     protected $fillable = [
-        'admin_name', 
-        'admin_email', 
-        'admin_password', 
-        'admin_notelp', 
+        'admin_name',
+        'admin_email',
+        'admin_password',
+        'admin_phone',
         'admin_level',
     ];
 

@@ -62,10 +62,10 @@ class ProductController extends Controller
                 $product->product_netto = $request->input('product_netto');
                 $product->product_weight = $request->input('product_weight');
                 $product->product_unit = $request->input('product_unit');
-                $product->product_desk = $request->input('product_desk');
+                $product->product_desk = $request->input('product_desk') == null ? "Tidak Ada Keterangan" : "";
                 $product->product_price = $request->input('product_price');
-                $product->product_status = 'on'; 
-                $product->product_type = 'usual'; 
+                $product->product_status = 'on';
+                $product->product_type = 'usual';
                 $product->product_slug = Str::slug($request->input('product_name'));
                 $product->product_image = $filename;
                 $product->save();
@@ -142,7 +142,7 @@ class ProductController extends Controller
 
     public function destroy(ProductModel $product)
     {
-        
+
         $product_file = $product->product_image;
         if ($product_file != null) {
             unlink('lte/dist/img/product/' . $product_file);
@@ -173,7 +173,7 @@ class ProductController extends Controller
             'message' => 'PRODUK TELAH AKTIF',
         ], 200);
     }
-    
+
     public function non_active(Request $request)
     {
         DB::table('tb_product')

@@ -168,11 +168,13 @@
                         </ul>
                     </div>
                 </div>
-                <a href="{{ route('detail_product',$productterbest->product_id) }}">
-                    <div class="col-lg-2">
-                        <div class="product-large set-bg" data-setbg="{{ asset('lte/dist/img/product/' . $productterbest->product_image )}}">
-                    </div>
-                </a>
+                @if ($productterbest != null)
+                    <a href="{{ route('detail_product',$productterbest->product_id) }}">
+                        <div class="col-lg-2">
+                            <div class="product-large set-bg" data-setbg="{{ asset('lte/dist/img/product/' . $productterbest->product_image )}}">
+                        </div>
+                    </a>
+                @endif
                 </div>
                 <div class="col-lg-9 offset-lg-1">
                     <div class="product-slider owl-carousel">
@@ -221,11 +223,13 @@
                         </ul>
                     </div>
                 </div>
-                <a href="{{ route('detail_product',$productterbest->product_id) }}">
-                    <div class="col-lg-2">
-                        <div class="product-large set-bg" data-setbg="{{ asset('lte/dist/img/product/' . $productternew->product_image )}}">
-                    </div>
-                </a>
+                @if ($productternew != null)
+                    <a href="{{ route('detail_product',$productternew->product_id) }}">
+                        <div class="col-lg-2">
+                            <div class="product-large set-bg" data-setbg="{{ asset('lte/dist/img/product/' . $productternew->product_image )}}">
+                        </div>
+                    </a>
+                @endif
                 </div>
                 <div class="col-lg-9 offset-lg-1">
                     <div class="product-slider owl-carousel">
@@ -276,7 +280,7 @@
     </div>
     <div class="instagram-photo testi-slider owl-carousel">
         @foreach($testimony as $no => $testimonies)
-            <div id="testi{{ $testimonies->testimony_id }}" 
+            <div id="testi{{ $testimonies->testimony_id }}"
                 onclick="bigTesti('{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}')" class="insta-item set-bg" data-setbg="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar) }}"></div>
         @endforeach
     </div>

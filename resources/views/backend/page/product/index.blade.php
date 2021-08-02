@@ -169,7 +169,7 @@
                 @php
                     $product = DB::table('tb_product')->first();
                 @endphp
-                <form action="" method="POST" enctype="multipart/form-data" id="formproduct">
+                <form action="{{route("product.store")}}" method="POST" enctype="multipart/form-data" id="formproduct">
                     @csrf
                     <input type="hidden" name="product_id" id="product_id">
                     <div class="form-group">
@@ -182,7 +182,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        @if(isset($category))
+                        @if($category->count() > 0)
                             <script>
                                 document.getElementById('category_id').value =
                                     '<?php echo $category->category_id ?>'
@@ -351,7 +351,6 @@
             }).then(function(res) {
                 var product = res.data;
                 let tes = document.getElementById("summernote")
-                tes.value = "asdasdasdas"
                 $('#product_id').val(product.product_id);
                 $('#category_id').val(product.category_id);
                 $('#product_name').val(product.product_name);

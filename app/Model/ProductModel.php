@@ -25,6 +25,7 @@ class ProductModel extends Model
         'product_desk',
         'product_status',
         'product_slug',
+        "product_type"
     ];
 
     public function pesananMitra() {
