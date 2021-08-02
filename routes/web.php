@@ -14,14 +14,6 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
-Route::get("/tes", function() {
-    $nama = "Fariz";
-    $nama1 = $nama;
-    $nama1 = "abdul";
-    echo $nama;
-    echo $nama1;
-});
-
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('shop/product', 'HomeController@product')->name('shop.product');
@@ -280,13 +272,13 @@ Route::middleware(['dashboard'])->group(function () {
     Route::put('article/{article}', 'Backend\ArtikelController@update')->name('article.update');
     Route::delete('article/{article}', 'Backend\ArtikelController@destroy')->name('article.delete');
     Route::post('cari_data_article', 'Backend\ArtikelController@cari_data_articel')->name('cari_data_article');
-    
+
     //Categori Artikel
     Route::get('article/category', 'Backend\ArticleCategoryController@index')->name('article-category');
     Route::post('article/category', 'Backend\ArticleCategoryController@store')->name('article_category.store');
     Route::delete('articel/category/{category}', 'Backend\ArticleCategoryController@destroy')->name('article_category.delete');
     Route::post('cari_data_category_articel', 'Backend\ArticleCategoryController@cari_data_category_articel')->name('cari_data_category_articel');
-    
+
     //Data Syarat
     Route::get('syarat', 'Backend\SyaratController@index')->name('syarat');
     Route::get('syarat.create', 'Backend\SyaratController@create')->name('syarat.create');

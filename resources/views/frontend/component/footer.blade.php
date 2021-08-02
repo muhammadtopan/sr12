@@ -29,8 +29,10 @@
                         <h5>Informasi</h5>
                         <ul>
                             <li><a href="{{ route('about') }}">Tentang Kami</a></li>
-                            <li><a href="{{ route('blog', $articel->article_id) }}">Artikel</a></li>
-                            <li><a href="{{ route('syarat_mitra') }}">Mitra</a></li>  
+                            @if ($articel != null)
+                                <li><a href="{{ route('blog', $articel->article_id) }}">Artikel</a></li>
+                            @endif
+                            <li><a href="{{ route('syarat_mitra') }}">Mitra</a></li>
                             <li><a href="{{ route('partnership') }}">FAQ</a></li>
                         </ul>
                     </div>
