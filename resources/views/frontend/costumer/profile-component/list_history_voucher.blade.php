@@ -17,7 +17,7 @@
             <!-- Info boxes -->
             <div class="row">
                 <div class="col-12">
-                    <div class="info-box card-danger card-outline">
+                    <div class="info-box card-warning card-outline">
                       <div class="info-box-content">
                         <div class="card-header">
                             <h4 class="card-title">Data Keranjang Berdasarkan Waktu</h4>

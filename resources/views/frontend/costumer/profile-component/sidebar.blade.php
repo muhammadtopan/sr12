@@ -1,8 +1,8 @@
-<aside class="main-sidebar sidebar-light-danger">
-    <a href="{{ route('gudang.dashboard')}}" class="brand-link" style="height: 48px;">
-        <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">
-                <h3>SR12</h3>
+<aside class="main-sidebar sidebar-light-warning">
+    <a href="{{ route('home')}}" class="brand-link" style="height: 48px;">
+        <!-- <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+            <span class="brand-text font-weight-light text-center">
+                <h2>SR12</h2>
             </span>
     </a>
     <div class="sidebar">
@@ -13,14 +13,14 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block" style="text-transform: capitalize">
-                    Costumer
+                    {{ Session::get("costumer_name") }}
                     {{-- {{Session::get("auth")->nama_gudang}} - {{Session::get("auth")->level}} --}}
                 </a>
             </div>
         </div>
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
                     <a href="{{ route('gudang.dashboard')}}" class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}">
@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('user.profile.keranjang') }}" class="nav-link {{ $active == 'profile' ? 'active' : '' }}">
+                    <a href="{{ route('user.profile.keranjang') }}" class="nav-link {{ $active == 'keranjang' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Keranjang
@@ -56,7 +56,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('gudang.mitra') }}" class="nav-link {{ $active == 'mitra' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-history"></i>
                         <p>
                             Histori Produk
                         </p>
@@ -64,7 +64,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('gudang.history') }}" class="nav-link {{ $active == 'history' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-history"></i>
+                        <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Pengaturan
                         </p>
@@ -79,18 +79,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('user.profile.voucher') }}" class="nav-link {{ $active == 'laporan' ? 'active' : '' }}">
+                    <a href="{{ route('user.profile.voucher') }}" class="nav-link {{ $active == 'voucher' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Voucher
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('gudang.setting') }}" class="nav-link {{ $active == 'setting' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cog"></i>
-                        <p>
-                            Logout
                         </p>
                     </a>
                 </li>
