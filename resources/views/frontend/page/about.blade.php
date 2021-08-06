@@ -305,19 +305,19 @@
         <div class="blog-more">
             <div class="row text-center">
                 <div class="col-sm-3">
-                    <img src="{{asset('frontend/img/blog/blog-detail-1.jpg')}}" alt="">
+                    <img src="{{asset('frontend/img/about/syarat/syarat_marketer.jpeg')}}" alt="">
                     <p>Untuk syarat lengkapnya <a href="#">(KLIK DISINI)</a></p>
                 </div>
                 <div class="col-sm-3">
-                    <img src="{{asset('frontend/img/blog/blog-detail-2.jpg')}}" alt="">
+                    <img src="{{asset('frontend/img/about/syarat/syarat_reseller.jpeg')}}" alt="">
                     <p>Untuk syarat lengkapnya <a href="#">(KLIK DISINI)</a></p>
                 </div>
                 <div class="col-sm-3">
-                    <img src="{{asset('frontend/img/blog/blog-detail-3.jpg')}}" alt="">
+                    <img src="{{asset('frontend/img/about/syarat/syarat_sub_agen.jpeg')}}" alt="">
                     <p>Untuk syarat lengkapnya <a href="#">(KLIK DISINI)</a></p>
                 </div>
                 <div class="col-sm-3">
-                    <img src="{{asset('frontend/img/blog/blog-detail-1.jpg')}}" alt="">
+                    <img src="{{asset('frontend/img/about/syarat/syarat_agen.jpeg')}}" alt="">
                     <p>Untuk syarat lengkapnya <a href="#">(KLIK DISINI)</a></p>
                 </div>
             </div>
@@ -371,9 +371,9 @@
                         </div>
                         <div class="col-md-6">.
                             <div class="leave-comment">
-                            @if(Session::has('messages'))
-                                <p class="alert alert-info">{{ Session::get('messages') }}</p>
-                            @endif
+                                @if(Session::has('messages'))
+                                    <p class="alert alert-info">{{ Session::get('messages') }}</p>
+                                @endif
                                 <form action="{{ route('download-katalog')}}" method="post" class="comment-form">
                                     @csrf
                                     @if(session('errors'))
@@ -383,18 +383,18 @@
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                             <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     @endif
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <input name="name" type="text" placeholder="Name">
+                                            <input name="name" type="text" placeholder="Name" value="{{ old('name') }}">
                                         </div>
                                         <div class="col-lg-6">
-                                            <input name="email" type="text" placeholder="Email">
+                                            <input name="email" type="text" placeholder="Email" value="{{ old('email') }}">
                                         </div>
                                         <div class="col-lg-12 text-right">
                                             <button type="submit" class="site-btn">Download</button>

@@ -37,11 +37,19 @@
                                 <ul class="pl-4">
                                     <li><a href="#" onclick="syaratPage('syarat5')">Marketer</a></li>
                                     <li><a href="#" onclick="syaratPage('syarat6')">Reseller</a></li>
-                                    <li><a href="#" onclick="syaratPage('syarat7')">Sub-Agen</a></li>
-                                    <li><a href="#" onclick="syaratPage('syarat8')">Agen</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" onclick="syaratPage('syarat9')">Dristributor Utama</a></li>
+                            @if(session()->get('phone_viewer') != null)
+                                        <li><a href="#" onclick="syaratPage('syarat7')">Sub-Agen</a></li>
+                                        <li><a href="#" onclick="syaratPage('syarat8')">Agen</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" onclick="syaratPage('syarat9')">Dristributor Utama</a></li>
+                            @else
+                                        <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Sub-Agen</a></li>
+                                        <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Agen</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Dristributor Utama</a></li>
+                            @endif
                             <li><a href="#" onclick="syaratPage('syarat10')">Kenapa SR12</a></li>
                             <li><a href="#" onclick="syaratPage('syarat11')">Kenapa Harus Gabung</a></li>
                             <li><a href="#" onclick="syaratPage('syarat12')">Kesimpulan</a></li>
@@ -93,27 +101,14 @@
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
+                                                        <th scope="col" class="text-center">No</th>
                                                         <th scope="col" class="text-center">Nama Mitra</th>
                                                         <th scope="col" class="text-center">Posisi</th>
                                                         <th scope="col" class="text-center">Kota</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-center">MItra1</td>
-                                                        <td class="text-center">Agen</td>
-                                                        <td class="text-center">Padang</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">MItra2</td>
-                                                        <td class="text-center">Su-Agen</td>
-                                                        <td class="text-center">Padang</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">MItra3</td>
-                                                        <td class="text-center">Reseller</td>
-                                                        <td class="text-center">Padang</td>
-                                                    </tr>
+                                                <tbody id="list_mitra">
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -130,12 +125,12 @@
                                         <h3>KENAPA HARUS GABUNG SR12 HERBAL STORE?</h3>
                                     </div>
                                     <div class="owl-carousel owl-why-join">
-                                        <div class="item"><img src="{{asset('frontend/img/logo.png')}}" alt=""></div>
-                                        <div class="item"><img src="{{asset('frontend/img/logo.png')}}" alt=""></div>
-                                        <div class="item"><img src="{{asset('frontend/img/logo.png')}}" alt=""></div>
-                                        <div class="item"><img src="{{asset('frontend/img/logo.png')}}" alt=""></div>
-                                        <div class="item"><img src="{{asset('frontend/img/logo.png')}}" alt=""></div>
-                                        <div class="item"><img src="{{asset('frontend/img/logo.png')}}" alt=""></div>
+                                        <div class="item"><img src="{{asset('frontend/img/mitra/why/ekonomi_umat.jpeg')}}" alt=""></div>
+                                        <div class="item"><img src="{{asset('frontend/img/mitra/why/kebermanfaatan.jpeg')}}" alt=""></div>
+                                        <div class="item"><img src="{{asset('frontend/img/mitra/why/mentoring_bisnis.jpeg')}}" alt=""></div>
+                                        <div class="item"><img src="{{asset('frontend/img/mitra/why/mitra_tersebar.jpeg')}}" alt=""></div>
+                                        <div class="item"><img src="{{asset('frontend/img/mitra/why/market_luas.jpeg')}}" alt=""></div>
+                                        <div class="item"><img src="{{asset('frontend/img/mitra/why/mudah_digunakan.jpeg')}}" alt=""></div>
                                     </div>
                                     <div class="posted-by mt-5">
                                         <div class="pb-text">
@@ -512,13 +507,12 @@
     </section>
     <!-- Product Shop Section End -->
 
-
     <section class="blog-details spad">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="blog-large-pic text-center">
-                        <img src="{{asset('frontend/img/blog/blog-detail.jpg')}}" alt="">
+                        <img src="{{asset('frontend/img/mitra/fotbar.jpg')}}" alt="">
                     </div>
                 </div>
                 <div class="col-12 blog-details-inner mt-5">
@@ -530,33 +524,51 @@
                             <div class="owl-carousel owl-ilmu-strategi">
                                 <div class="item text-center">
                                     <a href="#">
-                                        <img src="{{asset('frontend/img/insta-1.jpg')}}" alt="">
+                                        <img src="{{asset('frontend/img/mitra/ilmu1.jpeg')}}" alt="">
                                     </a>
                                     <span >Kunci Jualan disosmed</span>
                                 </div>
                                 <div class="item text-center">
                                     <a href="#">
-                                        <img src="{{asset('frontend/img/insta-2.jpg')}}" alt="">
+                                        <img src="{{asset('frontend/img/mitra/ilmu2.jpeg')}}" alt="">
                                     </a>
-                                    <span >Kunci Jualan disosmed</span>
+                                    <span >Produk Konowledge</span>
                                 </div>
                                 <div class="item text-center">
                                     <a href="#">
-                                        <img src="{{asset('frontend/img/insta-3.jpg')}}" alt="">
+                                        <img src="{{asset('frontend/img/mitra/ilmu3.jpeg')}}" alt="">
                                     </a>
-                                    <span >Kunci Jualan disosmed</span>
+                                    <span >Reseler Sukses SR12</span>
                                 </div>
                                 <div class="item text-center">
                                     <a href="#">
-                                        <img src="{{asset('frontend/img/insta-4.jpg')}}" alt="">
+                                        <img src="{{asset('frontend/img/mitra/ilmu4.jpeg')}}" alt="">
                                     </a>
-                                    <span >Kunci Jualan disosmed</span>
+                                    <span >MAP Bisnis SR12</span>
                                 </div>
                                 <div class="item text-center">
                                     <a href="#">
-                                        <img src="{{asset('frontend/img/insta-5.jpg')}}" alt="">
+                                        <img src="{{asset('frontend/img/mitra/ilmu5.jpeg')}}" alt="">
                                     </a>
-                                    <span >Kunci Jualan disosmed</span>
+                                    <span >Strategi Marketing</span>
+                                </div>
+                                <div class="item text-center">
+                                    <a href="#">
+                                        <img src="{{asset('frontend/img/mitra/ilmu6.jpeg')}}" alt="">
+                                    </a>
+                                    <span >Rumus Menghasilkan Cuan</span>
+                                </div>
+                                <div class="item text-center">
+                                    <a href="#">
+                                        <img src="{{asset('frontend/img/mitra/ilmu7.jpeg')}}" alt="">
+                                    </a>
+                                    <span >Home Sharing</span>
+                                </div>
+                                <div class="item text-center">
+                                    <a href="#">
+                                        <img src="{{asset('frontend/img/mitra/ilmu8.jpeg')}}" alt="">
+                                    </a>
+                                    <span >Kurikulum Mitra SR12</span>
                                 </div>
                             </div>
                         </div>
@@ -565,6 +577,45 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body inner-header bg-modal-search">
+                    @if(Session::has('messages'))
+                        <p class="alert alert-info">{{ Session::get('messages') }}</p>
+                    @endif
+                    <form action="{{ route('viewer-syarat') }}" method="post">
+                        @csrf
+                        @if(session('errors'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                Ada yang salah:
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <label class="text-light">Silahkan masukan data berikut untuk melanjutkan</label>
+                            <input type="text" class="form-control" name="name_viewer" placeholder="Nama" value="{{ old('name_viewer') }}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="phone" placeholder="08**********" value="{{ old('phone') }}">
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="site-btn">Kirim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         function syaratPage(id) {
@@ -576,6 +627,10 @@
             }else{
                 $(`#${id}`).removeClass('d-none');
             }
+        }
+
+        function inputNama(id) {
+            $(`#${id}`).show();
         }
     </script>
 
@@ -598,6 +653,12 @@
                 console.log(err);
             })
         });
+
+        $('#kota_id').change(function(e) {
+            e.preventDefault();
+            $('#list_mitra').load("{{ url('cari_mitra') }}/"+ this.value);
+
+        })
     </script>
 
 @endsection

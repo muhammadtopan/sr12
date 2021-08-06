@@ -26,6 +26,7 @@ Route::get('send/katalog','Mail\MailController@katalog');
 
 Route::get('partnership', 'HomeController@partnership')->name('partnership');
 Route::get('syarat-mitra', 'HomeController@syarat_mitra')->name('syarat_mitra');
+Route::post('viewer-syarat', 'HomeController@viewerSyarat')->name('viewer-syarat');
 Route::get('contact', 'HomeController@contact')->name('contact');
 Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');
@@ -119,6 +120,7 @@ Route::get('user/register', 'Frontend\CostumerController@register')->name('user.
 Route::post('user/aksiregister', 'Frontend\CostumerController@registerAdmin')->name('user.aksiregister');
 Route::post('user/aksilogin', 'Frontend\CostumerController@loginAdmin')->name('user.aksilogin');
 Route::post('carikotauser', 'Frontend\CostumerController@carikota')->name('carikota');
+Route::get('cari_mitra/{id}', 'HomeController@carimitra');
 
 // COSTUMER DAFTAR DENGAN KODE REFERAL
 Route::get('user/register/referal/{referal}', 'Frontend\CostumerController@register')->name("register.user.referal");

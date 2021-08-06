@@ -9,10 +9,13 @@ use App\Model\CategoryModel;
 use Illuminate\Http\Request;
 use App\Model\TmpDetailsModel;
 use App\Model\TestimonyModel;
+use App\Model\ViewerSyaratModel;
 use Illuminate\Support\Facades\DB;
 use App\Model\PackageCategoryModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+
 
 class HomeController extends Controller
 {
@@ -87,6 +90,44 @@ class HomeController extends Controller
                 'prov' => $prov
             ]
         );
+    }
+    public function carimitra($id)
+    {
+        $mitra = DB::table('tb_mitra')->where('kota_id', $id)->get();
+        return view('frontend.page.list_mitra', compact('mitra'));
+    }
+
+    public function viewerSyarat(Request $request, ViewerSyaratModel $viewer)
+    {
+        // dd($request->session());
+        $messages = [
+            'name_viewer.required'  => 'Nama wajib diisi',
+            'phone.required'        => 'Nomor telfon wajib diisi',
+            'phone.numeric'         => 'Ikuti format nomor telpon yang ada',
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'name_viewer'    => 'required',
+            'phone'          => 'required|numeric',
+        ], $messages);
+
+        // dd($validator->fails());
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $data = $request->all();
+            $data['name_viewer'] = ucwords(strtolower($request->input('name_viewer')));
+            $data['phone'] = $request->input('phone');
+            $viewer = ViewerSyaratModel::create($data);
+            $sviewer = $request->session()->put('phone_viewer', $request->input('phone'));
+            // dd($sviewer);
+            return redirect()
+                ->route('syarat_mitra');
+        }
     }
 
     public function frontMitra()
@@ -272,5 +313,4 @@ class HomeController extends Controller
             ]
         );
     }
-
 }
