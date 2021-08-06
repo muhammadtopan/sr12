@@ -146,14 +146,14 @@
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-body inner-header bg-modal-search">
-                <div class="advanced-search">
-                    <form action="{{ route('search-product')}}" class="input-group" method="GET">
-                        <input type="text" name="search" placeholder="Nama Produk" value="{{ old('search') }}">
-                        <button type="submit"><i class="ti-search"></i></button>
-                    </form>
+                <div class="modal-body inner-header bg-modal-search">
+                    <div class="advanced-search">
+                        <form action="{{ route('search-product')}}" class="input-group" method="GET">
+                            <input type="text" name="search" placeholder="Nama Produk" value="{{ old('search') }}">
+                            <button type="submit"><i class="ti-search"></i></button>
+                        </form>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
