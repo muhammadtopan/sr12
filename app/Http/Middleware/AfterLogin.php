@@ -18,7 +18,7 @@ class AfterLogin
         if (session()->has('token')) {
             return $next($request);
         } else {
-            return redirect("login")->with("pesan", "Anda Belum Login");;
+            return redirect("login")->with("pesan", "Anda Belum Login");
         }
     }
 }

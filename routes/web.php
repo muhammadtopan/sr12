@@ -30,6 +30,7 @@ Route::post('viewer-syarat', 'HomeController@viewerSyarat')->name('viewer-syarat
 Route::get('contact', 'HomeController@contact')->name('contact');
 Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');
+Route::get('category/product/{id}', 'HomeController@categoroyProduct')->name('category-product');
 
 // Filter
 Route::post('filter.kategori/{category_id}', 'HomeController@kategori')->name('filter.kategori');
@@ -172,6 +173,11 @@ Route::middleware(['vendor'])->group(function () {
 
 //Vendor Sudah Login
 Route::middleware(['vendor.dashboard'])->group(function () {
+    //Profile Vendor
+    Route::group(["prefix" => "profile"],function() {
+        Route::get("", "Backend\ProfileController@GetUpdateProfile")->name("vendor.update.profile");
+        Route::put("", "Backend\ProfileController@PutUpdateProfile");
+    });
     Route::group(["middleware" => "cek_profile"],function() {
         Route::get('vendor/dashboard', 'Frontend\DashboardController@dashboard')->name('vendor.dashboard');
         // Stock
@@ -184,18 +190,11 @@ Route::middleware(['vendor.dashboard'])->group(function () {
         Route::get("vendor/order/update-status/{order}",'Vendor\OrderController@update_status')->name("vendor.order.update.status");
         //Best Seller
         Route::get('best_seller', 'Vendor\BestOrderController@index')->name('best_seller');
-
         //deposit
         Route::get('vendor.deposit', 'Vendor\DepositController@index')->name('vendor.deposit');
     });
     Route::get('vendor.logout', 'Frontend\DashboardController@logout')->name('vendor.logout');
     // Stock Product Vendor
-});
-
-//Profile Vendor
-Route::group(["prefix" => "profile"],function() {
-    Route::get("", "Backend\ProfileController@GetUpdateProfile")->name("vendor.update.profile");
-    Route::put("", "Backend\ProfileController@PutUpdateProfile");
 });
 
 
@@ -237,10 +236,16 @@ Route::middleware(['dashboard'])->group(function () {
     Route::post('product', 'Backend\ProductController@store')->name('product.store');
     Route::post('cari_data_product', 'Backend\ProductController@cari_data_product')->name('cari_data_product');
     Route::delete('product/{product}', 'Backend\ProductController@destroy')->name('product.delete');
+    // Add Product To Vendor Stock
+    Route::post('add/product', 'Backend\ProductController@addProductVendor')->name('add-product-vendor');
 
     //aktivasi product
     Route::post('product/active', 'Backend\ProductController@active')->name('product.active');
     Route::post('product/no_active', 'Backend\ProductController@non_active')->name('product.non_active');
+    Route::post('best/active', 'Backend\ProductController@best_active')->name('best.active');
+    Route::post('best/no_active', 'Backend\ProductController@best_non_active')->name('best.non_active');
+    Route::post('new/active', 'Backend\ProductController@new_active')->name('new.active');
+    Route::post('new/no_active', 'Backend\ProductController@new_non_active')->name('new.non_active');
     Route::post('product/usual', 'Backend\ProductController@usual')->name('product.usual');
     Route::post('product/best', 'Backend\ProductController@best')->name('product.best');
     Route::post('product/new', 'Backend\ProductController@new')->name('product.new');
@@ -254,9 +259,15 @@ Route::middleware(['dashboard'])->group(function () {
     Route::group(["prefix" => "data-vendor"], function() {
         Route::get("", 'Backend\VendorController@index')->name('data_vendor');
 
+        
         //aktivasi data_vendor
         Route::post('active', 'Backend\VendorController@active')->name('data_vendor.active');
         Route::post('no_active', 'Backend\VendorController@non_active')->name('data_vendor.non_active');
+        
+        Route::get("admin/freelance", 'Backend\FreelanceController@index')->name('freelance_data');
+        //aktivasi freelance
+        Route::post('freeactive', 'Backend\FreelanceController@active')->name('freelance.active');
+        Route::post('freeno_active', 'Backend\FreelanceController@non_active')->name('freelance.non_active');
 
         // data DU / Gudang / Mitra
         Route::get('gudang', "Backend\VendorController@getDataMitra")->name("data_vendor.gudang");
@@ -269,14 +280,17 @@ Route::middleware(['dashboard'])->group(function () {
     //Data Articel
     Route::get('article', 'Backend\ArtikelController@index')->name('article');
     Route::get('article.create', 'Backend\ArtikelController@create')->name('article.create');
-    Route::post('article', 'Backend\ArtikelController@store')->name('article.store');
+    Route::post('article', 'Backend\ArtikelController@store')->name(
+        
+        'article.store');
     Route::get('article/{article}', 'Backend\ArtikelController@edit')->name('article.edit');
     Route::put('article/{article}', 'Backend\ArtikelController@update')->name('article.update');
     Route::delete('article/{article}', 'Backend\ArtikelController@destroy')->name('article.delete');
     Route::post('cari_data_article', 'Backend\ArtikelController@cari_data_articel')->name('cari_data_article');
 
     //Categori Artikel
-    Route::get('article/category', 'Backend\ArticleCategoryController@index')->name('article-category');
+    Route::get('acat', 'Backend\ArticleCategoryController@category')->name('acat');
+    // Route::get('asd', 'Backend\ArticleCa1tegoryController@asd')->name('asd');
     Route::post('article/category', 'Backend\ArticleCategoryController@store')->name('article_category.store');
     Route::delete('articel/category/{category}', 'Backend\ArticleCategoryController@destroy')->name('article_category.delete');
     Route::post('cari_data_category_articel', 'Backend\ArticleCategoryController@cari_data_category_articel')->name('cari_data_category_articel');

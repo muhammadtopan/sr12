@@ -88,11 +88,11 @@
                                             <a href="{{ route('detail_product',$pdklist->product_id)}}">
                                                 <img src="{{ asset('lte/dist/img/product/' . $pdklist->product_image )}}" alt="">
                                             </a>
-                                            <ul>
+                                            <!-- <ul>
                                                 <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                <!-- <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
-                                            </ul>
+                                                <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                            </ul> -->
                                         </div>
                                         <div class="pi-text">
                                             <div class="catagory-name">{{ $pdklist->category_name }}</div>
@@ -154,12 +154,12 @@
                             <div class="col-lg-3 col-sm-4">
                                         <div class="product-item">
                                             <div class="pi-pic">
-                                                <a href="http://{{env("APP_URL")}}:8000/detail-product/${d.product_id}">
-                                                    <img src='{{env("APP_URL")}}:8000/lte/dist/img/product/${d.product_image}' alt="">
+                                                <a href="{{url('detail-product')}}/${d.product_id}">
+                                                    <img src="{{asset('lte/dist/img/product')}}/${d.product_image}" alt="">
                                                 </a>
                                                 <ul>
-                                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                    <!-- <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
                                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                                 </ul>
                                             </div>

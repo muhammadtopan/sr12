@@ -67,7 +67,7 @@
                                                     <h5 id="total_price">Rp {{ Session::get('total_price') }}</h5>
                                                 </div>
                                                 <div class="select-button">
-                                                    <a href="{{ route('cart') }}" class="primary-btn view-card">VIEW CARD</a>
+                                                    <a href="{{ route('cart') }}" class="primary-btn view-card">LIHAT KERANJANG</a>
                                                     <!-- <a href="{{ route('checkout') }}" class="primary-btn checkout-btn">CHECK OUT</a> -->
                                                 </div>
                                             </div>

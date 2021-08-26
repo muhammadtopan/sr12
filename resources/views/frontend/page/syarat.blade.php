@@ -60,7 +60,7 @@
                     <div class="product-list">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div id="syarat1" class="syarat d-none">
+                                <div id="syarat1" class="syarat">
                                     <div class="section-title tools">
                                         <h3>PERSEBARAN MITRA</h3>
                                     </div>

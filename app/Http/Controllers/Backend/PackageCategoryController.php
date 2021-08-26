@@ -19,11 +19,13 @@ class PackageCategoryController extends Controller
     {
         $category = PackageCategoryModel::all();
         $product = ProductModel::all();
+        $active = 'product_package';
         return view(
             'backend/page/package_category/index',
             [
                 'category' => $category,
-                'product' => $product
+                'product' => $product,
+                'active' => $active
             ]
         );
     }

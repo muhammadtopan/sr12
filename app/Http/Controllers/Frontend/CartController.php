@@ -57,6 +57,10 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
+        // dd($request);
+        if ($request->checkout == null) {
+            return redirect()->back()->with("pesan", "Silahkan centang dulu sebelum checkout");
+        }
         $cart = [];
         $product_id = [];
         $qty = [];

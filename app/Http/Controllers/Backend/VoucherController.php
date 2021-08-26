@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Storage;
 class VoucherController extends Controller
 {
     public function index() {
-        $voucher = Voucher::get();
-        return view("backend.page.voucher.index",compact("voucher"));
+        $data['voucher'] = Voucher::get();
+        $data['active'] = 'voucher';
+        return view("backend.page.voucher.index", $data);
     }
 
     public function PostVoucher(Request $request) {
@@ -81,11 +82,12 @@ class VoucherController extends Controller
     }
 
     public function GetVoucherRedeem() {
-        $redeem = RedeemVoucher::join("tb_costumer", "redeem_vouchers.id_costumer", "=", "tb_costumer.costumer_id")
+        $data['redeem'] = RedeemVoucher::join("tb_costumer", "redeem_vouchers.id_costumer", "=", "tb_costumer.costumer_id")
         ->join("vouchers", "redeem_vouchers.id_voucher", "=", "vouchers.id")
         ->get(["tb_costumer.costumer_name","redeem_vouchers.id","vouchers.nama_voucher", "redeem_vouchers.status","vouchers.item","vouchers.jumlah_point","redeem_vouchers.created_at"]);
         // ->get(["tb_costumer.costumer.name","redeem_vouchers.id","vouchers.nama_voucher", "redeem_vouchers.status","vouchers.item","vouchers.jumlah_point","redeem_vouchers.created_at"]);
-        return view("backend.page.voucher.redeem",compact("redeem"));
+        $data['active'] = 'reedem';
+        return view("backend.page.voucher.redeem", $data);
     }
 
     public function VoucherRedeemKonfirmasi(RedeemVoucher $r) {

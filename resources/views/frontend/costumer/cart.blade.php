@@ -43,7 +43,7 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Checkout ?</th>
+                                        <th>Checkout</th>
                                         <th>Gambar</th>
                                         <th class="p-name">Nama Produk</th>
                                         <th>Harga</th>
@@ -87,12 +87,15 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 offset-lg-4">
+                                @if(Session::has('pesan'))
+                                    <p class="alert alert-info">{{ Session::get('pesan') }}</p>
+                                @endif
                                 <div class="proceed-checkout">
                                     <ul>
                                         <!-- <li class="subtotal">Subtotal <span>$240.00</span></li> -->
                                         <li class="cart-total">Total <span>Rp {{ number_format(Session::get('total_price')) }}</span></li>
                                     </ul>
-                                    <button type="submit" class="proceed-btn">PROSES CHECK OUT</button>
+                                    <button type="submit" class="proceed-btn">LIHAT TAGIHAN</button>
                                 </div>
                             </div>
                         </div>

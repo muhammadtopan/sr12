@@ -16,6 +16,7 @@
                     {{Session::get("auth")->nama_gudang}} - {{Session::get("auth")->level}}
                 </a>
             </div>
+            
         </div>
         <!-- Sidebar Menu -->
         <nav class="mt-2">

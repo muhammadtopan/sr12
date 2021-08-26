@@ -17,6 +17,7 @@ class StockController extends Controller
                 ->leftJoin('tb_stok','tb_product.product_id', '=', 'tb_stok.product_id')
                 ->select('tb_stok.*','tb_product.product_name', 'tb_product.product_id', 'tb_product.product_image')
                 ->where('tb_stok.user_id', '=', session()->get('user_id'))
+                ->where('tb_stok.deleted_at', '=', 'null')
                 ->get();
         // dd($product);
 
@@ -25,6 +26,7 @@ class StockController extends Controller
                 ->select('tb_stok.*','tb_product.product_name', 'tb_product.product_id', 'tb_product.product_image')
                 ->where('tb_stok.user_id', '=', session()->get('user_id'))
                 ->where('tb_stok.product_stok', '=', 0)
+                ->where('tb_stok.deleted_at', '=', 'null')
                 ->get();
         
         $active = 'stock';

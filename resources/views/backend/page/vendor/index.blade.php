@@ -18,6 +18,7 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
+
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -43,10 +44,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content" id="custom-tabs-two-tabContent">
-                            <button onclick="modal_tambah('{{route("product.store")}}', 'tambah')" class="btn btn-lg btn-dark my-4">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                            <button class="btn btn-lg btn-success my-4" onclick="location.reload(true);" style="margin-left: 20px;">
+                            <button class="btn btn-lg btn-dark my-4" onclick="location.reload(true);" style="margin-left: 20px;">
                                 <i class="fas fa-redo-alt"></i>
                             </button>
                             <div class="tab-pane fade show active" id="verifikasi" role="tabpanel" aria-labelledby="verifikasi-tab">

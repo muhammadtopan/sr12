@@ -85,9 +85,32 @@
                                                 </label>
                                             </td>
                                             <td>
-                                                <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="usual" onclick="cekUsual(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'usual') ? "checked" : "" ?>>Default<br>
-                                                <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="best" onclick="cekBest(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'best') ? "checked" : "" ?>>Product Best Seller<br>
-                                                <input type="radio" id="id{{ $products->product_id }}" name="name{{ $products->product_id }}" value="new" onclick="cekNew(<?= $products->product_id ?>, this)" <?php echo ($products->product_type == 'new') ? "checked" : "" ?>>New Product
+
+                                                <label class="switch">
+                                                    <input
+                                                        type="checkbox"
+                                                        value="{{ $products->product_best }}"
+                                                        onchange="cekBestStatus(<?= $products->product_id ?>, this)"
+                                                        <?php echo ($products->product_best == 'on') ? "checked" : "" ?> >
+                                                    <span class="slider round"></span>
+                                                </label>Best Seller <br>
+
+                                                <label class="switch">
+                                                    <input
+                                                        type="checkbox"
+                                                        value="{{ $products->product_new }}"
+                                                        onchange="cekNewStatus(<?= $products->product_id ?>, this)"
+                                                        <?php echo ($products->product_new == 'on') ? "checked" : "" ?> >
+                                                    <span class="slider round"></span>
+                                                </label> Produk Baru
+
+
+
+                                                {{-- <input type="radio" id="id{{ $products->product_id }}" name="usual{{ $products->product_id }}" value="{{ $products->product_usual == 'on' ? 'off' : 'on' }}" onclick="cekUsual(<?= $products->product_id ?>, this)" <?php echo ($products->product_usual == 'on') ? "checked" : "" ?>>Default<br>
+
+                                                <input type="radio" id="id{{ $products->product_id }}" name="best{{ $products->product_id }}" value="{{ $products->product_best == 'on' ? 'off' : 'on' }}" onclick="cekBest(<?= $products->product_id ?>, this)" <?php echo ($products->product_best == 'on') ? "checked" : "" ?>>Product Best Seller<br>
+
+                                                <input type="radio" id="id{{ $products->product_id }}" name="new{{ $products->product_id }}" value="{{ $products->product_new == 'on' ? 'off' : 'on' }}" onclick="cekNew(<?= $products->product_id ?>, this)" <?php echo ($products->product_new == 'on') ? "checked" : "" ?>>New Product --}}
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-warning btn-sm" onclick="modal_tambah('{{ route('product.store') }}', '{{ $products->product_id  }}')" data-toggle="modal" data-target="#ModalTambah">
@@ -198,7 +221,7 @@
                     </div>
                     <div class="form-group">
                         <label for="product_bpom">BPOM Produk</label>
-                        <input type="number" class="form-control" name="product_bpom" id="product_bpom" placeholder="BPOM Produk" value="{{ old('product_bpom') ?? $product->product_bpom ?? '' }}" required>
+                        <input type="text" class="form-control" name="product_bpom" id="product_bpom" placeholder="BPOM Produk" value="{{ old('product_bpom') ?? $product->product_bpom ?? '' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="product_netto">Netto</label>
@@ -239,7 +262,7 @@
                         <input type="number" class="form-control" name="product_price" id="product_price" placeholder="Harga Produk" value="{{ old('product_price') ?? $product->product_price ?? '' }}" required>
                     </div>
                     <div class="row text-right" style="margin-right: 2px">
-                        <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -266,7 +289,7 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-info">Delete</button>
                 </div>
-            </form>
+            </form> 
         </div>
     </div>
 </div>
@@ -298,44 +321,48 @@
         }
     }
 
-    function cekUsual(product_id, ceklis) {
+    function cekBestStatus(product_id, ceklis) {
         if (ceklis.checked) {
             // alert("ceklis Dihidupkan")
-            axios.post("{{route('product.usual')}}", {
+            axios.post("{{route('best.active')}}", {
                 'id': product_id,
             }).then(function(res) {
-                // console.log(res.data.message)
-                toastr.success(res.data.message)
+                console.log(res.data.message)
+                toastr.info(res.data.message)
             }).catch(function(err) {
                 console.log(err);
             })
         } else {
-
-        }
-    }
-
-    function cekBest(product_id, ceklis) {
-        if (ceklis.checked) {
-            // alert("ceklis Dihidupkan")
-            axios.post("{{route('product.best')}}", {
+            // alert("Ceklis dimatikan")
+            axios.post("{{route('best.non_active')}}", {
                 'id': product_id,
             }).then(function(res) {
-                // console.log(res.data.message)
-                toastr.success(res.data.message)
+                console.log(res.data.message)
+                toastr.warning(res.data.message)
             }).catch(function(err) {
                 console.log(err);
             })
         }
     }
 
-    function cekNew(product_id, ceklis) {
+    function cekNewStatus(product_id, ceklis) {
         if (ceklis.checked) {
             // alert("ceklis Dihidupkan")
-            axios.post("{{route('product.new')}}", {
+            axios.post("{{route('new.active')}}", {
                 'id': product_id,
             }).then(function(res) {
-                // console.log(res.data.message)
-                toastr.success(res.data.message)
+                console.log(res.data.message)
+                toastr.info(res.data.message)
+            }).catch(function(err) {
+                console.log(err);
+            })
+        } else {
+            // alert("Ceklis dimatikan")
+            axios.post("{{route('new.non_active')}}", {
+                'id': product_id,
+            }).then(function(res) {
+                console.log(res.data.message)
+                toastr.warning(res.data.message)
             }).catch(function(err) {
                 console.log(err);
             })
@@ -350,7 +377,8 @@
                 'product_id': aksi,
             }).then(function(res) {
                 var product = res.data;
-                let tes = document.getElementById("summernote")
+                console.log(product);
+                // let tes = document.getElementById("summernote")
                 $('#product_id').val(product.product_id);
                 $('#category_id').val(product.category_id);
                 $('#product_name').val(product.product_name);

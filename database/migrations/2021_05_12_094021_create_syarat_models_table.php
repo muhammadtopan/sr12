@@ -16,7 +16,7 @@ class CreateSyaratModelsTable extends Migration
         Schema::create('tb_syarat', function (Blueprint $table) {
             $table->bigIncrements('syarat_id');
             $table->string('syarat_judul');
-            $table->string('syarat');
+            $table->text('syarat');
             $table->timestamps();
             $table->softDeletes();
         });

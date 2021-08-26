@@ -27,10 +27,10 @@
                         <div class="tab-item">
                             <ul class="nav col-12" role="tablist">
                                 <li>
-                                    <a class="active" data-toggle="tab" href="#tab-2" role="tab">DAFTAR MITRA</a>
+                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">DAFTAR AKUN</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#tab-1" role="tab">DAFTAR AKUN</a>
+                                    <a data-toggle="tab" href="#tab-2" role="tab">DAFTAR MITRA</a>
                                 </li>
                                 <!-- <li>
                                     <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="tab-item-content">
                             <div class="tab-content">
-                                <div class="tab-pane fade-in border" id="tab-1" role="tabpanel">
+                                <div class="tab-pane fade-in active border" id="tab-1" role="tabpanel">
                                     <div class="product-content-regis">
                                         <div class="row">
                                             <!-- <======================Regis User======================> -->
@@ -51,7 +51,7 @@
                                                     <input type="hidden" name="referal" value="{{request()->referal}}">
                                                         @if(session('errors'))
                                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                                Something it's wrong:
+                                                                Sepertinya ada yang salah:
                                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                     <span aria-hidden="true">×</span>
                                                                 </button>
@@ -145,7 +145,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade-in active border" id="tab-2" role="tabpanel">
+                                <div class="tab-pane fade-in border" id="tab-2" role="tabpanel">
                                     <div class="specification-table-regis">
                                         <div class="row">
                                             <!-- <======================Regis Mitra======================> -->
