@@ -507,7 +507,7 @@ ol {
 	height: 100%;
 	border: none;
 	font-size: 16px;
-	color: #d1d1d1;
+	color: #000;
 	padding-left: 20px;
 }
 
@@ -886,7 +886,7 @@ li button.search-product {
 }
 
 .hero-items .single-hero-items {
-	height: 245px;
+	height: 238px;
 	padding-top: 16px;
 }
 
@@ -1239,6 +1239,13 @@ li button.search-product {
 
 .product-item {
 	margin-bottom: 26px;
+}
+
+.product-item:hover {
+    position: absolute;
+    border: 2px solid #e7ab3c;
+    margin-top: 10px;
+    padding: 4px;
 }
 
 .product-item:hover .pi-pic .icon {

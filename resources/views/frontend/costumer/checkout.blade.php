@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <label for="order_address">Alamat Legkap</label>
-                            <input name="alamat_lengkap" type="text" id="order_address">
+                            <input name="alamat_lengkap" type="text" id="order_address" placeholder="alamat lengkap" value="{{ $user->costumer_address }}">
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
@@ -58,6 +58,7 @@
                             <label for="vendor_id">Vendor</label>
                             <div class="form-group">
                                 <select name="vendor" onchange="cekOngkir(this)" id="vendor" class="form-control">
+                                <option selected value="{{null}}"disabled>Pilih Vendor</option>
                                     @foreach ($vendor as $v)
                                         <option value="{{$v->user_id}}">{{$v->nama_lengkap}}</option>
                                     @endforeach
@@ -66,8 +67,9 @@
                         </div>
                         <div id="jenis_kirim_container" class="col-lg-12">
                             <label for="jenis_kirim">Jenis Pengiriman</label>
-                            <div class="form-group">
+                            <div class="form-group"> 
                                 <select  name="jenis_kirim" onchange="changeTotal(this)" id="jenis_kirim" class="form-control">
+                                    <option selected value="{{null}}"disabled>Pilih</option>
                                 </select>
                             </div>
                         </div>
@@ -101,9 +103,9 @@
                             <ul class="order-table">
                                 <li>Produk <span>Total</span></li>
                                 @foreach($cart as $i => $carts)
-                                    <li class="fw-normal">{{ $carts->product_name }} x {{ $carts->quantity }} <span>Rp {{ number_format($carts->total_price) }}</span></li>
+                                    <li class="fw-normal">{{ $carts->product_name }} x {{ $carts->quantity }} <span>Rp {{ number_format($carts->total_price,0,",",".") }}</span></li>
                                 @endforeach
-                                <li class="total-price">Total <span>Rp <span id="total">{{ number_format($total_price) }}</span> </span></li>
+                                <li class="total-price">Total <span>Rp <span id="total"> {{ number_format($total_price,0,",",".") }}</span> </span></li>
                             </ul>
                             <div class="order-btn">
                                 <button type="button" class="site-btn place-btn" data-toggle="modal" data-target="#modalTransfer">Bayar</button>

@@ -99,12 +99,7 @@
                         </div>
                         <div class="form-group">
                             <label for="syarat">Isi</label>
-                            <textarea id="syarat" class="form-control" name="syarat" value="{{ old('syarat') ?? $syarat->syarat ?? '' }}"></textarea>
-                            <script>
-                                CKEDITOR.replace('syarat', {
-                                    width: '100%'
-                                });
-                            </script>
+                            <textarea id="summernote" class="form-control" name="syarat"></textarea>
                         </div>
                         <div class="row text-right" style="margin-right: 2px">
                             <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
@@ -150,11 +145,11 @@
                     console.log(syarat)
                     $('#syarat_id').val(syarat.syarat_id);
                     $('#syarat_judul').val(syarat.syarat_judul);
-                    $('#syarat').val(syarat.syarat);
+                    $('#summernote').summernote("code", syarat.syarat);
                     // $('#kategori_id').val(syarat.kategori_id).change();
                 }).catch(function(err) {
                     // console.log(err)
-                })
+                }) 
             }else{
                 $('#syarat_judul').val('');
                 $('#syarat').val('');

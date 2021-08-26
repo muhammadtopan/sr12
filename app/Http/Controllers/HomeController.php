@@ -29,7 +29,7 @@ class HomeController extends Controller
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->select('tb_product.*', 'tb_category.category_name')
-                    ->where('tb_product.product_type','best')
+                    ->where('tb_product.product_best','on')
                     ->get();
 
         $paket = DB::table('tb_package_category')->get();
@@ -37,15 +37,15 @@ class HomeController extends Controller
         $productnew = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->select('tb_product.*', 'tb_category.category_name')
-                    ->where('tb_product.product_type','new')
+                    ->where('tb_product.product_new','on')
                     ->get();
 
         $productternew[0] = DB::table('tb_product')
-                    ->where('tb_product.product_type','new')
+                    ->where('tb_product.product_new','on')
                     ->first();
 
         $productterbest[0] = DB::table('tb_product')
-                    ->where('tb_product.product_type','best')
+                    ->where('tb_product.product_best','on')
                     ->first();
 
         $category = CategoryModel::all();
@@ -299,9 +299,29 @@ class HomeController extends Controller
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->join('tb_product_package', 'tb_product_package.product_id', '=', 'tb_product.product_id')
                     ->join('tb_package_category', 'tb_package_category.package_category_id', '=', 'tb_product_package.package_category_id')
-                    // ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_package_category.package_category_id', $id)
                     ->get();
+        $active = "product";
+        return view(
+            'frontend/page/product',
+            [
+                'active' => $active,
+                'package' => $package,
+                'category' => $category,
+                'product' => $product,
+            ]
+        );
+    }
+
+    public function categoroyProduct($id)
+    {
+        $package = PackageCategoryModel::all();
+        $category = CategoryModel::all();
+        $product = DB::table('tb_product')
+                    ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
+                    ->where('tb_product.category_id', $id)
+                    ->get();
+        // dd($product);
         $active = "product";
         return view(
             'frontend/page/product',

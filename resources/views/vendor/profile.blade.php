@@ -64,18 +64,19 @@
                                             name="alamat" type="text" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6"cart>
                                         <div class="form-group">
                                             <label>Provinsi</label>
                                             <select name="prov_id" id="prov_id" class="js-example-basic-single form-control @error('prov_id') {{ 'is-invalid' }} @enderror">
                                                 <option value="">-Pilih Provinsi-</option>
                                                 @foreach($prov as $no => $prov)
-                                                <option value="{{ $prov->prov_id }}">
-                                                    {{ $prov->prov_nama}}</option>
+                                                <option 
+                                                    {{ $data ? $prov->prov_id === $data->prov_id ? "selected" : "" : ""}}
+                                                value="{{ $prov->prov_id }}">{{ $prov->prov_nama}}</option>
                                                 @endforeach
                                             </select>
                                             @error('prov_id')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
@@ -96,20 +97,44 @@
                                             <select name="kota_id" id="kota_id" class="js-example-basic-single form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
                                                 <option value="">-Pilih Kota-</option>
                                                 @foreach ($kota as $k)
-                                                    <option value="{{$k->kota_id}}">{{$k->kota_nama}}</option>
+                                                    <option 
+                                                    {{ $data ? $k->kota_id === $data->kota_id ? "selected" : "" : ""}}
+                                                    value="{{$k->kota_id}}">{{$k->kota_nama}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        <label for="" class="form-label">Foto Mitra</label>
+                                        @php
+                                            if($data){
+                                                if($data->foto_mitra){
+                                        @endphp
+                                                    <div class="text-center">
+                                                        <img class="photo-image img-fluid" src="{{ asset('dokumen/'.$data->foto_mitra) }}" alt="">
+                                                    </div>
+                                        @php
+                                                }
+                                            }
+                                        @endphp
                                         <div class="form-group">
-                                            <label for="" class="form-label">Foto Mitra</label>
                                             <input name="foto_mitra" type="file" class="form-control" {{$data === null ? "required" : ""}}>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        <label for="" class="form-label">Selfie Dengan KTP</label>
+                                        @php
+                                            if($data){
+                                                if($data->selfie_ktp){
+                                        @endphp
+                                            <div class="text-center">
+                                                <img class="photo-image img-fluid" src="{{ asset('dokumen/'.$data->selfie_ktp) }}" alt="">
+                                            </div>
+                                        @php
+                                                }
+                                            }
+                                        @endphp
                                         <div class="form-group">
-                                            <label for="" class="form-label">Selfie Dengan KTP</label>
                                             <input name="selfie_ktp" type="file" class="form-control" {{$data === null ? "required" : ""}}>
                                         </div>
                                     </div>

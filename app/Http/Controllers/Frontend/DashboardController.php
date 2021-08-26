@@ -52,8 +52,8 @@ class DashboardController extends Controller
 
         $validator = Validator::make($request->all(), [
             'username'           => 'required',
-            'user_email'         => 'required|email|unique:users,email',
-            'user_phone'         => 'required|numeric',
+            'user_email'         => 'required|email|unique:tb_user,user_email',
+            'user_phone'         => 'required|numeric|unique:tb_user,user_phone',
             'user_password'      => 'required|min:6'
         ], $messages);
 
@@ -66,7 +66,7 @@ class DashboardController extends Controller
             $this->LoginMethod($request,new UserModel());
             return redirect()
                 ->route('vendor')
-                ->with('message', 'Data berhasil ditambahkan');
+                ->with('pesan', 'Akun Berhasil Dibuat, Silahkan Login');
         }
     }
 

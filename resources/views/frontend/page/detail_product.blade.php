@@ -74,7 +74,7 @@
                                     <li><span>Berat</span>: {{ $product->product_weight }} {{ $product->product_unit }}</li>
                                 </ul>
                                 <div class="pd-desc">
-                                    <h4>Rp {{ number_format($product->product_price) }} </h4>
+                                    <h4>Rp {{ number_format($product->product_price,0,",",".") }} </h4>
                                     <h4 id="productPrice" class="d-none">{{ number_format($product->product_price) }} </h4>
                                 </div>
                                 <div class="quantity">
@@ -124,7 +124,7 @@
                                             <div class="col-lg-5">
                                                 <img src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt="">
                                             </div>
-                                        </div>Rp {{ number_format($product->product_price) }}
+                                        </div>Rp {{ number_format($product->product_price,0,",",".") }}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="tab-2" role="tabpanel">
@@ -133,7 +133,7 @@
                                             <tr>
                                                 <td class="p-catagory">Harga</td>
                                                 <td>
-                                                    <div class="p-price">Rp {{ number_format($product->product_price) }}</div>
+                                                    <div class="p-price">Rp {{ number_format($product->product_price,0,",",".") }}</div>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -184,14 +184,14 @@
             </div>
             <div class="row">
                 @foreach($relate as $no => $product2)
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-sm-4">
                         <div class="product-item">
                             <div class="pi-pic">
                                 <img src="{{ asset('lte/dist/img/product/' . $product2->product_image )}}" alt="">
                                 <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                    <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
                                     <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                 </ul>
                             </div>
                             <div class="pi-text">
@@ -200,7 +200,7 @@
                                     <h5>{{ $product2->product_name }}</h5>
                                 </a>
                                 <div class="product-price">
-                                    Rp {{ number_format($product2->product_price) }}
+                                    Rp {{ number_format($product2->product_price,0,",",".") }}
                                 </div>
                             </div>
                         </div>

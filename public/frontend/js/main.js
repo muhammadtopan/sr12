@@ -41,7 +41,7 @@
     $(".hero-items").owlCarousel({
         loop: true,
         margin: 0,
-        nav: true,
+        nav: false,
         items: 1,
         dots: true,
         animateOut: 'fadeOut',
@@ -448,13 +448,14 @@
         slide-testi
     --------------------- */
     $('.slide-testi').owlCarousel({
+        stagePadding: 50,
         loop:true,
         margin:10,
-        center:true,
+        center:false,
         nav:false,
         autoplay: true,
         smartSpeed: 1200,
-        items:2
+        items:1
     })
 
 })(jQuery);

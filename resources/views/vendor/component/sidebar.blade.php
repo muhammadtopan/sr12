@@ -37,6 +37,11 @@
                         </p>
                     </a>
                 </li>
+                @php
+                    $stok = DB::table('tb_stok')
+                            ->where('user_id', Session::get('user_id'))
+                            ->get();
+                @endphp
                 <li class="nav-item">
                     <a href="{{ route('first.stock') }}" class="nav-link {{ $active == 'awal' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-box"></i>

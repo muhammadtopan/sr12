@@ -16,10 +16,12 @@ class TestimonyController extends Controller
     public function index()
     {
         $testimony = TestimonyModel::all();
+        $active = "testy";
         return view(
             'backend/page/testimony/index',
             [
-                'testimony' => $testimony
+                'testimony' => $testimony,
+                'active' => $active
             ]
         );
     }

@@ -7,7 +7,7 @@
         axios.post("{{url('carikotauser')}}", {
             'prov_id': prov_id,
         }).then(function(res) {
-            console.log(res)
+            // console.log(res)
             var kota = res.data.kota
             for (var i = 0; i < kota.length; i++) {
                 kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
@@ -36,7 +36,7 @@
                     product_id: product_id
                 }
             })
-            console.log(res.data);
+            // console.log(res.data);
             let vendor = document.getElementById("vendor")
             let data = res.data
             let option = "";
@@ -74,10 +74,10 @@
                     user: user_id
                 }
             })
-            console.log(res.data);
+            // console.log(res.data);
             let data = res.data;
             let option = ""
-            console.log(data);
+            // console.log(data);
             data[0].costs.forEach(c => {
                 option += `<option value="${c.cost[0].value}"> Ongkir: ${new Intl.NumberFormat().format(c.cost[0].value)} Deskripsi: ${c.description} Estimasi: ${c.cost[0].etd} hari </option>`
             })
@@ -92,6 +92,7 @@
     }
 
     function changeTotal(e) {
+        console.log(e);
         let old = parseInt(localStorage.getItem("old"))
         let value = e.value
         document.getElementById("total").innerText = new Intl.NumberFormat().format(old + parseInt(value))

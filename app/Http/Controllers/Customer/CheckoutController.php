@@ -63,7 +63,7 @@ class CheckoutController extends Controller
             $pd = DB::table("tb_product")->where("product_id", $p)->first();
             $jumlah = DB::table("tb_tmp_details")->where("product_id", $p)->where("user_id", $user)->first("quantity");
             $berat = $this->konversiBerat($pd->product_weight, $pd->product_unit, $jumlah->quantity);
-            $total += $berat;
+            $total += $berat; 
         }
         return $total;
     }

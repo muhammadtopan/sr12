@@ -5,10 +5,10 @@
 
     <!-- Hero Section Begin -->
     <section class="hero-section">
-        <div class="row">
-            <div class="col-md-9 pr-0">
+        <!-- <div class="row"> -->
+            <!-- <div class="col-md-12"> -->
                 <div class="hero-items owl-carousel">
-                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/all_product.jpg')}}">
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/all_product2.jpg')}}">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7">
@@ -20,7 +20,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/all_product.jpg')}}">
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/new_product.jpg')}}">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <span>We're present.....</span>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
+                                    <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/product_herbal.jpg')}}">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <span>We're present.....</span>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
+                                    <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/product_terlaris.jpg')}}">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7">
@@ -33,11 +57,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 pl-0">
-                <img class="foto-bersama p-1 pt-4 pb-4" style="background: #e7ab3c" src="{{ asset('frontend/img/slider/foto.jpg')}}" alt="">
-            </div>
-        </div>
+            <!-- </div> -->
+            <!-- <div class="col-md-4 pl-0">
+                <img class="foto-bersama" src="{{ asset('frontend/img/slider/foto.jpg')}}" alt="">
+            </div> -->
+        <!-- </div> -->
     </section>
     <!-- Hero Section End -->
 
@@ -48,12 +72,14 @@
                 <div class="col-lg-12">
                     <div class="kategori owl-carousel">
                         @foreach($category as $no => $kategori)
-                            <div class="single-banner">
-                                <img src="{{ asset('lte/dist/img/category/'. $kategori->category_image)}}" alt="">
-                                <!-- <div class="inner-text">
-                                    <h6>{{ $kategori->category_name }}</h6>
-                                </div> -->
-                            </div>
+                            <a href="{{ route('category-product', $kategori->category_id) }}">
+                                <div class="single-banner">
+                                    <img src="{{ asset('lte/dist/img/category/'. $kategori->category_image)}}" alt="">
+                                    <!-- <div class="inner-text">
+                                        <h6>{{ $kategori->category_name }}</h6>
+                                    </div> -->
+                                </div>
+                            </a>
                         @endforeach
                     </div>
                 </div>
@@ -88,7 +114,7 @@
                                         <img src="{{ asset('lte/dist/img/product/' . $product10->product_image )}}" alt="">
                                     </a>
                                     <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
                                         <!-- <li class="quick-view"><a href="{{ route('detail_product',$product10->product_id)}}">+ Quick View</a></li> -->
                                         <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                     </ul>
@@ -99,7 +125,7 @@
                                         <h5>{{ $product10->product_name }}</h5>
                                     </a>
                                     <div class="product-price">
-                                        Rp {{ number_format($product10->product_price) }}
+                                        Rp {{ number_format($product10->product_price,0,",",".") }}
                                     </div>
                                 </div>
                             </div>
@@ -134,14 +160,14 @@
                         <!-- <div class="col-lg-3 col-sm-6"> -->
                             <div class="product-item">
                                 <div class="pi-pic">
-                                    <a href="#">
+                                    <a href="{{ url('filter/packages/'. $pakets->package_category_id) }}">
                                         <img src="{{ asset('lte/dist/img/package_category/' . $pakets->package_category_image )}}" alt="">
                                     </a>
                                 </div>
                                 <div class="pi-text">
                                     <div class="catagory-name">{{ $pakets->package_category_name }}</div>
                                     <div class="product-price">
-                                        Rp {{ number_format($pakets->package_category_price) }}
+                                        Rp {{ number_format($pakets->package_category_price,0,",",".") }}
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +211,7 @@
                                         <img src="{{ asset('lte/dist/img/product/' . $product1->product_image )}}" alt="">
                                     </a>
                                     <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
                                         <!-- <li class="quick-view"><a href="{{ route('detail_product',$product1->product_id)}}">+ Quick View</a></li> -->
                                         <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                     </ul>
@@ -196,7 +222,7 @@
                                         <h5>{{ $product1->product_name }}</h5>
                                     </a>
                                     <div class="product-price">
-                                        Rp {{ number_format($product1->product_price) }}
+                                        Rp {{ number_format($product1->product_price,0,",",".") }}
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +266,7 @@
                                         <img src="{{ asset('lte/dist/img/product/' . $product2->product_image )}}" alt="">
                                     </a>
                                     <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> -->
                                         <!-- <li class="quick-view"><a href="{{ route('detail_product',$product2->product_id)}}">+ Quick View</a></li> -->
                                         <!-- <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
                                     </ul>
@@ -251,7 +277,7 @@
                                         <h5>{{ $product2->product_name }}</h5>
                                     </a>
                                     <div class="product-price">
-                                        Rp {{ number_format($product2->product_price) }}
+                                        Rp {{ number_format($product2->product_price,0,",",".") }}
                                     </div>
                                 </div>
                             </div>
@@ -338,7 +364,7 @@
     <div class="modal fade bd-example-modal-lg" id="modalTestimony" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-body">
+                <div class="modal-body" style="background-color: #252525">
                     <!-- <div id="img"></div> -->
                     <div class="slide-testi owl-carousel">
                         @foreach($testimony as $no => $modaltesti)

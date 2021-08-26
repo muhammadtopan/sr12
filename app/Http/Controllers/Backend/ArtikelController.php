@@ -20,13 +20,15 @@ class ArtikelController extends Controller
         $artikel = ArticelModel::all();
         $article = ArticelModel::first();
         $categories = ArticleCategoryModel::all();
+        $active = "article";
 
         return view(
             'backend/page/artikel/index',
             [
                 'artikel' => $artikel,
                 'article' => $article,
-                'categories' => $categories
+                'categories' => $categories,
+                'active' => $active
             ]
         );
     }

@@ -10,15 +10,17 @@ use DB;
 
 class ArticleCategoryController extends Controller
 {
-    public function index()
+    public function category()
     {
         $artikel = ArticleCategoryModel::all();
         $cat = DB::table('tb_article_category')->first();
+        $active = "article_category";
         return view(
             'backend/page/artikel/article_category',
             [
                 'artikel' => $artikel,
-                'cat' => $cat
+                'cat' => $cat,
+                'active' => $active
             ]
         );
     }

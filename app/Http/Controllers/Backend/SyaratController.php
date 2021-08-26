@@ -13,10 +13,12 @@ class SyaratController extends Controller
     public function index()
     {
         $syarat = SyaratModel::all();
+        $active = "faq";
         return view(
             'backend/page/syarat/index',
             [
-                'syarat' => $syarat
+                'syarat' => $syarat,
+                'active' => $active
             ]
         );
     }

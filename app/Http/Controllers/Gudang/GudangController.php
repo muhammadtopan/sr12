@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Storage;
 class GudangController extends Controller
 {
     public function getLogin() {
-        $data['active'] = 'Login Mitra';
         return view("gudang/page/login", $data);
     }
 
@@ -33,7 +32,7 @@ class GudangController extends Controller
                 return redirect()->back();
             }
         } else {
-            Session::flash("pesan", "Kamu Tidak Terdaftar !!!");
+            Session::flash("pesan", "Email atau password salah!");
             return redirect()->back();
         }
     }

@@ -16,10 +16,12 @@ class CategoryController extends Controller
     public function index()
     {
         $category = CategoryModel::all();
+        $active = 'product_category';
         return view(
             'backend/page/category/index',
             [
-                'category' => $category
+                'category' => $category,
+                'active' => $active,
             ]
         );
     }

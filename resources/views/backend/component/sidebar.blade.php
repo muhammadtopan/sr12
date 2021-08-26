@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-warning elevation-4">
     @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
         <a href="{{ route('admin.dashboard')}}" class="brand-link" style="text-align: center; height: 48px;">
             <!-- <img src="{{asset('lte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
@@ -71,7 +71,7 @@
             </li> -->
             @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
                 <li class="nav-item">
-                    <a href="{{ route('admin.dashboard')}}" class="nav-link">
+                    <a href="{{ route('admin.dashboard')}}" class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -79,8 +79,8 @@
                     </a>
                 </li>
 
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ $active == 'product_category' || $active == 'product' || $active == 'product_package' ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{ $active == 'product_category' || $active == 'product' || $active == 'product_package' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-coins"></i>
                         <p>
                             Produk
@@ -89,19 +89,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('product') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Daftar Produk</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('category') }}" class="nav-link">
+                            <a href="{{ route('category') }}" class="nav-link {{ $active == 'product_category' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kategori Produk</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('package_category') }}" class="nav-link">
+                            <a href="{{ route('product') }}" class="nav-link {{ $active == 'product' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Produk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('package_category') }}" class="nav-link {{ $active == 'product_package' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Paket Produk</p>
                             </a>
@@ -109,8 +109,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ $active == 'active' || $active == 'mitra' || $active == 'vendor' || $active == 'freelance' ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{ $active == 'active' || $active == 'mitra' || $active == 'vendor' || $active == 'freelance' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Spotlight
@@ -119,25 +119,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route("data_vendor.gudang")}}" class="nav-link">
+                            <a href="{{route('data_vendor.gudang')}}" class="nav-link {{ $active == 'active' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Gudang</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="#" class="nav-link {{ $active == 'mitra' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Mitra</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('data_vendor') }}" class="nav-link">
+                            <a href="{{ route('data_vendor') }}" class="nav-link {{ $active == 'vendor' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Vendor</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('freelance_data') }}" class="nav-link {{ $active == 'freelance' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Freelancer</p>
                             </a>
@@ -145,8 +145,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ $active == 'voucher' || $active == 'reedem' ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{ $active == 'voucher' || $active == 'reedem' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-ticket-alt"></i>
                         <p>
                             Voucher
@@ -155,7 +155,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('voucher')}}" class="nav-link">
+                            <a href="{{ route('voucher')}}" class="nav-link {{ $active == 'voucher' ? 'active' : '' }}">
                                 <p>
                                     <i class="far fa-circle nav-icon"></i>
                                     Voucher
@@ -163,7 +163,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="{{ route('voucher.redeem')}}" class="nav-link">
+                            <a href="{{ route('voucher.redeem')}}" class="nav-link {{ $active == 'reedem' ? 'active' : '' }}">
                                 <p>
                                     <i class="far fa-circle nav-icon"></i>
                                     Redeem Voucher
@@ -174,8 +174,8 @@
                 </li>
 
 
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ $active == 'article_category' || $active == 'article' ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{ $active == 'article_category' || $active == 'article' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             Artikel
@@ -184,7 +184,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('article-category')}}" class="nav-link">
+                            <a href="{{ route('acat')}}" class="nav-link {{ $active == 'article_category' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Kategori Artikel
@@ -192,7 +192,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('article')}}" class="nav-link">
+                            <a href="{{ route('article')}}" class="nav-link {{ $active == 'article' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Artikel
@@ -202,7 +202,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('syarat')}}" class="nav-link">
+                    <a href="{{ route('syarat')}}" class="nav-link {{ $active == 'faq' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-question-circle"></i>
                         <p>
                             FAQ
@@ -211,7 +211,7 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="{{ route('testimony')}}" class="nav-link">
+                    <a href="{{ route('testimony')}}" class="nav-link {{ $active == 'testy' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-comment-dots"></i>
                         <p>
                             Testimoni
