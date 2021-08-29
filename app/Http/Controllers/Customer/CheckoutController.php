@@ -48,7 +48,7 @@ class CheckoutController extends Controller
     }
 
     public function konversiBerat($berat, $satuan, $jumlah) {
-        if($satuan === "g" || $satuan === "ml") {
+        if($satuan === "g") {
             return (int)$berat * $jumlah;
         } else if($satuan === "mg") {
             return ($berat / 1000) * $jumlah;
@@ -72,16 +72,18 @@ class CheckoutController extends Controller
         $cost = RajaOngkir::ongkosKirim([
             'origin'        => $origin, // ID kota/kabupaten asal
             'destination'   => $desti, // ID kota/kabupaten tujuan
-            'weight'        => ceil($weight), // berat barang dalam gram
+            'weight'        => $weight, // berat barang dalam gram
             'courier'       => $courier // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
         ])->get();
+
         return $cost;
     }
 
     public function checkOngkir(Request $request) {
         $berat = $this->getTotalBerat($request->product, $request->user);
+        $weight = str_replace(',0', '', number_format(ceil($berat), 1, ',', ''));
         $vendor = VendorModel::where("user_id", (int)$request->vendor)->first();
-        $ongkir = $this->getOngkir($vendor->kota_id, $request->destination, $berat);
+        $ongkir = $this->getOngkir($vendor->kota_id, $request->destination, $weight);
         return response()->json($ongkir);
     }
 
