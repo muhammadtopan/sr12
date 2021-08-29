@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 use App\Model\PackageCategoryModel;
 use App\Model\ProductPackageModel;
 use App\Model\ProductModel;
+use App\Model\Category_o_Product_Package_Model;
 use Illuminate\Support\Str;
 
 class PackageCategoryController extends Controller
@@ -19,11 +20,13 @@ class PackageCategoryController extends Controller
     {
         $category = PackageCategoryModel::all();
         $product = ProductModel::all();
+        $category_opp = Category_o_Product_Package_Model::all();
         $active = 'product_package';
         return view(
             'backend/page/package_category/index',
             [
                 'category' => $category,
+                'category_opp' => $category_opp,
                 'product' => $product,
                 'active' => $active
             ]
@@ -45,9 +48,10 @@ class PackageCategoryController extends Controller
         if($request->package_category_id == null){
             // tambah
             $validator = Validator::make($request->all(),[
-                'package_category_name'           => 'required',
-                'package_category_step'           => 'required',
-                'package_category_image'         => 'required|mimes:jpg,jpeg,png'
+                'category_opp_id'           => 'required',
+                'package_category_name'     => 'required',
+                'package_category_step'     => 'required',
+                'package_category_image'    => 'required|mimes:jpg,jpeg,png'
             ]);
             if ($validator->fails()) {
                 return redirect()
@@ -60,6 +64,7 @@ class PackageCategoryController extends Controller
                 $foto->move('lte/dist/img/package_category/', $filename);
 
                 // inseret ke tb packeage
+                $category->category_opp_id = $request->input('category_opp_id');
                 $category->package_category_name = $request->input('package_category_name');
                 $category->package_category_step = $request->input('package_category_step');
                 $category->package_category_status = 'on';
@@ -79,8 +84,6 @@ class PackageCategoryController extends Controller
                     ]);
                 }   
 
-                
-
                 return redirect()
                     ->back()
                     ->with('message', 'Data berhasil ditambahkan');
@@ -88,6 +91,7 @@ class PackageCategoryController extends Controller
         }else{
             // edit
             $validator = Validator::make($request->all(),[
+                'category_opp_id'           => 'required',
                 'package_category_name'           => 'required',
                 'package_category_step'           => 'required',
                 'package_category_image'         => 'required|mimes:jpg,jpeg,png'
@@ -102,7 +106,7 @@ class PackageCategoryController extends Controller
                     $brg_gmb = DB::table('tb_package_category')
                                 ->where('package_category_id', '=', $request->package_category_id)
                                 ->first();
-                    dd($request);
+                    // dd($request);
                     unlink('lte/dist/img/package_category/' . $brg_gmb->package_category_image);
                     $foto = $request->file('package_category_image');
                     $filename = time() . "." . $foto->getClientOriginalExtension();
@@ -111,6 +115,7 @@ class PackageCategoryController extends Controller
                     DB::table('tb_package_category')
                         ->where('package_category_id', '=', $request->package_category_id)
                         ->update([
+                            'category_opp_id' => $request->input('category_opp_id'),
                             'package_category_name' => $request->input('package_category_name'),
                             'package_category_step' => $request->input('package_category_step'),
                             'package_category_price' => $price->total_price,
@@ -123,6 +128,7 @@ class PackageCategoryController extends Controller
                     DB::table('tb_package_category')
                         ->where('package_category_id', '=', $request->package_category_id)
                         ->update([
+                            'category_opp_id' => $request->input('category_opp_id'),
                             'package_category_name' => $request->input('package_category_name'),
                             'package_category_step' => $request->input('package_category_step'),
                             'package_category_price' => $price->total_price,
@@ -144,6 +150,10 @@ class PackageCategoryController extends Controller
             unlink('lte/dist/img/package_category/' . $category_file);
         }
         $package_category->forceDelete();
+
+        DB::table('tb_product_package')
+            ->where('package_category_id', '=', $package_category->package_category_id)
+            ->delete();
 
         return redirect()
             ->back()

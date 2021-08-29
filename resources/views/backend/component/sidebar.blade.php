@@ -15,7 +15,7 @@
     @endif
     <div class="sidebar">
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
 
             <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -79,8 +79,8 @@
                     </a>
                 </li>
 
-                <li class="nav-item {{ $active == 'product_category' || $active == 'product' || $active == 'product_package' ? 'menu-open' : ''}}">
-                    <a href="#" class="nav-link {{ $active == 'product_category' || $active == 'product' || $active == 'product_package' ? 'active' : ''}}">
+                <li class="nav-item {{ $active == 'product_category' || $active == 'product' || $active == 'category_opp'|| $active == 'product_package' ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{ $active == 'product_category' || $active == 'product' || $active == 'category_opp'|| $active == 'product_package' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-coins"></i>
                         <p>
                             Produk
@@ -101,6 +101,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('category_opp') }}" class="nav-link {{ $active == 'category_opp' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Kategori Paket</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('package_category') }}" class="nav-link {{ $active == 'product_package' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Paket Produk</p>
@@ -109,11 +115,77 @@
                     </ul>
                 </li>
 
-                <li class="nav-item {{ $active == 'active' || $active == 'mitra' || $active == 'vendor' || $active == 'freelance' ? 'menu-open' : ''}}">
-                    <a href="#" class="nav-link {{ $active == 'active' || $active == 'mitra' || $active == 'vendor' || $active == 'freelance' ? 'active' : ''}}">
+                <li class="nav-item {{ $active == 'vendor' || $active == 'freelance'|| $active == 'costumer'|| $active == 'orderan'|| $active == 'daftar_mitra'|| $active == 'katalog'|| $active == 'viewer_syarat'|| $active == 'ulasan'|| $active == 'tarik' ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{ $active == 'vendor' || $active == 'freelance'|| $active == 'costumer'|| $active == 'orderan'|| $active == 'daftar_mitra'|| $active == 'katalog'|| $active == 'viewer_syarat'|| $active == 'ulasan'|| $active == 'tarik' ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-database"></i>
+                        <p>
+                            Data Website
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('data_vendor') }}" class="nav-link {{ $active == 'vendor' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Vendor</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('freelance_data') }}" class="nav-link {{ $active == 'freelance' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Freelancer</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('data_costumer') }}" class="nav-link {{ $active == 'costumer' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Costumer</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('data_order') }}" class="nav-link {{ $active == 'orderan' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Orderan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('daftar_mitra') }}" class="nav-link {{ $active == 'daftar_mitra' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Mitra</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('data_katalog') }}" class="nav-link {{ $active == 'katalog' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Katalog</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('viwer_syarat') }}" class="nav-link {{ $active == 'viewer_syarat' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Viewer Syarat</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('ulasan') }}" class="nav-link {{ $active == 'ulasan' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ulasan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('tarik_dana') }}" class="nav-link {{ $active == 'tarik' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tarik Dana</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item {{ $active == 'active' || $active == 'mitra' ? 'menu-open' : ''}}">
+                    <a href="#" class="nav-link {{ $active == 'active' || $active == 'mitra' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            Spotlight
+                            Spotlight Team
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -128,18 +200,6 @@
                             <a href="#" class="nav-link {{ $active == 'mitra' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Mitra</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('data_vendor') }}" class="nav-link {{ $active == 'vendor' ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Vendor</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('freelance_data') }}" class="nav-link {{ $active == 'freelance' ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Freelancer</p>
                             </a>
                         </li>
                     </ul>
@@ -201,6 +261,7 @@
                         </li>
                     </ul>
                 </li>
+                
                 <li class="nav-item has-treeview">
                     <a href="{{ route('syarat')}}" class="nav-link {{ $active == 'faq' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-question-circle"></i>

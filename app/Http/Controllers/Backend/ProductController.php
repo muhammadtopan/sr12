@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function store(Request $request, ProductModel $product)
     {
         if($request->product_id == null){
-            dd($request);
+            // dd($request);
             // tambah
             $validator = Validator::make($request->all(),[
                 'category_id'           => 'required',

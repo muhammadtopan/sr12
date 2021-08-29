@@ -99,6 +99,20 @@
                         @csrf
                         <input type="hidden" name="package_category_id" id="package_category_id">
                         <div class="form-group">
+                            <label for="category_opp_id">Kategori</label>
+                            <select name="category_opp_id" id="category_opp_id" class="form-control @error('category_opp_id') {{ 'is-invalid' }} @enderror">
+                                <option value="">-Kategori-</option>
+                                @foreach($category_opp as $no => $ctr_opp)
+                                    <option value="{{ $ctr_opp->category_opp_id }}">
+                                        {{ $ctr_opp->category_opp_name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('category_opp_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="package_category_name">Nama Kategori</label>
                             <input type="text" class="form-control" name="package_category_name" id="package_category_name" placeholder="Nama Kategori" value="{{ old('package_category_name') ?? $category->package_category_name ?? '' }}" required>
                         </div>

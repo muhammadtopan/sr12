@@ -33,7 +33,7 @@
                     </a>
                     <table id="zero_config" class="table table-bordered table-hover">
                     <thead>
-                    <tr>
+                    <tr> 
                         <th>#</th>
                         <th>Nama Voucher</th>
                         <th>Tanggal Mulai Berlaku</th>
@@ -44,11 +44,11 @@
                         <th>Aksi</th>
                     </tr>
                     </thead>
-                   <tbody>
-                       @foreach ($voucher as $v)
-                           <tr>
-                               <td>{{$loop->iteration}}</td>
-                               <td>{{$v->nama_voucher}}</td>
+                    <tbody>
+                        @foreach ($voucher as $v)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$v->nama_voucher}}</td>
                                 <td>{{$v->created_at->diffForHumans()}}</td>
                                 <td>{{$v->jumlah_penukaran}}</td>
                                 <td>{{$v->jumlah_point}}</td>
@@ -67,8 +67,8 @@
                                     <a href="{{route("voucher.edit",$v)}}" class="btn btn-warning btn-sm text-white mt-2"><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
-                       @endforeach
-                   </tbody>
+                        @endforeach
+                    </tbody>
                     <tfoot>
                     <tr>
                         <th>#</th>

@@ -13,5 +13,6 @@ class ViewerSyaratModel extends Model
     protected $fillable = [
         'name_viewer',
         'phone',
+        'view'
     ];
 }
