@@ -32,6 +32,12 @@ Route::get('blog/{articel}', 'HomeController@articel')->name('blog');
 Route::get('testimon/{testimony}', 'HomeController@testimony')->name('testimon');
 Route::get('category/product/{id}', 'HomeController@categoroyProduct')->name('category-product');
 
+//ulasan
+Route::post('ulasan', 'Backend\UlasanController@store')->name('ulasan');
+Route::post('ulasan.active', 'Backend\UlasanController@active')->name('ulasan.active');
+Route::post('ulasan.non_active', 'Backend\UlasanController@non_active')->name('ulasan.non_active');
+
+
 // Filter
 Route::post('filter.kategori/{category_id}', 'HomeController@kategori')->name('filter.kategori');
 Route::get('filter/packages/{id}', 'HomeController@packageFilter')->name('filter.packages');
@@ -231,6 +237,12 @@ Route::middleware(['dashboard'])->group(function () {
     Route::post('cari_data_kategori', 'Backend\CategoryController@cari_data_kategori')->name('cari_data_kategori');
     Route::delete('category/{category}', 'Backend\CategoryController@destroy')->name('category.delete');
 
+    // Product Category_OPP_Controller
+    Route::get('category_opp', 'Backend\Category_OPP_Controller@index')->name('category_opp');
+    Route::post('category_opp', 'Backend\Category_OPP_Controller@store')->name('category_opp.store');
+    Route::post('cari_data_kategori_opp', 'Backend\Category_OPP_Controller@cari_data_kategori')->name('cari_data_kategori_opp');
+    Route::delete('category_opp/{category}', 'Backend\Category_OPP_Controller@destroy')->name('category_opp.delete');
+
     // Product
     Route::get('product', 'Backend\ProductController@index')->name('product');
     Route::post('product', 'Backend\ProductController@store')->name('product.store');
@@ -276,6 +288,27 @@ Route::middleware(['dashboard'])->group(function () {
     });
     // Vendor
 
+    // Data Costumer
+    Route::get('data_costumer', 'Backend\CostumerController@index')->name('data_costumer');
+    Route::post('costumer/detail', 'Backend\CostumerController@detailCostumer')->name('detailCostumer');
+
+    // Data Order
+    Route::get('data_order', 'Backend\DataOrderController@index')->name('data_order');
+
+    // Data Viewer Katalog
+    Route::get('data_katalog', 'Backend\KatalogController@index')->name('data_katalog');
+
+    // Data Viewer Syarat
+    Route::get('viwer_syarat', 'Backend\ViewerSyaratController@index')->name('viwer_syarat');
+
+    // Data Ulasan
+    Route::get('ulasan', 'Backend\UlasanController@index')->name('ulasan');
+
+    // Data Daftar Mitra
+    Route::get('daftar_mitra', 'Backend\DaftarMitraController@index')->name('daftar_mitra');
+
+    // Data Tarik Dana
+    Route::get('tarik_dana', 'Backend\TarikDanaController@index')->name('tarik_dana');
 
     //Data Articel
     Route::get('article', 'Backend\ArtikelController@index')->name('article');

@@ -40,11 +40,11 @@ class HomeController extends Controller
                     ->where('tb_product.product_new','on')
                     ->get();
 
-        $productternew[0] = DB::table('tb_product')
+        $productternew = DB::table('tb_product')
                     ->where('tb_product.product_new','on')
                     ->first();
 
-        $productterbest[0] = DB::table('tb_product')
+        $productterbest = DB::table('tb_product')
                     ->where('tb_product.product_best','on')
                     ->first();
 
@@ -62,8 +62,8 @@ class HomeController extends Controller
                 'product' => $product,
                 'paket' => $paket,
                 'productnew' => $productnew,
-                'productternew' => $productternew[0],
-                'productterbest' => $productterbest[0]
+                'productternew' => $productternew,
+                'productterbest' => $productterbest
             ]
         );
     }
@@ -118,11 +118,21 @@ class HomeController extends Controller
                 ->back()
                 ->withErrors($validator)
                 ->withInput();
-        } else {
-            $data = $request->all();
-            $data['name_viewer'] = ucwords(strtolower($request->input('name_viewer')));
-            $data['phone'] = $request->input('phone');
-            $viewer = ViewerSyaratModel::create($data);
+        } else { 
+            $cekviewer = ViewerSyaratModel::where('phone', $request->phone)->get();
+            if ($cekviewer != null) {
+                // $cekviewer[0]->view = $cekviewer[0]->view+1;
+                DB::table('tb_viewer_syarat')->where('phone', $request->phone)->update([
+                    'view' => $cekviewer[0]->view+1
+                ]);
+            }else{
+                dd("asdasd");
+                $data = $request->all();
+                $data['name_viewer'] = ucwords(strtolower($request->input('name_viewer')));
+                $data['phone'] = $request->input('phone');
+                $data['view'] = $viewer->view = '1';    
+                $viewer = ViewerSyaratModel::create($data);
+            }
             $sviewer = $request->session()->put('phone_viewer', $request->input('phone'));
             // dd($sviewer);
             return redirect()

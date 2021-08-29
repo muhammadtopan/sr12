@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateViewerSyaratModelsTable extends Migration
+class CreateCategoryOProductPackageModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateViewerSyaratModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_viewer_syarat', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name_viewer');
-            $table->string('phone');
-            $table->string('view');
+        Schema::create('tb_category_o_product_package', function (Blueprint $table) {
+            $table->bigIncrements('category_opp_id');
+            $table->string('category_opp_name');
+            $table->string('category_opp_image');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +29,6 @@ class CreateViewerSyaratModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_viewer_syarat');
+        Schema::dropIfExists('tb_category_o_product_package');
     }
 }

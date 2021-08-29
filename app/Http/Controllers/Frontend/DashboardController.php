@@ -51,7 +51,7 @@ class DashboardController extends Controller
         ];
 
         $validator = Validator::make($request->all(), [
-            'username'           => 'required',
+            'username'           => 'required|unique:tb_user,username',
             'user_email'         => 'required|email|unique:tb_user,user_email',
             'user_phone'         => 'required|numeric|unique:tb_user,user_phone',
             'user_password'      => 'required|min:6'

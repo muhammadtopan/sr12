@@ -52,9 +52,10 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Freelance</th>
+                                            <th>Username</th>
+                                            <th>Nama Freelance</th>
+                                            <th>Kota/Kab</th>
                                             <th>Status</th>
-                                            <th>Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,6 +64,12 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td class="text-center">
                                                 {{ $freelances->username }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $freelances->nama_lengkap }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $freelances->kota_nama }}
                                             </td>
                                             <td>
                                                 <label class="switch">
@@ -76,9 +83,9 @@
                                                     <span class="slider round"></span>
                                                 </label>
                                             </td>
-                                            <td class="text-center">
+                                            <!-- <td class="text-center">
                                                 <a href="#"><i class="fas fa-eye"></i></a>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -89,9 +96,10 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Freelance</th>
+                                            <th>Username</th>
+                                            <th>Nama Freelance</th>
+                                            <th>Kota/Kab</th>
                                             <th>Status</th>
-                                            <th>Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -100,6 +108,12 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td class="text-center">
                                                 {{ $freeoff->username }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $freeoff->nama_lengkap }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $freeoff->kota_nama }}
                                             </td>
                                             <td>
                                                 <label class="switch">
@@ -113,9 +127,9 @@
                                                     <span class="slider round"></span>
                                                 </label>
                                             </td>
-                                            <td class="text-center">
+                                            <!-- <td class="text-center">
                                                 <a href="#"><i class="fas fa-eye"></i></a>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         @endforeach
                                     </tbody>

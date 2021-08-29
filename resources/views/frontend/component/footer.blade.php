@@ -50,11 +50,30 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="newslatter-item">
-                        <h5>Gabung Bersama Kami</h5>
-                        <p>Dapatkan E-mail pemberitahuan tentang update terbaru SR12 Herbal Store.</p>
-                        <form action="#" class="subscribe-form">
-                            <input type="text" placeholder="Enter Your Mail">
-                            <button type="button">Kirim</button>
+                        <h5>Ulasan</h5>
+                        <form action="{{ route('ulasan') }}" method="POST">
+                            @csrf
+                            @if(session('errors'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Ada yang salah:
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <div class="form-group">
+                                <input type="ulasan" class="form-control" name="ulasan" id="ulasan" placeholder="Ulasan Anda" required>
+                                <small id="emailHelp" class="form-text text-muted">Berikan ulasan anda untuk layanan yang lebih baik lagi.</small>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                            </div>
+                            <button class="btn btn-warning text-light" type="submit">Kirim</button>
                         </form>
                     </div>
                 </div>
@@ -65,7 +84,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="copyright-text">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://instagram.com/taufanomt" target="_blank">Taufano</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>

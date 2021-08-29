@@ -52,8 +52,10 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Vendor</th>
+                                            <th>Username</th>
+                                            <th>Nama Vendor</th>
                                             <th>Level</th>
+                                            <th>Kota/Kab</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -61,11 +63,17 @@
                                         @foreach($vendor as $no => $vendors)
                                         <tr>
                                             <td>{{ $no + 1 }}</td>
-                                            <td class="text-center">
+                                            <td>
                                                 {{ $vendors->username }}
                                             </td>
-                                            <td class="text-center">
+                                            <td>
+                                                {{ $vendors->nama_lengkap }}
+                                            </td>
+                                            <td>
                                                 {{ $vendors->user_level }}
+                                            </td>
+                                            <td>
+                                                {{ $vendors->kota_nama }}
                                             </td>
                                             <td>
                                                 <label class="switch">
@@ -89,8 +97,10 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>No</th>
-                                            <th>Vendor</th>
+                                            <th>Username</th>
+                                            <th>Nama Vendor</th>
                                             <th>Level</th>
+                                            <th>Kota/Kab</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -98,11 +108,17 @@
                                         @foreach($vendoroff as $nomor => $vendorso)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td class="text-center">
+                                            <td>
                                                 {{ $vendorso->username }}
                                             </td>
-                                            <td class="text-center">
+                                            <td>
+                                                {{ $vendorso->nama_lengkap }}
+                                            </td>
+                                            <td>
                                                 {{ $vendorso->user_level }}
+                                            </td>
+                                            <td>
+                                                {{ $vendorso->kota_nama }}
                                             </td>
                                             <td>
                                                 <label class="switch">

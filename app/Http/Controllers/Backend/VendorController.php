@@ -20,12 +20,17 @@ class VendorController extends Controller
 {
     public function index()
     {
-        $vendor = UserModel::all()
+        $vendor = DB::table('tb_user')
+            ->leftjoin('tb_vendor', 'tb_user.user_id', '=', 'tb_vendor.user_id')
+            ->leftjoin('tb_kota', 'tb_vendor.kota_id', '=', 'tb_kota.kota_id')
             ->where('user_status', '=', 'on')
-            ->where('user_level', '!=', 'Freelance');
-        $vendoroff = UserModel::all()
-            ->where('user_status', '=', 'off')
-            ->where('user_level', '!=', 'Freelance');
+            ->where('user_level', '!=', 'Freelance')->get();
+            
+        $vendoroff = DB::table('tb_user')
+            ->leftjoin('tb_vendor', 'tb_user.user_id', '=', 'tb_vendor.user_id')
+            ->leftjoin('tb_kota', 'tb_vendor.kota_id', '=', 'tb_kota.kota_id')
+            ->where('user_status', '!=', 'on')
+            ->where('user_level', '!=', 'Freelance')->get();
 
         $active = 'vendor';
         return view(

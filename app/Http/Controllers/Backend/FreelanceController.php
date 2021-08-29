@@ -11,14 +11,19 @@ class FreelanceController extends Controller
 {
     public function index()
     {
-        $data['freelance'] = UserModel::all()
-            ->where('user_status', '=', 'on')
-            ->where('user_level', '=', 'Freelance');
-        $data['freelanceoff'] = UserModel::all()
-            ->where('user_status', '=', 'off')
-            ->where('user_level', '=', 'Freelance');
+        $data['freelance'] = DB::table('tb_user')
+                    ->leftjoin('tb_vendor', 'tb_user.user_id', '=', 'tb_vendor.user_id')
+                    ->leftjoin('tb_kota', 'tb_vendor.kota_id', '=', 'tb_kota.kota_id')
+                    ->where('user_status', '=', 'on')
+                    ->where('user_level', '=', 'Freelance')->get();
 
-        $data['active'] = "active";
+        $data['freelanceoff'] = DB::table('tb_user')
+                    ->leftjoin('tb_vendor', 'tb_user.user_id', '=', 'tb_vendor.user_id')
+                    ->leftjoin('tb_kota', 'tb_vendor.kota_id', '=', 'tb_kota.kota_id')
+                    ->where('user_status', '!=', 'on')
+                    ->where('user_level', '=', 'Freelance')->get();
+
+        $data['active'] = "freelance";
         return view('backend.page.freelance.index', $data);
     }
 
