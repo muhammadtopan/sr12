@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Model\SyaratModel;
 use App\Model\ArticelModel;
+use App\Model\UlasanModel;
 use App\Model\ProductModel;
 use App\Model\CategoryModel;
 use Illuminate\Http\Request;
-use App\Model\TmpDetailsModel;
 use App\Model\TestimonyModel;
+use App\Model\TmpDetailsModel;
 use App\Model\ViewerSyaratModel;
 use Illuminate\Support\Facades\DB;
 use App\Model\PackageCategoryModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use App\Model\Category_o_Product_Package_Model;
 
 
 class HomeController extends Controller
@@ -32,7 +34,7 @@ class HomeController extends Controller
                     ->where('tb_product.product_best','on')
                     ->get();
 
-        $paket = DB::table('tb_package_category')->get();
+        $paket = DB::table('tb_category_o_product_package')->get();
 
         $productnew = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
@@ -51,6 +53,8 @@ class HomeController extends Controller
         $category = CategoryModel::all();
         $testimony = TestimonyModel::take(10)->get();
 
+        $ulasan = UlasanModel::where('ulasan_status', '=', 'on')->get();
+
         $active = "home";
         return view(
             'frontend/page/home',
@@ -63,18 +67,22 @@ class HomeController extends Controller
                 'paket' => $paket,
                 'productnew' => $productnew,
                 'productternew' => $productternew,
-                'productterbest' => $productterbest
+                'productterbest' => $productterbest,
+                'ulasan' => $ulasan
             ]
         );
     }
 
     public function about()
     {
+        $product = DB::table('tb_product')
+                    ->get();
         $active = "about";
         return view(
             'frontend/page/about',
             [
-                'active' => $active
+                'active' => $active,
+                'product' => $product
             ]
         );
     }
@@ -83,11 +91,13 @@ class HomeController extends Controller
     {
         $prov = DB::table('tb_provinsi')->get();
         $active = "syarat";
+        $syarat = " ";
         return view(
             'frontend/page/syarat',
             [
                 'active' => $active,
-                'prov' => $prov
+                'prov' => $prov,
+                'syarat' => $syarat,
             ]
         );
     }
@@ -126,7 +136,6 @@ class HomeController extends Controller
                     'view' => $cekviewer[0]->view+1
                 ]);
             }else{
-                dd("asdasd");
                 $data = $request->all();
                 $data['name_viewer'] = ucwords(strtolower($request->input('name_viewer')));
                 $data['phone'] = $request->input('phone');
@@ -138,6 +147,30 @@ class HomeController extends Controller
             return redirect()
                 ->route('syarat_mitra');
         }
+    }
+
+    public function syaratMarketer()
+    {
+        $data['syarat'] = "syarat5";
+        $data['prov'] = DB::table('tb_provinsi')->get();
+        $data['active'] = "syarat";
+        return view('frontend/page/syarat', $data);
+    }
+
+    public function belanjaHemat()
+    {
+        $data['syarat'] = "syarat6";
+        $data['prov'] = DB::table('tb_provinsi')->get();
+        $data['active'] = "syarat";
+        return view('frontend/page/syarat', $data);
+    }
+
+    public function peluangBisnis()
+    {
+        $data['syarat'] = "syarat8";
+        $data['prov'] = DB::table('tb_provinsi')->get();
+        $data['active'] = "syarat";
+        return view('frontend/page/syarat', $data);
     }
 
     public function frontMitra()
@@ -199,21 +232,23 @@ class HomeController extends Controller
 
     public function product()
     {
-        $package = PackageCategoryModel::all();
+        $packageshow  = PackageCategoryModel::all();
         $category = CategoryModel::all();
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
-                    ->select('tb_product.*', 'tb_category.category_name')
+                    ->limit(20)
                     ->get();
+        $category_oop = Category_o_Product_Package_Model::all();
 
         $active = "product";
         return view(
             'frontend/page/product',
             [
                 'active' => $active,
-                'package' => $package,
+                'packageshow' => $packageshow,
                 'category' => $category,
                 'product' => $product,
+                'category_oop' => $category_oop,
             ]
         );
     }
@@ -230,7 +265,6 @@ class HomeController extends Controller
                     // dd($product);
         $relate = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
-                    ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_product.category_id',$product->category_id)
                     ->get();
         $qty = DB::table("tb_tmp_details")->where("product_id",$product_id)->where("user_id",Session::get("costumer_id"))->first();
@@ -303,22 +337,27 @@ class HomeController extends Controller
 
     public function packageFilter($id)
     {
-        $package = PackageCategoryModel::all();
         $category = CategoryModel::all();
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
-                    ->join('tb_product_package', 'tb_product_package.product_id', '=', 'tb_product.product_id')
-                    ->join('tb_package_category', 'tb_package_category.package_category_id', '=', 'tb_product_package.package_category_id')
-                    ->where('tb_package_category.package_category_id', $id)
                     ->get();
+
+        $packageshow = DB::table('tb_package_category')
+                    ->join('tb_category_o_product_package', 'tb_category_o_product_package.category_opp_id', '=', 'tb_package_category.category_opp_id')
+                    ->where('tb_package_category.category_opp_id', $id)
+                    ->get();
+                    
+        $category_oop = Category_o_Product_Package_Model::all();
+
         $active = "product";
         return view(
             'frontend/page/product',
             [
                 'active' => $active,
-                'package' => $package,
-                'category' => $category,
                 'product' => $product,
+                'category' => $category,
+                'category_oop' => $category_oop,
+                'packageshow' => $packageshow,
             ]
         );
     }

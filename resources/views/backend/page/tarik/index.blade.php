@@ -1,5 +1,5 @@
 @extends ('backend/layouts.app')
-@section ('title', 'Registrasi Mitra')
+@section ('title', 'Tarik Dana')
 
 @section ('content')
     <!-- Content Header (Page header) -->
@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Registrasi Mitra</h1>
+                    <h1>Tarik Dana</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Registrasi Mitra</li>
+                        <li class="breadcrumb-item active">Tarik Dana</li>
                     </ol>
                 </div>
             </div>

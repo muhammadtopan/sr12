@@ -228,6 +228,27 @@
                         <input type="number" class="form-control" name="product_netto" id="product_netto" placeholder="Netto" value="{{ old('product_netto') ?? $product->product_netto ?? '' }}" required>
                     </div>
                     <div class="form-group">
+                        <label for="product_unit_netto">Satuan Produk</label>
+                        <select name="product_unit_netto" id="product_unit_netto" class="form-control @error('product_unit_netto') {{ 'is-invalid' }} @enderror">
+                            <option value="mg">mili gram</option>
+                            <option value="gr" selected>gram</option>
+                            <option value="ml">mili liter</option>
+                            <option value="l">liter</option>
+                            <option value="butir">butir</option>
+                            <option value="kapsul">kapsul</option>
+                            <option value="sheet">sheet</option>
+                        </select>
+                        @if(isset($product))
+                        <script>
+                            document.getElementById('product_unit_netto').value =
+                                '<?php echo $product->product_unit_netto ?>'
+                        </script>
+                        @endif
+                        @error('product_unit_netto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="product_weight">Berat</label>
                         <input type="number" class="form-control" name="product_weight" id="product_weight" placeholder="Berat Produk" value="{{ old('product_weight') ?? $product->product_weight ?? '' }}" required>
                     </div>
@@ -235,7 +256,7 @@
                         <label for="product_unit">Satuan Produk</label>
                         <select name="product_unit" id="product_unit" class="form-control @error('product_unit') {{ 'is-invalid' }} @enderror">
                             <option value="mg">mili gram</option>
-                            <option value="g" selected>gram</option>
+                            <option value="gr" selected>gram</option>
                             <option value="ml">mili liter</option>
                             <option value="l">liter</option>
                         </select>

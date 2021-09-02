@@ -44,6 +44,7 @@ class ProductController extends Controller
                 'product_name'           => 'required',
                 'product_bpom'           => 'required',
                 'product_netto'           => 'required|numeric',
+                'product_unit_netto'           => 'required',
                 'product_weight'           => 'required|numeric',
                 'product_unit'           => 'required',
                 'product_image'         => 'mimes:jpg,jpeg,png',
@@ -64,6 +65,7 @@ class ProductController extends Controller
                 $product->product_name = $request->input('product_name');
                 $product->product_bpom = $request->input('product_bpom');
                 $product->product_netto = $request->input('product_netto');
+                $product->product_unit_netto = $request->input('product_unit_netto');
                 $product->product_weight = $request->input('product_weight');
                 $product->product_unit = $request->input('product_unit');
                 $product->product_desk = $request->input('product_desk');
@@ -99,6 +101,7 @@ class ProductController extends Controller
                 'product_name'           => 'required',
                 'product_bpom'           => 'required',
                 'product_netto'           => 'required|numeric',
+                'product_unit_netto'           => 'required',
                 'product_weight'           => 'required|numeric',
                 'product_unit'           => 'required',
                 'product_image'         => 'mimes:jpg,jpeg,png',
@@ -129,6 +132,7 @@ class ProductController extends Controller
                             'product_name' => $request->input('product_name'),
                             'product_bpom' => $request->input('product_bpom'),
                             'product_netto' => $request->input('product_netto'),
+                            'product_unit_netto' => $request->input('product_unit_netto'),
                             'product_weight' => $request->input('product_weight'),
                             'product_unit' => $request->input('product_unit'),
                             'product_desk' => $request->input('product_desk'),
@@ -145,6 +149,7 @@ class ProductController extends Controller
                             'product_name' => $request->input('product_name'),
                             'product_bpom' => $request->input('product_bpom'),
                             'product_netto' => $request->input('product_netto'),
+                            'product_unit_netto' => $request->input('product_unit_netto'),
                             'product_weight' => $request->input('product_weight'),
                             'product_unit' => $request->input('product_unit'),
                             'product_desk' => $request->input('product_desk'),

@@ -31,7 +31,23 @@ class CheckoutController extends Controller
         $vendor = null;
         $vendor = DB::select($query.$sub_query);
         if(count($vendor) < 1) {
-            $vendor = DB::select("SELECT * FROM tb_vendor WHERE prov_id = $prov");
+            // $vendor = DB::select("SELECT * FROM tb_vendor WHERE prov_id = $prov");
+            $vendor = DB::table('tb_vendor')
+                        ->join('tb_stok', 'tb_vendor.user_id', 'tb_stok.user_id')
+                        ->join('tb_product', 'tb_stok.product_id', 'tb_product.product_id')
+                        ->where('prov_id', '=', $prov)
+                        ->where('tb_stok.product_id', '=', $request->product_id)
+                        ->where('tb_stok.product_stok', '>=', $request->qty)
+                        ->get();
+            if(count($vendor) < 1) {
+                // $vendor = DB::select("SELECT * FROM tb_vendor");
+                $vendor = DB::table('tb_vendor')
+                        ->join('tb_stok', 'tb_vendor.user_id', 'tb_stok.user_id')
+                        ->join('tb_product', 'tb_stok.product_id', 'tb_product.product_id')
+                        ->where('tb_stok.product_id', '=', $request->product_id)
+                        ->where('tb_stok.product_stok', '>=', $request->qty)
+                        ->get();
+            }
         }
         return $vendor;
     }
@@ -80,6 +96,7 @@ class CheckoutController extends Controller
 
     public function checkOngkir(Request $request) {
         $berat = $this->getTotalBerat($request->product, $request->user);
+        $weight = str_replace(',0', '', number_format(ceil($berat), 1, ',', ''));
         $vendor = VendorModel::where("user_id", (int)$request->vendor)->first();
         $ongkir = $this->getOngkir($vendor->kota_id, $request->destination, $berat);
         return response()->json($ongkir);
@@ -104,8 +121,10 @@ class CheckoutController extends Controller
             "order_address" => $request->alamat_lengkap,
             "kota_id" => $request->kota,
             "order_status" => "waiting",
+            "noresi" => "0",
+            "komisi" => "0",
             "combined_price" => (int)$request->jenis_kirim + (int)$request->total,
-            "bank_name" => $request->bank
+            "bank_id" => $request->bank_id
         ]);
         $total = DB::transaction(function() use($request,$order) {
             $total = 0;

@@ -113,8 +113,8 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="package_category_name">Nama Kategori</label>
-                            <input type="text" class="form-control" name="package_category_name" id="package_category_name" placeholder="Nama Kategori" value="{{ old('package_category_name') ?? $category->package_category_name ?? '' }}" required>
+                            <label for="package_category_name">Nama Paket</label>
+                            <input type="text" class="form-control" name="package_category_name" id="package_category_name" placeholder="Nama Paket" value="{{ old('package_category_name') ?? $category->package_category_name ?? '' }}" required>
                         </div>
                         <label for="package_category_name">List Product</label>
                         <div class="row">

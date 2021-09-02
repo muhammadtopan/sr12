@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
-use Illuminate\Support\Facades\Validator;
 use App\Model\ProductModel;
+use DB;
 
 class StockController extends Controller
 {
@@ -15,18 +15,15 @@ class StockController extends Controller
         // cari data produk si vendor
         $product = DB::table('tb_product') 
                 ->leftJoin('tb_stok','tb_product.product_id', '=', 'tb_stok.product_id')
-                ->select('tb_stok.*','tb_product.product_name', 'tb_product.product_id', 'tb_product.product_image')
                 ->where('tb_stok.user_id', '=', session()->get('user_id'))
-                ->where('tb_stok.deleted_at', '=', 'null')
+                ->where('tb_stok.deleted_at', '=', null)
                 ->get();
-        // dd($product);
 
         $stok0 = DB::table('tb_product')
                 ->leftJoin('tb_stok','tb_product.product_id', '=', 'tb_stok.product_id')
-                ->select('tb_stok.*','tb_product.product_name', 'tb_product.product_id', 'tb_product.product_image')
                 ->where('tb_stok.user_id', '=', session()->get('user_id'))
                 ->where('tb_stok.product_stok', '=', 0)
-                ->where('tb_stok.deleted_at', '=', 'null')
+                ->where('tb_stok.deleted_at', '=', null)
                 ->get();
         
         $active = 'stock';

@@ -59,8 +59,10 @@
                                             <td>{{ $order->order_address }}</td>
                                             <td>{{ $order->kota_nama }}</td>
                                             <td>{{ $order->username }}</td>
-                                            <td>{{ $order->proof }}</td>
-                                            <td>{{ asset("dokumen/bukti_transfer/".$order->combined_price) }}</td>
+                                            <td>
+                                                <img src="{{ asset('dokumen/'.$order->proof) }}" width="100" alt="">
+                                            </td>
+                                            <td>Rp {{ number_format($order->combined_price, 0 ,',','.') }}</td>
                                             <td>{{ $order->noresi }}</td>
                                             <td>{{ $order->order_status }}</td>
                                             <td class="text-center">

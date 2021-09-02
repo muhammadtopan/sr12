@@ -2,20 +2,19 @@
 @section ('title', 'Herbal Skincare')
 
 @section ('content')
-
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <!-- <div class="row"> -->
             <!-- <div class="col-md-12"> -->
                 <div class="hero-items owl-carousel">
-                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/all_product2.jpg')}}">
+                    <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/all_product.jpg')}}">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <span>We're present.....</span>
-                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <span>We're present</span>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                                    <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
+                                    <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
                             </div>
                         </div>
@@ -24,10 +23,10 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <span>We're present.....</span>
-                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <span>We're present</span>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                                    <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
+                                    <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
                             </div>
                         </div>
@@ -36,10 +35,10 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <span>We're present.....</span>
-                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <span>We're present</span>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                                    <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
+                                    <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
                             </div>
                         </div>
@@ -48,10 +47,10 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <span>We're present.....</span>
-                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia.....</h5>
+                                    <span>We're present</span>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                                    <a href="{{ route('user.register') }}" class="primary-btn">Gabung</a>
+                                    <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
                             </div>
                         </div>
@@ -69,15 +68,18 @@
     <div class="banner-section spad">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-6 mb-5">
+                    <h4><b> KATEGORI PRODUK </b></h4>
+                </div>
                 <div class="col-lg-12">
                     <div class="kategori owl-carousel">
                         @foreach($category as $no => $kategori)
                             <a href="{{ route('category-product', $kategori->category_id) }}">
                                 <div class="single-banner">
                                     <img src="{{ asset('lte/dist/img/category/'. $kategori->category_image)}}" alt="">
-                                    <!-- <div class="inner-text">
-                                        <h6>{{ $kategori->category_name }}</h6>
-                                    </div> -->
+                                    <div class="text-center">
+                                        <h6  class="font-weight-bold">{{ $kategori->category_name }}</h6>
+                                    </div>
                                 </div>
                             </a>
                         @endforeach
@@ -157,21 +159,14 @@
                     </div>
                     <div class="package-slider owl-carousel">
                         @foreach($paket as $no => $pakets)
-                        <!-- <div class="col-lg-3 col-sm-6"> -->
-                            <div class="product-item">
-                                <div class="pi-pic">
-                                    <a href="{{ url('filter/packages/'. $pakets->package_category_id) }}">
-                                        <img src="{{ asset('lte/dist/img/package_category/' . $pakets->package_category_image )}}" alt="">
-                                    </a>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">{{ $pakets->package_category_name }}</div>
-                                    <div class="product-price">
-                                        Rp {{ number_format($pakets->package_category_price,0,",",".") }}
+                            <a href="{{ url('filter/packages/'. $pakets->category_opp_id) }}">
+                                <div class="single-banner">
+                                    <img src="{{ asset('lte/dist/img/category_opp/'. $pakets->category_opp_image)}}" alt="">
+                                    <div class="text-center">
+                                        <h6  class="font-weight-bold">{{ $pakets->category_opp_name }}</h6>
                                     </div>
                                 </div>
-                            </div>
-                        <!-- </div> -->
+                            </a>
                         @endforeach
                     </div>
                 </div>
@@ -312,6 +307,35 @@
     </div>
     <!-- Testimoni End -->
 
+    <!-- Blog Details Section Begin -->
+    <section class="blog-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog-details-inner">
+                        <div class="blog-post">
+                            <div class="row">
+                                <div class="owl-carousel owl-ulasan">
+                                    @foreach($ulasan as $no => $ulas)
+                                        <div class="item col-lg-6 col-md-6">
+                                            <div class="prev-blog">
+                                                <div class="pb-text">
+                                                    <span>{{ $ulas->email }}</span>
+                                                    <h4>{{ $ulas->ulasan }}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Section End -->
+
     <!-- Latest Blog Section Begin -->
     <section class="latest-blog spad">
         <div class="container">
@@ -325,7 +349,7 @@
                             </div>
                             <div class="sb-text">
                                 <h6>BELANJA HEMAT</h6>
-                                <p>untuk kamu yang hobi jualan <a href="#" class="btn btn-sm btn-warning text-light">klik disini</a> </p>
+                                <p>untuk kamu yang hobi jualan <a href="{{ route('belanjaHemat') }}" class="btn btn-sm bg-warning text-light">klik disini</a> </p>
                             </div>
                         </div>
                     </div>
@@ -337,7 +361,7 @@
                             </div>
                             <div class="sb-text">
                                 <h6>PELUANG BISNIS</h6>
-                                <p>untuk kamu didaerahmu <a href="#" class="btn btn-sm btn-warning text-light">klik disini</a> </p>
+                                <p>untuk kamu didaerahmu <a href="{{ route('peluangBisnis') }}" class="btn btn-sm bg-warning text-light">klik disini</a> </p>
                             </div>
                         </div>
                     </div>
@@ -349,7 +373,7 @@
                             </div>
                             <div class="sb-text">
                                 <h6>HADIAH MENARIK</h6>
-                                <p>segera tukarkan pointnya <a href="{{ route('user.register') }}" class="btn btn-sm btn-warning text-light">klik disini</a> </p>
+                                <p>segera tukarkan pointnya <a href="{{ route('user.register') }}" class="btn btn-sm bg-warning text-light">klik disini</a> </p>
                             </div>
                         </div>
                     </div>

@@ -172,12 +172,12 @@
                                 <p>Ulasan</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="{{ route('tarik_dana') }}" class="nav-link {{ $active == 'tarik' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tarik Dana</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
 

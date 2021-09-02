@@ -4,7 +4,7 @@
 @section ('content')
 
     <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
+    <!-- <div class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -15,14 +15,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Breadcrumb Form Section Begin -->
 
     <!-- Blog Details Section Begin -->
     <section class="blog-details spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-8">
                     <div class="blog-details-inner">
                         <div class="blog-detail-title">
                             <h2>{{ $artikel->article_judul }}</h2>
@@ -34,17 +34,17 @@
                                 </div>
                                 <div class="col-10">
                                     <div class="blog-detail-desc">
-                                        <p>{!! $artikel->article_isi !!}</p>
+                                        <p style="text-align: justify; text-justify: newspaper">{!! $artikel->article_isi !!}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="blog-sidebar">
                         <div class="recent-post">
-                            <h4>Artikel</h4>
+                            <h4>ARTIKEL</h4>
                             <div class="recent-blog">
                                 <div class="faq-accordin">
                                     <div class="accordion" id="accordionExample">
@@ -56,7 +56,7 @@
                                                 </a>
                                             </div>
                                             <div id="collapse{{ $category->category_id }}" class="collapse" data-parent="#accordionExample">
-                                                <div class="card-body">
+                                                <div class="card-body pl-0">
                                                     @php
                                                         $cat = DB::table('tb_article_category')
                                                             ->join('tb_article','tb_article_category.category_id','=','tb_article.category_id')
@@ -67,7 +67,6 @@
                                                         <a href="{{ route('blog', $article->article_id) }}">
                                                             <p>{{ $article->article_judul }}</p>
                                                         </a>
-                                                        <hr>
                                                     @endforeach
                                                 </div>
                                             </div>

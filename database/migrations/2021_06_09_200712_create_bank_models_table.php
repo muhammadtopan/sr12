@@ -18,6 +18,7 @@ class CreateBankModelsTable extends Migration
             $table->string('bank_name');
             $table->string('owner');
             $table->string('bank_rekening');
+            $table->string('saldo')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

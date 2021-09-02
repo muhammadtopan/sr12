@@ -43,8 +43,8 @@ class DashboardController extends Controller
             'mitra_email.required'        => 'Email wajib diisi',
             'mitra_email.email'           => 'Email tidak valid',
             'mitra_email.unique'          => 'Email sudah terdaftar',
-            'ktp_number.required'         => 'No. KTP wajib diisi',
-            'ktp_number.unique'         => 'No. KTP sudah digunakan, silahkan cek kembali no. KTP anda',
+            // 'ktp_number.required'         => 'No. KTP wajib diisi',
+            // 'ktp_number.unique'         => 'No. KTP sudah digunakan, silahkan cek kembali no. KTP anda',
             'mitra_ttl.required'          => 'Tanggal lahir wajib diisi',
             'mitra_gender.required'       => 'Jenis kelamin wajib diisi',
             'prov_id.required'            => 'Provinsi wajib diisi',
@@ -55,14 +55,14 @@ class DashboardController extends Controller
             'mitra_password.min'          => 'Password wajib diisi min 6 karakter',
             'mitra_password.confirmed'    => 'Password tidak sama dengan konfirmasi password',
             // 'selfie_ktp.max'            => 'Tipe file harus seperti yang telah ditentukan (jpg,jpeg,png)',
-            'selfie_ktp.max'            => 'Ukuran file max 200kb',
+            // 'selfie_ktp.max'            => 'Ukuran file max 200kb',
         ];
 
         $validator = Validator::make($request->all(), [
             'mitra_name'          => 'required',
             'mitra_phone'         => 'required|numeric|unique:tb_mitra,mitra_phone',
             'mitra_email'         => 'required|email|unique:tb_mitra,mitra_email',
-            'ktp_number'          => 'required|unique:tb_mitra,ktp_number',
+            // 'ktp_number'          => 'required|unique:tb_mitra,ktp_number',
             'mitra_ttl'           => 'required',
             'mitra_gender'        => 'required',
             'prov_id'             => 'required',
@@ -70,7 +70,7 @@ class DashboardController extends Controller
             'mitra_address'       => 'required',
             'mitra_position'      => 'required',
             // 'selfie_ktp'          => 'nullable|mimes:jpg,jpeg,png',
-            'selfie_ktp'          => 'nullable|size:200',
+            // 'selfie_ktp'          => 'nullable|size:200',
             'mitra_password'      => 'required|min:6'
         ], $messages);
         // Pa$$w0rd!
@@ -92,12 +92,12 @@ class DashboardController extends Controller
             $data['prov_id'] = $request->input('prov_id');
             $data['kota_id'] = $request->input('kota_id');
             $data['mitra_address'] = $request->input('mitra_address');
-            if ($request->hasFile('selfie_ktp') != null) {
-                $foto = $request->file('selfie_ktp');
-                $filename = time() . "." . $foto->getClientOriginalExtension;
-                $foto->move('img/frontend/img/mitra/' . $filename);
-                $data['selfie_ktp'] = $filename;
-            }
+            // if ($request->hasFile('selfie_ktp') != null) {
+            //     $foto = $request->file('selfie_ktp');
+            //     $filename = time() . "." . $foto->getClientOriginalExtension;
+            //     $foto->move('img/frontend/img/mitra/' . $filename);
+            //     $data['selfie_ktp'] = $filename;
+            // }
             $data['mitra_position'] = $request->input('mitra_position');
             $data['mitra_password'] = Hash::make($request->input("mitra_password"));
             $data['mitra_status'] = "off";

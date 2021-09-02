@@ -109,12 +109,12 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="{{ route('vendor.order.details', $orderh->order_id) }}" class="btn btn-sm btn-success">
-                                                        <i class="fa fa-edit .text-light"></i>
+                                                        <i class="fas fa-eye"></i>
                                                     </a>
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    </tbody>
+                                    </tbody>   
                                 </table>
                             </div>
 

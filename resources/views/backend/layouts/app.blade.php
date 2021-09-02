@@ -31,9 +31,9 @@
 
 <!-- <body class="hold-transition sidebar-mini text-sm"> -->
 @if( Session::get('admin_level') == 'admin' && Session::get("user_level")  == null )
-    <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm">
+    <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm accent-warning">
 @else
-    <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm">
+    <body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm accent-success">
 @endif
     <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('lte/ckeditor/ckeditor.js')}}"> </script>

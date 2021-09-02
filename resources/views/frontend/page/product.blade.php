@@ -4,7 +4,7 @@
 @section ('content')
 
     <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
+    <!-- <div class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Breadcrumb Section Begin -->
 
     <!-- Product Shop Section Begin -->
@@ -40,8 +40,8 @@
                     <div class="filter-widget">
                         <h4 class="fw-title">Paket Product</h4>
                         <ul class="filter-catagories">
-                            @foreach($package as $no => $packagelist)
-                                <li><a href="{{ url('filter/packages/'. $packagelist->package_category_id)}}">{{ $packagelist->package_category_name }}</a></li>
+                            @foreach($category_oop as $no => $packagelist)
+                                <li><a href="{{ url('filter/packages/'. $packagelist->category_opp_id)}}">{{ $packagelist->category_opp_name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div id="slider-filter" onmouseup="sliderFilter(this)" class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="0" data-max="500000">
+                                data-min="0" data-max="200000">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
@@ -81,6 +81,31 @@
                     </div>
                     <div class="product-list">
                         <div class="row" id="pr-container">
+                            @foreach($packageshow as $no => $pslist)
+                                <div class="col-lg-3 col-sm-4">
+                                    <div class="product-item">
+                                        <div class="pi-pic">
+                                            <a href="{{ route('detail_product',$pslist->package_category_id)}}">
+                                                <img src="{{ asset('lte/dist/img/package_category/' . $pslist->package_category_image )}}" alt="">
+                                            </a>
+                                            <!-- <ul>
+                                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                            </ul> -->
+                                        </div>
+                                        <div class="pi-text">
+                                            <div class="catagory-name">{{ $pslist->category_opp_name }}</div>
+                                            <a href="#">
+                                                <h5>{{ $pslist->package_category_name }}</h5>
+                                            </a>
+                                            <div class="product-price">
+                                                Rp {{ number_format($pslist->package_category_price,0,',','.') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                             @forelse($product as $no => $pdklist)
                                 <div class="col-lg-3 col-sm-4">
                                     <div class="product-item">
@@ -100,7 +125,7 @@
                                                 <h5>{{ $pdklist->product_name }}</h5>
                                             </a>
                                             <div class="product-price">
-                                                Rp {{ number_format($pdklist->product_price) }}
+                                                Rp {{ number_format($pdklist->product_price,0,',','.') }}
                                             </div>
                                         </div>
                                     </div>
@@ -169,7 +194,7 @@
                                                     <h5> ${d.product_name} </h5>
                                                 </a>
                                                 <div class="product-price">
-                                                    Rp.${new Intl.NumberFormat().format(d.product_price)}
+                                                    ${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(d.product_price)}
                                                 </div>
                                             </div>
                                         </div>
