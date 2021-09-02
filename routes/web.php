@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Session;
 
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('syarat/marketer', 'HomeController@syaratMarketer')->name('syarat-marketer');
+Route::get('belanjaHemat', 'HomeController@belanjaHemat')->name('belanjaHemat');
+Route::get('peluangBisnis', 'HomeController@peluangBisnis')->name('peluangBisnis');
 Route::get('shop/product', 'HomeController@product')->name('shop.product');
 Route::get('shop/product/{filter}', 'HomeController@product')->name('shop.product.filter');
 Route::get('detail-product/{product_id}', 'HomeController@detail_product')->name('detail_product');
@@ -76,7 +79,7 @@ Route::group(["middleware" => "login_freelance"],function() {
 //Gudang
 Route::group(["prefix" => "gudang"],function() {
     // auth
-    Route::group(["middleware" => "GudangTidakLogin"],function() {
+    Route::group(["middleware" => "product_unit_netto"],function() {
         Route::get('login', 'Gudang\GudangController@getLogin')->name("gudang.login");
         Route::post("login", "Gudang\GudangController@postLogin");
     });

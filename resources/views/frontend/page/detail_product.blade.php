@@ -3,7 +3,7 @@
 
 @section ('content')
     <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
+    <!-- <div class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Breadcrumb Section Begin -->
 
     <!-- Product Shop Section Begin -->
@@ -70,7 +70,7 @@
                                 </div>
                                 <ul class="pd-tags">
                                     <li><span>No. BPOM</span>: {{ $product->product_bpom }}</li>
-                                    <li><span>Netto</span>: {{ $product->product_netto }} {{ $product->product_unit }}</li>
+                                    <li><span>Netto</span>: {{ $product->product_netto }} {{ $product->product_unit_netto }}</li>
                                     <li><span>Berat</span>: {{ $product->product_weight }} {{ $product->product_unit }}</li>
                                 </ul>
                                 <div class="pd-desc">
@@ -104,9 +104,9 @@
                                 <li>
                                     <a class="active" data-toggle="tab" href="#tab-1" role="tab">DESCRIPTION</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
-                                </li>
+                                </li> -->
                                 <!-- <li>
                                     <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
                                 </li> -->
@@ -122,9 +122,9 @@
                                                 <p> {!! $product->product_desk !!} </p>
                                             </div>
                                             <div class="col-lg-5">
-                                                <img src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt="">
+                                                <img style="border: 2px solid #e7ab3c" src="{{ asset('lte/dist/img/product/'.$product->product_image)}}" alt="">
                                             </div>
-                                        </div>Rp {{ number_format($product->product_price,0,",",".") }}
+                                        <!-- </div>Rp {{ number_format($product->product_price,0,",",".") }} -->
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="tab-2" role="tabpanel">
@@ -145,7 +145,7 @@
                                             <tr>
                                                 <td class="p-catagory">Netto</td>
                                                 <td>
-                                                    <div class="p-weight">{{ $product->product_netto }} {{ $product->product_unit }}</div>
+                                                    <div class="p-weight">{{ $product->product_netto }} {{ $product->product_unit_netto }}</div>
                                                 </td>
                                             </tr>
                                             <tr>

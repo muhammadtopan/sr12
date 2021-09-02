@@ -3,7 +3,7 @@
 
 @section ('content')
     <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
+    <!-- <div class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Breadcrumb Form Section Begin -->
 
     <!-- Blog Details Section Begin -->

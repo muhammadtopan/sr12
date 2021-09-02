@@ -60,7 +60,7 @@
     $('.kategori').owlCarousel({
         loop:false,
         margin:25,
-        nav:true,
+        nav:false,
         autoHeight:true,
         responsive:{
             0:{
@@ -388,7 +388,7 @@
         Why-join
     --------------------- */
     $('.owl-why-join').owlCarousel({
-        loop:true,
+        loop:false,
         margin:10,
         nav:false,
         responsive:{
@@ -411,6 +411,8 @@
         loop:false,
         margin:10,
         nav:false,
+        autoplay: true,
+        smartSpeed: 2400,
         responsive:{
             0:{
                 items:3
@@ -456,6 +458,30 @@
         autoplay: true,
         smartSpeed: 1200,
         items:1
+    })
+
+    /*------------------
+        ulasan
+    --------------------*/
+
+    $('.owl-ulasan').owlCarousel({
+        loop:true,
+        margin:25,
+        // nav:true,
+        autoHeight:false,
+        autoplay: true,
+        smartSpeed:1200,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:2
+            }
+        }
     })
 
 })(jQuery);

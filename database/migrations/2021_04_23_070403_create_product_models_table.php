@@ -21,8 +21,9 @@ class CreateProductModelsTable extends Migration
             $table->string('product_image');
             $table->double('product_price');
             $table->integer('product_netto');
+            $table->enum('product_unit_netto',['mg','gr','ml','l','butir', 'kapsul']);
             $table->integer('product_weight');
-            $table->enum('product_unit',['mg','g','ml','l']);
+            $table->enum('product_unit',['mg','gr','ml','l']);
             $table->text('product_desk');
             $table->enum('product_status',['on','off']);
             $table->enum('product_usual',['on','off']);

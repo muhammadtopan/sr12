@@ -58,12 +58,12 @@ class OrderController extends Controller
     public function komisi($order) {
         $total = DB::table("tb_order_details")->where("order_id",$order->order_id)->sum("total_price");
         $costumer = DB::table("tb_costumer")->where("costumer_id",$order->costumer_id)->first();
-        $bank = DB::table("tb_bank")->where("bank_name",$order->bank_name)->first();
+        $bank = DB::table("tb_bank")->where("bank_id",$order->bank_id)->first();
         $komisi = ($total * 20 / 100) / 2;
+        $vendor = DB::table("tb_vendor")->where("user_id", $order->user_id)->first();
         if($costumer->referal !== null) {
             $referal = DB::table("referals")->where("referal",$costumer->referal)->first();
             $freelance = DB::table("tb_vendor")->where("user_id",$referal->user_id)->first();
-            $vendor = DB::table("tb_vendor")->where("user_id", $order->user_id)->first();
             DB::transaction(function() use($freelance,$komisi, $order, $bank, $total, $vendor) {
                 // input history
                 DB::table("tb_saldo")->insert([
@@ -77,8 +77,8 @@ class OrderController extends Controller
                     "action_code" => \Str::random(14)
                 ]);
                 // saldo bank admin
-                DB::table("tb_bank")->where("bank_name",$order->bank_name)->update([
-                    "saldo" => $bank->saldo + $komisi
+                DB::table("tb_bank")->where("bank_id",$order->bank_id)->update([
+                    "saldo" => $bank->saldo + $total
                 ]);
                 // update komisi freelance
                 DB::table("tb_vendor")->where("user_id",$freelance->user_id)->update([
@@ -91,8 +91,13 @@ class OrderController extends Controller
             });
             return $komisi;
         } else {
-            DB::table("tb_bank")->where("bank_name",$order->bank_name)->update([
-                "saldo" => $bank->saldo + $komisi * 2
+            //update saldo bank
+            DB::table("tb_bank")->where("bank_id",$order->bank_id)->update([
+                "saldo" => $bank->saldo + $total
+            ]);
+            // update saldo vendor
+            DB::table("tb_vendor")->where("user_id",$order->user_id)->update([
+                "saldo" => $vendor->saldo + ($total - ($komisi * 2))
             ]);
             return 0;
         }

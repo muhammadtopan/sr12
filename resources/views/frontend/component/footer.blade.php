@@ -8,15 +8,14 @@
                             <a href="#"><img src="{{ asset('frontend/img/logo.png') }}" alt=""></a>
                         </div> -->
                         <ul>
-                            <li>Alamat: 60-49 Road 11378 New York</li>
-                            <li>Telepon: +62 832 6541 6547</li>
+                            <li>Alamat: Perum, Nangka Garden Jl. Nangka Pekan Baru</li>
+                            <li>Telepon: +62 853 7472 7053</li>
                             <li>Email: sr12herbalstore@gmail.com</li>
                         </ul>
                         <div class="footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/sr12herbalstore"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/pengusahapejuang.id/" target=“_blank”><i class="fa fa-instagram"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
@@ -73,7 +72,7 @@
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                             </div>
-                            <button class="btn btn-warning text-light" type="submit">Kirim</button>
+                            <button class="btn bg-warning text-light" type="submit">Kirim</button>
                         </form>
                     </div>
                 </div>

@@ -20,6 +20,7 @@ class ProductModel extends Model
         'product_image',
         'product_price',
         'product_netto',
+        'product_unit_netto',
         'product_weight',
         'product_unit',
         'product_desk',

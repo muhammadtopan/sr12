@@ -15,7 +15,7 @@
                                     <li class="cart-icon">
                                         @if( Session::get('tokenUser') == false)
                                             <a href="#">
-                                                <i class="icon_bag_alt text-light"></i>
+                                                <i class="icon_cart_alt text-light"></i>
                                                 <span>0</span>
                                             </a>
                                             <div class="cart-hover">
@@ -96,7 +96,7 @@
                                     @php
                                         $articel = DB::table('tb_article')->first();
                                         $testimony = DB::table('tb_testimony')->first();
-                                    @endphp
+                                    @endphp 
                                     <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Beranda</a></li>
                                     <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{ route('about') }}">Tentang Kami</a></li>
                                     <li class="{{ $active == 'syarat' ? 'active' : '' }}"><a href="{{ route('syarat_mitra') }}">Mitra</a></li>

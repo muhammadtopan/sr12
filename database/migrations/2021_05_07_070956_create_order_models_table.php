@@ -25,7 +25,8 @@ class CreateOrderModelsTable extends Migration
             $table->enum('order_status',['waiting','processed', 'sent', 'end', 'rejected']);
             $table->integer('combined_price');
             $table->string('noresi');
-            $table->integer('komisi');
+            $table->integer('komisi')->default(0);
+            $table->integer('bank_id');
             $table->timestamps();
             $table->softDeletes();
         });

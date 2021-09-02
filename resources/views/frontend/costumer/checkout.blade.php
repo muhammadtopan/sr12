@@ -76,15 +76,11 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label for="bank">Pilih Bank</label>
-                                <select name="bank" id="" class="form-control">
+                                <select name="bank_id" id="" class="form-control">
                                     <option selected value="{{null}}"disabled>Pilih Bank</option>
                                     @foreach ($bank as $b)
-                                        <option value="{{$b->bank_name}}">{{$b->bank_name}}</option>
+                                        <option value="{{$b->bank_id}}">{{$b->bank_name}}</option>
                                     @endforeach
-                                    {{-- <option value="BRI">BRI</option>
-                                    <option value="BNI">BNI</option>
-                                    <option value="MANDIRI">MANDIRI</option>
-                                    <option value="BCA">BCA</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -105,7 +101,7 @@
                                 @foreach($cart as $i => $carts)
                                     <li class="fw-normal">{{ $carts->product_name }} x {{ $carts->quantity }} <span>Rp {{ number_format($carts->total_price,0,",",".") }}</span></li>
                                 @endforeach
-                                <li class="total-price">Total <span>Rp <span id="total"> {{ number_format($total_price,0,",",".") }}</span> </span></li>
+                                <li class="total-price">Total <span>Rp <span id="total"> {{ number_format($total_price) }}</span> </span></li>
                             </ul>
                             <div class="order-btn">
                                 <button type="button" class="site-btn place-btn" data-toggle="modal" data-target="#modalTransfer">Bayar</button>
