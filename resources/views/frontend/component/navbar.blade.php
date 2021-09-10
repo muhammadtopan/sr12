@@ -4,14 +4,14 @@
             <div class="container" style="background-color: #252525;">
                 <div class="inner-header">
                     <div class="row">
-                        <div class="col-lg-2 col-md-2">
+                        <div class="col-md-2">
                             <div class="row">
-                                <div class="logo col-6">
-                                    <a href="{{('home')}}">
+                                <div class="logo px-0 col-sm-6">
+                                    <a href="{{ route('home')}}">
                                         <img src="{{ asset('frontend/img/logo.png') }}" alt="">
                                     </a>
                                 </div>
-                                <ul class="nav-right col-6">
+                                <ul class="nav-right pl-2 col-6">
                                     <li class="cart-icon">
                                         @if( Session::get('tokenUser') == false)
                                             <a href="#">
@@ -73,63 +73,67 @@
                                             </div>
                                         @endif
                                     </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-10 text-right col-md-10">
-                            <nav class="nav-menu mobile-menu mt-3">
-                                <ul>
-                                    <!-- search -->
-                                    <li>
+                                    <li style="width: 10px">
                                         <button type="button" class="search-product" data-toggle="modal" data-target="#searchModal">
                                             <i class="ti-search""></i>
                                         </button>
                                     </li>
-                                    <!-- <div class="advanced-search">
-                                        <button type="button" class="category-btn">All Categories</button>
-                                        <form action="#" class="input-group">
-                                            <input type="text" placeholder="What do you need?">
-                                            <button type="button"><i class="ti-search"></i></button>
-                                        </form>
-                                    </div> -->
-
-                                    @php
-                                        $articel = DB::table('tb_article')->first();
-                                        $testimony = DB::table('tb_testimony')->first();
-                                    @endphp 
-                                    <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Beranda</a></li>
-                                    <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{ route('about') }}">Tentang Kami</a></li>
-                                    <li class="{{ $active == 'syarat' ? 'active' : '' }}"><a href="{{ route('syarat_mitra') }}">Mitra</a></li>
-                                    <!-- <li class="{{ $active == 'login_mitra' ? 'active' : '' }}"><a href="{{ route('login.mitra') }}">Login</a></li> -->
-                                    <li class="{{ $active == 'tool' ? 'active' : '' }}"><a href="{{ route('tool') }}">Tool</a></li>
-                                    <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Toko</a></li>
-                                    @if ($articel != null)
-                                        <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog',$articel->article_id) }}">Artikel</a></li>
-                                    @endif
-                                    <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">FAQ</a></li>
-                                    @if ($testimony != null)
-                                    <!-- <li class="{{ $active == 'testimony' ? 'active' : '' }}"><a href="{{ route('testimon', $testimony->testimony_id) }}">Testimoni</a></li> -->
-                                    @endif
-                                    <!-- <li class="{{ $active == 'login' ? 'active' : '' }}"><a href="{{ route('vendor') }}">Vendor</a></li> -->
-                                    <!-- <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Bantuan</a></li> -->
-                                    @if( Session::get('tokenUser') == false)
-                                        <li class="{{ $active == 'regis' ? 'active' : '' }} daftar_aktif"><a href="{{ route('user.register') }}">Daftar</a></li>
-                                        <li class="{{ $active == 'masuk' ? 'active' : '' }} daftar_aktif"><a href="{{ route('user.login') }}">Akun Belanjaku</a></li>
-                                    @else
-                                    <li class="daftar_aktif"><a href="#">{{Session::get('costumer_name')}}</a>
-                                        <ul class="dropdown">
-                                            <li><a href="{{ route('user.profile') }}">Profile</a></li>
-                                            <li><a href="#">Point: 30</a></li>
-                                            <li><a href="{{ route('user.logout') }}">Keluar</a></li>
-                                        </ul>
-                                    </li>
-                                    @endif
                                 </ul>
-                            </nav>
-                            <div id="mobile-menu-wrap">
-
                             </div>
                         </div>
+                        <div class="col-md-10">
+                            <div class="text-right">
+                                <nav class="nav-menu mobile-menu mt-3">
+                                    <ul>
+                                        <!-- search -->
+                                        <!-- <li>
+                                            
+                                        </li> -->
+                                        <!-- <div class="advanced-search">
+                                            <button type="button" class="category-btn">All Categories</button>
+                                            <form action="#" class="input-group">
+                                                <input type="text" placeholder="What do you need?">
+                                                <button type="button"><i class="ti-search"></i></button>
+                                            </form>
+                                        </div> -->
+
+                                        @php
+                                            $articel = DB::table('tb_article')->first();
+                                            $testimony = DB::table('tb_testimony')->first();
+                                        @endphp 
+                                        <li class="{{ $active == 'home' ? 'active' : '' }}"><a href="{{ route('home') }}">Beranda</a></li>
+                                        <li class="{{ $active == 'about' ? 'active' : '' }}"><a href="{{ route('about') }}">Tentang Kami</a></li>
+                                        <li class="{{ $active == 'syarat' ? 'active' : '' }}"><a href="{{ route('syarat_mitra') }}">Mitra</a></li>
+                                        <!-- <li class="{{ $active == 'login_mitra' ? 'active' : '' }}"><a href="{{ route('login.mitra') }}">Login</a></li> -->
+                                        <li class="{{ $active == 'tool' ? 'active' : '' }}"><a href="{{ route('tool') }}">Tool</a></li>
+                                        <li class="{{ $active == 'product' ? 'active' : '' }}"><a href="{{ route('shop.product') }}">Toko</a></li>
+                                        @if ($articel != null)
+                                            <li class="{{ $active == 'articel' ? 'active' : '' }}"><a href="{{ route('blog',$articel->article_id) }}">Artikel</a></li>
+                                        @endif
+                                        <li class="{{ $active == 'partnership' ? 'active' : '' }}"><a href="{{ route('partnership') }}">FAQ</a></li>
+                                        @if ($testimony != null)
+                                        <!-- <li class="{{ $active == 'testimony' ? 'active' : '' }}"><a href="{{ route('testimon', $testimony->testimony_id) }}">Testimoni</a></li> -->
+                                        @endif
+                                        <!-- <li class="{{ $active == 'login' ? 'active' : '' }}"><a href="{{ route('vendor') }}">Vendor</a></li> -->
+                                        <!-- <li class="{{ $active == 'contact' ? 'active' : '' }}"><a href="{{ route('contact') }}">Bantuan</a></li> -->
+                                        @if( Session::get('tokenUser') == false)
+                                            <li class="{{ $active == 'regis' ? 'active' : '' }} daftar_aktif"><a href="{{ route('user.register') }}">Daftar</a></li>
+                                            <li class="{{ $active == 'masuk' ? 'active' : '' }} daftar_aktif"><a href="{{ route('user.login') }}">Akun Belanjaku</a></li>
+                                        @else
+                                        <li class="daftar_aktif"><a href="#">{{Session::get('costumer_name')}}</a>
+                                            <ul class="dropdown">
+                                                <li><a href="{{ route('user.profile') }}">Profile</a></li>
+                                                <li><a href="#">Point: 30</a></li>
+                                                <li><a href="{{ route('user.logout') }}">Keluar</a></li>
+                                            </ul>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div id="mobile-menu-wrap">    
+                            </div>
+                        </div> 
                     </div>
                 </div>
             </div>

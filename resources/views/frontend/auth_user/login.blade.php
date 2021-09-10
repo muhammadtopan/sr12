@@ -24,9 +24,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_pounvezv.json"  background="transparent"  speed="1"  style="width: 450px; height: 450px;"  loop  autoplay></lottie-player>
+                    <lottie-player class="lottie-daftar" src="https://assets1.lottiefiles.com/packages/lf20_pounvezv.json"  background="transparent"  speed="1"  style="width: 450px; height: 450px;"  loop  autoplay></lottie-player>
                 </div>  
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <div class="login-form">
                         <h3>Login Akun Belanjaku</h3>
                         @if(Session::has('pesan'))

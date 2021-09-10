@@ -10,9 +10,9 @@
                     <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/all_product.jpg')}}">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-7">
+                                <div class="col-md-7">
                                     <span>We're present</span>
-                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia</h5>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Wilayah Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
                                     <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
@@ -22,9 +22,9 @@
                     <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/new_product.jpg')}}">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-7">
+                                <div class="col-md-7">
                                     <span>We're present</span>
-                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia</h5>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Wilayah Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
                                     <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
@@ -34,9 +34,9 @@
                     <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/product_herbal.jpg')}}">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-7">
+                                <div class="col-md-7">
                                     <span>We're present</span>
-                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia</h5>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Wilayah Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
                                     <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
@@ -46,9 +46,9 @@
                     <div class="single-hero-items set-bg" data-setbg="{{ asset('frontend/img/slider/product_terlaris.jpg')}}">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-7">
+                                <div class="col-md-7">
                                     <span>We're present</span>
-                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Semua Produk SR12 Herbal Skincare di Seluruh Daerah Di Indonesia</h5>
+                                    <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Wilayah Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
                                     <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
@@ -64,21 +64,21 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Banner Section Begin -->
+    <!-- Kategori Produk -->
     <div class="banner-section spad">
-        <div class="container-fluid">
+        <div class="container-fluid"> 
             <div class="row">
-                <div class="col-6 mb-5">
-                    <h4><b> KATEGORI PRODUK </b></h4>
+                <div class="col-md-12">
+                    <h5><b> KATEGORI PRODUK </b></h5>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-md-12 pt-3">
                     <div class="kategori owl-carousel">
                         @foreach($category as $no => $kategori)
                             <a href="{{ route('category-product', $kategori->category_id) }}">
                                 <div class="single-banner">
                                     <img src="{{ asset('lte/dist/img/category/'. $kategori->category_image)}}" alt="">
                                     <div class="text-center">
-                                        <h6  class="font-weight-bold">{{ $kategori->category_name }}</h6>
+                                        <h6 class="font-weight-bold">{{ $kategori->category_name }}</h6>
                                     </div>
                                 </div>
                             </a>
@@ -93,11 +93,11 @@
     <!-- Semua Produk -->
     <section class="women-banner spad">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="row"> 
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-6">
-                            <h4>PRODUK</h4>
+                            <h5>PRODUK</h5>
                         </div>
                         <div class="col-6">
                             <div class="filter-control text-right">
@@ -107,9 +107,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="allproduct-slider owl-carousel">
+                    <div class="allproduct-slider owl-carousel pt-3">
                         @foreach($allproduct as $no => $product10)
-                        <!-- <div class="col-lg-3 col-sm-6"> -->
+                        <!-- <div class="col-md-3 col-sm-6"> -->
                             <div class="product-item">
                                 <div class="pi-pic">
                                     <a href="{{ route('detail_product',$product10->product_id)}}">
@@ -144,26 +144,26 @@
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <div class="row">
-                        <div class="col-6">
-                            <h4>PAKET PRODUK</h4>
+                        <div class="col-7">
+                            <h5>PAKET PRODUK</h5>
                         </div>
-                        <div class="col-6">
+                        <!-- <div class="col-5">
                             <div class="filter-control text-right">
                                 <ul class="section-tab-nav tab-nav">
                                     <li id="allproduct"><a href="{{('shop.product')}}">Lihat Semua</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="package-slider owl-carousel">
+                    <div class="package-slider owl-carousel pt-3">
                         @foreach($paket as $no => $pakets)
                             <a href="{{ url('filter/packages/'. $pakets->category_opp_id) }}">
                                 <div class="single-banner">
                                     <img src="{{ asset('lte/dist/img/category_opp/'. $pakets->category_opp_image)}}" alt="">
                                     <div class="text-center">
-                                        <h6  class="font-weight-bold">{{ $pakets->category_opp_name }}</h6>
+                                        <h6 class="font-weight-bold">{{ $pakets->category_opp_name }}</h6>
                                     </div>
                                 </div>
                             </a>
@@ -179,23 +179,23 @@
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-6">
-                    <h4>BEST PRODUK</h4>
+                <div class="col-7 py-3">
+                    <h5>BEST PRODUK</h5>
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <div class="filter-control text-right">
-                        <ul class="section-tab-nav tab-nav">
+                        <ul class="section-tab-nav tab-nav py-3">
                             <li id="allproduct"><a href="{{route('shop.product.filter', "best-seller")}}">Lihat Semua </a></li>
                         </ul>
                     </div>
                 </div>
-                @if ($productterbest != null)
-                    <a href="{{ route('detail_product',$productterbest->product_id) }}">
-                        <div class="col-lg-2">
+                <div class="col-lg-2">
+                    @if ($productterbest != null)
+                        <a href="{{ route('detail_product',$productterbest->product_id) }}">
                             <div class="product-large set-bg" data-setbg="{{ asset('lte/dist/img/product/' . $productterbest->product_image )}}">
-                        </div>
-                    </a>
-                @endif
+                            </div>
+                        </a>
+                    @endif
                 </div>
                 <div class="col-lg-9 offset-lg-1">
                     <div class="product-slider owl-carousel">
@@ -234,12 +234,12 @@
     <section class="women-banner spad">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-6">
-                    <h4>PRODUK BARU</h4>
+                <div class="col-7 py-3">
+                    <h5>PRODUK BARU</h5>
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <div class="filter-control text-right">
-                        <ul class="section-tab-nav tab-nav">
+                        <ul class="section-tab-nav tab-nav py-3">
                             <li id="allproduct"><a href="{{route('shop.product.filter', "product-terbaru")}}">Lihat Semua </a></li>
                         </ul>
                     </div>
@@ -285,43 +285,48 @@
     <!-- New Product End -->
 
     <!-- Testimoni Begin -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-6">
-                <h4 id="testi">TESTIMONI</h4>
-            </div>
-            <div class="col-6">
-                <div class="filter-control text-right">
-                    <ul class="section-tab-nav tab-nav">
-                        <li><a href="https://t.me/joinchat/UeeoAU59XSQ8wTJt" target="_blank">Lihat Semua </a></li>
-                    </ul>
+    <section class="women-banner span">
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-6">
+                    <h4 id="testi">TESTIMONI</h4>
+                </div>
+                <div class="col-6">
+                    <div class="filter-control text-right">
+                        <ul class="section-tab-nav tab-nav">
+                            <li><a href="https://t.me/joinchat/UeeoAU59XSQ8wTJt" target="_blank">Lihat Semua </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="instagram-photo testi-slider owl-carousel">
+                    @foreach($testimony as $no => $testimonies)
+                        <div id="testi{{ $testimonies->testimony_id }}"
+                            onclick="bigTesti('{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}')" class="insta-item set-bg" data-setbg="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar) }}"></div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
-    <div class="instagram-photo testi-slider owl-carousel">
-        @foreach($testimony as $no => $testimonies)
-            <div id="testi{{ $testimonies->testimony_id }}"
-                onclick="bigTesti('{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar )}}')" class="insta-item set-bg" data-setbg="{{ asset('lte/dist/img/testimony/' . $testimonies->testimony_gambar) }}"></div>
-        @endforeach
-    </div>
+    </section>
     <!-- Testimoni End -->
 
     <!-- Blog Details Section Begin -->
     <section class="blog-details spad">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <div class="blog-details-inner">
                         <div class="blog-post">
                             <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <h4>ULASAN</h4>
+                                </div>
                                 <div class="owl-carousel owl-ulasan">
                                     @foreach($ulasan as $no => $ulas)
-                                        <div class="item col-lg-6 col-md-6">
+                                        <div class="item col-md-4" style="max-width: unset">
                                             <div class="prev-blog">
                                                 <div class="pb-text">
                                                     <span>{{ $ulas->email }}</span>
-                                                    <h4>{{ $ulas->ulasan }}</h4>
+                                                    <h6 style="text-align: justify; text-justify: newspaper">{{ $ulas->ulasan }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -337,11 +342,11 @@
     <!-- Blog Details Section End -->
 
     <!-- Latest Blog Section Begin -->
-    <section class="latest-blog spad">
+    <section class="latest-blog spad pt-0">
         <div class="container">
-            <div class="benefit-items">
+            <div class="benefit-items mt-0">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
                                 <!-- <img src="{{asset('frontend/img/icon-1.png')}}" alt=""> -->
@@ -353,7 +358,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
                                 <!-- <img src="{{asset('frontend/img/icon-2.png')}}" alt=""> -->
@@ -365,7 +370,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
                                 <!-- <img src="{{asset('frontend/img/icon-1.png')}}" alt=""> -->

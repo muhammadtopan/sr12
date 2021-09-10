@@ -127,7 +127,7 @@
                                         <!-- </div>Rp {{ number_format($product->product_price,0,",",".") }} -->
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="tab-2" role="tabpanel">
+                                <div class="tab-pane fade d-none" id="tab-2" role="tabpanel">
                                     <div class="specification-table">
                                         <table>
                                             <tr>
@@ -184,7 +184,7 @@
             </div>
             <div class="row">
                 @foreach($relate as $no => $product2)
-                    <div class="col-lg-2 col-sm-4">
+                    <div class="col-lg-2 col-sm-3 col-4">
                         <div class="product-item">
                             <div class="pi-pic">
                                 <img src="{{ asset('lte/dist/img/product/' . $product2->product_image )}}" alt="">

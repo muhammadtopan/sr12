@@ -43,7 +43,7 @@
         margin: 0,
         nav: false,
         items: 1,
-        dots: true,
+        dots: false,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
         // navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
@@ -63,14 +63,17 @@
         nav:false,
         autoHeight:true,
         responsive:{
-            0:{
-                items:3
+            0: {
+                items: 3,
             },
-            600:{
-                items:3
+            576: {
+                items: 5,
             },
-            1000:{
-                items:7
+            992: {
+                items: 7,
+            },
+            1200: {
+                items: 7,
             }
         }
     })
@@ -79,12 +82,12 @@
         Product Slider
     --------------------*/
    $(".product-slider").owlCarousel({
-        loop: true,
+        loop: false,
         margin: 25,
-        nav: true,
-        items: 4,
-        dots: true,
-        navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+        nav: false,
+        // items: 4,
+        dots: false,
+        // navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
         smartSpeed: 1200,
         autoHeight: false,
         autoplay: true,
@@ -99,7 +102,7 @@
                 items: 5,
             },
             1200: {
-                items: 5,
+                items: 6,
             }
         }
     });
@@ -124,10 +127,10 @@
                 items: 6,
             },
             992: {
-                items: 6,
+                items: 8,
             },
             1200: {
-                items: 6,
+                items: 8,
             }
         }
     });
@@ -136,7 +139,7 @@
         All Product Slider
     --------------------*/
    $(".package-slider").owlCarousel({
-        loop: true,
+        loop: false,
         margin: 15,
         center:false,
         nav: false,
@@ -147,10 +150,10 @@
                 items: 3,
             },
             576: {
-                items: 7,
+                items: 5,
             },
             992: {
-                items: 7,
+                items: 5,
             },
             1200: {
                 items: 7,
@@ -412,7 +415,7 @@
         margin:10,
         nav:false,
         autoplay: true,
-        smartSpeed: 2400,
+        smartSpeed: 640,
         responsive:{
             0:{
                 items:3
@@ -479,7 +482,7 @@
                 items:2
             },
             1000:{
-                items:2
+                items:3
             }
         }
     })

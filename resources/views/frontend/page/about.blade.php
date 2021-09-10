@@ -18,17 +18,17 @@
     </div> -->
     <!-- Breadcrumb Form Section Begin -->
     
-    <section class="mt-3 set-bg pt-5">
+    <section class="mt-3 set-bg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 set-bg" data-setbg="{{ asset('frontend/img/logo.png')}}">
-                    <!-- <div class="logo-about">
-                        <a href="#"><img src="{{ asset('frontend/img/logo.png') }}" alt=""></a>
-                    </div> -->
+                <div class="col-sm-12 text-center">
+                    <!-- <div class="logo-about"> -->
+                        <img src="{{ asset('frontend/img/logo.png') }}" alt="">
+                    <!-- </div> -->
                 </div>
-                <div class="col-lg-5">
-                    <div class="card">
-                        <div class="card-body bg-warning">
+                <div class="col-lg-6">
+                    <div class="card bg-warning mb-2">
+                        <div class="card-body">
                             <h4 class="text-center"><b>SR12 HERBAL SKINCARE</b></h4>
                             <hr class="text-light">
                             <div class="ml-4">
@@ -44,11 +44,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <div class="card">
-                        <div class="card-body bg-warning">
+                <div class="col-lg-6">
+                    <div class="card bg-warning">
+                        <div class="card-body mada">
 
-                            <h4 class="mb-2"><b> SKIN RELIEVE 12 MASALAH KULIT :</b></h4>
+                            <h4 class="mb-2 text-center"><b> SKIN RELIEVE 12 MASALAH KULIT:</b></h4>
                             <hr>
                             <div class="row mb-5">
                                 <div class="col-md-5 ml-4">
@@ -76,7 +76,7 @@
     </section>
 
     <!-- PROFIL COMPANY SR12 Begin -->
-    <section class="latest-blog spad ">
+    <section class="latest-blog spad py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
+                <div class="col-md-4">
                     <div class="single-latest-blog">
                         <div class="latest-text">
                             <a href="#">
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-md-4">
                     <div class="single-latest-blog">
                         <div class="latest-text">
                             <a href="#">
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+                <div class="col-md-4">
                     <div class="single-latest-blog">
                         <div class="latest-text">
                             <a href="#">
@@ -122,7 +122,7 @@
     <!-- PROFIL COMPANY SR12 End -->
 
     <!-- SR12 HERBAL SKINCARE Begin -->
-    <section class="latest-blog spad">
+    <section class="latest-blog spad py-0">
         <div class="container blog-details-inner">
             <div class="row">
                 <div class="col-lg-12">
@@ -131,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div class="blog-post">
+            <div class="blog-post pt-0 mb-0">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 prev-blog mb-4">
                         <div class="pb-pic">
@@ -144,7 +144,7 @@
                     </div>
                     <div class="col-lg-4 col-md-6 prev-blog mb-4">
                         <div class="pb-pic">
-                            <img src="{{asset('frontend/img/about/asd/2.jpg')}}" alt="">
+                            <img src="{{asset('frontend/img/about/2.jpg')}}" alt="">
                         </div>
                         <div class="pb-text">
                             <span>Diskon Reseler</span>
@@ -194,7 +194,7 @@
     <!-- SR12 HERBAL SKINCARE End -->
 
     <!-- SENIOR DISTRIBUTOR SR12 HERBAL SKINCARE Begin -->
-    <section class="latest-blog spad">
+    <section class="latest-blog spad pt-4 pb-0">
         <div class="container blog-details-inner">
             <div class="row">
                 <div class="col-lg-12">
@@ -203,7 +203,7 @@
                     </div>
                 </div>
             </div>
-            <div class="blog-detail-desc">
+            <div class="blog-detail-desc my-0">
                 <p>
                     SR12 Herbal Skincare adalah perusahaan yang bergerak menumbuhkembangkan ekonomi masyarakat Indonesia. Membuka peluang usaha dan bisnis untuk setiap orang yang mau berjuang dan siap untuk tumbuh, dimana peluang Distributor terbuka lebar untuk semua Mitra SR12. Kami merupakan Senior Distributor SR12 sejak 2017 dan siap membantu mitra-mitra baru yang ingin bergabung dan tumbuh bersama kami.
                 </p>
@@ -219,7 +219,7 @@
     <!-- SENIOR DISTRIBUTOR SR12 HERBAL SKINCARE End -->
 
     <!-- KEUNTUNGAN BELANJA DI MARKETPLACE SR12 HERBAL STORE Begin -->
-    <section class="latest-blog spad">
+    <section class="latest-blog spad py-5">
         <div class="container blog-details-inner">
             <div class="row">
                 <div class="col-lg-12">
@@ -227,36 +227,36 @@
                         <h2>KEUNTUNGAN BELANJA DI MARKETPLACE SR12 HERBAL STORE</h2>
                     </div>
                     <div class="row">
-                        <div class="blog-quote col-lg-12 col-md-12">
+                        <div class="blog-quote col-sm-12 mt-0 pl-5">
                             <ul>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Mendapatkan akun konsumen AKUN BELANJAKU sehingga bisa belanja produk SR12 dimana saja (melalui website marketplace SR12 Herbal Store)
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Bisa mendapatkan produk SR12 dari Mitra terdekat di setiap Kota/Kabupaten di seluruh Indonesia
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Biaya ongkir lebih murah karena produk dikirim dari mitra terdekat
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Mendapatkan Voucher Point dari setiap total pembelanjaan dan bisa ditukarkan dengan Give menarik untuk langganan setia SR12 Herbal Store
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Beli produk SR12 1 Pcs berpeluang menjadi Mitra SR12, khusus Marketer
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Dapat Sharing Profit sebesar 15% dari totalan omset produk (khusus Marketer)
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Sharing Profit dapat dicairkan setiap awal bulan sesuai syarat dan ketentuan Marketer
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Bisa ikut jualan dan promosi melalui sistem dropship (Hubungi admin website)
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Mendapatkan konsultasi gratis manfaat produk dan konsultasi masalah kulit 
                                 </li>
-                                <li>
+                                <li style="text-align: justify; text-justify: newspaper">
                                     Ketersediaan dan keaslian produk terjamin 
                                 </li>
                             </ul>
@@ -326,22 +326,24 @@
             </div>
         </div>
         <div class="blog-more">
-            <div class="row text-center">
-                <div class="col-sm-3">
-                    <img src="{{asset('frontend/img/about/syarat/syarat_marketer.jpeg')}}" alt="">
-                    <p>Untuk syarat lengkapnya <a href="{{ route('syarat-marketer') }}">(KLIK DISINI)</a></p>
-                </div>
-                <div class="col-sm-3">
-                    <img src="{{asset('frontend/img/about/syarat/syarat_reseller.jpeg')}}" alt="">
-                    <p>Untuk syarat lengkapnya <a href="{{ route('belanjaHemat') }}">(KLIK DISINI)</a></p>
-                </div>
-                <div class="col-sm-3">
-                    <img src="{{asset('frontend/img/about/syarat/syarat_sub_agen.jpeg')}}" alt="">
-                    <p>Untuk syarat lengkapnya <a href="{{ route('peluangBisnis') }}">(KLIK DISINI)</a></p>
-                </div>
-                <div class="col-sm-3">
-                    <img src="{{asset('frontend/img/about/syarat/syarat_agen.jpeg')}}" alt="">
-                    <p>Untuk syarat lengkapnya <a href="{{ route('peluangBisnis') }}">(KLIK DISINI)</a></p>
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-sm-6 col-lg-3">
+                        <img src="{{asset('frontend/img/about/syarat/syarat_marketer.jpeg')}}" alt="">
+                        <p>Untuk syarat lengkapnya <a href="{{ route('syarat-marketer') }}">(KLIK DISINI)</a></p>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <img src="{{asset('frontend/img/about/syarat/syarat_reseller.jpeg')}}" alt="">
+                        <p>Untuk syarat lengkapnya <a href="{{ route('belanjaHemat') }}">(KLIK DISINI)</a></p>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <img src="{{asset('frontend/img/about/syarat/syarat_sub_agen.jpeg')}}" alt="">
+                        <p>Untuk syarat lengkapnya <a href="{{ route('peluangBisnis') }}">(KLIK DISINI)</a></p>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <img src="{{asset('frontend/img/about/syarat/syarat_agen.jpeg')}}" alt="">
+                        <p>Untuk syarat lengkapnya <a href="{{ route('peluangBisnis') }}">(KLIK DISINI)</a></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -349,7 +351,7 @@
     <!-- KEUNTUNGAN BELANJA DI MARKETPLACE SR12 HERBAL STORE End -->
 
     <!-- National Distibutor Convention (NDC) Begin -->
-    <section class="latest-blog spad">
+    <section class="latest-blog spad py-0">
         <div class="container blog-details-inner">
             <div class="row">
                 <div class="col-lg-12">
@@ -363,63 +365,9 @@
                     </div>
                 </div>
             </div>
-            <div class="benefit-items">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                Hari/tanggal 
-                            </div>
-                            <div class="col-md-9">
-                                :
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                Tempat 
-                            </div>
-                            <div class="col-md-9">
-                                : Jayakarta Bogor
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                Kegiatan
-                            </div>
-                            <div class="col-md-9">
-                                : NDC & Gathering
-                            </div>
-                        </div>
-                        <img src="{{asset('frontend/img/about/ndc/ndc3.jpg')}}" alt="">
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="row">
-                            <div class="col-md-3">
-                                Hari/tanggal 
-                            </div>
-                            <div class="col-md-9">
-                                :
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                Tempat 
-                            </div>
-                            <div class="col-md-9">
-                                : Aston Priority, Jakarta Selatan
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                Kegiatan
-                            </div>
-                            <div class="col-md-9">
-                                : NDC & Annivesary
-                            </div>
-                        </div>
-                        <img src="{{asset('frontend/img/about/ndc/ndc3.jpg')}}" alt="">
-                    </div>
-                    <div class="col-lg-4">
+            <div class="benefit-items mt-0">
+                <!-- <div class="row">
+                    <div class="col-lg-4"> -->
                         <div class="row">
                             <div class="col-md-3">
                                 Hari/tanggal 
@@ -445,8 +393,8 @@
                             </div>
                         </div>
                         <img src="{{asset('frontend/img/about/ndc/ndc3.jpg')}}" alt="">
-                    </div>
-                </div>
+                    <!-- </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -454,7 +402,7 @@
 
 
     <!-- Kategori & Katalog Produk SR12 Skincare  Begin -->
-    <section class="latest-blog spad">
+    <section class="latest-blog spad py-5">
         <div class="container blog-details-inner">
             <div class="row">
                 <div class="col-lg-12">
@@ -463,7 +411,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="single-latest-blog">
+                            <div class="single-latest-blog pl-4">
                                 <ul>
                                     <li>
                                         Berikut ini merupakan katalog produk sr12 terbaru dengan beberapa update harga dan penambahan produk baru. 
@@ -518,7 +466,7 @@
                             <h3 class="text-center">Daftar Harga Produk SR12 Skincare Terbaru</h3>
                         </div>
                         <div class="col-md-1">
-                        </div>
+                        </div> 
                         <div class="col-md-10">
                             <table class="table table-hover text-center">
                                 <thead class="bg-warning">
@@ -530,17 +478,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($product as $no => $p)
-                                        <tr>
-                                            <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>
-                                                <a href="{{ route('detail_product',$p->product_id)}}">
-                                                        {{ $p->product_name }}
-                                                </a>
+                                    @foreach($product as $no => $asd)
+                                        <tr class="bg-secondary text-light">
+                                            <td scope="row">#</td>
+                                            <td class="text-left" colspan="3">
+                                                        {{ $asd['category'] }}
                                             </td>
-                                            <td>{{ $p->product_netto.$p->product_unit_netto }}</td>
-                                            <td>Rp {{ number_format($p->product_price,0,',','.') }}</td>
                                         </tr>
+                                        @foreach($asd['pdc'] as $n => $p)
+                                            <tr>
+                                                <td scope="row">{{ $loop->iteration }}</td>
+                                                <td>
+                                                    <a href="{{ route('detail_product',$p->product_id)}}">
+                                                            {{ $p->product_name }}
+                                                    </a>
+                                                </td>
+                                                <td>{{ $p->product_netto.$p->product_unit_netto }}</td>
+                                                <td>Rp {{ number_format($p->product_price,0,',','.') }}</td>
+                                            </tr>
+                                        @endforeach
                                     @endforeach
                                 </tbody>
                             </table>
