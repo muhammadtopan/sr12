@@ -405,6 +405,7 @@
                 $('#product_name').val(product.product_name);
                 $('#product_bpom').val(product.product_bpom);
                 $('#product_netto').val(product.product_netto);
+                $('#product_unit_netto').val(product.product_unit_netto);
                 $('#product_weight').val(product.product_weight);
                 $('#product_unit').val(product.product_unit);
                 $('#summernote').summernote("code", product.product_desk);
@@ -421,6 +422,7 @@
             $('#product_name').val('');
             $('#product_bpom').val('');
             $('#product_netto').val('');
+            $('#product_unit_netto').val('');
             $('#product_weight').val('');
             $('#product_unit').val('');
             $('#summernote').summernote('code','');

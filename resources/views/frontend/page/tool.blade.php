@@ -22,7 +22,7 @@
     <section class="product-shop spad pb-0">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 border">
+                <div class="col-md-3 border">
                     <div class="filter-widget">
                         <h4 class="fw-title">MITRA RESMI SR12</h4>
                         <ul class="ml-3">
@@ -42,7 +42,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 order-1 order-lg-2">
+                <div class="col-md-9 order-1 order-lg-2">
                     <div class="product-list">
                         <div class="row">
                             <div class="col-lg-12">
@@ -54,7 +54,7 @@
                                         <div class="col-lg-6">
                                             <div class="blog-details-inner">
                                                 <div class="blog-detail-title align-middle">
-                                                    <h4>Halaman ini hanya bisa diakses oleh Mitra sudah bergabung di SR12 Spotlight Team. Untuk kamu yang ingin bergabung silahkan membaca <a href="{{ route('belanjaHemat') }}">Syarat dan Ketentuan</a> Terlebih dahulu</h4>
+                                                    <h4  class="text-justify">Halaman ini hanya bisa diakses oleh Mitra sudah bergabung di SR12 Spotlight Team. Untuk kamu yang ingin bergabung silahkan membaca <a href="{{ route('belanjaHemat') }}">Syarat dan Ketentuan</a> Terlebih dahulu</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,29 +116,28 @@
                         <h2>Konsep dan Kurikulum Bisnis SR12</h2>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <div class="owl-carousel owl-ilmu-strategi">
-
-                                <div class="item text-center">
+                        <!-- <div class="col-md-12"> -->
+                            <!-- <div class="owl-carousel owl-ilmu-strategi"> -->
+                                <div class="text-center col-4">
                                     <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                                         <img src="{{asset('frontend/img/mitra/ilmu6.jpeg')}}" alt="">
                                     </a>
                                     <span >Rumus Menghasilkan Cuan</span>
                                 </div>
-                                <div class="item text-center">
+                                <div class="text-center col-4">
                                     <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                                         <img src="{{asset('frontend/img/mitra/ilmu7.jpeg')}}" alt="">
                                     </a>
                                     <span >Home Sharing</span>
                                 </div>
-                                <div class="item text-center">
+                                <div class="text-center col-4">
                                     <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                                         <img src="{{asset('frontend/img/mitra/ilmu8.jpeg')}}" alt="">
                                     </a>
                                     <span >Kurikulum Mitra SR12</span>
                                 </div>
-                            </div>
-                        </div>
+                            <!-- </div> -->
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>

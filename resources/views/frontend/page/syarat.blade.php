@@ -22,7 +22,7 @@
     <section class="product-shop spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 border">
+                <div class="col-md-3 border">
                     <div class="filter-widget">
                         <h4 class="fw-title">MITRA RESMI SR12</h4>
                         <ul class="ml-3">
@@ -31,7 +31,7 @@
                             <li><a href="#" onclick="syaratPage('syarat3')">Ketentuan Umum</a></li>
                             <li><a href="#" onclick="syaratPage('syarat4')">Target Mitra</a></li>
                             <li>
-                                <a href="#">
+                                <a href="#" onclick="syaratPage('syarat5')">
                                     Cara Gabung
                                 </a>
                                 <ul class="pl-4">
@@ -56,7 +56,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 order-1 order-lg-2">
+                <div class="col-md-9 order-1 order-lg-2">
                     <div class="product-list">
                         <div class="row">
                             <div class="col-lg-12">
@@ -65,7 +65,7 @@
                                         <h3>PERSEBARAN MITRA</h3>
                                     </div>
                                     <div class="blog-detail-desc">
-                                        <p>
+                                        <p class="text-justify">
                                             SR12 Herbal Store adalah marketplace khusus produk SR12 Herbal Skincare. Marketplace ini menyediakan pemasaran produk SR12 Herbal Skincare untuk seluruh wilayah indonesia, mulai dari Pulau Jawa, Pulau Sumatera, Kalimantan, Sulawesi, Nusa Tenggara, Maluku, dan sampai pulau Papua. Di samping itu, pemasaran produk SR12 juga sudah masuk pemasaran Luar Negeri. Melalui marketplace ini, konsumen bisa mendapatkan produk SR12 dari mitra terdekat yang berada di Kota/ Kabupaten tempat tinggal atau sesuai domisislinya. Marketplace ini juga sangat membantu bagi konsumen menemukan Mitra Resmi SR12 setiap kota/ kabupaten jika sedang tidak berada di daerah domisili (luar kota)
                                         </p>
                                         <p>Untuk lebih bisa melihat persebaran mitra SR12 Herbal Store, silahkan cek untuk daerah berikut:</p>
@@ -136,37 +136,37 @@
                                     <div class="posted-by mt-5">
                                         <div class="pb-text">
                                             <h5>Ekonomi Umat :</h5>
-                                            <p>
+                                            <p class="text-justify">
                                                 Setiap orang bisa bergabung di bisnis SR12, karena untuk gabung di bisnis SR12 tidak harus dengan modal besar. Maka secara tidak langsung Bisnis SR12 telah menjadi lapangan pekerjaan bagi siapapun yang memiliki semangat dalam melakukan jual beli dan bisnis. Sehingga bisnis SR12 juga dapat membantu meningkatkan perekonomian di lingkungan kita.
                                             </p>
                                         </div>
                                         <div class="pb-text">
                                             <h5>Kebermanfaatan :</h5>
-                                            <p>
+                                            <p class="text-justify">
                                                 Gabung dengan SR12 sama halnya dengan bergabung untuk menebar manfaat bagi sesama. Selain membantu sesama dalam memenuhi kebutuhannya, SR12 juga membantu sesama untuk memperbaki perekonomian dalam hal ini mengurangi angka pengangguran dan kemiskinan dilingkungan tempat tinggal.
                                             </p>
                                         </div>
                                         <div class="pb-text">
                                             <h5>Mentoring Bisnis :</h5>
-                                            <p>
+                                            <p class="text-justify">
                                                 Dengan adanya mentoring dalam menjalankan bisnis kita diharapkann bisnis yang kita jalankan akan tetap maju dan berkembang meskipun kita menemui kendala dan tantangan dalam menjalankannya.
                                             </p>
                                         </div>
                                         <div class="pb-text">
                                             <h5>Mitra Tersebar :</h5>
-                                            <p>
+                                            <p class="text-justify">
                                                 Bisnis SR12 membuka peluang untuk semua orang dimanapun berada, sehingga persebaran mitra / penjual resmi produk SR12 tersebar di setiap Kota/ Kabupaten. Jika di suatu Kota/ Kabupaten belum ada mitra SR12 Herbal Store, maka kamu berpeluang besar menjadi mitra utama di Kota/ Kabupaten tersebut.
                                             </p>
                                         </div>
                                         <div class="pb-text">
                                             <h5>Mudah Digunakan :</h5>
-                                            <p>
+                                            <p class="text-justify">
                                                 Produk SR12 Herbal Skincare adalah produk yang pada umumnya dibutuhkan oleh pria dan wanita. Baik untuk kesehatan kulit, perawatan tubuh maupun untuk kebutuhan kesehatan tubuh. Produk yang dipasarkan adalah produk yang aman dan sudah terdaftar BPOM. Produk herbal yang dipasarkan juga aman dikonsumsi oleh setiap umur. Belanja di Marketplace SR12 Herbal Store sangatlah mudah, tidak ribet, pilih produk, tinggal pilih di daerah mana kita mau belanja, transfer, dan tunggu produk sampai diantarkan kurir.
                                             </p>
                                         </div>
                                         <div class="pb-text">
                                             <h5>Produk Lengkap :</h5>
-                                            <p>
+                                            <p class="text-justify">
                                             SR12 herbal store adalah marketplace khusus produk SR12 Herbal skincare yang merupakan kumpulan mitra (penjual) produk SR12 di setiap Kota/ Kabupaten yang tersebar di seluruh wilayah Indonesia. Sehingga bisa menjamin untuk ketersediaan produk SR12
                                             </p>
                                         </div>
@@ -223,7 +223,7 @@
                                         <li>Mendapatkan support sistem</li>
                                         <li>Dibimbing cara membangun bisnis dari Level Marketer sampai posisi Distributor</li>
                                     </ul>
-                                    <p class="mt-5">
+                                    <p class="mt-5 text-justify">
                                         Kami sangat menyadari bahwa hampir setiap orang kini menginginkan sebuah bisnis yang benar-benar menghasilkan dan bisa dikerjakan dari rumah. Akan tetapi, sebagian besar bingung bagaimana memulainya? Produknya? cara jualannya?
                                     </p>
                                     <p>
@@ -238,7 +238,7 @@
                                         <li>Udah punya produk tapi nggak tau caranya</li>
                                         <li>Penghasilan kembang kempis tak bisa buat tabungan</li>
                                     </ul>
-                                    <p class="mt-5">
+                                    <p class="mt-5 text-justify">
                                         Kabar baiknya bergabung di bisnis ini kami akan mengajari bagaimana berbisnis dengan SR12 skincare yang terbukti telah membantu banyak mitranya memiliki kualitas hidup yang lebih baik.
                                     </p>
                                 </div>
@@ -246,42 +246,42 @@
                                     <div class="section-title tools">
                                         <h3>BAGAIMANA PERSYARATAN MENJADI MITRA SR12?</h3>
                                     </div>
-                                    <p class="mt-5">
+                                    <p class="mt-5 text-justify">
                                         Berikut akan dijelaskan persyaratan mulai jadi Marketer sampai Distributor Mitra SR12.
                                         Persyaratan ini sesuai dengan Update Kode Etik & Peraturan Kemitraan SR12 2021
                                     </p>
                                     <h4>Cara gabung jadi MARKETER SR12</h4>
                                     <i>(Tingkatan paling ringan, cocok untuk pemula/dipakai sendiri)</i>
                                     <ul class="list-group list-group-flush">
-                                        <li>Tanpa minimal order, akad atau perjanjian awal adalah bekerja dengan sistem pemabayaran komisi dibayarkan awal bulan atau setiap tanggal 1 (satu) bulan berikutnya. Contoh : Penjualan dilakukan di bulan Januari maka pembayaran komisi diberikan bulan Februari.</li>
-                                        <li>Penjualan dilakukan secara online dan offline. Pengiriman dropship dilakukan oleh leader tempat bergabung atau terdaftar.</li>
-                                        <li>Pembayaran dropship ditransfer ke rekening leader tempat bergabung atau yang mengajak bergabung bisnis.</li>
+                                        <li class="text-justify">Tanpa minimal order, akad atau perjanjian awal adalah bekerja dengan sistem pemabayaran komisi dibayarkan awal bulan atau setiap tanggal 1 (satu) bulan berikutnya. Contoh : Penjualan dilakukan di bulan Januari maka pembayaran komisi diberikan bulan Februari.</li>
+                                        <li class="text-justify">Penjualan dilakukan secara online dan offline. Pengiriman dropship dilakukan oleh leader tempat bergabung atau terdaftar.</li>
+                                        <li class="text-justify">Pembayaran dropship ditransfer ke rekening leader tempat bergabung atau yang mengajak bergabung bisnis.</li>
                                         <li>
                                             Komisi 15% cair setiap akumulasi pembelian 500.000 (lima ratus ribu rupiah)
                                             <ul class="list-group list-group-flush">
                                                 <li>Contoh 1 :</li>
-                                                <li>
+                                                <li class="text-justify">
                                                     Marketer A pada bulan Januari 2021 melakukan penjualan sebesar 400.000,- (empat ratus ribu rupiah) maka akhir bulan marketer A tidak menerima komisi penjualan, bulan Februari 2021 marketer melakukan penjualan sebesar 300.000,- (tiga ratus ribu rupiah). maka akumulasi penjualan 2 (dua) bulan tersebut sebesar 700.000,- (tujuh ratus ribu rupiah) dikalikan 15% dan menjadi hak marketer yang akan dibayarkan pada awal bulan maret 2021.
                                                 </li>
                                                 <li>
                                                     Contoh 2 :
                                                 </li>
-                                                <li>
+                                                <li class="text-justify">
                                                     Marketer B pada bulan Januari 2021 melakukan penjualan sebesar 200.000,- (dua ratus ribu rupiah), maka akhir bulan ybs tidak akan menerima komisi penjualan. Bulan Februari 2021 mareketer melakukan penjualan kembali sebesar 200.000,- (dua ratus ribu rupiah), maka marketer masih belum mendapatkan komisi. Bulan Maret 2021 melakukan penjualan lagi sebesar 100.000,- (seratus ribu rupiah). maka akumulasi penjualan 3 (tiga) bulan tersebut sebesar 500.000,- (lima ratus ribu rupiah) dikalikan 15% dan menjadi hak marketer yang akan dibayarkan pada awal bulan April 2021.
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Jika dalam 3 (tiga) bulan berturut-turut memenuhi omset 800.000,- (delapan ratus ribu rupiah), maka secara otomatis di bulan ke empat akan naik ke posisi Reseler (Jalur Prestasi).
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Jika terjadi perselisihan terkait pembayaran hak marketer, agar dapat diselesaikan secara kekeluargaan dengan prinsip saling menguntungkan dan yang paling kecil kerugian yang ditimbulkan
                                         </li>
                                     </ul>
-                                    <p class="mt-5">
+                                    <p class="mt-5 text-justify">
                                         Di SR12 Herbal Store kami menyaring calon mitra yang benar-benar serius. Untuk menjadi marketer hanya diperlukan belanja awal salah satu produk saja untuk membuktikan manfaat dari produk yang akan kita promosikan kembali. Posisi marketer ini sangat cocok untuk kamu yang ingin coba-coba berbisnis ataupun pemakaian produk untuk dipakai sendiri.
                                     </p>
-                                    <p>
+                                    <p class="text-justify">
                                         Artinya:
                                         Komisi 15% setiap kali pembelian produk sudah pasti didapat. Syarat pencairan komisi dapat diakumulasikan, artinya jika setiap omset total lebih besar atau sama dengan 500rb omset, maka komisi bisa diberikan. Nggak ada ruginya kan?
                                     </p>
@@ -290,29 +290,29 @@
                                     <div class="section-title tools">
                                         <h3>BAGAIMANA PERSYARATAN MENJADI MITRA SR12?</h3>
                                     </div>
-                                    <p class="mt-5">
+                                    <p class="mt-5 text-justify">
                                         Berikut akan dijelaskan persyaratan mulai jadi Marketer sampai Distributor Mitra SR12.
                                         Persyaratan ini sesuai dengan Update Kode Etik & Peraturan Kemitraan SR12 2021
                                     </p>
                                     <h4>Cara gabung jadi RESELER SR12</h4>
                                     <i>(Rekomendasi untuk yg hobi jualan & mendapatkan Tools promosi dari kami)</i>
                                     <ul class="list-group list-group-flush">
-                                        <li>
+                                        <li class="text-justify">
                                             Melakukan order pertama (first order) senilai minimal 500.000,- (lima ratus ribu rupiah) atau 400.000,- (empat ratus ribu rupiah) setelah diskon 20%
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Khusus yang telah menjadi mitra (Marketer), kesempatan menjadi Reseler melalui jalur omset minimal 800.000,- (delapan ratus ribu rupiah) dengan omset pribadi minimal 300.000,- (tiga ratus ribu rupiah) berturut-turut selama 3 (tiga) bulan.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Repeat order minimal untuk mitra reseler adalah 50.000,- (lima puluh ribu rupiah) sebelum diskon, jika di bawah ketentuan tersebut maka akan diberikan diskon sebesar 15%.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Omset minimal 500.000,- (lima ratus ribu rupiah) per bulan dengan omset pribadi minimal 200.000,- (dua ratus ribu rupiah).
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Jika dalam 1 (satu) bulan tidak dapat mencapai omset minimal, maka bulan berikutnya akan mendapatkan sanksi potongan menjadi 15% dengan masa dispensasi 3 (tiga) bulan.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Jika setelah masa dispensai berakhir tetap tidak dapat memenuhi omset dan omset pribadi minimal, maka tingkatan mitra otomatis menjadi marketer, kesempatan menjadi reseler dan mendapatkan diskon 20% akan diberikan kembali jika ketentuan nomor 1 atau 2 di atas terpenuhi.
                                         </li>
                                     </ul>
@@ -329,29 +329,29 @@
                                     <div class="section-title tools">
                                         <h3>BAGAIMANA PERSYARATAN MENJADI MITRA SR12?</h3>
                                     </div>
-                                    <p class="mt-5">
+                                    <p class="mt-5 text-justify">
                                         Berikut akan dijelaskan persyaratan mulai jadi Marketer sampai Distributor Mitra SR12.
                                         Persyaratan ini sesuai dengan Update Kode Etik & Peraturan Kemitraan SR12 2021
                                     </p>
                                     <h4>Cara gabung jadi SUB-AGEN SR12</h4>
                                     <i>(Rekomendasi untuk yg hobi jualan & siap stok produk, serta mendapatkan akun promosi dari kami)</i>
                                     <ul class="list-group list-group-flush">
-                                        <li>
+                                        <li class="text-justify">
                                             Melakukan order pertama (First order) senilai minimal 5.000.000,- (lima juta rupiah) omset atau 3.500.000,- (tiga juta lima ratus ribu rupiah) setelah diskon 30%.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Khusus yang telah menjadi mitra, kesempatan menjadi sub agen melalui jalur omset minimal 4.000.000,- (empat juta rupiah) dengan omset pribadi minimal 3.000.000,- (tiga juta rupiah) berturut-turut selama 3 (tiga) bulan.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Repeat oredr minimal 1.000.000,- (satu juta rupiah) setelah diskon 30%, jika di bawah minimal ketentuan RO maka diberikan diskon reseler sebesar 20%.
                                         </li>
                                         <li>
                                             Omset minimal 4.000.000,- (empat juta rupiah) per bulan.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Jika dalam 3 bulan berturut-turut sub agen tidak dapat mencapai omset minimal maka memasuki bulan ke-4 (empat) status mitra akan diturunkan ke tingkatan di bawahnya.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Kesempatan menjkadi sub agen kembali jika salah satu dari nomor 1 atau 2 di atas terpenuhi.
                                         </li>
                                     </ul>
@@ -374,35 +374,35 @@
                                     <div class="section-title tools">
                                         <h3>BAGAIMANA PERSYARATAN MENJADI MITRA SR12?</h3>
                                     </div>
-                                    <p class="mt-5">
+                                    <p class="mt-5 text-justify">
                                         Berikut akan dijelaskan persyaratan mulai jadi Marketer sampai Distributor Mitra SR12.
                                         Persyaratan ini sesuai dengan Update Kode Etik & Peraturan Kemitraan SR12 2021
                                     </p>
                                     <h4>Cara gabung jadi AGEN SR12</h4>
                                     <i>(Rekomendasi untuk sistem grosir & berpeluang menjadi Distributor setiap Kota/kabupaten)</i>
                                     <ul class="list-group list-group-flush">
-                                        <li>
+                                        <li class="text-justify">
                                             Melakukan order pertama (First order) kepada distributor atau agen senilai minimal 25.000.000,- (dua puluh lima juta rupiah) atau 15.000.000,- (lima belas juta rupiah) setelah diskon 40%.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Khusus yang telah menjadi mitra, kesempatan menjadi agen melalui jalur omset minimal 15.000.000,- (lima belas juta rupiah) dengan omset pribadi minimal 10.000.000,- (sepuluh juta rupiah) berturut-turut selama 3 (tiga) bulan.
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Repeat order minimal 2.000.000 (dua juta rupiah) setelah diskon 40%. Jika agen melakukan RO di bawah ketentuan minimal, maka diberlakukan diskon sesuai minimal pembelanjaan yang dilakukan.
                                             <p>Contoh :</p>
                                             <ul class="list-group list-group-flush">
-                                                <li>
+                                                <li class="text-justify">
                                                     Repeat order di bawah 2.000.000,- (dua juta rupiah) namun di atas atau sama dengan 1.000.000,- (satu juta rupiah) maka diberikan diskon Sub Agen sebesar 30%.
                                                 </li>
-                                                <li>
+                                                <li class="text-justify">
                                                     Repeat order di bawah 1.000.000,- (satu juta rupiah) maka diberikan diskon reseler sebesar 20%
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Omset minimal agen ditetapkan sebesar 15.000.000,- (lima belas juta rupiah) perbulan
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Jika dalam 3 (tiga) bulan berturut-turut, agen tidak dapat mencapai omset minimal sesuai ketentuan maka memasuki bulan ke-4 (empat) status mitra akan diturunkan ke tingkatan mitra di bawahnya. Kesempatan menjadi agen kembali jika salah satu dari nomor 1 atau 2 di atas terpenuhi.
                                         </li>
                                     </ul>
@@ -445,7 +445,7 @@
                                         <li>
                                         Produk yang dipasarkan sudah melalui serangkaian uji yang ketat sehingga terbukti aman dan sudah terdaftar BPOM.
                                         </li>
-                                        <li>
+                                        <li  class="text-justify">
                                         Sudah ada ribuan testimoni positif bertebaran di dunia digital. Artinya produk yang kami pasarkan sudah diterima oleh masyarakat. Kamu bisa menemukannya di internet, marketplace, bahkan ketika sedang bersosial media.
                                         </li>
                                         <li>
@@ -478,14 +478,14 @@
                                     <div class="section-title tools">
                                         <h3>KESIMPULAN</h3>
                                     </div>
-                                    <P>
+                                    <P class="text-justify">
                                         Cara untuk menjadi Mitra SR12 ataupun bergabung dengan bisnis SR12 sangatlah mudah. Untuk pemula cocok memilih tingkatan Marketer (cukup dengan membeli satu produk SR12), program Marketer cocok juga buat kamu yang ingin belanja lebih murah baik untuk pemakaian sendiri maupun untuk penjualan secara offline. Jika kamu ingin lebih serius jualan maka lebih baik ambil program Reseler. Tingkatan Reseler (first order sebesar 500rb produk langsung diskon 20%), sedangkan untuk yang ingin serius dan sudah punya basic jualan online atau offline kami sarankan ambil jalur kemitraan Sub Agen atau Agen.
                                     </P>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>
                                             Hubungi kami lewat whatsapp (klik logo whatsaap di kanan bawah)
                                         </li>
-                                        <li>
+                                        <li class="text-justify">
                                             Pilih leader yang sesuai atau yang paling dekat dengan domisilimu. Hal ini berguna untuk meminimalisir ongkos kirim dan mempermudah konsultasi apabila ingin konsultasi kopdar.
                                         </li>
                                         <li>

@@ -25,12 +25,9 @@ class HomeController extends Controller
     {
         $allproduct = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
-                    ->select('tb_product.*', 'tb_category.category_name')
-                    ->limit(13)
                     ->get();
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
-                    ->select('tb_product.*', 'tb_category.category_name')
                     ->where('tb_product.product_best','on')
                     ->get();
 
@@ -75,8 +72,58 @@ class HomeController extends Controller
 
     public function about()
     {
-        $product = DB::table('tb_product')
-                    ->get();
+
+        // $kategori_soal = DB::table('tb_kategori_soal')
+        //         ->where('kategori_id', $id)
+        //         ->first();
+
+        // $soal = DB::table('tb_master_soal')
+        //             ->where('soal_kategori_id', $id)
+        //             ->get();
+
+        // $mapel = DB::table('tb_mapel')
+        //             ->get();
+        // $mapelsupmapel = [];
+
+        // foreach($mapel as $no => $mpl){
+
+        //     $submapel = DB::table('tb_submapel')
+        //             ->select(DB::raw('COUNT(tb_master_soal.soal_submapel_id) as total'), 'tb_submapel.*')
+        //             ->leftJoin('tb_master_soal', 'tb_master_soal.soal_submapel_id', 'tb_submapel.submapel_id')
+        //             ->where('tb_submapel.submapel_mapel_id', $mpl->mapel_id)
+        //             ->groupBy('tb_submapel.submapel_id')
+        //             ->get();
+
+        //     array_push($mapelsupmapel, [
+        //         "mapel" => $mpl->mapel_kategori,
+        //         "submapel" => $submapel
+        //     ]);
+        // }
+
+
+        // return view('backend/pages/soal/soal-kategori',[
+        //     'active' => 'soal',
+        //     'kategori_soal' => $kategori_soal,
+        //     'soal' => $soal,
+        //     'mapelsupmapel' => $mapelsupmapel,
+        // ]);
+
+
+        $category = DB::table('tb_category')->get();
+        $product = [];
+
+        foreach ($category as $no => $cat) {
+            $pdc = DB::table('tb_product')
+                        ->where('category_id', $cat->category_id)
+                        ->get();
+
+            array_push($product, [
+                "category" => $cat->category_name,
+                "pdc" => $pdc
+            ]);
+        }
+
+        // dd($product);
         $active = "about";
         return view(
             'frontend/page/about',
@@ -286,23 +333,25 @@ class HomeController extends Controller
     {
         // menangkap data pencarian
 		$search = $request->search;
-        $package = PackageCategoryModel::all();
+        $packageshow  = PackageCategoryModel::all();
         $category = CategoryModel::all();
+        $category_oop = Category_o_Product_Package_Model::all();
 
         // mengambil data dari table pegawai sesuai pencarian data
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
-                    ->select('tb_product.*', 'tb_category.category_name')
                     ->orWhere('product_name','like',"%".$search."%") 
                     ->orWhere('category_name','like',"%".$search."%") 
                     ->get();
+
 
         $active = "product";
         return view(
             'frontend/page/product',
             [
                 'active' => $active,
-                'package' => $package,
+                'packageshow' => $packageshow,
+                'category_oop' => $category_oop,
                 'category' => $category,
                 'product' => $product,
             ]
@@ -364,20 +413,25 @@ class HomeController extends Controller
 
     public function categoroyProduct($id)
     {
-        $package = PackageCategoryModel::all();
+        $packageshow = DB::table('tb_package_category')
+                    ->join('tb_category_o_product_package', 'tb_category_o_product_package.category_opp_id', '=', 'tb_package_category.category_opp_id')
+                    ->where('tb_package_category.category_opp_id', $id)
+                    ->get();
         $category = CategoryModel::all();
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->where('tb_product.category_id', $id)
                     ->get();
+        $category_oop = Category_o_Product_Package_Model::all();
         // dd($product);
         $active = "product";
         return view(
             'frontend/page/product',
             [
                 'active' => $active,
-                'package' => $package,
+                'packageshow' => $packageshow,
                 'category' => $category,
+                'category_oop' => $category_oop,
                 'product' => $product,
             ]
         );

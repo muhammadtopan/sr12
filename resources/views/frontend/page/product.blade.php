@@ -22,28 +22,31 @@
     <section class="product-shop spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Kategori Produk</h4>
-                        <div class="fw-brand-check">
-                            @foreach($category as $no => $ctglist)
-                                <div class="bc-item">
-                                    <label>
-                                        {{ $ctglist->category_name }}
-                                        <input type="checkbox" id="ctglist" value="{{$ctglist->category_id}}">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            @endforeach
+                <!-- <div class="col-md-3 order-2 order-lg-1 produts-sidebar-filter"> -->
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 order-2 order-lg-1 produts-sidebar-filter">
+                    <div class="row">
+                        <div class="filter-widget col-lg-12 col-sm-6">
+                            <h4 class="fw-title">Kategori Produk</h4>
+                            <div class="fw-brand-check">
+                                @foreach($category as $no => $ctglist)
+                                    <div class="bc-item">
+                                        <label>
+                                            {{ $ctglist->category_name }}
+                                            <input type="checkbox" id="ctglist" value="{{$ctglist->category_id}}">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Paket Product</h4>
-                        <ul class="filter-catagories">
-                            @foreach($category_oop as $no => $packagelist)
-                                <li><a href="{{ url('filter/packages/'. $packagelist->category_opp_id)}}">{{ $packagelist->category_opp_name }}</a></li>
-                            @endforeach
-                        </ul>
+                        <div class="filter-widget col-lg-12 col-sm-6">
+                            <h4 class="fw-title">Paket Produk</h4>
+                            <ul class="filter-catagories">
+                                @foreach($category_oop as $no => $packagelist)
+                                    <li><a href="{{ url('filter/packages/'. $packagelist->category_opp_id)}}">{{ $packagelist->category_opp_name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                     <div class="filter-widget">
                         <h4 class="fw-title">Harga</h4>
@@ -55,7 +58,7 @@
                                 </div>
                             </div>
                             <div id="slider-filter" onmouseup="sliderFilter(this)" class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="0" data-max="200000">
+                                data-min="0" data-max="900000">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
@@ -63,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- <div class="col-md-9"> -->
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="product-show-option">
                         <div class="row">
@@ -176,7 +180,7 @@
                 let product = "";
                 data.forEach(d => {
                             product += `
-                            <div class="col-lg-3 col-sm-4">
+                            <div class="col-lg-2 col-sm-3 col-4">
                                         <div class="product-item">
                                             <div class="pi-pic">
                                                 <a href="{{url('detail-product')}}/${d.product_id}">
