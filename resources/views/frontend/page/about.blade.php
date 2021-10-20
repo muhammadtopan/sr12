@@ -35,7 +35,7 @@
                                 <ul>
                                     <p class="text-light mb-1">- Perusahaan yang bergerak di Bidang Herbal dan Skincare</p>
                                     <p class="text-light mb-1">- Produk dalam Negri</p>
-                                    <p class="text-light mb-1">- Manfaat produk spesifik sesuai kebutuhan (masalah dan jenis kulit)</p>
+                                    <p class="text-light mb-1">- masalah dan jenis kulit</p>
                                     <p class="text-light mb-1">- Sudah terdaftar BPOM</p>
                                     <p class="text-light mb-1">- Bebas dari Mercury & Hydroquinon</p>
                                     <p class="text-light mb-1">- Mitra tersebar di seluruh Indonesia</p>
@@ -92,7 +92,7 @@
                             <a href="#">
                                 <h4>SR12 Herbal Skincare</h4>
                             </a>
-                            <p style="text-align: justify; text-justify: newspaper">PT. SR12 Herbal Kosmetik adalah perusahaan yang bergerak di Bidang Herbal & skincare. Didirikan pada tahun 2015 oleh Tony Firmansyah, S.Farm., Apt. & Asrianty Salam, S.Farm. PT. SR12 Herbal Perkasa saat ini memiliki 3 pabrik yang terletak di provinsi Jawa Barat, dan ditangani oleh tenaga profesional di bidangnya.</p>
+                            <p style="text-align: justify; text-justify: newspaper">PT. SR12 Herbal Kosmetik adalah perusahaan yang bergerak di Bidang Herbal & skincare. Didirikan pada tahun 2015 oleh Tony Firmansyah, S.Farm., Apt. & Asrianty Salam, S.Farm. PT. SR12 Herbal Kosmetik saat ini memiliki 3 pabrik yang terletak di provinsi Jawa Barat, dan ditangani oleh tenaga profesional di bidangnya.</p>
                         </div>
                     </div>
                 </div>
@@ -205,10 +205,10 @@
             </div>
             <div class="blog-detail-desc my-0">
                 <p>
-                    SR12 Herbal Skincare adalah perusahaan yang bergerak menumbuhkembangkan ekonomi masyarakat Indonesia. Membuka peluang usaha dan bisnis untuk setiap orang yang mau berjuang dan siap untuk tumbuh, dimana peluang Distributor terbuka lebar untuk semua Mitra SR12. Kami merupakan Senior Distributor SR12 sejak 2017 dan siap membantu mitra-mitra baru yang ingin bergabung dan tumbuh bersama kami.
+                    SR12 Herbal Skincare adalah perusahaan yang bergerak menumbuhkembangkan ekonomi masyarakat Indonesia. Membuka peluang usaha dan bisnis untuk setiap orang yang mau berjuang dan siap untuk tumbuh, dimana peluang Distributor terbuka lebar untuk semua Mitra SR12. Sebagai Senior Distributor SR12, kami siap membantu mitra-mitra baru yang ingin bergabung dan tumbuh bersama kami.
                 </p>
                 <p>
-                    Kami membuka kesempatan seluas-luasnya untuk kamu yang beniat untuk menjadi mitra kami. Kesempatan bergabung menjadi mitra SR12 memiliki keuntungan lebih dibanding jika kamu hanya sebagai konsumen. Kami memiliki sistem dan bimbingan mitra yang bergabung bersama kami. kamu dapat memulainya sesuai posisi mitra yang sesuai dengan Passion bisnismu.
+                    Kami membuka kesempatan seluas-luasnya untuk kamu yang beniat menjadi mitra. Kesempatan bergabung menjadi mitra SR12 memiliki keuntungan lebih dibanding jika kamu hanya sebagai konsumen. Kami memiliki sistem dan bimbingan mitra yang bergabung bersama kami. kamu dapat memulainya sesuai posisi mitra yang sesuai dengan Passion bisnismu.
                 </p>
             </div>
             <div class="blog-large-pic">
@@ -265,10 +265,10 @@
                             <div class="single-latest-blog">
                                 <div class="latest-text">
                                     <!-- <a href="#">
-                                        <h4>Bisa Gabung Jadi Mitra SR12 Herbal Skincare</h4>
+                                        <h4>Cara Gabung Jadi Mitra SR12 Herbal Skincare</h4>
                                     </a> -->
                                     <div class="section-title">
-                                        <h2>Bisa Gabung Jadi Mitra SR12 Herbal Skincare</h2>
+                                        <h2>Cara Gabung Jadi Mitra SR12 Herbal Skincare</h2>
                                     </div>
                                 </div>
                             </div>
@@ -294,21 +294,21 @@
                                 </div>
                                 <div class="logo-item">
                                     <div class="tablecell-inner">
-                                        <a href="{{ route('peluangBisnis') }}">
+                                        <a href="{{ route('peluangBisnis','syarat7') }}">
                                             <h3 class="text-white">Sub-Agen <i class="fa fa-arrow-circle-right"></i></h3>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="logo-item">
                                     <div class="tablecell-inner">
-                                        <a href="{{ route('peluangBisnis') }}">
+                                        <a href="{{ route('peluangBisnis','syarat8') }}">
                                             <h3 class="text-white">Agen <i class="fa fa-arrow-circle-right"></i></h3>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="logo-item">
                                     <div class="tablecell-inner">
-                                        <a href="{{ route('peluangBisnis') }}">
+                                        <a href="{{ route('peluangBisnis','syarat9') }}">
                                             <h3 class="text-white py-1 px-3 rounded " style="border: 3px solid #fff">Distributor </h3>
                                         </a>
                                     </div>
@@ -330,19 +330,19 @@
                 <div class="row text-center">
                     <div class="col-sm-6 col-lg-3">
                         <img src="{{asset('frontend/img/about/syarat/syarat_marketer.jpeg')}}" alt="">
-                        <p>Untuk syarat lengkapnya <a href="{{ route('syarat-marketer') }}">(KLIK DISINI)</a></p>
+                        <p><a href="{{ route('syarat-marketer') }}">(Cek Selengkapnya)</a></p>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <img src="{{asset('frontend/img/about/syarat/syarat_reseller.jpeg')}}" alt="">
-                        <p>Untuk syarat lengkapnya <a href="{{ route('belanjaHemat') }}">(KLIK DISINI)</a></p>
+                        <p><a href="{{ route('belanjaHemat') }}">(Cek Selengkapnya)</a></p>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <img src="{{asset('frontend/img/about/syarat/syarat_sub_agen.jpeg')}}" alt="">
-                        <p>Untuk syarat lengkapnya <a href="{{ route('peluangBisnis') }}">(KLIK DISINI)</a></p>
+                        <p><a href="{{ route('peluangBisnis','syarat7') }}">(Cek Selengkapnya)</a></p>
                     </div>
                     <div class="col-sm-6 col-lg-3">
                         <img src="{{asset('frontend/img/about/syarat/syarat_agen.jpeg')}}" alt="">
-                        <p>Untuk syarat lengkapnya <a href="{{ route('peluangBisnis') }}">(KLIK DISINI)</a></p>
+                        <p><a href="{{ route('peluangBisnis','syarat8') }}">(Cek Selengkapnya)</a></p>
                     </div>
                 </div>
             </div>
@@ -365,33 +365,26 @@
                     </div>
                 </div>
             </div>
-            <div class="benefit-items mt-0">
+            <div class="benefit-items mt-0 text-center">
                 <!-- <div class="row">
                     <div class="col-lg-4"> -->
                         <div class="row">
-                            <div class="col-md-3">
-                                Hari/tanggal 
-                            </div>
-                            <div class="col-md-9">
-                                : Jumat/ 18 Desember 2020
+                            <div class="col-12">
+                                <!-- Hari/tanggal :  -->
+                                Jumat/ 18 Desember 2020
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
-                                Tempat 
-                            </div>
-                            <div class="col-md-9">
-                                : JSI Resort, Bogor
+                            <div class="col-12">
+                                <!-- Tempat :  -->
+                                JSI Resort, Bogor
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                Kegiatan
+                        <!-- <div class="row">
+                            <div class="col-12">
+                                Kegiatan : NDC & Gathering
                             </div>
-                            <div class="col-md-9">
-                                : NDC & Gathering
-                            </div>
-                        </div>
+                        </div> -->
                         <img src="{{asset('frontend/img/about/ndc/ndc3.jpg')}}" alt="">
                     <!-- </div>
                 </div> -->
@@ -402,7 +395,7 @@
 
 
     <!-- Kategori & Katalog Produk SR12 Skincare  Begin -->
-    <section class="latest-blog spad py-5">
+    <section class="latest-blog spad py-5" id="katalog">
         <div class="container blog-details-inner">
             <div class="row">
                 <div class="col-lg-12">
@@ -428,7 +421,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-6">.
+                        <div class="col-md-6">
                             <div class="leave-comment">
                                 @if(Session::has('messages'))
                                     <p class="alert alert-info">{{ Session::get('messages') }}</p>

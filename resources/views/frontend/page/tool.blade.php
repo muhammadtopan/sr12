@@ -54,7 +54,10 @@
                                         <div class="col-lg-6">
                                             <div class="blog-details-inner">
                                                 <div class="blog-detail-title align-middle">
-                                                    <h4  class="text-justify">Halaman ini hanya bisa diakses oleh Mitra sudah bergabung di SR12 Spotlight Team. Untuk kamu yang ingin bergabung silahkan membaca <a href="{{ route('belanjaHemat') }}">Syarat dan Ketentuan</a> Terlebih dahulu</h4>
+                                                    <h4  class="text-justify">Halaman ini hanya bisa diakses oleh Mitra SR12 Herbal Store. Untuk kamu yang ingin bergabung silahkan membaca <a href="{{ route('belanjaHemat') }}">Syarat dan Ketentuan</a> Terlebih dahulu</h4>
+                                                    <p>
+                                                        Saya mau gabung dan<a href="{{ route('mitra-register') }}" class="btn bg-warning">Daftar Mitra</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +115,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="section-title">
+                    <div class="section-title pt-5">
                         <h2>Konsep dan Kurikulum Bisnis SR12</h2>
                     </div>
                     <div class="row">

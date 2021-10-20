@@ -14,7 +14,7 @@
                                     <span>We're present</span>
                                     <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Wilayah Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                                    <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
+                                    <a href="{{ route('mitra-register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                                     <span>We're present</span>
                                     <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Wilayah Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                                    <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
+                                    <a href="{{ route('mitra-register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                     <span>We're present</span>
                                     <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Wilayah Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                                    <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
+                                    <a href="{{ route('mitra-register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                     <span>We're present</span>
                                     <h5 class="text-light">SR12 Herbal Skincare By. Spotlight Team Mempersembahkan Marketplace Pertama Produk SR12 Herbal Skincare di Seluruh Wilayah Indonesia</h5>
                                     <span>SIAPAPUN BISA BISNIS ONLINE DISINI DENGAN BENEFIT YANG LUAR BIASA</span>
-                                    <a href="{{ route('user.register') }}" class="btn btn-warning text-light">Gabung</a>
+                                    <a href="{{ route('mitra-register') }}" class="btn btn-warning text-light">Gabung</a>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +325,7 @@
                                         <div class="item col-md-4" style="max-width: unset">
                                             <div class="prev-blog">
                                                 <div class="pb-text">
-                                                    <span>{{ $ulas->email }}</span>
+                                                    <!-- <span>{{ $ulas->email }}</span> -->
                                                     <h6 style="text-align: justify; text-justify: newspaper">{{ $ulas->ulasan }}</h6>
                                                 </div>
                                             </div>
@@ -366,7 +366,7 @@
                             </div>
                             <div class="sb-text">
                                 <h6>PELUANG BISNIS</h6>
-                                <p>untuk kamu didaerahmu <a href="{{ route('peluangBisnis') }}" class="btn btn-sm bg-warning text-light">klik disini</a> </p>
+                                <p>untuk kamu didaerahmu <a href="{{ route('peluangBisnis','syarat8') }}" class="btn btn-sm bg-warning text-light">klik disini</a> </p>
                             </div>
                         </div>
                     </div>

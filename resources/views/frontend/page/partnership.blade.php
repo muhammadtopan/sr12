@@ -18,12 +18,11 @@
     </div> -->
     <!-- Breadcrumb Section Begin -->
 
-
     <!-- Faq Section Begin -->
-    <div class="faq-section spad">
+    <div class="faq-section spad pb-3">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-12">
                     <div class="section-title">
                         <h2 style="font-size: 24px">PERTANYAAN YANG BANYAK MUNCUL KETIKA MENSOSIALISASIKAN SR12 HERBAL STORE</h2>
                     </div>
@@ -59,13 +58,49 @@
                 <div class="col-lg-12">
                     <div class="blog-details-inner">
                         <div class="blog-detail-title">
-                            <h2>CARA BELANJA DI SR12 HERBAL STORE</h2>
-                            <p>Berikut ini merupakan panduan cara belanja yang sering ditanyakan di Marketplace SR12 Herbal Store:</p>
+                            <h2 style="font-size: 24px">CARA BELANJA DI SR12 HERBAL STORE</h2>
+                            {{-- <p>Berikut ini merupakan panduan cara belanja yang sering ditanyakan di Marketplace SR12 Herbal Store:</p> --}}
                         </div>
                         <div class="blog-quote">
-                            <ol>
+                            <ol class="pl-5" style="font-size: 14px">
                                 <li>
-                                    “ Technology is nothing. What's important is that you have a faith in people, that they're basically good and smart, and if you give them tools, they'll do wonderful things with them.” <span>- Steven Jobs</span>
+                                Searching www.sr12herbalstore.com
+                                </li>
+                                <li>
+                                Masuk ke Menu DAFTAR
+                                </li>
+                                <li>
+                                Isikan data diri dan alamat sesuai KTP
+                                </li>
+                                <li>
+                                Setelah akun selesai dibuat, bisa Log In melalui Menu Akun Belanjaku
+                                </li>
+                                <li>
+                                Pilih produk/ paket produk sesuai kebutuhan (atau masuk ke Menu Toko)
+                                </li>
+                                <li>
+                                Pilih produk & jumlahnya, klik ADD TO CARD
+                                </li>
+                                <li>
+                                Setelah pilih produk, LIHAT KERANJANG
+                                </li>
+                                <li>
+                                Silahkan CHECKOUT produk dulu sesuai jumlah yang dibutuhkan
+                                </li>
+                                <li>
+                                Klik LOHAT tagihan
+                                </li>
+                                <li>
+                                Isikan Rincian Penagihan, alamat pengiriman produk, Provinsi, Kota/Kabupaten, Pilih vendor terdekat (bisa sesuai kecamatan jika sudah ada), pilih jenis pengiriman, pilih rekening Bank untuk pembayaran
+                                </li>
+                                <li>
+                                Silahkan untuk proses pembayaran sesuai rekening bank yang tersedia
+                                </li>
+                                <li>
+                                Setelah proses pembayaran selesai, bukti transfer bisa di post di halaman BAYAR. Silahkan tambahkan keterangan di bawahnya
+                                </li>
+                                <li>
+                                Setelah selesai, masuk ke Profil AKUN BELANJAKU
                                 </li>
                             </ol>
                         </div>

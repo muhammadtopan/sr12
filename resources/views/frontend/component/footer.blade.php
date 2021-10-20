@@ -8,14 +8,14 @@
                             <a href="#"><img src="{{ asset('frontend/img/logo.png') }}" alt=""></a>
                         </div> -->
                         <ul>
-                            <li>Alamat: Perum, Nangka Garden Jl. Nangka Pekan Baru</li>
+                            <li>Alamat: Nangka Garden Jl. Nangka Pekanbaru</li>
                             <li>Telepon: +62 853 7472 7053</li>
                             <li>Email: sr12herbalstore@gmail.com</li>
                         </ul>
                         <div class="footer-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/pengusahapejuang.id/" target=“_blank”><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="https://web.facebook.com/sr12herbalstore" target=“_blank”><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/sr12herbalstore.com_official/" target=“_blank”><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                         <h5>SR12 Herbal Store</h5>
                         <ul>
                             <li><a href="{{ route('user.login') }}">Akun Belanjaku</a></li>
-                            <li><a href="#">Katalog</a></li>
+                            <li><a href="{{ route('about') }}#katalog">Katalog</a></li>
                             <!-- <li><a href="#">Keranjang</a></li> -->
                             <li><a href="{{ route('shop.product') }}">Toko</a></li>
                         </ul>
@@ -84,7 +84,7 @@
                     <div class="col-lg-12">
                         <div class="copyright-text">
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://instagram.com/taufanomt" target="_blank">Taufano</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This web is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://instagram.com/taufanomt" target="_blank">Taufano</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                         <div class="payment-pic">

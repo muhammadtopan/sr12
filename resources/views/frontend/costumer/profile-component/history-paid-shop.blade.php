@@ -1,4 +1,5 @@
 @extends ('layouts/profile-costumer')
+@section ('title', 'Pesanan Lunas')
 
 @section('content')
 
@@ -38,9 +39,9 @@
                                                 <td>{{$h->bank_name}}</td>
                                                 <td>{{$h->invoice}}</td>
                                                 <td>{{$h->noresi}}</td>
-                                                <td>Rp.{{number_format($h->combined_price)}}</td>
+                                                <td>Rp.{{number_format($h->combined_price,0,',','.')}}</td>
                                                 <td>
-                                                    <a href="{{route("user.profile.bayar.detail", $h->order_id)}}" class="btn btn-danger btn-sm"><i class="fas fa-search-plus text-white"></i></a>
+                                                    <a href="{{route("user.profile.bayar.detail", $h->order_id)}}" data-toggle="tooltip" title="Lihat Detail" class="btn btn-danger btn-sm"><i class="fas fa-search-plus text-white"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -17,8 +17,8 @@
         </div>
     </div> -->
     <!-- Breadcrumb Form Section Begin -->
-
     <!-- Register Section Begin -->
+    
     <div class="register-login-section pt-0 pb-0 spad">
         <!-- <div class="container"> -->
             <!-- <div class="row">
@@ -27,10 +27,10 @@
                         <div class="tab-item">
                             <ul class="nav" role="tablist">
                                 <li>
-                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">DAFTAR AKUN</a>
+                                    <a class="active"  id="account" data-toggle="tab" href="#tab-1" role="tab">DAFTAR AKUN</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#tab-2" role="tab">DAFTAR MITRA</a>
+                                    <a data-toggle="tab" id="partner" href="#tab-2" role="tab">DAFTAR MITRA</a>
                                 </li>
                                 <!-- <li>
                                     <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
@@ -46,7 +46,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-lg-6 my-5">
-                                                    <lottie-player class="lottie-daftar m-auto" src="https://assets1.lottiefiles.com/packages/lf20_jcikwtux.json"  background="transparent"  speed="1"  style="width: 450px; height: 450px;"  loop  autoplay></lottie-player>
+                                                    <lottie-player class="lottie-daftar m-auto" src="https://assets1.lottiefiles.com/packages/lf20_jcikwtux.json"  background="transparent"  speed="1"  style="max-width: 450px;"  loop  autoplay></lottie-player>
                                                 </div>
                                                 <div class="col-lg-6 my-5">
                                                     <div class="register-form login-form">
@@ -88,7 +88,8 @@
                                                                 <div class="col-md-6">
                                                                     <div class="group-input">
                                                                         <!-- <label for="costumer_ttl">Tanggal Lahir <span style="color: red">*</span></label> -->
-                                                                        <input type="date" id="costumer_ttl" name="costumer_ttl" required>
+                                                                        <!-- <input type="date" id="costumer_ttl" name="costumer_ttl" required> -->
+                                                                        <input placeholder="Tanggal Lahir" class="textbox-n" type="text" onmouseover="(this.type='date')" onmouseout="(this.type='text')" id="costumer_ttl" name="costumer_ttl" required>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
@@ -181,7 +182,7 @@
                                             <div class="row">
                                                 <!-- <======================Regis Mitra======================> -->
                                                 <div class="col-lg-6 my-5">
-                                                    <lottie-player class="lottie-daftar m-auto" src="https://assets3.lottiefiles.com/packages/lf20_u8o7BL.json"  background="transparent"  speed="1"  style="width: 450px; height: 450px;"  loop  autoplay></lottie-player>
+                                                    <lottie-player class="lottie-daftar m-auto" src="https://assets3.lottiefiles.com/packages/lf20_u8o7BL.json"  background="transparent"  speed="1"  style="max-width: 450px;"  loop  autoplay></lottie-player>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="register-form login-form my-5">
@@ -232,7 +233,8 @@
                                                                 <div class="col-md-6">
                                                                     <div class="group-input">
                                                                         <!-- <label for="mitra_ttl">Tanggal Lahir <span style="color: red">*</span></label> -->
-                                                                        <input type="date" id="mitra_ttl" name="mitra_ttl" required>
+                                                                        <!-- <input type="date" id="mitra_ttl" name="mitra_ttl" required> -->
+                                                                        <input placeholder="Tanggal Lahir" class="textbox-n" type="text"  onmouseover="(this.type='date')" onmouseout="(this.type='text')" id="mitra_ttl" name="mitra_ttl" required>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">

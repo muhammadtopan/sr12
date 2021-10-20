@@ -27,7 +27,7 @@
                         <h4 class="fw-title">MITRA RESMI SR12</h4>
                         <ul class="ml-3">
                             <li><a href="#" onclick="syaratPage('syarat1')">Persebaran Mitra</a></li>
-                            <li><a href="#" onclick="syaratPage('syarat2')">Kenapa Harus Gabung?</a></li>
+                            <li><a href="#" onclick="syaratPage('syarat2')">Gabung SR12</a></li>
                             <li><a href="#" onclick="syaratPage('syarat3')">Ketentuan Umum</a></li>
                             <li><a href="#" onclick="syaratPage('syarat4')">Target Mitra</a></li>
                             <li>
@@ -44,11 +44,11 @@
                                 </li>
                                 <li><a href="#" onclick="syaratPage('syarat9')">Distributor Utama</a></li>
                             @else
-                                        <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Sub-Agen</a></li>
-                                        <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Agen</a></li>
+                                        <li><a onclick="noPhone('syarat7')" href="#" data-toggle="modal" data-target="#exampleModalCenter">Sub-Agen</a></li>
+                                        <li><a onclick="noPhone('syarat8')" href="#" data-toggle="modal" data-target="#exampleModalCenter">Agen</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Dristributor Utama</a></li>
+                                <li><a onclick="noPhone('syarat9')" href="#" data-toggle="modal" data-target="#exampleModalCenter">Dristributor Utama</a></li>
                             @endif
                             <li><a href="#" onclick="syaratPage('syarat10')">Kenapa SR12</a></li>
                             <li><a href="#" onclick="syaratPage('syarat11')">Kenapa Harus Gabung</a></li>
@@ -60,15 +60,15 @@
                     <div class="product-list">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div id="syarat1" class="syarat {{ $syarat == 'syarat5' || $syarat == 'syarat6' || $syarat == 'syarat8' ? 'd-none': '' }}">
+                                <div id="syarat1" class="syarat {{ $syarat == 'syarat5' || $syarat == 'syarat6' || $syarat == 'syarat7'|| $syarat == 'syarat8'|| $syarat == 'syarat9' ? 'd-none': '' }}">
                                     <div class="section-title tools">
                                         <h3>PERSEBARAN MITRA</h3>
                                     </div>
                                     <div class="blog-detail-desc">
                                         <p class="text-justify">
-                                            SR12 Herbal Store adalah marketplace khusus produk SR12 Herbal Skincare. Marketplace ini menyediakan pemasaran produk SR12 Herbal Skincare untuk seluruh wilayah indonesia, mulai dari Pulau Jawa, Pulau Sumatera, Kalimantan, Sulawesi, Nusa Tenggara, Maluku, dan sampai pulau Papua. Di samping itu, pemasaran produk SR12 juga sudah masuk pemasaran Luar Negeri. Melalui marketplace ini, konsumen bisa mendapatkan produk SR12 dari mitra terdekat yang berada di Kota/ Kabupaten tempat tinggal atau sesuai domisislinya. Marketplace ini juga sangat membantu bagi konsumen menemukan Mitra Resmi SR12 setiap kota/ kabupaten jika sedang tidak berada di daerah domisili (luar kota)
+                                            SR12 Herbal Store adalah marketplace khusus produk SR12 Herbal Skincare. Marketplace ini menyediakan pemasaran produk SR12 Herbal Skincare untuk seluruh wilayah Indonesia, mulai dari Pulau Jawa, Pulau Sumatera, Kalimantan, Sulawesi, Nusa Tenggara, Maluku, dan sampai pulau Papua. Di samping itu, pemasaran produk SR12 juga sudah masuk pemasaran luar negeri. Melalui marketplace ini, konsumen bisa mendapatkan produk SR12 dari mitra terdekat yang berada di Kota/ Kabupaten tempat tinggal atau sesuai domisilinya. Marketplace ini juga sangat membantu bagi konsumen menemukan Mitra Resmi SR12 setiap kota/ kabupaten jika sedang tidak berada di daerah domisili (luar kota)
                                         </p>
-                                        <p>Untuk lebih bisa melihat persebaran mitra SR12 Herbal Store, silahkan cek untuk daerah berikut:</p>
+                                        <p>Untuk melihat persebaran mitra SR12 Herbal Store, silahkan cek untuk daerah berikut:</p>
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="input-group mb-3">
@@ -113,10 +113,10 @@
                                             </table>
                                         </div>
                                         <p>
-                                            Jika data belum menemukan Mitra Resmi SR12 Herbal Store di daerah tersebut, apakah anda tertarik menjadi Mitra Resmi SR12 Herbal Store untuk mengisi kekosongan di kota/kabupaten tersebut?
+                                            Jika data belum menemukan, apakah anda tertarik menjadi Mitra Resmi SR12 Herbal Store untuk mengisi kekosongan di kota/kabupaten tersebut?
                                         </p>
                                         <div class="col-12 d-flex justify-content-end text-white">
-                                            <a href="{{ route('user.register') }}" class="btn btn-warning">Daftar Mitra</a>
+                                            <a href="{{ route('mitra-register') }}" class="btn btn-warning">Daftar Mitra</a>
                                         </div>
                                     </div>
                                 </div>
@@ -135,37 +135,43 @@
                                     </div>
                                     <div class="posted-by mt-5">
                                         <div class="pb-text">
-                                            <h5>Ekonomi Umat :</h5>
+                                            <h5 class="font-weight-bold"> Ekonomi Umat :</h5>
                                             <p class="text-justify">
                                                 Setiap orang bisa bergabung di bisnis SR12, karena untuk gabung di bisnis SR12 tidak harus dengan modal besar. Maka secara tidak langsung Bisnis SR12 telah menjadi lapangan pekerjaan bagi siapapun yang memiliki semangat dalam melakukan jual beli dan bisnis. Sehingga bisnis SR12 juga dapat membantu meningkatkan perekonomian di lingkungan kita.
                                             </p>
                                         </div>
                                         <div class="pb-text">
-                                            <h5>Kebermanfaatan :</h5>
+                                            <h5 class="font-weight-bold"> Kebermanfaatan :</h5>
                                             <p class="text-justify">
-                                                Gabung dengan SR12 sama halnya dengan bergabung untuk menebar manfaat bagi sesama. Selain membantu sesama dalam memenuhi kebutuhannya, SR12 juga membantu sesama untuk memperbaki perekonomian dalam hal ini mengurangi angka pengangguran dan kemiskinan dilingkungan tempat tinggal.
+                                                Bergabung dengan SR12 adalah untuk menebar manfaat bagi sesama. Selain membantu sesama dalam memenuhi kebutuhannya, SR12 juga membantu sesama untuk memperbaki perekonomian dalam hal ini mengurangi angka pengangguran dan kemiskinan di lingkungan tempat tinggal.
                                             </p>
                                         </div>
                                         <div class="pb-text">
-                                            <h5>Mentoring Bisnis :</h5>
+                                            <h5 class="font-weight-bold"> Mentoring Bisnis :</h5>
                                             <p class="text-justify">
                                                 Dengan adanya mentoring dalam menjalankan bisnis kita diharapkann bisnis yang kita jalankan akan tetap maju dan berkembang meskipun kita menemui kendala dan tantangan dalam menjalankannya.
                                             </p>
                                         </div>
                                         <div class="pb-text">
-                                            <h5>Mitra Tersebar :</h5>
+                                            <h5 class="font-weight-bold"> Mitra Tersebar :</h5>
                                             <p class="text-justify">
                                                 Bisnis SR12 membuka peluang untuk semua orang dimanapun berada, sehingga persebaran mitra / penjual resmi produk SR12 tersebar di setiap Kota/ Kabupaten. Jika di suatu Kota/ Kabupaten belum ada mitra SR12 Herbal Store, maka kamu berpeluang besar menjadi mitra utama di Kota/ Kabupaten tersebut.
                                             </p>
                                         </div>
                                         <div class="pb-text">
-                                            <h5>Mudah Digunakan :</h5>
+                                            <h5 class="font-weight-bold"> Market Luas :</h5>
+                                            <p class="text-justify">
+                                                Produk yang dipasarkan oleh SR12 Herbal Store dapat dikonsumsi oleh Pria dan wanita. tidak hanya terbatas untuk wanita, pria pun dapat mengkonsumsi produk SR12 ini. Produk yang disediakan juga dapat dikonsumsi oleh semua umur mulai dari bayi hingga lansia. Selain itu, siapapun bebas untuk bergabung jadi mitra SR12. 
+                                            </p>
+                                        </div>
+                                        <div class="pb-text">
+                                            <h5 class="font-weight-bold"> Mudah Digunakan :</h5>
                                             <p class="text-justify">
                                                 Produk SR12 Herbal Skincare adalah produk yang pada umumnya dibutuhkan oleh pria dan wanita. Baik untuk kesehatan kulit, perawatan tubuh maupun untuk kebutuhan kesehatan tubuh. Produk yang dipasarkan adalah produk yang aman dan sudah terdaftar BPOM. Produk herbal yang dipasarkan juga aman dikonsumsi oleh setiap umur. Belanja di Marketplace SR12 Herbal Store sangatlah mudah, tidak ribet, pilih produk, tinggal pilih di daerah mana kita mau belanja, transfer, dan tunggu produk sampai diantarkan kurir.
                                             </p>
                                         </div>
                                         <div class="pb-text">
-                                            <h5>Produk Lengkap :</h5>
+                                            <h5 class="font-weight-bold"> Produk Lengkap :</h5>
                                             <p class="text-justify">
                                             SR12 herbal store adalah marketplace khusus produk SR12 Herbal skincare yang merupakan kumpulan mitra (penjual) produk SR12 di setiap Kota/ Kabupaten yang tersebar di seluruh wilayah Indonesia. Sehingga bisa menjamin untuk ketersediaan produk SR12
                                             </p>
@@ -176,7 +182,7 @@
                                     <div class="section-title tools">
                                         <h3>KETENTUAN UMUM MENJADI MITRA SR12</h3>
                                     </div>
-                                    <ol class="list-group list-group-flush">
+                                    <ol class="list-group list-group-flush pl-3">
                                         <li>Warga negara Indonesia dibuktikan dengan identitas diri yang sah </li>
                                         <li>Mendaftarkan diri secara online maupun offline</li>
                                         <li>Seluruh mitra SR12 Herbal Skincare akan memperoleh nomor keanggotaan </li>
@@ -196,7 +202,7 @@
                                     <p>
                                         Apakah kamu:
                                     </p>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>Ibu rumah tangga yang mau penghasilan tambahan?</li>
                                         <li>Seseorang yang mau jualan namun tidak punya produk?</li>
                                         <li>Mamah muda yang lagi nyari skincare?</li>
@@ -216,7 +222,7 @@
                                     <p class="mt-5">
                                         Jika jawaban kamu adalah "YA", maka kamu sudah berada di tempat yang tepat, bersama SR12 Herbal Store kamu akan:
                                     </p>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>Punya penghasilan tambahan</li>
                                         <li>Mendapatkan supply produk skincare bermutu siap jual dan sudah terdaftar BPOM</li>
                                         <li>Dibimbing langkah demi langkah untuk bisa menjual</li>
@@ -229,7 +235,7 @@
                                     <p>
                                         Tentu kamu pernah merasakan kondisi seperti ini:
                                     </p>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>Diremehkan dan malu karena masih menganggur</li>
                                         <li>Waktu yang sangat minim dan tidak berkualitas untuk berkumpul dengan keluarga</li>
                                         <li>Berangkat pagi pulang petang tak sempat bermain dengan si kecil</li>
@@ -252,23 +258,29 @@
                                     </p>
                                     <h4>Cara gabung jadi MARKETER SR12</h4>
                                     <i>(Tingkatan paling ringan, cocok untuk pemula/dipakai sendiri)</i>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li class="text-justify">Tanpa minimal order, akad atau perjanjian awal adalah bekerja dengan sistem pemabayaran komisi dibayarkan awal bulan atau setiap tanggal 1 (satu) bulan berikutnya. Contoh : Penjualan dilakukan di bulan Januari maka pembayaran komisi diberikan bulan Februari.</li>
                                         <li class="text-justify">Penjualan dilakukan secara online dan offline. Pengiriman dropship dilakukan oleh leader tempat bergabung atau terdaftar.</li>
                                         <li class="text-justify">Pembayaran dropship ditransfer ke rekening leader tempat bergabung atau yang mengajak bergabung bisnis.</li>
                                         <li>
                                             Komisi 15% cair setiap akumulasi pembelian 500.000 (lima ratus ribu rupiah)
-                                            <ul class="list-group list-group-flush">
-                                                <li>Contoh 1 :</li>
-                                                <li class="text-justify">
-                                                    Marketer A pada bulan Januari 2021 melakukan penjualan sebesar 400.000,- (empat ratus ribu rupiah) maka akhir bulan marketer A tidak menerima komisi penjualan, bulan Februari 2021 marketer melakukan penjualan sebesar 300.000,- (tiga ratus ribu rupiah). maka akumulasi penjualan 2 (dua) bulan tersebut sebesar 700.000,- (tujuh ratus ribu rupiah) dikalikan 15% dan menjadi hak marketer yang akan dibayarkan pada awal bulan maret 2021.
+                                            <ul class="list-group list-group-flush pl-3">
+                                                <li>
+                                                    Contoh 1 :
                                                 </li>
+                                                    <ul>
+                                                        <li class="text-justify pl-3">
+                                                            Marketer A pada bulan Januari 2021 melakukan penjualan sebesar 400.000,- (empat ratus ribu rupiah) maka akhir bulan marketer A tidak menerima komisi penjualan, bulan Februari 2021 marketer melakukan penjualan sebesar 300.000,- (tiga ratus ribu rupiah). maka akumulasi penjualan 2 (dua) bulan tersebut sebesar 700.000,- (tujuh ratus ribu rupiah) dikalikan 15% dan menjadi hak marketer yang akan dibayarkan pada awal bulan maret 2021.
+                                                        </li>
+                                                    </ul>
                                                 <li>
                                                     Contoh 2 :
                                                 </li>
-                                                <li class="text-justify">
-                                                    Marketer B pada bulan Januari 2021 melakukan penjualan sebesar 200.000,- (dua ratus ribu rupiah), maka akhir bulan ybs tidak akan menerima komisi penjualan. Bulan Februari 2021 mareketer melakukan penjualan kembali sebesar 200.000,- (dua ratus ribu rupiah), maka marketer masih belum mendapatkan komisi. Bulan Maret 2021 melakukan penjualan lagi sebesar 100.000,- (seratus ribu rupiah). maka akumulasi penjualan 3 (tiga) bulan tersebut sebesar 500.000,- (lima ratus ribu rupiah) dikalikan 15% dan menjadi hak marketer yang akan dibayarkan pada awal bulan April 2021.
-                                                </li>
+                                                <ul>
+                                                    <li class="text-justify pl-3">
+                                                        Marketer B pada bulan Januari 2021 melakukan penjualan sebesar 200.000,- (dua ratus ribu rupiah), maka akhir bulan ybs tidak akan menerima komisi penjualan. Bulan Februari 2021 mareketer melakukan penjualan kembali sebesar 200.000,- (dua ratus ribu rupiah), maka marketer masih belum mendapatkan komisi. Bulan Maret 2021 melakukan penjualan lagi sebesar 100.000,- (seratus ribu rupiah). maka akumulasi penjualan 3 (tiga) bulan tersebut sebesar 500.000,- (lima ratus ribu rupiah) dikalikan 15% dan menjadi hak marketer yang akan dibayarkan pada awal bulan April 2021.
+                                                    </li>
+                                                </ul>
                                             </ul>
                                         </li>
                                         <li class="text-justify">
@@ -296,7 +308,7 @@
                                     </p>
                                     <h4>Cara gabung jadi RESELER SR12</h4>
                                     <i>(Rekomendasi untuk yg hobi jualan & mendapatkan Tools promosi dari kami)</i>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li class="text-justify">
                                             Melakukan order pertama (first order) senilai minimal 500.000,- (lima ratus ribu rupiah) atau 400.000,- (empat ratus ribu rupiah) setelah diskon 20%
                                         </li>
@@ -317,7 +329,7 @@
                                         </li>
                                     </ul>
                                     <p>Secara ringkas dapat diartikan sebagai berikut:</p>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>First order 500rb langsung diskon 20%, jadi belanja awal 400rb dapat barang senilai 500rb</li>
                                         <li>Sangat cocok untuk kamu yang mulai serius ingin jualan</li>
                                         <li>Minimal repeat order 50rb</li>
@@ -335,7 +347,7 @@
                                     </p>
                                     <h4>Cara gabung jadi SUB-AGEN SR12</h4>
                                     <i>(Rekomendasi untuk yg hobi jualan & siap stok produk, serta mendapatkan akun promosi dari kami)</i>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li class="text-justify">
                                             Melakukan order pertama (First order) senilai minimal 5.000.000,- (lima juta rupiah) omset atau 3.500.000,- (tiga juta lima ratus ribu rupiah) setelah diskon 30%.
                                         </li>
@@ -352,13 +364,13 @@
                                             Jika dalam 3 bulan berturut-turut sub agen tidak dapat mencapai omset minimal maka memasuki bulan ke-4 (empat) status mitra akan diturunkan ke tingkatan di bawahnya.
                                         </li>
                                         <li class="text-justify">
-                                            Kesempatan menjkadi sub agen kembali jika salah satu dari nomor 1 atau 2 di atas terpenuhi.
+                                            Kesempatan menjadi sub agen kembali jika salah satu dari nomor 1 atau 2 di atas terpenuhi.
                                         </li>
                                     </ul>
                                     <p class="mt-5">
                                         Artinya cara gabung SR12 untuk posisi Sub Agen yaitu:
                                     </p>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>
                                             First order 3,5jt setelah diskon 30%. Belanja 3,5jt dapat barang senilai 5jt
                                         </li>
@@ -380,7 +392,7 @@
                                     </p>
                                     <h4>Cara gabung jadi AGEN SR12</h4>
                                     <i>(Rekomendasi untuk sistem grosir & berpeluang menjadi Distributor setiap Kota/kabupaten)</i>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li class="text-justify">
                                             Melakukan order pertama (First order) kepada distributor atau agen senilai minimal 25.000.000,- (dua puluh lima juta rupiah) atau 15.000.000,- (lima belas juta rupiah) setelah diskon 40%.
                                         </li>
@@ -389,14 +401,16 @@
                                         </li>
                                         <li class="text-justify">
                                             Repeat order minimal 2.000.000 (dua juta rupiah) setelah diskon 40%. Jika agen melakukan RO di bawah ketentuan minimal, maka diberlakukan diskon sesuai minimal pembelanjaan yang dilakukan.
-                                            <p>Contoh :</p>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="text-justify">
-                                                    Repeat order di bawah 2.000.000,- (dua juta rupiah) namun di atas atau sama dengan 1.000.000,- (satu juta rupiah) maka diberikan diskon Sub Agen sebesar 30%.
-                                                </li>
-                                                <li class="text-justify">
-                                                    Repeat order di bawah 1.000.000,- (satu juta rupiah) maka diberikan diskon reseler sebesar 20%
-                                                </li>
+                                            <ul class="list-group list-group-flush pl-3">
+                                                <li>Contoh :</li>
+                                                <ul>
+                                                    <li class="text-justify pl-3">
+                                                        Repeat order di bawah 2.000.000,- (dua juta rupiah) namun di atas atau sama dengan 1.000.000,- (satu juta rupiah) maka diberikan diskon Sub Agen sebesar 30%.
+                                                    </li>
+                                                    <li class="text-justify pl-3">
+                                                        Repeat order di bawah 1.000.000,- (satu juta rupiah) maka diberikan diskon reseler sebesar 20%
+                                                    </li>
+                                                </ul>
                                             </ul>
                                         </li>
                                         <li class="text-justify">
@@ -407,7 +421,7 @@
                                         </li>
                                     </ul>
                                     <p class="mt-5">Artinya cara jadi mitra SR12 untuk tingkatan agen yaitu:</p>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>First order senilai 25jt langsung diskon 40%. Belanja 15jt dapat produk seharga 25jt.</li>
                                         <li>Target omset minimal 15jt perbulan.</li>
                                         <li>Minimal repeat order 2jt, dimana dapat produk seharga 3,33jt.</li>
@@ -418,7 +432,7 @@
                                         <h3>BAGAIMANA CARA MENJADI DISTRIBUTOR UTAMA SR12?</h3>
                                     </div>
                                     <span>(Rekomendasi untuk yang mau menjadi Distributor di daerahmu)</span>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>Khusus distributor hanya dapat dicapai dengan jalur pretasi.</li>
                                         <li>Omset minimal akumulasi 100jt/bulan dengan omset pribadi 35jt.</li>
                                         <li>Repeat order minimal 10jt.</li>
@@ -429,7 +443,7 @@
                                     <div class="section-title tools">
                                         <h3>KENAPA MEMILIH SR12 SKINCARE?</h3>
                                     </div>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>
                                         Produk SR12 skincare sangat lengkap dan terus bertambah seiring waktu.
                                         </li>
@@ -462,7 +476,7 @@
                                     <div class="section-title tools">
                                         <h3>KENAPA HARUS BERGABUNG BERSAMA KAMI?</h3>
                                     </div>
-                                    <ul class="list-group list-group-flush">
+                                    <ul class="list-group list-group-flush pl-3">
                                         <li>Bingung jualan apa? Sama Kami produknya sudah ada</li>
                                         <li>Produk berkualitas, legal, ber-BPOM</li>
                                         <li>Ribuan testimoni produk bertebaran</li>
@@ -481,18 +495,18 @@
                                     <P class="text-justify">
                                         Cara untuk menjadi Mitra SR12 ataupun bergabung dengan bisnis SR12 sangatlah mudah. Untuk pemula cocok memilih tingkatan Marketer (cukup dengan membeli satu produk SR12), program Marketer cocok juga buat kamu yang ingin belanja lebih murah baik untuk pemakaian sendiri maupun untuk penjualan secara offline. Jika kamu ingin lebih serius jualan maka lebih baik ambil program Reseler. Tingkatan Reseler (first order sebesar 500rb produk langsung diskon 20%), sedangkan untuk yang ingin serius dan sudah punya basic jualan online atau offline kami sarankan ambil jalur kemitraan Sub Agen atau Agen.
                                     </P>
-                                    <ul class="list-group list-group-flush pl-3">
+                                    <ul class="list-group list-group-flush pl-3 pl-3">
                                         <li>
-                                            Hubungi kami lewat whatsapp (klik logo whatsaap di kanan bawah)
+                                            Hubungi kami lewat whatsap (klik logo whatsap di kanan bawah) untuk mendapatkan informasi lebih lengkap
                                         </li>
                                         <li class="text-justify">
                                             Pilih leader yang sesuai atau yang paling dekat dengan domisilimu. Hal ini berguna untuk meminimalisir ongkos kirim dan mempermudah konsultasi apabila ingin konsultasi kopdar.
                                         </li>
                                         <li>
-                                            Kamu bisa daftar atau gabung jadi mitra Marketer, Reseler, Sub Agen atau Agen
+                                            Kamu bisa gabung jadi mitra Marketer, Reseler, Sub-Agen dan Agen SR12
                                         </li>
                                         <li>
-                                            Untuk bisa mengakses materi dan tool, silahkan buat akun di menu <a href="{{ route('user.register') }}"> DAFTAR MITRA.</a>
+                                            Silahkan <a href="{{ route('mitra-register') }}"> DAFTAR MITRA disini</a>
                                         </li>
                                         <li>
                                             Pengaktifan member area di website akan didaftarkan oleh leader tempat kamu mendaftar.
@@ -611,6 +625,7 @@
                         <div class="form-group">
                             <label class="text-light">Silahkan masukan data berikut untuk melanjutkan</label>
                             <input type="text" class="form-control" name="name_viewer" placeholder="Nama" value="{{ old('name_viewer') }}">
+                            <input type="hidden" name="s">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" name="phone" placeholder="08**********" value="{{ old('phone') }}">
@@ -624,7 +639,14 @@
         </div>
     </div>
 
+    <input id="s" type="hidden" value="{{ $syarat }}">
+
     <script>
+
+        function noPhone(e) {  
+            $('#s').val(e);
+        }
+
         function syaratPage(id) {
             $('.syarat').addClass('d-none');
             let syarat_class = document.getElementById(id);
@@ -641,11 +663,12 @@
         }
     </script>
     <?php 
-        if($syarat == "syarat8"){
+        if($syarat == "syarat7"  || $syarat == 'syarat8' || $syarat == 'syarat9'){
             if(session()->get('phone_viewer') != null){
     ?>            <script>
-                    console.log("ada nomor");
-                    syaratPage('syarat8');
+                    let syarat = document.getElementById("s").value
+                    // console.log(document.getElementById("s").value);
+                    syaratPage(syarat);
                 </script>
     <?php   }else{
     ?>          <script>

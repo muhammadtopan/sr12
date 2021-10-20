@@ -108,7 +108,7 @@
                                                     {{ $orderh->order_status }}
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('vendor.order.details', $orderh->order_id) }}" class="btn btn-sm btn-success">
+                                                    <a href="{{ route('vendor.order.details', $orderh->order_id) }}" class="btn btn-sm">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
                                                 </td>

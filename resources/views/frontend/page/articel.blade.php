@@ -19,7 +19,7 @@
     <!-- Breadcrumb Form Section Begin -->
 
     <!-- Blog Details Section Begin -->
-    <section class="blog-details spad">
+    <section class="blog-details spad pt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -28,13 +28,14 @@
                             <h2>{{ $artikel->article_judul }}</h2>
                             <p>SR12 Herbal Store</p>
                         </div>
-                        <div class="container contact-section spad">
+                        <div class="container contact-section spad py-0">
                             <div class="row">
                                 <div class="col-1">
                                 </div>
                                 <div class="col-10">
                                     <div class="blog-detail-desc">
-                                        <p style="text-align: justify; text-justify: newspaper">{!! $artikel->article_isi !!}</p>
+                                        <p class="text-justify" style="font-family: 'Muli', sans-serif !important;">
+                                                {!! $artikel->article_isi !!}</p>
                                     </div>
                                 </div>
                             </div>
@@ -43,8 +44,8 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="blog-sidebar">
-                        <div class="recent-post">
-                            <h4>ARTIKEL</h4>
+                        <div class="recent-post pt-5">
+                            <h4 style="font-size: 1rem">ARTIKEL</h4>
                             <div class="recent-blog">
                                 <div class="faq-accordin">
                                     <div class="accordion" id="accordionExample">

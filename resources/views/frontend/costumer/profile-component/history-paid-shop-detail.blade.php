@@ -1,4 +1,5 @@
 @extends ('layouts/profile-costumer')
+@section ('title', 'Pesanan Lunas')
 
 @section('content')
 
@@ -20,13 +21,11 @@
                                 <table id="zero_config" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>NO</th>
                                             <th>Nama Barang</th>
-                                            <th>Nama Bank</th>
-                                            <th>Invoice</th>
-                                            <th>No.Resi</th>
-                                            <th>Total Harga (Sudah Tambah Ongkir)</th>
-                                            <th>Total Harga (Hanya Barang)</th>
+                                            <th>Banyak</th>
+                                            <th>Harga</th>
+                                            <th>Total Harga</th>
                                         </tr>
                                     </thead>
 
@@ -35,11 +34,9 @@
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$h->product_name}}</td>
-                                                <td>{{$h->bank_name}}</td>
-                                                <td>{{$h->invoice}}</td>
-                                                <td>{{$h->noresi}}</td>
-                                                <td>Rp.{{number_format($h->combined_price)}}</td>
-                                                <td>Rp.{{number_format($h->total_price)}}</td>
+                                                <td>{{$h->quantity}}</td>
+                                                <td>Rp {{number_format($h->capital_price,0,',','.')}}</td>
+                                                <td>Rp {{number_format($h->total_price,0,',','.')}}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

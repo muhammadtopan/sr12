@@ -33,7 +33,7 @@
                                     <p>Link Daftar</p>
                                     <div class="input-group mb-3">
                                         <div class="input-group">
-                                            <input id="referal_link" type="text" class="form-control" disabled value="{{env("APP_URL")."/user/register/referal/".$referal}}">
+                                            <input id="referal_link" type="text" class="form-control" disabled value="{{env("APP_URL").":8000/user/register/referal/".$referal}}">
                                             <span class="input-group-append">
                                                 <button id="cp_btn" type="button" class="btn btn-info btn-flat">Salin</button>
                                             </span>
@@ -61,7 +61,7 @@
                             <p class="text-muted text-center">{{$vendor->nama_lengkap}}</p>
 
                             <a href="{{route("vendor.update.photo.profile")}}" class="btn btn-primary btn-block"><i class="fa fa-image"></i> <b>Ubah Foto</b></a>
-                            <a href="#" class="btn btn-warning btn-block"><i class="fa fa-key"></i> <b>Ubah Sandi</b></a>
+                            <a href="{{ route('freelance.password.update') }}" class="btn btn-warning btn-block"><i class="fa fa-key"></i> <b>Ubah Sandi</b></a>
                         </div>
                     </div>
                 </div>
@@ -96,8 +96,9 @@
         let link = document.getElementById("referal_link")
 
         btn.addEventListener("click", (e) => {
-            console.log("bisa");
+            // console.log("bisa");
             navigator.clipboard.writeText(link.value)
+            alert("link disalin")
         })
     </script>
 

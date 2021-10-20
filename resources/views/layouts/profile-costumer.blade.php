@@ -33,7 +33,7 @@
 </head>
 
 <!-- <body class="hold-transition sidebar-mini text-sm"> -->
-<body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm">
+<body class="sidebar-mini layout-fixed layout-navbar-fixed text-sm accent-warning">
     <script src="{{asset('lte/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('lte/ckeditor/ckeditor.js')}}"> </script>
     <script src="{{asset('lte/build/js/toastr.min.js')}}"></script>

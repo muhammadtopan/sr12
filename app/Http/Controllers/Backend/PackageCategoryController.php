@@ -33,15 +33,32 @@ class PackageCategoryController extends Controller
         );
     }
 
+    public function cari_kategori_paket(Request $request)
+    {
+        $produk = DB::table('tb_package_category')
+                ->where('package_category_id','=',$request->package_category_id)
+                ->first();
+
+        $detail = DB::table('tb_product_package')
+                ->select('product_id')
+                ->where('package_category_id', '=', $request->package_category_id)
+                ->get();
+
+        return json_encode([
+            'produk' => $produk,
+            'detail' => $detail
+        ]);
+    }
+
     public function store(Request $request, PackageCategoryModel $category, ProductPackageModel $product)
     {
         // dd($request->all());
         $p = $request->input('product');
-        $id = array_keys($p);
+        $id_product = array_keys($p);
         // dd($p);
 
         $price = DB::table('tb_product')
-                    ->whereIn('product_id', $id)
+                    ->whereIn('product_id', $id_product)
                     ->select(DB::raw('SUM(product_price) as total_price'))
                     ->first();
         // dd($price->total_price);
@@ -94,7 +111,6 @@ class PackageCategoryController extends Controller
                 'category_opp_id'           => 'required',
                 'package_category_name'           => 'required',
                 'package_category_step'           => 'required',
-                'package_category_image'         => 'required|mimes:jpg,jpeg,png'
             ]);
             if ($validator->fails()) {
                 return redirect()
@@ -102,6 +118,9 @@ class PackageCategoryController extends Controller
                     ->withErrors($validator)
                     ->withInput();
             } else {
+                DB::table('tb_product_package')
+                                    ->where('package_category_id', '=', $request->package_category_id)
+                                    ->delete();
                 if ($request->hasFile('package_category_image') != null) {
                     $brg_gmb = DB::table('tb_package_category')
                                 ->where('package_category_id', '=', $request->package_category_id)
@@ -122,6 +141,12 @@ class PackageCategoryController extends Controller
                             'package_category_slug' => Str::slug($request->input('package_category_name')),
                             'package_category_image' => $filename
                         ]);
+                    foreach($p as $no => $products){
+                        ProductPackageModel::create([
+                            "package_category_id" => $request->package_category_id,
+                            "product_id" => $no,
+                        ]);
+                    }   
 
                 }else{
 
@@ -134,6 +159,13 @@ class PackageCategoryController extends Controller
                             'package_category_price' => $price->total_price,
                             'package_category_slug' => Str::slug($request->input('package_category_name')),
                         ]);
+                        
+                        foreach($p as $no => $products){
+                            ProductPackageModel::create([
+                                "package_category_id" => $request->package_category_id,
+                                "product_id" => $no,
+                            ]);
+                        }   
                 }
                 return redirect()
                     ->route('package_category')
@@ -158,22 +190,5 @@ class PackageCategoryController extends Controller
         return redirect()
             ->back()
             ->with('message', 'Data berhasil dihapus');
-    }
-
-    public function cari_kategori_paket(Request $request)
-    {
-        $produk = DB::table('tb_package_category')
-                ->where('package_category_id','=',$request->package_category_id)
-                ->first();
-
-        $detail = DB::table('tb_product_package')
-                ->select('product_id')
-                ->where('package_category_id', '=', $request->package_category_id)
-                ->get();
-
-        return json_encode([
-            'produk' => $produk,
-            'detail' => $detail
-        ]);
     }
 }

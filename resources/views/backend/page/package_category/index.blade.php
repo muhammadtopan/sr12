@@ -85,16 +85,12 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Input Kategori Produk Baru</h4>
+                    <h4 class="modal-title">Input Paket Produk Baru</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    @php
-                        $category = DB::table('tb_package_category')
-                                    ->first();
-                    @endphp
                     <form action="" method="POST" enctype="multipart/form-data" id="formCategory">
                         @csrf
                         <input type="hidden" name="package_category_id" id="package_category_id">
@@ -108,13 +104,10 @@
                                     </option>
                                 @endforeach
                             </select>
-                            @error('category_opp_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="package_category_name">Nama Paket</label>
-                            <input type="text" class="form-control" name="package_category_name" id="package_category_name" placeholder="Nama Paket" value="{{ old('package_category_name') ?? $category->package_category_name ?? '' }}" required>
+                            <input type="text" class="form-control" name="package_category_name" id="package_category_name" placeholder="Nama Paket" required>
                         </div>
                         <label for="package_category_name">List Product</label>
                         <div class="row">
@@ -123,7 +116,8 @@
                                     <!-- checkbox -->
                                     <div class="form-group clearfix">
                                         <div class="icheck-success d-inline">
-                                            <input type="checkbox" name="product[{{ $products->product_id }}]" id="{{ $products->product_id }}">
+                                            <input type="checkbox" class="product" name="product[{{ $products->product_id }}]" 
+                                            id="{{ $products->product_id }}">
                                             <label for="{{ $products->product_id }}">
                                             {{ $products->product_name }}
                                             </label>
@@ -141,7 +135,7 @@
                             <input type="file" class="form-control" name="package_category_image" id="package_category_image">
                         </div>
                         <div class="row text-right" style="margin-right: 2px">
-                            <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -175,49 +169,37 @@
 
     <script>
         function modal_tambah(url, aksi){
+            // // reset centang
+            let product = document.getElementsByClassName("product");
+            for (let x = 0; x < product.length; x++) {
+                product[x].checked = false;
+            }
             if(aksi != 'tambah'){
+                let d = null;
                 // ambil data dari axios
                 axios.post("{{ route('cari_kategori_paket') }}", {
                     'package_category_id': aksi,
                 }).then(function(res) {
-                    var package_category = res.data.produk;
-                    var package_category_detail = res.data.detail;
+                    let package_category = res.data.produk;
+                    let data = res.data.detail;
 
                     $('#package_category_id').val(package_category.package_category_id);
+                    $('#category_opp_id').val(package_category.category_opp_id);
                     $('#package_category_name').val(package_category.package_category_name);
                     $('#summernote').summernote('code', package_category.package_category_step);
                     $('#package_category_image').attr('required', false);
-                    $('#summernote').summernote('code', package_category_detail.package_category_step);
 
                     // ceklis barang
-
-                    var a = [];
-                    for(var i in package_category_detail){
-                        if(package_category_detail.hasOwnProperty(i)){
-                            a.push(i);
-                        }
-                    }
-
-                    // var b = a.toString()
-                    // var cek = b.split(",");
-                    // var list_gender = document.getElementsByName("id_gender2");
-                    // // reset centang gender
-                    // for (var x = 0; x < list_gender.length; x++) {
-                    //     list_gender[x].checked = false;
-                    // }
-                    // for (var x = 0; x < list_gender.length; x++) {
-                    //     for (var i = 0; i < cek.length; i++) {
-                    //         if (list_gender[x].value == cek[i]) {
-                    //             list_gender[x].checked = true;
-                    //         }
-                    //     }
-                    // }
-
-                    $('#kategori_id').val(package_category.kategori_id).change();
+                    data.forEach(d => {
+                        let ceklis = document.getElementById(d.product_id);
+                        ceklis.checked = true;
+                    });
                 }).catch(function(err) {
                     // console.log(err)
                 })
             }else{
+                $('#package_category_id').val('');
+                $('#category_opp_id').val('');
                 $('#package_category_name').val('');
                 $('#summernote').summernote('code','');
                 $('#package_category_image').val('');

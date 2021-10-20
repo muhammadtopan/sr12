@@ -14,7 +14,6 @@
             <div class="info">
                 <a href="#" class="d-block" style="text-transform: capitalize">
                     {{ Session::get("costumer_name") }}
-                    {{-- {{Session::get("auth")->nama_gudang}} - {{Session::get("auth")->level}} --}}
                 </a>
             </div>
         </div>
@@ -23,7 +22,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ route('gudang.dashboard')}}" class="nav-link {{ $active == 'dashboard' ? 'active' : '' }}">
+                    <a href="{{ route('user.profile')}}" class="nav-link {{ $active == 'akun' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -39,7 +38,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('user.profile.bayar') }}" class="nav-link {{ $active == 'stock' ? 'active' : '' }}">
+                    <a href="{{ route('user.profile.bayar') }}" class="nav-link {{ $active == 'bayar' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-coins"></i>
                         <p>
                             Bayar
@@ -47,7 +46,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('gudang.mitra') }}" class="nav-link {{ $active == 'mitra' ? 'active' : '' }}">
+                    <a href="{{ route('user.barang.sampai') }}" class="nav-link {{ $active == 'completed' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Barang Sampai
@@ -55,26 +54,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('gudang.mitra') }}" class="nav-link {{ $active == 'mitra' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-history"></i>
-                        <p>
-                            Histori Produk
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('gudang.history') }}" class="nav-link {{ $active == 'history' ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ $active == 'history' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Pengaturan
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('gudang.profit') }}" class="nav-link {{ $active == 'profit' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-dollar-sign"></i>
-                        <p>
-                            Point
                         </p>
                     </a>
                 </li>
@@ -83,6 +66,14 @@
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Voucher
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('home') }}" class="nav-link">
+                        <i class="nav-icon fas fa-sign-in-alt"></i>
+                        <p>
+                            Kembali
                         </p>
                     </a>
                 </li>
