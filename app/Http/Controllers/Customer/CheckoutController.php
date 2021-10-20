@@ -116,6 +116,7 @@ class CheckoutController extends Controller
             'weight'        => $weight, // berat barang dalam gram
             'courier'       => $courier // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
         ])->get();
+
         return $cost;
     }
 
