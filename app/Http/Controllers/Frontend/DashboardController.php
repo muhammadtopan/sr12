@@ -82,6 +82,7 @@ class DashboardController extends Controller
             $request->session()->put('user_id', $data_user->user_id);
             $request->session()->put('username', $data_user->username);
             $request->session()->put('user_level', $data_user->user_level);
+            $request->session()->put('user_level', $data_user->user_level);
             $request->session()->put('token_vendor', $token);
             // redirect ke halaman home
             return redirect()

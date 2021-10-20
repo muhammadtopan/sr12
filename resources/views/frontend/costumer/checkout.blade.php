@@ -76,10 +76,10 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label for="bank">Pilih Bank</label>
-                                <select name="bank_id" id="" class="form-control">
+                                <select name="bank_id" class="form-control" required>
                                     <option selected value="{{null}}"disabled>Pilih Bank</option>
                                     @foreach ($bank as $b)
-                                        <option value="{{$b->bank_id}}">{{$b->bank_name}}</option>
+                                        <option value="{{$b->bank_id}}">{{$b->bank_name}}({{ $b->bank_rekening }}:{{ $b->owner }})</option>
                                     @endforeach
                                 </select>
                             </div>

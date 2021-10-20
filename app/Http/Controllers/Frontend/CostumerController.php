@@ -35,9 +35,26 @@ class CostumerController extends Controller
         $prov = DB::table('tb_provinsi')->get();
         $prov2 = DB::table('tb_provinsi')->get();
         $active = "regis";
+        $tap = "akun";
         return view('frontend/auth_user/register',
         [
         'active' => $active,
+        'tap' => $tap,
+        'prov' => $prov,
+        'prov2' => $prov2
+        ]);
+    }
+
+    public function mitraMegister()
+    {
+        $prov = DB::table('tb_provinsi')->get();
+        $prov2 = DB::table('tb_provinsi')->get();
+        $active = "regis";
+        $tap = "mitra";
+        return view('frontend/auth_user/register',
+        [
+        'active' => $active,
+        'tap' => $tap,
         'prov' => $prov,
         'prov2' => $prov2
         ]);
@@ -78,6 +95,7 @@ class CostumerController extends Controller
             // masukan data login ke session
             $request->session()->put('costumer_id', $data_costumer->costumer_id);
             $request->session()->put('costumer_name', $data_costumer->costumer_name);
+            $request->session()->put('point', $data_costumer->point);
             $request->session()->put('tokenUser', $token);
             $total_price = TmpDetailsModel::where("user_id", $data_costumer->costumer_id)->sum('total_price');
             $request->session()->put('total_price', $total_price);
@@ -210,11 +228,13 @@ class CostumerController extends Controller
         $history = DB::table("tb_order")
         ->join("tb_vendor", "tb_vendor.user_id", "tb_order.user_id")
         ->join("tb_kota", "tb_kota.kota_id", "tb_order.kota_id")
+        ->join("tb_bank", "tb_order.bank_id", "tb_bank.bank_id")
         ->where("costumer_id", Session::get("costumer_id"))
         ->where("order_status", "!=", "waiting")
-        ->where("order_status", "!=", "rejected")->get(["tb_order.order_id", "tb_vendor.nama_lengkap", "tb_order.bank_name", "tb_order.invoice", "tb_order.noresi", "tb_order.combined_price"]);
+        ->where("order_status", "!=", "rejected")
+        ->get(["tb_order.order_id", "tb_vendor.nama_lengkap", "tb_bank.bank_name", "tb_order.invoice", "tb_order.noresi", "tb_order.combined_price"]);
 
-        $data["active"] = "";
+        $data["active"] = "bayar";
         $data["history"] = $history;
         return view("frontend.costumer.profile-component.history-paid-shop", $data);
     }
@@ -223,12 +243,50 @@ class CostumerController extends Controller
         $order_detail = $history = DB::table("tb_order")
         ->join("tb_order_details", "tb_order_details.order_id", "tb_order.order_id")
         ->join("tb_product", "tb_product.product_id", "tb_order_details.product_id")
+        ->join("tb_bank", "tb_order.bank_id", "tb_bank.bank_id")
         ->where("tb_order_details.order_id", $order)
-        ->get(["tb_order.order_id", "tb_order.bank_name", "tb_order.invoice", "tb_order.noresi", "tb_order.combined_price", "tb_product.product_name", "tb_order_details.quantity", "tb_order_details.total_price"]);
-        $data["active"] = "";
+        ->get(["tb_order.order_id", "tb_bank.bank_name", "tb_order.invoice", "tb_order.noresi", "tb_order.combined_price", "tb_product.product_name", "tb_order_details.quantity", "tb_order_details.capital_price", "tb_order_details.total_price"]);
+        $data["active"] = "bayar";
         $data["detail"] = $order_detail;
         return view("frontend.costumer.profile-component.history-paid-shop-detail", $data);
     }
 
-}
+    public function BarangSampai()
+    {
+        $completed = DB::table("tb_order")
+                ->join("tb_vendor", "tb_vendor.user_id", "tb_order.user_id")
+                ->join("tb_kota", "tb_kota.kota_id", "tb_order.kota_id")
+                ->join("tb_bank", "tb_order.bank_id", "tb_bank.bank_id")
+                ->where("costumer_id", Session::get("costumer_id"))
+                ->where("order_status", "=", "end")
+                ->orWhere("order_status", "=", "sent")
+                // ->get(["tb_order.order_id", "tb_vendor.nama_lengkap", "tb_bank.bank_name", "tb_order.invoice", "tb_order.noresi", "tb_order.combined_price"]);
+                ->get();
 
+        $data["active"] = "completed";
+        $data["completed"] = $completed;
+        return view("frontend.costumer.dashboard.transaction-completed", $data);
+    }
+
+    public function BarangSampaiDetail($order)
+    {
+        $completed_detail = DB::table("tb_order")
+            ->join("tb_order_details", "tb_order_details.order_id", "tb_order.order_id")
+            ->join("tb_product", "tb_product.product_id", "tb_order_details.product_id")
+            ->join("tb_bank", "tb_order.bank_id", "tb_bank.bank_id")
+            ->where("tb_order_details.order_id", $order)
+            ->get(["tb_order.order_id", "tb_bank.bank_name", "tb_order.invoice", "tb_order.noresi", "tb_order.combined_price", "tb_product.product_name", "tb_order_details.quantity", "tb_order_details.capital_price", "tb_order_details.total_price"]);
+        $data["active"] = "completed";
+        $data["detail"] = $completed_detail;
+        return view("frontend.costumer.dashboard.transaction-completed-detail", $data);
+    }
+
+    public function PackageArrived(Request $request)
+    {
+        DB::table('tb_order')
+            ->where('order_id', $request->order_id)
+            ->update(['order_status' => 'end']);
+        return redirect()->back();
+    }
+
+}

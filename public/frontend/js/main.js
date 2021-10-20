@@ -59,21 +59,18 @@
 
     $('.kategori').owlCarousel({
         loop:false,
-        margin:25,
+        margin:15,
         nav:false,
         autoHeight:true,
         responsive:{
-            0: {
-                items: 3,
+            0:{
+                items:3
             },
-            576: {
-                items: 5,
+            600:{
+                items:5
             },
-            992: {
-                items: 7,
-            },
-            1200: {
-                items: 7,
+            1000:{
+                items:7
             }
         }
     })
@@ -126,9 +123,6 @@
             576: {
                 items: 6,
             },
-            992: {
-                items: 8,
-            },
             1200: {
                 items: 8,
             }
@@ -165,7 +159,7 @@
         Testimony Slider
     --------------------*/
    $(".testi-slider").owlCarousel({
-        loop: false,
+        loop: true,
         margin: 10,
         center:false,
         nav: false,
@@ -269,8 +263,6 @@
     }
     var timerdate = mm + '/' + dd + '/' + yyyy;
     // For demo preview end
-
-    console.log(timerdate);
     
 
     // Use this for real timer date
@@ -391,9 +383,11 @@
         Why-join
     --------------------- */
     $('.owl-why-join').owlCarousel({
-        loop:false,
+        loop:true,
         margin:10,
         nav:false,
+        autoplay: true,
+        smartSpeed: 1200,
         responsive:{
             0:{
                 items:3
@@ -402,7 +396,7 @@
                 items:4
             },
             1000:{
-                items:6
+                items:7
             }
         }
     })
@@ -411,7 +405,7 @@
         owl-ilmu-strategi
     --------------------- */
     $('.owl-ilmu-strategi').owlCarousel({
-        loop:false,
+        loop:true,
         margin:10,
         nav:false,
         autoplay: true,
@@ -469,9 +463,7 @@
 
     $('.owl-ulasan').owlCarousel({
         loop:true,
-        margin:25,
-        // nav:true,
-        autoHeight:false,
+        items:1,
         autoplay: true,
         smartSpeed:1200,
         responsive:{

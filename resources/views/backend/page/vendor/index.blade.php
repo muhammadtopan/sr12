@@ -82,7 +82,7 @@
                                                         class="cek_status"
                                                         id="cek_status"
                                                         value="{{ $vendors->user_status }}"
-                                                        onchange="cekStatus(<?= $vendors->user_id ?>, this)"
+                                                        onchange="cekStatus('{{ $vendors->username }}', this)"
                                                         <?php echo ($vendors->user_status == 'on') ? "checked" : "" ?> >
                                                     <span class="slider round"></span>
                                                 </label>
@@ -127,7 +127,7 @@
                                                         class="cek_status"
                                                         id="cek_status"
                                                         value="{{ $vendorso->user_status }}"
-                                                        onchange="cekStatus(<?= $vendorso->user_id ?>, this)"
+                                                        onchange="cekStatus('{{ $vendorso->username }}', this)"
                                                         <?php echo ($vendorso->user_status == 'on') ? "checked" : "" ?> >
                                                     <span class="slider round"></span>
                                                 </label>
@@ -151,11 +151,11 @@
 <!-- /.content -->
 <script>
 
-    function cekStatus(user_id, ceklis) {
+    function cekStatus(username, ceklis) {
+        console.log(username);  
         if (ceklis.checked) {
-            // alert("ceklis Dihidupkan")
             axios.post("{{route('data_vendor.active')}}", {
-                'id': user_id,
+                'username': username,
             }).then(function(res) {
                 console.log(res.data.message)
                 toastr.info(res.data.message)
@@ -165,7 +165,7 @@
         } else {
             // alert("Ceklis dimatikan")
             axios.post("{{route('data_vendor.non_active')}}", {
-                'id': user_id,
+                'username': username,
             }).then(function(res) {
                 // console.log(res.data.message)
                 toastr.warning(res.data.message)

@@ -78,7 +78,7 @@
                                                         class="cek_status"
                                                         id="cek_status"
                                                         value="{{ $freelances->user_status }}"
-                                                        onchange="cekStatus(<?= $freelances->user_id ?>, this)"
+                                        onchange="cekStatus(<?= $freelances->user_id ?>, this)"
                                                         <?php echo ($freelances->user_status == 'on') ? "checked" : "" ?> >
                                                     <span class="slider round"></span>
                                                 </label>
@@ -122,7 +122,7 @@
                                                         class="cek_status"
                                                         id="cek_status"
                                                         value="{{ $freeoff->user_status }}"
-                                                        onchange="cekStatus(<?= $freeoff->user_id ?>, this)"
+                                        onchange="cekStatus(<?= $freeoff->user_id ?>, this)"
                                                         <?php echo ($freeoff->user_status == 'on') ? "checked" : "" ?> >
                                                     <span class="slider round"></span>
                                                 </label>

@@ -41,11 +41,20 @@
                         </div>
                         <div class="filter-widget col-lg-12 col-sm-6">
                             <h4 class="fw-title">Paket Produk</h4>
-                            <ul class="filter-catagories">
+                            {{-- <ul class="filter-catagories"> --}}
+                                <div class="fw-brand-check">
                                 @foreach($category_oop as $no => $packagelist)
-                                    <li><a href="{{ url('filter/packages/'. $packagelist->category_opp_id)}}">{{ $packagelist->category_opp_name }}</a></li>
+                                    {{-- <li><a href="{{ url('filter/packages/'. $packagelist->category_opp_id)}}">{{ $packagelist->category_opp_name }}</a></li> --}}
+                                    <div class="bc-item">
+                                        <label>
+                                            {{ $packagelist->category_opp_name }}
+                                            <input type="checkbox" id="ctglist" value="{{ 1000 + $packagelist->category_opp_id}}">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
                                 @endforeach
-                            </ul>
+                                </div>
+                            {{-- </ul> --}}
                         </div>
                     </div>
                     <div class="filter-widget">
@@ -57,7 +66,7 @@
                                     <input type="text" id="maxamount">
                                 </div>
                             </div>
-                            <div id="slider-filter" onmouseup="sliderFilter(this)" class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                            <div id="slider-filter" onmouseout="sliderFilter(this)" class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
                                 data-min="0" data-max="900000">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
@@ -84,9 +93,12 @@
                         </div>
                     </div>
                     <div class="product-list">
+                        <div class="row">
+                            
+                        </div>
                         <div class="row" id="pr-container">
                             @foreach($packageshow as $no => $pslist)
-                                <div class="col-lg-3 col-sm-4">
+                                <div class="col-lg-2 col-sm-3 col-4">
                                     <div class="product-item">
                                         <div class="pi-pic">
                                             <a href="{{ route('detail_product',$pslist->package_category_id)}}">
@@ -111,7 +123,7 @@
                                 </div>
                             @endforeach
                             @forelse($product as $no => $pdklist)
-                                <div class="col-lg-3 col-sm-4">
+                                <div class="col-lg-2 col-sm-3 col-4">
                                     <div class="product-item">
                                         <div class="pi-pic">
                                             <a href="{{ route('detail_product',$pdklist->product_id)}}">
@@ -147,7 +159,6 @@
         </div>
     </section>
     <!-- Product Shop Section End -->
-
     <script>
         let list = Array.from(document.querySelectorAll("#ctglist"))
         let container = document.getElementById("pr-container")
@@ -157,6 +168,7 @@
         let max = null
 
         addEventListener("DOMContentLoaded", (e) => {
+            // console.log(container.innerHTML);
             localStorage.setItem("oldPR", container.innerHTML)
             let params = window.location.pathname.split("/")[3]
             let data = {
@@ -176,44 +188,78 @@
                 }
             }
 
-            function updateUI(data) {
+            function updateUI(data1,data2 = null) {
                 let product = "";
-                data.forEach(d => {
-                            product += `
-                            <div class="col-lg-2 col-sm-3 col-4">
-                                        <div class="product-item">
-                                            <div class="pi-pic">
-                                                <a href="{{url('detail-product')}}/${d.product_id}">
-                                                    <img src="{{asset('lte/dist/img/product')}}/${d.product_image}" alt="">
-                                                </a>
-                                                <ul>
-                                                <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                    <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
-                                                </ul>
-                                            </div>
-                                            <div class="pi-text">
-                                                <div class="catagory-name"> ${d.category_name}</div>
-                                                <a href="#">
-                                                    <h5> ${d.product_name} </h5>
-                                                </a>
-                                                <div class="product-price">
-                                                    ${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(d.product_price)}
-                                                </div>
+                let package = "";
+                if(data2 != null) {
+                    data2.forEach(dd => {
+                        product += `
+                                <div class="col-lg-2 col-sm-3 col-4">
+                                    <div class="product-item">
+                                        <div class="pi-pic">
+                                            <a href="{{ url('detail_package')}}/${dd.package_category_id}">
+                                                <img src="{{ asset('lte/dist/img/package_category/')}}/${dd.package_category_image}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="pi-text">
+                                            <div class="catagory-name">${dd.category_opp_name}</div>
+                                            <a href="#">
+                                                <h5>${dd.package_category_name}</h5>
+                                            </a>
+                                            <div class="product-price">
+                                                ${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(dd.package_category_price)}
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                        `;
+                    });
+                }
+
+                data1.forEach(d => {
+                            product += `
+                                <div class="col-lg-2 col-sm-3 col-4">
+                                    <div class="product-item">
+                                        <div class="pi-pic">
+                                            <a href="{{url('detail-product')}}/${d.product_id}">
+                                                <img src="{{asset('lte/dist/img/product')}}/${d.product_image}" alt="">
+                                            </a>
+                                            <ul>
+                                            <!-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li> -->
+                                            </ul>
+                                        </div>
+                                        <div class="pi-text">
+                                            <div class="catagory-name"> ${d.category_name}</div>
+                                            <a href="#">
+                                                <h5> ${d.product_name} </h5>
+                                            </a>
+                                            <div class="product-price">
+                                                ${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(d.product_price)}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             `
-                })
+                });
                 return product
             }
 
-            function loopingUpdate(data) {
+            function loopingUpdate(data = null, data2 = null) {
                 let newData = [];
-                data.forEach(d => {
-                    newData = [...newData,...d]
-                })
-                let product = updateUI(newData)
+                let newData2 = [];
+                if(data != null){
+                    data.forEach(d => {
+                        newData = [...newData,...d]
+                    });
+                }
+                if(data2 != null){
+                    data2.forEach(d => {
+                        newData2 = [...newData2,...d]
+                    });
+                }
+                let product = updateUI(newData, newData2)
                 container.innerHTML = product
             }
 
@@ -231,7 +277,9 @@
                     if(listId.length > 0) {
                         let data = []
                         let res = await axios.get("/api/filter-kategori", {params: {data: listId, filter, min, max}})
-                        loopingUpdate(res.data)
+                        // console.log(res.data.package);
+                        // console.log([res.data.product]);
+                        loopingUpdate(res.data.product, res.data.package)
                     } else {
                         reset()
                     }
@@ -241,9 +289,30 @@
         // filter sorting
             async function filterSorting(e) {
                 filter = e.value
-                let res = await axios.get("/api/filter-sorting", {params: {sort:filter}})
-                let ui = updateUI(res.data)
-                container.innerHTML = ui
+                min = document.getElementById("minamount").value.split(" ")[1]
+                max = document.getElementById("maxamount").value.split(" ")[1]
+
+                // console.log(listId.length);
+                if(listId.length < 0){
+                    listId = 0;
+                }
+                // let res = await axios.get("/api/filter-sorting", {params: {sort: filter}})
+                let res = await axios.get("/api/filter-sorting", {params: {data:listId,filter,min,max}})
+                // console.log(res.data.product);
+                if(res.data.product !== null){
+                    if(Array.isArray(res.data.product[0]) == false){
+                        console.log('update');
+                        console.log(res.data.product);
+                        let ui = updateUI(res.data.product, res.data.package)
+                        container.innerHTML = ui
+                    }else{
+                        console.log('loop');
+                        console.log(res.data.product);
+                        loopingUpdate(res.data.product, res.data.package)
+                    }
+                }else{
+                    loopingUpdate(res.data.product, res.data.package)   
+                }
             }
         // filter sorting
 
@@ -251,14 +320,18 @@
         async function sliderFilter(e) {
             min = document.getElementById("minamount").value.split(" ")[1]
             max = document.getElementById("maxamount").value.split(" ")[1]
-            let res = await axios.get('/api/filter-harga', {params: {listId,filter,min,max}})
-            if(typeof res.data[0].product_name === "string") {
-                container.innerHTML = updateUI(res.data);
-            } else {
-                loopingUpdate(res.data)
+            let res = await axios.get('/api/filter-harga', {params: {data:listId,filter,min,max}})
+            if(res.data.product !== null){
+                if(Array.isArray(res.data.product[0]) == false){
+                    let ui = updateUI(res.data.product, res.data.package)
+                    container.innerHTML = ui
+                }else{
+                    loopingUpdate(res.data.product, res.data.package)
+                }
+            }else{
+                loopingUpdate(res.data.product, res.data.package)   
             }
         }
         // filter slider
     </script>
-
 @endsection

@@ -49,28 +49,34 @@ class VendorController extends Controller
                 ->where('product_status', 'on')
                 ->get('product_id');
 
+        $id = DB::table('tb_user')
+                ->where("username", '=', $request->username)
+                ->select('user_id')
+                ->first();
+
+        $id_parm = $id->user_id;
+        
         DB::table('tb_user')
-            ->where('user_id', $request->id)
-            ->update(['user_status' => 'on']);
-            $id_parm = $request->id;
+                ->where('user_id', $id_parm)
+                ->update(['user_status' => 'on']);
 
         $user_id = DB::table('tb_stok')
                 ->where('user_id', '=', $id_parm)->get();
 
         // level !== freelance -> create stok
-        $user = DB::table("tb_user")->where("user_id",$request->id)->first();
+        $user = DB::table("tb_user")->where("user_id",$id_parm)->first();
         if($user->user_level !== "Freelance") {
             if(count($user_id) == 0){
                 foreach($product as $p){
                     DB::table('tb_stok')->insert([
-                        'user_id' => $request->id,
+                        'user_id' => $id_parm,
                         'product_id' => $p->product_id,
                         'product_stok' => 0,
                         ]);
                     }
             } else{
                 DB::table('tb_stok')
-                        ->where('user_id', $request->id)
+                        ->where('user_id', $id_parm)
                         ->update(['deleted_at' => null]);
             }
         }
@@ -80,12 +86,17 @@ class VendorController extends Controller
         ], 200);
     }
     public function non_active(Request $request)
-    {
-        DB::table('tb_user')
-            ->where('user_id', $request->id)
-            ->update(['user_status' => 'off']);
+    {        
+        $id = DB::table('tb_user')
+            ->where("username", '=', $request->username)
+            ->select('user_id')
+            ->first();
+        $id_parm = $id->user_id;
 
-            StokModel::where('user_id', '=', $request->id)
+        DB::table('tb_user')
+            ->where('user_id', $id_parm)
+            ->update(['user_status' => 'off']);
+        StokModel::where('user_id', '=', $id_parm)
             ->delete();
 
         return response()->json([

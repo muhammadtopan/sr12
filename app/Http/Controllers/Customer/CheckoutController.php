@@ -7,6 +7,7 @@ use App\Model\OrderModel;
 use App\Model\VendorModel;
 use App\Model\ProductModel;
 use Illuminate\Http\Request;
+use App\Model\TmpDetailsModel;
 use App\Model\OrderDetailsModel;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -32,21 +33,45 @@ class CheckoutController extends Controller
         $vendor = DB::select($query.$sub_query);
         if(count($vendor) < 1) {
             // $vendor = DB::select("SELECT * FROM tb_vendor WHERE prov_id = $prov");
-            $vendor = DB::table('tb_vendor')
-                        ->join('tb_stok', 'tb_vendor.user_id', 'tb_stok.user_id')
-                        ->join('tb_product', 'tb_stok.product_id', 'tb_product.product_id')
-                        ->where('prov_id', '=', $prov)
-                        ->where('tb_stok.product_id', '=', $request->product_id)
-                        ->where('tb_stok.product_stok', '>=', $request->qty)
-                        ->get();
+            // $vendor = DB::table('tb_vendor')
+            //             ->join('tb_stok', 'tb_vendor.user_id', 'tb_stok.user_id')
+            //             ->join('tb_product', 'tb_stok.product_id', 'tb_product.product_id')
+            //             ->where('prov_id', '=', $prov)
+            //             ->where('tb_stok.product_id', '=', $request->product_id)
+            //             ->where('tb_stok.product_stok', '>=', $request->qty)
+            //             ->get();
+                $query = "SELECT * FROM tb_vendor WHERE user_id IN (";
+                $sub_query = "SELECT user_id FROM tb_stok WHERE ";
+                foreach ($request->qty as $key => $qty) {
+                    if($key === 0) {
+                        $sub_query .= "product_stok > ".$qty;
+                    } else {
+                        $sub_query .= " AND product_stok > ".$qty;
+                    }
+                }
+                $sub_query .= " AND tb_vendor.prov_id = ".$prov.")";
+                $vendor = null;
+                $vendor = DB::select($query.$sub_query);
             if(count($vendor) < 1) {
                 // $vendor = DB::select("SELECT * FROM tb_vendor");
-                $vendor = DB::table('tb_vendor')
-                        ->join('tb_stok', 'tb_vendor.user_id', 'tb_stok.user_id')
-                        ->join('tb_product', 'tb_stok.product_id', 'tb_product.product_id')
-                        ->where('tb_stok.product_id', '=', $request->product_id)
-                        ->where('tb_stok.product_stok', '>=', $request->qty)
-                        ->get();
+                // $vendor = DB::table('tb_vendor')
+                //         ->join('tb_stok', 'tb_vendor.user_id', 'tb_stok.user_id')
+                //         ->join('tb_product', 'tb_stok.product_id', 'tb_product.product_id')
+                //         ->where('tb_stok.product_id', '=', $request->product_id)
+                //         ->where('tb_stok.product_stok', '>=', $request->qty)
+                //         ->get();
+                $query = "SELECT * FROM tb_vendor WHERE user_id IN (";
+                $sub_query = "SELECT user_id FROM tb_stok WHERE ";
+                foreach ($request->qty as $key => $qty) {
+                    if($key === 0) {
+                        $sub_query .= "product_stok > ".$qty;
+                    } else {
+                        $sub_query .= " AND product_stok > ".$qty;
+                    }
+                }
+                // $sub_query .= " AND tb_vendor.prov_id = ".$prov.")";
+                $vendor = null;
+                $vendor = DB::select($query.$sub_query);
             }
         }
         return $vendor;
@@ -64,7 +89,7 @@ class CheckoutController extends Controller
     }
 
     public function konversiBerat($berat, $satuan, $jumlah) {
-        if($satuan === "g") {
+        if($satuan === "gr" || $satuan === "ml") {
             return (int)$berat * $jumlah;
         } else if($satuan === "mg") {
             return ($berat / 1000) * $jumlah;
@@ -101,16 +126,6 @@ class CheckoutController extends Controller
         $vendor = VendorModel::where("user_id", (int)$request->vendor)->first();
         $ongkir = $this->getOngkir($vendor->kota_id, $request->destination, $weight);
         return response()->json($ongkir);
-    }
-
-    public function SetPoint(int $point) {
-        if($point > 100000) {
-            $point = (int)$point / 100000;
-            $user = DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->first();
-            DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->update([
-                "point" => $user->point + $point
-            ]);
-        }
     }
 
     public function checkout(Request $request) {
@@ -150,7 +165,9 @@ class CheckoutController extends Controller
             }
             return $total;
         });
-        $this->SetPoint($total);
+
+        $total_price = TmpDetailsModel::where("user_id", $request->session()->get('costumer_id'))->sum('total_price');
+        $request->session()->put('total_price', $total_price);
         return redirect()->route('home');
     }
 }

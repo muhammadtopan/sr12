@@ -18,10 +18,11 @@ use Illuminate\Support\Facades\Session;
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('syarat/marketer', 'HomeController@syaratMarketer')->name('syarat-marketer');
 Route::get('belanjaHemat', 'HomeController@belanjaHemat')->name('belanjaHemat');
-Route::get('peluangBisnis', 'HomeController@peluangBisnis')->name('peluangBisnis');
+Route::get('peluangBisnis/{s}', 'HomeController@peluangBisnis')->name('peluangBisnis');
 Route::get('shop/product', 'HomeController@product')->name('shop.product');
 Route::get('shop/product/{filter}', 'HomeController@product')->name('shop.product.filter');
 Route::get('detail-product/{product_id}', 'HomeController@detail_product')->name('detail_product');
+Route::get('detail-package/{package_id}', 'HomeController@detail_package')->name('detail_package');
 //About
 Route::get('about', 'HomeController@about')->name('about');
 Route::post('download/katalog','Web\KatalogController@download')->name('download-katalog');
@@ -61,13 +62,15 @@ Route::group(["middleware" => "unlogin_freelance"], function() {
 });
 
 Route::group(["middleware" => "login_freelance"],function() {
+    Route::get('freelance', 'Freelance\FreelanceController@index')->name('freelance');
     Route::get('freelance/profile', 'Freelance\FreelanceController@profile')->name('freelance.profile');
     Route::get('freelance/logout', 'Freelance\FreelanceController@logout')->name('freelance.logout');
-    Route::get('freelance', 'Freelance\FreelanceController@index')->name('freelance');
     Route::get('freelance/update', 'Freelance\FreelanceController@getUpdateProfile')->name("freelance.profile.update");
-    Route::put('freelance/update', 'Freelance\FreelanceController@putUpdateProfile');
+    Route::put('freelance/update', 'Freelance\FreelanceController@putUpdateProfile')->name("put.freelance.profile.update");
     Route::get('freelance/update/photo-profile', 'Freelance\FreelanceController@GetUpdatePhoto')->name("vendor.update.photo.profile");
     Route::put('freelance/update/photo-profile', 'Freelance\FreelanceController@PutUpdatePhoto');
+    Route::get('freelance/update/password', 'Freelance\FreelanceController@GetUpdatePass')->name("freelance.password.update");
+    Route::put('freelance/update/password', 'Freelance\FreelanceController@PutUpdatePass')->name("freelance.password.update.action");
 
     Route::group(["middleware" => "filter_freelance"], function() {
         Route::get('freelance/r/transaksi', 'Freelance\FreelanceController@rtransaksi')->name('freelance.r.transaksi');
@@ -127,10 +130,17 @@ Route::group(["prefix" => "gudang"],function() {
 //Costumer Auth
 Route::get('user/login', 'Frontend\CostumerController@index')->name('user.login');
 Route::get('user/register', 'Frontend\CostumerController@register')->name('user.register');
+Route::get('mitra/register', 'Frontend\CostumerController@mitraMegister')->name('mitra-register');
 Route::post('user/aksiregister', 'Frontend\CostumerController@registerAdmin')->name('user.aksiregister');
 Route::post('user/aksilogin', 'Frontend\CostumerController@loginAdmin')->name('user.aksilogin');
 Route::post('carikotauser', 'Frontend\CostumerController@carikota')->name('carikota');
 Route::get('cari_mitra/{id}', 'HomeController@carimitra');
+
+//Forgot Password
+Route::post('forget_pass/user','Web\ForgetPassController@forgetPass')->name('forget-pass-user');
+Route::get('email/verification','Mail\MailController@forgotPassAccount');
+Route::get('verify/email/user/{email}','Web\ForgetPassController@changePass')->name('ver-email-user');
+Route::post('change-pass-user','Web\ForgetPassController@upadatePass')->name('change-pass-user');
 
 // COSTUMER DAFTAR DENGAN KODE REFERAL
 Route::get('user/register/referal/{referal}', 'Frontend\CostumerController@register')->name("register.user.referal");
@@ -165,6 +175,12 @@ Route::middleware(['user.login'])->group(function () {
             Route::group(["prefix" => "history/bayar"],function() {
                 Route::get('/', 'Frontend\CostumerController@HistoryBayar')->name("user.profile.bayar");
                 Route::get('/{order}','Frontend\CostumerController@HistoryBayarDetail')->name("user.profile.bayar.detail");
+            });
+
+            Route::group(["prefix" => "barang/sampai"],function() {
+                Route::get('/', 'Frontend\CostumerController@BarangSampai')->name("user.barang.sampai");
+                Route::get('/{order}','Frontend\CostumerController@BarangSampaiDetail')->name("user.barang.sampai.detail");
+                Route::post('product/active', 'Frontend\CostumerController@PackageArrived')->name('package.arrived');
             });
 
         });

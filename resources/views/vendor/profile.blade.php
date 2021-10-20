@@ -37,7 +37,8 @@
                                             <label for="" class="form-label">Nama Lengkap</label>
                                             <input
                                             value="{{$data !== null ? $data->nama_lengkap : ""}}"
-                                            name="nama_lengkap" type="text" class="form-control" required>
+                                            onchange="namaRekening()"
+                                            name="nama_lengkap" id="nama_lengkap" type="text" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -80,17 +81,6 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Kota</label>
-                                            <select name="kota_id" id="kota_id" class="js-example-basic-single form-control @error('kota_id') {{ 'is-invalid' }} @enderror">
-                                                <option value="">-Pilih Kota-</option>
-                                                @foreach ($kota as $k)
-                                                    <option value="{{$k->kota_id}}">{{$k->kota_nama}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div> -->
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Kota</label>
@@ -160,10 +150,11 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="" class="form-label">Nama Pemilik Rekening</label>
+                                            <label for="pemilik_rekening" class="form-label">Nama Pemilik Rekening</label>
                                             <input
                                             value="{{$data !== null ? $data->nama_pemilik_rekening : ""}}"
-                                            name="pemilik_rekening" type="text" class="form-control" required>
+                                            name="pemilik_rekening" id="pemilik_rekening" type="text" class="form-control" required readonly>
+                                            <span>*rekening harus menggunakan nama pribadi</span>
                                         </div>
                                     </div>
                                 </div>
@@ -183,12 +174,12 @@
         e.preventDefault();
         var kota_id = '';
         var prov_id = $('#prov_id').val();
-        axios.post("{{ route('carikota') }}", {
+        axios.post("{{url('carikotauser')}}", {
             'prov_id': prov_id,
         }).then(function(res) {
-            console.log(res.data)
-            var kotaa = res.data.kota
-            for (var i = 0; i < kotaa.length; i++) {
+            console.log(res)
+            var kota = res.data.kota
+            for (var i = 0; i < kota.length; i++) {
                 kota_id += "<option value='" + kota[i].kota_id + "'>" + kota[i].kota_nama + "</option>"
             }
             $('#kota_id').html(kota_id)
@@ -196,5 +187,12 @@
             console.log(err);
         })
     });
+
+function namaRekening() {
+    let nama = document.getElementById("nama_lengkap").value;
+    let rek = document.getElementById('pemilik_rekening').value = nama
+    console.log(rek);
+}
+
 </script>
 @endsection

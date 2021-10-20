@@ -4,7 +4,7 @@
 @section ('content')
 
     <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
+    {{-- <div class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Breadcrumb Section Begin -->
     <!-- <section>
         <div class="container">
@@ -43,9 +43,9 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Checkout</th>
+                                        <th></th>
                                         <th>Gambar</th>
-                                        <th class="p-name">Nama Produk</th>
+                                        <th>Nama Produk</th>
                                         <th>Harga</th>
                                         <th>Jumlah</th>
                                         <th>Total</th>

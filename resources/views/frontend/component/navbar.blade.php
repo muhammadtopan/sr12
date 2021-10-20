@@ -1,4 +1,4 @@
-    <!-- Header Section Begin -->
+<!-- Header Section Begin -->
     <header class="header-section fixed-top">
         <div class="nav-item">
             <div class="container" style="background-color: #252525;">
@@ -123,7 +123,7 @@
                                         <li class="daftar_aktif"><a href="#">{{Session::get('costumer_name')}}</a>
                                             <ul class="dropdown">
                                                 <li><a href="{{ route('user.profile') }}">Profile</a></li>
-                                                <li><a href="#">Point: 30</a></li>
+                                                <li><a href="{{ route('user.profile.voucher') }}">Point: {{Session::get('point')}}</a></li>
                                                 <li><a href="{{ route('user.logout') }}">Keluar</a></li>
                                             </ul>
                                         </li>

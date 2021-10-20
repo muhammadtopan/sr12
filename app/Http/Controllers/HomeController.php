@@ -23,9 +23,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $allproduct = DB::table('tb_product')
+        $all = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->get();
+        
+        $allproduct = $all->random(5);
+
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
                     ->where('tb_product.product_best','on')
@@ -150,13 +153,17 @@ class HomeController extends Controller
     }
     public function carimitra($id)
     {
-        $mitra = DB::table('tb_mitra')->where('kota_id', $id)->get();
+        $mitra = DB::table('tb_user')
+                    ->join('tb_vendor', 'tb_user.user_id', '=', 'tb_vendor.user_id')
+                    ->join('tb_kota', 'tb_vendor.kota_id', '=', 'tb_kota.kota_id')
+                    ->where('tb_vendor.kota_id', $id)
+                    ->get();
         return view('frontend.page.list_mitra', compact('mitra'));
     }
 
     public function viewerSyarat(Request $request, ViewerSyaratModel $viewer)
     {
-        // dd($request->session());
+        // dd($request->s);
         $messages = [
             'name_viewer.required'  => 'Nama wajib diisi',
             'phone.required'        => 'Nomor telfon wajib diisi',
@@ -176,11 +183,11 @@ class HomeController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else { 
-            $cekviewer = ViewerSyaratModel::where('phone', $request->phone)->get();
+            $cekviewer = DB::table('tb_viewer_syarat')->where('phone', $request->phone)->first();
             if ($cekviewer != null) {
                 // $cekviewer[0]->view = $cekviewer[0]->view+1;
                 DB::table('tb_viewer_syarat')->where('phone', $request->phone)->update([
-                    'view' => $cekviewer[0]->view+1
+                    'view' => $cekviewer->view+1
                 ]);
             }else{
                 $data = $request->all();
@@ -191,6 +198,8 @@ class HomeController extends Controller
             }
             $sviewer = $request->session()->put('phone_viewer', $request->input('phone'));
             // dd($sviewer);
+
+            $s = $request->s;
             return redirect()
                 ->route('syarat_mitra');
         }
@@ -212,9 +221,9 @@ class HomeController extends Controller
         return view('frontend/page/syarat', $data);
     }
 
-    public function peluangBisnis()
+    public function peluangBisnis($s)
     {
-        $data['syarat'] = "syarat8";
+        $data['syarat'] = $s;
         $data['prov'] = DB::table('tb_provinsi')->get();
         $data['active'] = "syarat";
         return view('frontend/page/syarat', $data);
@@ -279,7 +288,9 @@ class HomeController extends Controller
 
     public function product()
     {
-        $packageshow  = PackageCategoryModel::all();
+        $packageshow  = DB::table('tb_package_category')
+                        ->join('tb_category_o_product_package', 'tb_package_category.category_opp_id', '=', 'tb_category_o_product_package.category_opp_id')
+                        ->get();
         $category = CategoryModel::all();
         $product = DB::table('tb_product')
                     ->join('tb_category', 'tb_category.category_id', '=', 'tb_product.category_id')
@@ -322,6 +333,31 @@ class HomeController extends Controller
                 'active' => $active,
                 'package' => $package,
                 'category' => $category,
+                'product' => $product,
+                'relate' => $relate,
+                "qty" => $qty
+            ]
+        );
+    }
+
+    public function detail_package($package_id)
+    {
+        $product = DB::table('tb_package_category')
+                    ->join('tb_category_o_product_package', 'tb_category_o_product_package.category_opp_id', '=', 'tb_package_category.category_opp_id')
+                    ->select('tb_package_category.*', 'tb_category_o_product_package.category_name')
+                    ->where("tb_package_category.package_category_id",$package_category_id)
+                    ->first();
+                    // dd($product);
+        $relate = DB::table('tb_package_category')
+                    ->join('tb_category_o_product_package', 'tb_category_o_product_package.category_opp_id', '=', 'tb_package_category.category_opp_id')
+                    ->where('tb_package_category.category_opp_id',$product->category_opp_id)
+                    ->get();
+        $qty = DB::table("tb_tmp_details")->where("package_category_id",$package_category_id)->where("user_id",Session::get("costumer_id"))->first();
+        $active = "product";
+        return view(
+            'frontend/page/detail_product',
+            [
+                'active' => $active,
                 'product' => $product,
                 'relate' => $relate,
                 "qty" => $qty

@@ -76,34 +76,65 @@ class OrderController extends Controller
                     "updated_at" => Carbon::now(),
                     "action_code" => \Str::random(14)
                 ]);
-                // saldo bank admin
-                DB::table("tb_bank")->where("bank_id",$order->bank_id)->update([
-                    "saldo" => $bank->saldo + $total
+                DB::table("tb_saldo")->insert([
+                    "user_id" => $vendor->user_id,
+                    "kredit" => $komisi,
+                    "debit" => 0,
+                    "saldo" => $freelance->saldo + $komisi,
+                    "desc" => "income",
+                    "created_at" => Carbon::now(),
+                    "updated_at" => Carbon::now(),
+                    "action_code" => \Str::random(14)
                 ]);
+                
                 // update komisi freelance
                 DB::table("tb_vendor")->where("user_id",$freelance->user_id)->update([
                     "saldo" => $freelance->saldo + $komisi
                 ]);
-                // update saldo vendor
-                DB::table("tb_vendor")->where("user_id",$order->user_id)->update([
-                    "saldo" => $vendor->saldo + ($total - ($komisi * 2))
-                ]);
             });
             return $komisi;
         } else {
-            //update saldo bank
-            DB::table("tb_bank")->where("bank_id",$order->bank_id)->update([
-                "saldo" => $bank->saldo + $total
-            ]);
-            // update saldo vendor
-            DB::table("tb_vendor")->where("user_id",$order->user_id)->update([
-                "saldo" => $vendor->saldo + ($total - ($komisi * 2))
+            //update history
+            DB::table("tb_saldo")->insert([
+                "user_id" => $vendor->user_id,
+                "kredit" => $komisi,
+                "debit" => 0,
+                "saldo" => $freelance->saldo + $komisi,
+                "desc" => "income",
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
+                "action_code" => \Str::random(14)
             ]);
             return 0;
+        }
+        // saldo bank admin
+        DB::table("tb_bank")->where("bank_id",$order->bank_id)->update([
+            "saldo" => $bank->saldo + $total
+        ]);
+        // update saldo vendor
+        DB::table("tb_vendor")->where("user_id",$order->user_id)->update([
+            "saldo" => $vendor->saldo + ($total - ($komisi * 2))
+        ]);
+    }
+
+    public function SetPoint(int $point) {
+        dd($point);
+        if($point > 100000) {
+            $point = (int)$point / 100000;
+            $user = DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->first();
+            DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->update([
+                "point" => $user->point + $point
+            ]);
         }
     }
 
     public function update_status(Request $request, $order) {
+        $netto = DB::table('tb_order_details')
+                ->select(DB::raw("SUM(total_price) as tprice"))
+                ->where('order_id', "=", $order)
+                ->get();
+        $total = $netto[0]->tprice;
+        // dd($total[0]->tprice);
         $order = OrderModel::where("order_id",(int)$order)->first();
         if($order->order_status === "waiting") {
             $order->update([
@@ -127,6 +158,13 @@ class OrderController extends Controller
                     "komisi" => $komisi,
                 ]);
             });
+            if($total > 100000) {
+                $point = (int)$total / 100000;
+                $user = DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->first();
+                DB::table("tb_costumer")->where("costumer_id", Session::get("costumer_id"))->update([
+                    "point" => $user->point + $point
+                ]);
+            }
         }
         return redirect()->back();
     }
