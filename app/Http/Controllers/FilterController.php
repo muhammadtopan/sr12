@@ -448,16 +448,16 @@ class FilterController extends Controller
                         }
                     }
 
-                    $result = [];
-                    for ($i=0; $i < count($data['product']); $i++) { 
-                        for ($j=0; $j < count($data['product'][$i]); $j++) { 
-                            array_push($result, $data['product'][$i][$j]);
-                        }
-                    }
-                    $collection = collect($result);
-                    $sorted = $collection->sortBy('product_price');
-                    $sorted->values()->all();
-                    $data['product'] = $sorted;
+                    // $result = [];
+                    // for ($i=0; $i < count($data['product']); $i++) { 
+                    //     for ($j=0; $j < count($data['product'][$i]); $j++) { 
+                    //         array_push($result, $data['product'][$i][$j]);
+                    //     }
+                    // }
+                    // $collection = collect($result);
+                    // $sorted = $collection->sortBy('product_price');
+                    // $sorted->values()->all();
+                    // $data['product'] = $sorted;
                     
 
                 } else if($filter === "harga-tertinggi") {
